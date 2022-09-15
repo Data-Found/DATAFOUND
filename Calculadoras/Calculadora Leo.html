@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Informe a quantidade de entrada de pessoas mensalmente: <input id="inp_pessoas">
+    <br>
+    Informe a quantidade de notas fiscais vendidas : <input id="inp_notas">
+    <br>
+    <button onclick="calculo()"> Prejuizo</button>
+    <div id="div_msg"></div>
+</body>
+<script>
+function calculo() {
+    var pessoas = inp_pessoas.value
+    var notafiscal = inp_notas.value
+    var coeficientevendasperdidas = pessoas - notafiscal
+    var gastomensal = 685
+    var Perda = coeficientevendasperdidas * gastomensal
+    div_msg.innerHTML = `Atualmente você está tendo um prejuizo de ${Perda}`
+}
+</script>
+</html>
