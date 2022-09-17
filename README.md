@@ -23,15 +23,12 @@ O nosso papel é direcionar nossos clientes com base de dados relevantes para o 
 
 ## Autores
 
-- [alanaquinoslv](https://github.com/alanaquinoslv)
-- [sptechcarlos](https://github.com/sptechcarlos)
-- [jofsan](https://github.com/jofsan)
-- [LeonardoLopesPrado](https://github.com/LeonardoLopesPrado)
-- [MateusjfSilva](https://github.com/MateusjfSilva)
+- [RebecaLia](https://github.com/RebecaLia)
+- [leobr1t0](https://github.com/leobr1t0)
+- [Samuel-Oli-P](https://github.com/Samuel-Oli-P)
+- [Fernandeess](https://github.com/Fernandeess)
 - [Matheu5Leone](https://github.com/Matheu5Leone)
-- [InacioRodrigo](https://github.com/InacioRodrigo)
-- [SaraSouzzz](https://github.com/SaraSouzzz)
-
+- Vitor
 
 
 
