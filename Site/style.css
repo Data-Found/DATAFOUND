@@ -1,0 +1,99 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+div{
+padding: 0px;
+margin: 0px;
+}
+header{
+    display: flex;
+    justify-content: center;
+}
+header a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    margin: 0px 70px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+header a :hover{
+    color: rgb(27, 21, 197);
+}
+header ul{
+    display: flex;
+    list-style: none;
+}
+header .container{
+    width: 1440px;
+}
+.logoHeader{
+ width: 250px;
+ padding: 20px 0px;
+}
+.navBar{
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.background{
+    background: rgb(51,159,163);
+    background: linear-gradient(133deg, rgba(51,159,163,1) 0%, rgba(35,174,190,1) 27%, rgba(7,34,83,1) 100%);
+    
+}
+.hero{
+    display: flex;
+    justify-content:center;
+    
+}
+.hero .container{
+display: flex;
+align-items: center;    
+justify-content: space-around;
+width: 1440px;
+height:60vh ;
+}
+#sectionOne{
+    display: flex;
+    flex-direction: column;
+}
+#sectionOne h1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: white;
+    font-size: 125px;
+    margin: 5px 0px;
+}
+#sectionOne span{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: white;
+    font-size: 35px;
+    margin: 05px 0px;
+}
+#linkSimule{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid #184e77;
+    font-weight: bold;
+    width: fit-content;
+    padding: 20px 30px;
+    background-color: #184e77;
+    margin: 20px 0px 20px 10px;
+    border-radius: 50px;
+    font-size: 20px;
+    
+}
+#logoHero{
+    width: 320px;
+}
+#wave{
+width: 100%;
+position: relative;
+top: 4px;
+z-index: 1;
+
+
+}
