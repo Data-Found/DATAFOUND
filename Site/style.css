@@ -6,12 +6,21 @@
 body{
   background-color: black;
 }
+
 nav {
-  background-color: black;
+  transition: ease-in 0.3s;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
+  position: fixed;
+  bottom: auto;
+}
+
+nav.ativo {
+    transition: ease-in 0.5s;
+    background: rgb(0, 0, 0, 0.7);
 }
 nav .container {
   
@@ -442,6 +451,10 @@ ul li a:hover {
   border: none;
   cursor: pointer;
 }
+.container-inputs{
+  display: flex;
+  justify-content: space-between;
+}
 .fale-conosco{
   background-color: white;
   display: flex;
@@ -457,13 +470,16 @@ ul li a:hover {
 }
 .fale-conosco .container{
  width: 1000px;
+ height: fit-content;
+ min-height: 500px;
   display: flex;
   flex-direction: column;
   
   border-radius: 15px;
   justify-content: center;
   padding: 50px 10px;
-box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  box-shadow: rgb(38 57 77) 0px 20px 30px -10px;
+  color: #313131;
   align-items: center;
 }
 .inputs{
@@ -473,16 +489,22 @@ box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2
   padding: 20px;
 }
 .inputs input{
-  
   width: 400px;
   padding: 10px;
   margin: 10px;
+  display: flex;
+}
+.input-text-form{
+  width: 400px;
 }
 .container input,textarea{
-  
   border-radius: 8px;
   border: 1px solid rgb(84, 84, 84);
   resize:none;
+}
+.container textarea{
+  
+  height: 80%;
 }
 .input-text-form{
   display: flex;
@@ -493,7 +515,7 @@ box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2
 }
 .fale-conosco .container label{
   
-  padding: 10px;
+  padding: 20px;
   margin: 10px;
   font-size: 22px;
 }
