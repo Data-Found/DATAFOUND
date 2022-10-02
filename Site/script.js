@@ -1,4 +1,4 @@
-const menu = document.querySelector("nav");
+const menu = document.querySelector(".nav");
 
 function activeScroll() {
   menu.classList.toggle("ativo", scrollY > 650);
