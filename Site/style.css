@@ -5,13 +5,15 @@
 }
 
 body {
-  background: rgb(51, 159, 163);
+   
+}
+#background1{
+   background: rgba(51, 159, 163, 1);
   background: linear-gradient(133deg,
       rgba(51, 159, 163, 1) 0%,
       rgba(35, 174, 190, 1) 27%,
       rgba(7, 34, 83, 1) 100%);
 }
-
 .nav {
   transition: ease-in 0.3s;
   width: 100%;
@@ -113,13 +115,7 @@ ul li .navlink:hover {
 
 }
 
-.background {
-  background: rgb(51, 159, 163);
-  background: linear-gradient(133deg,
-      rgba(51, 159, 163, 1) 0%,
-      rgba(35, 174, 190, 1) 27%,
-      rgba(7, 34, 83, 1) 100%);
-}
+
 
 .main {
   display: flex;
@@ -270,6 +266,7 @@ ul li .navlink:hover {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  
 }
 
 .nossa-equipe h2 {
@@ -430,15 +427,24 @@ ul li .navlink:hover {
   color: white;
   background: rgba(51, 159, 163, 1);
   background: linear-gradient(133deg,
-      rgba(51, 159, 163, 0.4) 0%,
-      rgba(35, 174, 190, 0.4) 27%,
-      rgba(7, 34, 83, 0.4) 100%);
+      rgba(51, 159, 163, 0.8) 0%,
+      rgba(35, 174, 190, 0.8) 27%,
+      rgba(7, 34, 83, 0.8) 100%),url(img/str.jpg) no-repeat ;
+      background-size:cover ;
   height: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 100px 0px;
+
+  
 }
+/* .imgFundo{
+  
+  z-index: -6;
+  position:fixed;
+  bottom: 10px;
+} */
 
 .dash .container {
   width: 1200px;
