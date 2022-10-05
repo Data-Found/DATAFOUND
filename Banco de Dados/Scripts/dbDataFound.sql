@@ -112,11 +112,64 @@ INSERT INTO Leitura (movimentEntrada, movimentSetor, fkSensor) VALUES
 (0,1,1),(0,0,2),(1,1,3),(1,0,4),(1,1,5),(0,0,6),(0,1,7),(1,1,8),(1,0,9),(1,1,10);
 
 -- SELECTS --
-SELECT * FROM Leitura;
-SELECT * FROM Sensor;
-SELECT * FROM Setor;
-SELECT * FROM Usuario;
-SELECT * FROM Empresa;
-SELECT * FROM Endereco JOIN Estado ON fkEstado = idEstado;
+SELECT * FROM Endereco;
 SELECT * FROM Estado;
+SELECT * FROM Endereco 
+	JOIN Estado ON fkEstado = idEstado; 
+    
+SELECT * FROM Empresa;
+SELECT * FROM Empresa 
+	JOIN Endereco ON fkEndereco = idEndereco;
+    
+SELECT * FROM Usuario;
+SELECT * FROM Usuario 
+	JOIN Empresa ON fkEmpresa = idEmpresa;
+    
+SELECT * FROM Setor;
+SELECT * FROM Setor 
+	JOIN Empresa ON fkEmpresa = idEmpresa;
+    
+SELECT * FROM Sensor;
+SELECT * FROM Sensor 
+	JOIN Setor ON fkSetor = idSetor;
+    
+SELECT * FROM Leitura;
+SELECT * FROM Leitura 
+	JOIN Sensor ON fkSensor = idSensor;
+    
+SELECT * FROM Leitura 
+	JOIN Sensor ON fkSensor = idSensor
+    JOIN Setor ON fkSetor = idSetor;
+    
+SELECT * FROM Estado AS est
+	JOIN Endereco AS endco ON endco.fkEstado = est.idEstado
+		JOIN Empresa AS emp ON emp.fkEndereco = endco.idEndereco
+			JOIN Usuario AS usu ON usu.fkEmpresa = emp.idEmpresa
+				JOIN Setor AS setor ON setor.fkEmpresa = emp.idEmpresa
+					JOIN Sensor AS sens ON sens.fkSetor = setor.idSetor
+						JOIN Leitura AS ler ON ler.fkSensor = sens.idSensor;  
+                        
+SELECT emp.nomeFantasia AS 'Nome da Empresa', emp.responsavel AS 'Responsável', 
+		endco.cep AS 'CEP', endco.numero AS 'Número', 
+		est.nomeEstado AS 'Estado',
+        usu.nomeUsuario AS 'Usuário', usu.email AS 'E-mail', 
+        setor.nomeSetor AS 'Setor', setor.prateleira AS 'Prateleira',
+        sens.statusSensor AS 'Status sensor',
+        ler.movimentEntrada AS 'Movimento entrada', ler.movimentSetor AS 'Movimento setor', ler.dtLeitura AS 'Data leitura' 
+        FROM empresa AS emp
+			JOIN Endereco AS endco ON  emp.fkEndereco = endco.idEndereco
+				JOIN Estado AS est ON endco.fkEstado = est.idEstado
+					JOIN Usuario AS usu ON usu.fkEmpresa = emp.idEmpresa
+						JOIN Setor AS setor ON setor.fkEmpresa = emp.idEmpresa
+							JOIN Sensor AS sens ON sens.fkSetor = setor.idSetor
+								JOIN Leitura AS ler ON ler.fkSensor = sens.idSensor;
 
+-- Todos as empresas e o seu maior fluxo de pessoas em algum setor
+/*
+SELECT emp.nomeFantasia AS 'Nome da Empresa', 
+		setor.nomeSetor AS 'Nome setor',
+		MAX(ler.movimentSetor) AS 'Movimento setor' FROM empresa AS emp
+			JOIN Setor AS setor ON setor.fkEmpresa = emp.idEmpresa
+				JOIN Sensor AS sens ON sens.fkSetor = setor.idSetor
+					JOIN Leitura AS ler ON ler.fkSensor = sens.idSensor;       
+*/
