@@ -4,16 +4,16 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-body {
-   
-}
-#background1{
-   background: rgba(51, 159, 163, 1);
+body {}
+
+#background1 {
+  background: rgba(51, 159, 163, 1);
   background: linear-gradient(133deg,
       rgba(51, 159, 163, 1) 0%,
       rgba(35, 174, 190, 1) 27%,
       rgba(7, 34, 83, 1) 100%);
 }
+
 .nav {
   transition: ease-in 0.3s;
   width: 100%;
@@ -55,7 +55,7 @@ ul .lista {
 }
 
 ul .lista .navlink {
-  font-weight:bold;
+  font-weight: bold;
   text-decoration: none;
   color: white;
   transition: all 0.3s;
@@ -123,7 +123,7 @@ ul li .navlink:hover {
   align-items: center;
   height: fit-content;
   width: 100%;
-  
+
   flex-direction: column;
 
 
@@ -266,7 +266,7 @@ ul li .navlink:hover {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  
+
 }
 
 .nossa-equipe h2 {
@@ -388,7 +388,6 @@ ul li .navlink:hover {
   color: #313131;
 }
 
-.card-mvv p {}
 
 .img-mvv {
   display: flex;
@@ -429,16 +428,17 @@ ul li .navlink:hover {
   background: linear-gradient(133deg,
       rgba(51, 159, 163, 0.8) 0%,
       rgba(35, 174, 190, 0.8) 27%,
-      rgba(7, 34, 83, 0.8) 100%),url(img/str.jpg) no-repeat ;
-      background-size:cover ;
+      rgba(7, 34, 83, 0.8) 100%), url(img/str.jpg) no-repeat;
+  background-size: cover;
   height: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 100px 0px;
 
-  
+
 }
+
 /* .imgFundo{
   
   z-index: -6;
@@ -639,4 +639,187 @@ footer .container {
 .sobre1-footer,
 .sobre2-footer {
   margin: 0px 20px;
+}
+
+/* LOGIN */
+
+.descricao-card .textologin {
+  display: flex;
+  flex-direction: column;
+  /* border: solid 3px green; */
+  color: #13354f;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.containerlogin {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 800px;
+  height: 560px;
+  margin: 1px 0px 0px 0px;
+  z-index: 2;
+}
+
+.mainlogin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+  width: 100%;
+
+  flex-direction: column;
+}
+
+.cardlogin {
+  min-width: 270px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(243, 242, 242);
+  border-radius: 10px;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  padding: 20px;
+  margin: 80px 0px 0px 0px;
+}
+
+.textologin .inputs {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.textologin h5 {
+  padding-top: 10px;
+  font-size: 10px;
+}
+
+.textologin a{
+  color: #168aad;
+}
+
+/* CADASTRO */
+
+.navcadastro {
+  background-color: #0c2233;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.navcadastro .container {
+  background-color: #0c2233;
+  width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 80px;
+}
+
+
+
+ .textocadastro {
+  background-color: rgb(243, 242, 242);
+  color: #0c2233;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-flow: wrap;
+  width: 50%;
+  height: 600px;
+  /* border: solid 1px green; */
+}
+
+.textocadastro2 {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  height: 600px;
+}
+
+.textocadastro2 img {
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  background-color: rgb(243, 242, 242);
+  background-image: url(img/Group\ 21\ 1.png) no-repeat;
+  background-size: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.sessaoum {
+  margin: 0px;
+  display: flex;
+  width: 100%;
+  height: 700px;
+  flex-direction: row;
+  /* border: solid 1px green; */
+}
+
+.areainputs {
+  color: #0c2233;
+  font-weight: bold;
+  padding-top: 20px;
+  /* border: solid 1px green; */
+  height: 360px;
+  margin-left: 60px;
+}
+
+.areainputs p {
+  padding-left: 20px;
+  
+}
+.areainputs2 p {
+  padding-left: 20px;
+  
+}
+
+.areainputs2 {
+  color: #0c2233;
+  font-weight: bold;
+  padding-top: 20px;
+  height: 360px;
+}
+
+.inputs {
+  padding: 10px;
+  margin: 0px 10px 10px 10px;
+  border-radius: 10px;
+  border: #152657 solid 1px;
+}
+
+.areabotao {
+display: flex;
+width: 100%;
+height: 100px;
+margin-left: 60px;
+
+align-items: start;
+justify-content: center;
+
+}
+
+.cadastrotexto {
+  display: flex;
+  /* border: solid 1px green; */
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 40px;
+  margin-left: 60px;
+
+}
+.cadastrotexto h3{
+  color: #0c2233;
+  font-size: 28px;
+  
 }
