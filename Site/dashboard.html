@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataFond - DashBoard</title>
+    <link rel="stylesheet" href="style-dash.css">
+    <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
+    <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
+    <script src="path/to/chartjs/dist/chart.js"></script>
+</head>
+
+<body>
+    <nav>
+        <div class="container-nav">
+            <img class="logo" src="assets/img/logo-nav.png" />
+            <ul>
+                <li><a href="">Simulador</a></li>
+                <li><a href="">Dashboard</a></li>
+                <button class="btn-cadastrar">Cadastrar</button>
+                <button class="btn-login">Login</button>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div>
+            <!-- <div class="data_menu">
+                <h2>Informações</h2>
+                <div class="box_menu">
+                    <div class="card_menu">
+                        <span>2000 pessoas</span>
+                    </div>
+                </div>
+            </div> -->
+            <h3>Fluxo de pessoas nos setores</h3>
+            <div class="container_cards">
+                <div class="box_card">
+                    <div class="card">
+                        <span class="title_setor">Setor 1</span>
+                        <span class="text_setor">Fluxo no setor: 10</span>
+                        <span class="text_setor">Máx: 11</span>
+                        <img src="assets/img/exclamationRed.svg" alt="">
+                    </div>
+                    <div class="card">
+                        <span class="title_setor">Setor 2</span>
+                        <span class="text_setor">Fluxo no setor: 8</span>
+                        <span class="text_setor">Máx: 11</span>
+                        <img src="assets/img/exclamationYellow.svg" alt="">
+                    </div>
+                    <div class="card">
+                        <span class="title_setor">Setor 3</span>
+                        <span class="text_setor">Fluxo no setor: 5</span>
+                        <span class="text_setor">Máx: 12</span>
+                        <img src="assets/img/correct.svg" alt="">
+                    </div>
+                    <div class="card">
+                        <span class="title_setor">Setor 4</span>
+                        <span class="text_setor">Fluxo no setor: 14</span>
+                        <span class="text_setor">Máx: 15</span>
+                        <img src="assets/img/exclamationRed.svg" alt="">
+                    </div>
+                    <div class="card">
+                        <span class="title_setor">Setor 5</span>
+                        <span class="text_setor">Fluxo no setor: 10</span>
+                        <span class="text_setor">Máx: 15</span>
+                        <img src="assets/img/exclamationYellow.svg" alt="">
+                    </div>
+                    <div class="card">
+                        <span class="title_setor">Setor 6</span>
+                        <span class="text_setor">Fluxo no setor: 5</span>
+                        <span class="text_setor">Máx: 15</span>
+                        <img src="assets/img/correct.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="boxes">
+                    <canvas id="entrada" width="400" height="400"></canvas>
+                </div>
+                <div class="boxes">
+                    <canvas id="produtos" width="400" height="400"></canvas>
+                </div> -->
+        <div class="box">
+            <div class="boxes graf-pizza">
+                <canvas id="setor" width="500" height="500"></canvas>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+
+    // INÍCIO DO GRÁFICO DE PIZZA - FLUXO DE DEPARTAMENTO
+    const ctxFluxo = document.getElementById('setor').getContext('2d');
+    const chartFluxo = new Chart("setor", {
+        type: "pie",
+        data: {
+            labels: ["Eletrônicos", "Vestuário", "Brinquedos", "Cosméticos", "Alimentício"],
+            datasets: [{
+                backgroundColor: ["#b91d47",
+                    "#00aba9",
+                    "#2b5797",
+                    "#e8c3b9",
+                    "#1e7145"],
+                data: [55, 49, 44, 24, 15]
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: "Fluxo de departamento"
+            }
+        }
+    });
+    // FIM DO GRÁFICO DE PIZZA - FLUXO DE DEPARTAMENTO
+
+    // INÍCIO DO GRÁFICO DE LINHA - ENTRADA DE PESSOAS
+    const ctxEntrada = document.getElementById('entrada').getContext('2d');
+    const chartEntrada = new Chart(ctxEntrada, {
+        type: 'line',
+        data: {
+            labels: ["Eletrônicos", "Vestuário", "Brinquedos", "Cosméticos", "Alimentício"],
+            datasets: [{
+                label: 'Entrada de pessoas',
+                data: [12, 19, 3, 5, 2],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    // FIM DO GRÁFICO DE LINHA - ENTRADA DE PESSOAS
+
+    // INÍCIO DO GRÁFICO DE BARRA - PRODUTOS DE SETORES
+    const ctxProdutos = document.getElementById('produtos').getContext('2d');
+    const charProdutos = new Chart(ctxProdutos, {
+        type: 'bar',
+        data: {
+            labels: ['Notebook', 'Mouse', 'Teclado', 'Headset', 'Microfone', 'Mouse pad'],
+            datasets: [{
+                label: 'Produtos mais requisitados - Setor de eletrônicos',
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+// FIM DO GRÁFICO DE BARRA - PRODUTOS DE SETORES
+</script>
