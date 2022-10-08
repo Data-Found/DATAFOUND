@@ -1,0 +1,14 @@
+- NÚMERO MÁXIMO DE PESSOAS EM UM SETOR (Banco de dados)
+- minimo 0
+
+
+Perigo-superlotação: 90% cheio
+Atenção-superlotação: 75% cheio
+Tranquilo: Metade
+Atenção-baixa: 25% cheio
+Perigo-baixa: 15% cheio
+
+Biblioteca diferente para o sensor de bloqueio
+Gráfico da página específica é necessária agora na segunda sprint
+
+0 1000

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;600;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;600;700&display=swap'); */
 
 * {
   margin: 0;
@@ -7,19 +7,27 @@
 }
 
 nav {
-  width: 100%;
-  background-color: black;
+  width: 100vw;
+  height: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  z-index: 2;
 }
 
 .container-nav {
-  height: 100px;
-  width: 1100px;
+  width: 60%;
+  height: 30%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* background-color: black; */
+}
+
+.img_user {
+  width: 65px;
+  height: 65px;
 }
 
 nav img {
@@ -57,8 +65,15 @@ ul li a:hover {
   background-color: #1a759f;
   border: none;
   transition: all 0.3s;
-
   cursor: pointer;
+}
+
+.imgHeader {
+  width: 100vw;
+}
+
+.kpi_container {
+  display: flex;
 }
 
 .btn-login:hover {
@@ -90,9 +105,104 @@ ul li a:hover {
   /* background-color: pink; */
 }
 
-/* .data_menu {
-  background-color: violet;
+/* .containerAll {
+  margin-left: 50%;
 } */
+
+.box_metricas {
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 25px;
+}
+
+.box_metricas .perigo {
+  background-color: rgb(255, 0, 0);
+  font-family: 'Inter', sans-serif;
+  color: white;
+}
+.box_metricas .ideal {
+  background-color: rgb(0, 255, 0);
+  font-family: 'Inter', sans-serif;
+  color: black;
+}
+.box_metricas .atencao {
+  background-color: rgb(255, 255, 0);
+  font-family: 'Inter', sans-serif;
+  color: black;
+}
+
+.box_metricas .metricas {
+  padding: 10px 0px;
+  margin: 0 10px;
+  width: 12%;
+  border-radius: 10px;
+  text-align: center;
+  align-self: center;
+}
+
+.box_metricas .metricas span {
+  font-size: 16px;
+  font-weight: 900;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.data_menu {
+  width: 20vw;
+  height: 60%;
+  /* justify-content: center; */
+  align-self: center;
+  /* background-color: violet; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 5%;
+  border-radius: 20px;
+  align-items: center;
+  /* box-shadow: 2px 1px 10px 1px rgb(187, 187, 187); */
+  padding: 20px;
+} 
+
+.data_menu .card_menu {
+  /* background-color: red; */
+  /* border: 2px solid black; */
+  width: 18vw;
+  height: 50%;
+  box-shadow: 2px 1px 10px 5px rgb(187, 187, 187);
+  border-radius: 20px;
+  margin-top: 30px;
+  text-align: center;
+  padding: 20px 10px 0 10px;
+}
+
+.card_menu:hover {
+  transition: all 0.3s;
+  background-color: rgb(241, 241, 241);
+  cursor: pointer;
+}
+
+.card_menu .kpiTextSetor {
+  font-weight: 900;
+}
+
+.card_menu .kpiTextPessoas {
+  font-size: 24px;
+  /* font-weight: 900; */
+}
+
+.data_menu .card_menu span {
+  align-self: center;
+  /* background-color: pink; */
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+}
 
 .box {
   display: flex;
@@ -103,12 +213,17 @@ ul li a:hover {
 .box .boxes{
   width: 350px;
   align-self: center;
-  margin: 0 25%;
+  margin: 0 50% 0 50%;
+}
+
+.box_metricasCards {
+  width: 680px;
+  align-self: center;
 }
 
 .container_cards {
-  width: 680px;
-  height: 600px;
+  width: 800px;
+  height: 700px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -133,7 +248,7 @@ ul li a:hover {
   justify-content: space-evenly;
   border-radius: 20px;
   box-shadow: 2px 1px 10px 1px rgb(187, 187, 187);
-  margin: 20px 0;
+  margin: 15px 0;
   cursor: pointer;
   transition: all 0.3s;
 }
@@ -151,8 +266,11 @@ ul li a:hover {
   height: 65px;
 }
 
-h3 {
+h2, h3, .title_setor, .text_setor, .kpiTextPessoas, .kpiTextPessoas {
   font-family: 'Inter', sans-serif;
+}
+
+h3 {
   font-weight: 900;
   font-size: 24px;
   text-align: center;
@@ -161,7 +279,6 @@ h3 {
 }
 
 .title_setor {
-  font-family: 'Inter', sans-serif;
   font-size: 20px;
   font-weight: 800;
   text-align: center;
@@ -169,6 +286,9 @@ h3 {
 }
 
 .text_setor {
-  font-family: 'Inter', sans-serif;
   margin: 5% 0 0 10%;
+}
+
+.imgFooter {
+  width: 100vw;
 }
