@@ -14,32 +14,855 @@
 
 <body>
     <div id="background1">
-        <div class="nav">
+        <div class="navcadastro">
             <div class="container">
-                    <a href="index.html"><img class="logo" src="./assets/logo-nav.png" /></a>
-                    <ul>
-                        <!-- <li class="lista"><a href="#" class="navlink">Home</a></li> -->
-                        <li class="lista"><a href="simulador.html" class="navlink">Simulador</a></li>
-                        <!-- <li class="lista"><a href="dashboard.html" class="navlink">Dashboard</a></li> -->
-                        <li class="lista"> <a href="login.html" class="btn-login">Login <img src="assets/enter.png" alt="" class="enter"> </a>
-                        </li>
-                        <li class="lista"><a class="btn-cadastrar" href="cadastrar.html">Cadastrar</a></li>
-                        
-                    </ul>
+                <a href="index.html"><img class="logo" src="./assets/logo-nav.png" /></a>
+                <ul>
+                    <!-- <li class="lista"><a href="#" class="navlink">Home</a></li> -->
+                    <!-- <li class="lista"><a href="dashboard.html" class="navlink">Dashboard</a></li> -->
+                    <!-- <li class="lista"> <a href="login.html" class="btn-login">Login <img src="assets/enter.png" alt=""
+                        class="enter"> </a> -->
+                    <li class="lista"><a class="btn-cadastrar" href="login.html">Login</a></li>
+                    <li class="lista"><a class="btn-cadastrar" href="cadastrar.html">Cadastrar</a></li>
+                </ul>
             </div>
         </div>
 
-        <div class="main">
-            <div class="container">
-                <div class="heroText">
-                    <h2>Simule</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget
-                        Etiam convallis</p> 
+        <div class="containersessaosimulador">
+            <div class="sessaosimulador">
+                <div class="simuqtd">
+                    <h1>Simule aqui:</h1>
+                    <p>Quantos setores sua loja de departamento possui?</p>
+                    <select id="simumostrar" onchange="mostrar()">
+                        <option value="0"> --Selecione-- </option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                    </select>
                 </div>
-                <img class="logo1" src="./assets/icon-main.png" />
+                <div class="layoutselectssetores">
+                    <div class="coluna1selects">
+                        <div class="selectssetores" id="idselectssetores" style="display: none;">
+                            Setor 1:
+                            <select id="simu1">
+                                <option value="0"> --Selecione-- </option>
+                                <option value="1">Eletronicos</option>
+                                <option value="2">Moda</option>
+                                <option value="3">Higiene</option>
+                                <option value="4">Beleza</option>
+                                <option value="5">Alimentos</option>
+                                <option value="6">Bebidas</option>
+                                <option value="7">Brinquedos</option>
+                                <option value="8">Papelaria</option>
+                                <option value="9">Cama</option>
+                                <option value="10">Mesa</option>
+                                <option value="11">Banho</option>
+                                <option value="12">Saúde</option>
+                                <option value="13">Eletrodomésticos</option>
+                                <option value="14">Esporte e Fitness</option>
+                                <option value="15">Games</option>
+                                <option value="16">Instrumentos Musicais</option>
+                                <option value="17">Livraria</option>
+                                <option value="18">Móveis</option>
+                                <option value="19">Materiais de Construção</option>
+                                <option value="20">Outro</option>
+                            </select>
+                        </div>
+                        <div class="selectssetores" id="idselectssetores2" style="display: none;">
+                            Setor 2:
+                            <select id="simu2">
+                                <option value="0"> --Selecione-- </option>
+                                <option value="1">Eletronicos</option>
+                                <option value="2">Moda</option>
+                                <option value="3">Higiene</option>
+                                <option value="4">Beleza</option>
+                                <option value="5">Alimentos</option>
+                                <option value="6">Bebidas</option>
+                                <option value="7">Brinquedos</option>
+                                <option value="8">Papelaria</option>
+                                <option value="9">Cama</option>
+                                <option value="10">Mesa</option>
+                                <option value="11">Banho</option>
+                                <option value="12">Saúde</option>
+                                <option value="13">Eletrodomésticos</option>
+                                <option value="14">Esporte e Fitness</option>
+                                <option value="15">Games</option>
+                                <option value="16">Instrumentos Musicais</option>
+                                <option value="17">Livraria</option>
+                                <option value="18">Móveis</option>
+                                <option value="19">Materiais de Construção</option>
+                                <option value="20">Outro</option>
+                            </select>
+                        </div>
+                        <div class="selectssetores" id="idselectssetores3" style="display: none;">
+                            Setor 3:
+                            <select id="simu3">
+                                <option value="0"> --Selecione-- </option>
+                                <option value="1">Eletronicos</option>
+                                <option value="2">Moda</option>
+                                <option value="3">Higiene</option>
+                                <option value="4">Beleza</option>
+                                <option value="5">Alimentos</option>
+                                <option value="6">Bebidas</option>
+                                <option value="7">Brinquedos</option>
+                                <option value="8">Papelaria</option>
+                                <option value="9">Cama</option>
+                                <option value="10">Mesa</option>
+                                <option value="11">Banho</option>
+                                <option value="12">Saúde</option>
+                                <option value="13">Eletrodomésticos</option>
+                                <option value="14">Esporte e Fitness</option>
+                                <option value="15">Games</option>
+                                <option value="16">Instrumentos Musicais</option>
+                                <option value="17">Livraria</option>
+                                <option value="18">Móveis</option>
+                                <option value="19">Materiais de Construção</option>
+                                <option value="20">Outro</option>
+                            </select>
+                        </div>
+                        <div class="selectssetores" id="idselectssetores4" style="display: none;">
+                            Setor 4:
+                            <select id="simu4">
+                                <option value="0"> --Selecione-- </option>
+                                <option value="1">Eletronicos</option>
+                                <option value="2">Moda</option>
+                                <option value="3">Higiene</option>
+                                <option value="4">Beleza</option>
+                                <option value="5">Alimentos</option>
+                                <option value="6">Bebidas</option>
+                                <option value="7">Brinquedos</option>
+                                <option value="8">Papelaria</option>
+                                <option value="9">Cama</option>
+                                <option value="10">Mesa</option>
+                                <option value="11">Banho</option>
+                                <option value="12">Saúde</option>
+                                <option value="13">Eletrodomésticos</option>
+                                <option value="14">Esporte e Fitness</option>
+                                <option value="15">Games</option>
+                                <option value="16">Instrumentos Musicais</option>
+                                <option value="17">Livraria</option>
+                                <option value="18">Móveis</option>
+                                <option value="19">Materiais de Construção</option>
+                                <option value="20">Outro</option>
+                            </select>
+                        </div>
+                        <div class="selectssetores" id="idselectssetores5" style="display: none;">
+                            Setor 5:
+                            <select id="simu5">
+                                <option value="0"> --Selecione-- </option>
+                                <option value="1">Eletronicos</option>
+                                <option value="2">Moda</option>
+                                <option value="3">Higiene</option>
+                                <option value="4">Beleza</option>
+                                <option value="5">Alimentos</option>
+                                <option value="6">Bebidas</option>
+                                <option value="7">Brinquedos</option>
+                                <option value="8">Papelaria</option>
+                                <option value="9">Cama</option>
+                                <option value="10">Mesa</option>
+                                <option value="11">Banho</option>
+                                <option value="12">Saúde</option>
+                                <option value="13">Eletrodomésticos</option>
+                                <option value="14">Esporte e Fitness</option>
+                                <option value="15">Games</option>
+                                <option value="16">Instrumentos Musicais</option>
+                                <option value="17">Livraria</option>
+                                <option value="18">Móveis</option>
+                                <option value="19">Materiais de Construção</option>
+                                <option value="20">Outro</option>
+                            </select>
+                        </div>
+                        <div class="selectssetores" id="idselectssetores6" style="display: none;">
+                            Setor 6:
+                            <select id="simu6">
+                                <option value="0"> --Selecione-- </option>
+                                <option value="1">Eletronicos</option>
+                                <option value="2">Moda</option>
+                                <option value="3">Higiene</option>
+                                <option value="4">Beleza</option>
+                                <option value="5">Alimentos</option>
+                                <option value="6">Bebidas</option>
+                                <option value="7">Brinquedos</option>
+                                <option value="8">Papelaria</option>
+                                <option value="9">Cama</option>
+                                <option value="10">Mesa</option>
+                                <option value="11">Banho</option>
+                                <option value="12">Saúde</option>
+                                <option value="13">Eletrodomésticos</option>
+                                <option value="14">Esporte e Fitness</option>
+                                <option value="15">Games</option>
+                                <option value="16">Instrumentos Musicais</option>
+                                <option value="17">Livraria</option>
+                                <option value="18">Móveis</option>
+                                <option value="19">Materiais de Construção</option>
+                                <option value="20">Outro</option>
+                            </select>
+                        </div>
+                        <div class="selectssetores" id="idselectssetores7" style="display: none;">
+                            Setor 7:
+                            <select id="simu7">
+                                <option value="0"> --Selecione-- </option>
+                                <option value="1">Eletronicos</option>
+                                <option value="2">Moda</option>
+                                <option value="3">Higiene</option>
+                                <option value="4">Beleza</option>
+                                <option value="5">Alimentos</option>
+                                <option value="6">Bebidas</option>
+                                <option value="7">Brinquedos</option>
+                                <option value="8">Papelaria</option>
+                                <option value="9">Cama</option>
+                                <option value="10">Mesa</option>
+                                <option value="11">Banho</option>
+                                <option value="12">Saúde</option>
+                                <option value="13">Eletrodomésticos</option>
+                                <option value="14">Esporte e Fitness</option>
+                                <option value="15">Games</option>
+                                <option value="16">Instrumentos Musicais</option>
+                                <option value="17">Livraria</option>
+                                <option value="18">Móveis</option>
+                                <option value="19">Materiais de Construção</option>
+                                <option value="20">Outro</option>
+                            </select>
+                        </div>
+                        <div class="selectssetores" id="idselectssetores8" style="display: none;">
+                            Setor 8:
+                            <select id="simu8">
+                                <option value="0"> --Selecione-- </option>
+                                <option value="1">Eletronicos</option>
+                                <option value="2">Moda</option>
+                                <option value="3">Higiene</option>
+                                <option value="4">Beleza</option>
+                                <option value="5">Alimentos</option>
+                                <option value="6">Bebidas</option>
+                                <option value="7">Brinquedos</option>
+                                <option value="8">Papelaria</option>
+                                <option value="9">Cama</option>
+                                <option value="10">Mesa</option>
+                                <option value="11">Banho</option>
+                                <option value="12">Saúde</option>
+                                <option value="13">Eletrodomésticos</option>
+                                <option value="14">Esporte e Fitness</option>
+                                <option value="15">Games</option>
+                                <option value="16">Instrumentos Musicais</option>
+                                <option value="17">Livraria</option>
+                                <option value="18">Móveis</option>
+                                <option value="19">Materiais de Construção</option>
+                                <option value="20">Outro</option>
+                            </select>
+                        </div>
+                        <div class="selectssetores" id="idselectssetores9" style="display: none;">
+                            Setor 9:
+                            <select id="simu9">
+                                <option value="0"> --Selecione-- </option>
+                                <option value="1">Eletronicos</option>
+                                <option value="2">Moda</option>
+                                <option value="3">Higiene</option>
+                                <option value="4">Beleza</option>
+                                <option value="5">Alimentos</option>
+                                <option value="6">Bebidas</option>
+                                <option value="7">Brinquedos</option>
+                                <option value="8">Papelaria</option>
+                                <option value="9">Cama</option>
+                                <option value="10">Mesa</option>
+                                <option value="11">Banho</option>
+                                <option value="12">Saúde</option>
+                                <option value="13">Eletrodomésticos</option>
+                                <option value="14">Esporte e Fitness</option>
+                                <option value="15">Games</option>
+                                <option value="16">Instrumentos Musicais</option>
+                                <option value="17">Livraria</option>
+                                <option value="18">Móveis</option>
+                                <option value="19">Materiais de Construção</option>
+                                <option value="20">Outro</option>
+                            </select>
+                        </div>
+
+                        <div class="selectssetores" id="idselectssetores10" style="display: none;">
+                            Setor 10:
+                            <select id="simu10">
+                                <option value="0"> --Selecione-- </option>
+                                <option value="1">Eletronicos</option>
+                                <option value="2">Moda</option>
+                                <option value="3">Higiene</option>
+                                <option value="4">Beleza</option>
+                                <option value="5">Alimentos</option>
+                                <option value="6">Bebidas</option>
+                                <option value="7">Brinquedos</option>
+                                <option value="8">Papelaria</option>
+                                <option value="9">Cama</option>
+                                <option value="10">Mesa</option>
+                                <option value="11">Banho</option>
+                                <option value="12">Saúde</option>
+                                <option value="13">Eletrodomésticos</option>
+                                <option value="14">Esporte e Fitness</option>
+                                <option value="15">Games</option>
+                                <option value="16">Instrumentos Musicais</option>
+                                <option value="17">Livraria</option>
+                                <option value="18">Móveis</option>
+                                <option value="19">Materiais de Construção</option>
+                                <option value="20">Outro</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="coluna2selects">
+                        <div class="selectssetores" id="idselectssetores11" style="display: none;">
+                            Setor 11:
+                            <select id="simu11">
+                                <option value="0"> --Selecione-- </option>
+                                <option value="1">Eletronicos</option>
+                                <option value="2">Moda</option>
+                                <option value="3">Higiene</option>
+                                <option value="4">Beleza</option>
+                                <option value="5">Alimentos</option>
+                                <option value="6">Bebidas</option>
+                                <option value="7">Brinquedos</option>
+                                <option value="8">Papelaria</option>
+                                <option value="9">Cama</option>
+                                <option value="10">Mesa</option>
+                                <option value="11">Banho</option>
+                                <option value="12">Saúde</option>
+                                <option value="13">Eletrodomésticos</option>
+                                <option value="14">Esporte e Fitness</option>
+                                <option value="15">Games</option>
+                                <option value="16">Instrumentos Musicais</option>
+                                <option value="17">Livraria</option>
+                                <option value="18">Móveis</option>
+                                <option value="19">Materiais de Construção</option>
+                                <option value="20">Outro</option>
+                            </select>
+                        </div>
+                        <div class="selectssetores" id="idselectssetores12" style="display: none;">
+                            Setor 12:
+                            <select id="simu12">
+                                <option value="0"> --Selecione-- </option>
+                                <option value="1">Eletronicos</option>
+                                <option value="2">Moda</option>
+                                <option value="3">Higiene</option>
+                                <option value="4">Beleza</option>
+                                <option value="5">Alimentos</option>
+                                <option value="6">Bebidas</option>
+                                <option value="7">Brinquedos</option>
+                                <option value="8">Papelaria</option>
+                                <option value="9">Cama</option>
+                                <option value="10">Mesa</option>
+                                <option value="11">Banho</option>
+                                <option value="12">Saúde</option>
+                                <option value="13">Eletrodomésticos</option>
+                                <option value="14">Esporte e Fitness</option>
+                                <option value="15">Games</option>
+                                <option value="16">Instrumentos Musicais</option>
+                                <option value="17">Livraria</option>
+                                <option value="18">Móveis</option>
+                                <option value="19">Materiais de Construção</option>
+                                <option value="20">Outro</option>
+                            </select>
+                        </div>
+                        <div class="selectssetores" id="idselectssetores13" style="display: none;">
+                            Setor 13:
+                            <select id="simu13">
+                                <option value="0"> --Selecione-- </option>
+                                <option value="1">Eletronicos</option>
+                                <option value="2">Moda</option>
+                                <option value="3">Higiene</option>
+                                <option value="4">Beleza</option>
+                                <option value="5">Alimentos</option>
+                                <option value="6">Bebidas</option>
+                                <option value="7">Brinquedos</option>
+                                <option value="8">Papelaria</option>
+                                <option value="9">Cama</option>
+                                <option value="10">Mesa</option>
+                                <option value="11">Banho</option>
+                                <option value="12">Saúde</option>
+                                <option value="13">Eletrodomésticos</option>
+                                <option value="14">Esporte e Fitness</option>
+                                <option value="15">Games</option>
+                                <option value="16">Instrumentos Musicais</option>
+                                <option value="17">Livraria</option>
+                                <option value="18">Móveis</option>
+                                <option value="19">Materiais de Construção</option>
+                                <option value="20">Outro</option>
+                            </select>
+                        </div>
+                        <div class="selectssetores" id="idselectssetores14" style="display: none;">
+                            Setor 14:
+                            <select id="simu14">
+                                <option value="0"> --Selecione-- </option>
+                                <option value="1">Eletronicos</option>
+                                <option value="2">Moda</option>
+                                <option value="3">Higiene</option>
+                                <option value="4">Beleza</option>
+                                <option value="5">Alimentos</option>
+                                <option value="6">Bebidas</option>
+                                <option value="7">Brinquedos</option>
+                                <option value="8">Papelaria</option>
+                                <option value="9">Cama</option>
+                                <option value="10">Mesa</option>
+                                <option value="11">Banho</option>
+                                <option value="12">Saúde</option>
+                                <option value="13">Eletrodomésticos</option>
+                                <option value="14">Esporte e Fitness</option>
+                                <option value="15">Games</option>
+                                <option value="16">Instrumentos Musicais</option>
+                                <option value="17">Livraria</option>
+                                <option value="18">Móveis</option>
+                                <option value="19">Materiais de Construção</option>
+                                <option value="20">Outro</option>
+                            </select>
+                        </div>
+                        <div class="selectssetores" id="idselectssetores15" style="display: none;">
+                            Setor 15:
+                            <select id="simu15">
+                                <option value="0"> --Selecione-- </option>
+                                <option value="1">Eletronicos</option>
+                                <option value="2">Moda</option>
+                                <option value="3">Higiene</option>
+                                <option value="4">Beleza</option>
+                                <option value="5">Alimentos</option>
+                                <option value="6">Bebidas</option>
+                                <option value="7">Brinquedos</option>
+                                <option value="8">Papelaria</option>
+                                <option value="9">Cama</option>
+                                <option value="10">Mesa</option>
+                                <option value="11">Banho</option>
+                                <option value="12">Saúde</option>
+                                <option value="13">Eletrodomésticos</option>
+                                <option value="14">Esporte e Fitness</option>
+                                <option value="15">Games</option>
+                                <option value="16">Instrumentos Musicais</option>
+                                <option value="17">Livraria</option>
+                                <option value="18">Móveis</option>
+                                <option value="19">Materiais de Construção</option>
+                                <option value="20">Outro</option>
+                            </select>
+                        </div>
+                        <div class="selectssetores" id="idselectssetores16" style="display: none;">
+                            Setor 16:
+                            <select id="simu16">
+                                <option value="0"> --Selecione-- </option>
+                                <option value="1">Eletronicos</option>
+                                <option value="2">Moda</option>
+                                <option value="3">Higiene</option>
+                                <option value="4">Beleza</option>
+                                <option value="5">Alimentos</option>
+                                <option value="6">Bebidas</option>
+                                <option value="7">Brinquedos</option>
+                                <option value="8">Papelaria</option>
+                                <option value="9">Cama</option>
+                                <option value="10">Mesa</option>
+                                <option value="11">Banho</option>
+                                <option value="12">Saúde</option>
+                                <option value="13">Eletrodomésticos</option>
+                                <option value="14">Esporte e Fitness</option>
+                                <option value="15">Games</option>
+                                <option value="16">Instrumentos Musicais</option>
+                                <option value="17">Livraria</option>
+                                <option value="18">Móveis</option>
+                                <option value="19">Materiais de Construção</option>
+                                <option value="20">Outro</option>
+                            </select>
+                        </div>
+                        <div class="selectssetores" id="idselectssetores17" style="display: none;">
+                            Setor 17:
+                            <select id="simu17">
+                                <option value="0"> --Selecione-- </option>
+                                <option value="1">Eletronicos</option>
+                                <option value="2">Moda</option>
+                                <option value="3">Higiene</option>
+                                <option value="4">Beleza</option>
+                                <option value="5">Alimentos</option>
+                                <option value="6">Bebidas</option>
+                                <option value="7">Brinquedos</option>
+                                <option value="8">Papelaria</option>
+                                <option value="9">Cama</option>
+                                <option value="10">Mesa</option>
+                                <option value="11">Banho</option>
+                                <option value="12">Saúde</option>
+                                <option value="13">Eletrodomésticos</option>
+                                <option value="14">Esporte e Fitness</option>
+                                <option value="15">Games</option>
+                                <option value="16">Instrumentos Musicais</option>
+                                <option value="17">Livraria</option>
+                                <option value="18">Móveis</option>
+                                <option value="19">Materiais de Construção</option>
+                                <option value="20">Outro</option>
+                            </select>
+                        </div>
+                        <div class="selectssetores" id="idselectssetores18" style="display: none;">
+                            Setor 18:
+                            <select id="simu18">
+                                <option value="0"> --Selecione-- </option>
+                                <option value="1">Eletronicos</option>
+                                <option value="2">Moda</option>
+                                <option value="3">Higiene</option>
+                                <option value="4">Beleza</option>
+                                <option value="5">Alimentos</option>
+                                <option value="6">Bebidas</option>
+                                <option value="7">Brinquedos</option>
+                                <option value="8">Papelaria</option>
+                                <option value="9">Cama</option>
+                                <option value="10">Mesa</option>
+                                <option value="11">Banho</option>
+                                <option value="12">Saúde</option>
+                                <option value="13">Eletrodomésticos</option>
+                                <option value="14">Esporte e Fitness</option>
+                                <option value="15">Games</option>
+                                <option value="16">Instrumentos Musicais</option>
+                                <option value="17">Livraria</option>
+                                <option value="18">Móveis</option>
+                                <option value="19">Materiais de Construção</option>
+                                <option value="20">Outro</option>
+                            </select>
+                        </div>
+                        <div class="selectssetores" id="idselectssetores19" style="display: none;">
+                            Setor 19:
+                            <select id="simu19">
+                                <option value="0"> --Selecione-- </option>
+                                <option value="1">Eletronicos</option>
+                                <option value="2">Moda</option>
+                                <option value="3">Higiene</option>
+                                <option value="4">Beleza</option>
+                                <option value="5">Alimentos</option>
+                                <option value="6">Bebidas</option>
+                                <option value="7">Brinquedos</option>
+                                <option value="8">Papelaria</option>
+                                <option value="9">Cama</option>
+                                <option value="10">Mesa</option>
+                                <option value="11">Banho</option>
+                                <option value="12">Saúde</option>
+                                <option value="13">Eletrodomésticos</option>
+                                <option value="14">Esporte e Fitness</option>
+                                <option value="15">Games</option>
+                                <option value="16">Instrumentos Musicais</option>
+                                <option value="17">Livraria</option>
+                                <option value="18">Móveis</option>
+                                <option value="19">Materiais de Construção</option>
+                                <option value="20">Outro</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="botaoresultado" id="idbotaoresultado" style="display: none;">
+                    <button onclick="mostrarcalculo()">Simular</button>
+                </div>
+            </div>
+            <div class="layoutresultado" id="idlayoutresultado">
+                <h1>Você terá:</h1>
+                <div class="dentrolayoutresultado" id="iddentrolayoutresultado">
+
+                </div>
             </div>
         </div>
-        <div>
-        
-    </div>
-    </div>
+
+        <footer>
+            <div class="container">
+                <div class="img-footer">
+                    <img src="./assets/icon-main.png" alt="">
+                </div>
+                <div class="texto-footer">
+                    <div class="copy-footer">
+                        <p>©Copyright 2022- Todos os direitos reservados <b> Data Found</b></p>
+                    </div>
+
+                </div>
+                <div class="sobre-footer">
+                    <div class="sobre1-footer">
+                        <b>Sobre a Data Found</b>
+                        <br>
+                        <p>Inicio</p>
+                        <p>FAQ</p>
+                        <p>Sobre nós</p>
+                    </div>
+                    <div class="sobre2-footer">
+                        <b>Produto</b>
+
+                        <p>Ajuda</p>
+                        <p>Como funciona</p>
+                        <p>Pagamento</p>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+</body>
+
+
+<script>
+    var total = 0
+
+    function mostrar() {
+        var qtdsetor = simumostrar.value;
+        idbotaoresultado.style.display = 'flex';
+
+        idselectssetores.style.display = 'none';
+        idselectssetores2.style.display = 'none';
+        idselectssetores3.style.display = 'none';
+        idselectssetores4.style.display = 'none';
+        idselectssetores5.style.display = 'none';
+        idselectssetores6.style.display = 'none';
+        idselectssetores7.style.display = 'none';
+        idselectssetores8.style.display = 'none';
+        idselectssetores9.style.display = 'none';
+        idselectssetores10.style.display = 'none';
+        idselectssetores11.style.display = 'none';
+        idselectssetores12.style.display = 'none';
+        idselectssetores13.style.display = 'none';
+        idselectssetores14.style.display = 'none';
+        idselectssetores15.style.display = 'none';
+        idselectssetores16.style.display = 'none';
+        idselectssetores17.style.display = 'none';
+        idselectssetores18.style.display = 'none';
+        idselectssetores19.style.display = 'none';
+
+        if (qtdsetor == 0) {
+            alert('ta aqui')
+        } else if (qtdsetor == 1) {
+            idselectssetores.style.display = 'block';
+        } else if (qtdsetor == 2) {
+            idselectssetores.style.display = 'block';
+            idselectssetores2.style.display = 'block';
+        } else if (qtdsetor == 3) {
+            idselectssetores.style.display = 'block';
+            idselectssetores2.style.display = 'block';
+            idselectssetores3.style.display = 'block';
+        } else if (qtdsetor == 4) {
+            idselectssetores.style.display = 'flex';
+            idselectssetores2.style.display = 'flex';
+            idselectssetores3.style.display = 'flex';
+            idselectssetores4.style.display = 'flex';
+        } else if (qtdsetor == 5) {
+            idselectssetores.style.display = 'block';
+            idselectssetores2.style.display = 'block';
+            idselectssetores3.style.display = 'block';
+            idselectssetores4.style.display = 'block';
+            idselectssetores5.style.display = 'block';
+        } else if (qtdsetor == 6) {
+            idselectssetores.style.display = 'block';
+            idselectssetores2.style.display = 'block';
+            idselectssetores3.style.display = 'block';
+            idselectssetores4.style.display = 'block';
+            idselectssetores5.style.display = 'block';
+            idselectssetores6.style.display = 'block';
+        } else if (qtdsetor == 7) {
+            idselectssetores.style.display = 'block';
+            idselectssetores2.style.display = 'block';
+            idselectssetores3.style.display = 'block';
+            idselectssetores4.style.display = 'block';
+            idselectssetores5.style.display = 'block';
+            idselectssetores6.style.display = 'block';
+            idselectssetores7.style.display = 'block';
+        } else if (qtdsetor == 8) {
+            idselectssetores.style.display = 'block';
+            idselectssetores2.style.display = 'block';
+            idselectssetores3.style.display = 'block';
+            idselectssetores4.style.display = 'block';
+            idselectssetores5.style.display = 'block';
+            idselectssetores6.style.display = 'block';
+            idselectssetores7.style.display = 'block';
+            idselectssetores8.style.display = 'block';
+        } else if (qtdsetor == 9) {
+            idselectssetores.style.display = 'block';
+            idselectssetores2.style.display = 'block';
+            idselectssetores3.style.display = 'block';
+            idselectssetores4.style.display = 'block';
+            idselectssetores5.style.display = 'block';
+            idselectssetores6.style.display = 'block';
+            idselectssetores7.style.display = 'block';
+            idselectssetores8.style.display = 'block';
+            idselectssetores9.style.display = 'block';
+        } else if (qtdsetor == 10) {
+            idselectssetores.style.display = 'block';
+            idselectssetores2.style.display = 'block';
+            idselectssetores3.style.display = 'block';
+            idselectssetores4.style.display = 'block';
+            idselectssetores5.style.display = 'block';
+            idselectssetores6.style.display = 'block';
+            idselectssetores7.style.display = 'block';
+            idselectssetores8.style.display = 'block';
+            idselectssetores9.style.display = 'block';
+            idselectssetores10.style.display = 'block';
+        } else if (qtdsetor == 11) {
+            idselectssetores.style.display = 'block';
+            idselectssetores2.style.display = 'block';
+            idselectssetores3.style.display = 'block';
+            idselectssetores4.style.display = 'block';
+            idselectssetores5.style.display = 'block';
+            idselectssetores6.style.display = 'block';
+            idselectssetores7.style.display = 'block';
+            idselectssetores8.style.display = 'block';
+            idselectssetores9.style.display = 'block';
+            idselectssetores10.style.display = 'block';
+            idselectssetores11.style.display = 'block';
+        } else if (qtdsetor == 12) {
+            idselectssetores.style.display = 'block';
+            idselectssetores2.style.display = 'block';
+            idselectssetores3.style.display = 'block';
+            idselectssetores4.style.display = 'block';
+            idselectssetores5.style.display = 'block';
+            idselectssetores6.style.display = 'block';
+            idselectssetores7.style.display = 'block';
+            idselectssetores8.style.display = 'block';
+            idselectssetores9.style.display = 'block';
+            idselectssetores10.style.display = 'block';
+            idselectssetores11.style.display = 'block';
+            idselectssetores12.style.display = 'block';
+        } else if (qtdsetor == 13) {
+            idselectssetores.style.display = 'block';
+            idselectssetores2.style.display = 'block';
+            idselectssetores3.style.display = 'block';
+            idselectssetores4.style.display = 'block';
+            idselectssetores5.style.display = 'block';
+            idselectssetores6.style.display = 'block';
+            idselectssetores7.style.display = 'block';
+            idselectssetores8.style.display = 'block';
+            idselectssetores9.style.display = 'block';
+            idselectssetores10.style.display = 'block';
+            idselectssetores11.style.display = 'block';
+            idselectssetores12.style.display = 'block';
+            idselectssetores13.style.display = 'block';
+        } else if (qtdsetor == 14) {
+            idselectssetores.style.display = 'block';
+            idselectssetores2.style.display = 'block';
+            idselectssetores3.style.display = 'block';
+            idselectssetores4.style.display = 'block';
+            idselectssetores5.style.display = 'block';
+            idselectssetores6.style.display = 'block';
+            idselectssetores7.style.display = 'block';
+            idselectssetores8.style.display = 'block';
+            idselectssetores9.style.display = 'block';
+            idselectssetores10.style.display = 'block';
+            idselectssetores11.style.display = 'block';
+            idselectssetores12.style.display = 'block';
+            idselectssetores13.style.display = 'block';
+            idselectssetores14.style.display = 'block';
+        } else if (qtdsetor == 15) {
+            idselectssetores.style.display = 'block';
+            idselectssetores2.style.display = 'block';
+            idselectssetores3.style.display = 'block';
+            idselectssetores4.style.display = 'block';
+            idselectssetores5.style.display = 'block';
+            idselectssetores6.style.display = 'block';
+            idselectssetores7.style.display = 'block';
+            idselectssetores8.style.display = 'block';
+            idselectssetores9.style.display = 'block';
+            idselectssetores10.style.display = 'block';
+            idselectssetores11.style.display = 'block';
+            idselectssetores12.style.display = 'block';
+            idselectssetores13.style.display = 'block';
+            idselectssetores14.style.display = 'block';
+            idselectssetores15.style.display = 'block';
+        } else if (qtdsetor == 16) {
+            idselectssetores.style.display = 'block';
+            idselectssetores2.style.display = 'block';
+            idselectssetores3.style.display = 'block';
+            idselectssetores4.style.display = 'block';
+            idselectssetores5.style.display = 'block';
+            idselectssetores6.style.display = 'block';
+            idselectssetores7.style.display = 'block';
+            idselectssetores8.style.display = 'block';
+            idselectssetores9.style.display = 'block';
+            idselectssetores10.style.display = 'block';
+            idselectssetores11.style.display = 'block';
+            idselectssetores12.style.display = 'block';
+            idselectssetores13.style.display = 'block';
+            idselectssetores14.style.display = 'block';
+            idselectssetores15.style.display = 'block';
+            idselectssetores16.style.display = 'block';
+        } else if (qtdsetor == 17) {
+            idselectssetores.style.display = 'block';
+            idselectssetores2.style.display = 'block';
+            idselectssetores3.style.display = 'block';
+            idselectssetores4.style.display = 'block';
+            idselectssetores5.style.display = 'block';
+            idselectssetores6.style.display = 'block';
+            idselectssetores7.style.display = 'block';
+            idselectssetores8.style.display = 'block';
+            idselectssetores9.style.display = 'block';
+            idselectssetores10.style.display = 'block';
+            idselectssetores11.style.display = 'block';
+            idselectssetores12.style.display = 'block';
+            idselectssetores13.style.display = 'block';
+            idselectssetores14.style.display = 'block';
+            idselectssetores15.style.display = 'block';
+            idselectssetores16.style.display = 'block';
+            idselectssetores17.style.display = 'block';
+        } else if (qtdsetor == 18) {
+            idselectssetores.style.display = 'block';
+            idselectssetores2.style.display = 'block';
+            idselectssetores3.style.display = 'block';
+            idselectssetores4.style.display = 'block';
+            idselectssetores5.style.display = 'block';
+            idselectssetores6.style.display = 'block';
+            idselectssetores7.style.display = 'block';
+            idselectssetores8.style.display = 'block';
+            idselectssetores9.style.display = 'block';
+            idselectssetores10.style.display = 'block';
+            idselectssetores11.style.display = 'block';
+            idselectssetores12.style.display = 'block';
+            idselectssetores13.style.display = 'block';
+            idselectssetores14.style.display = 'block';
+            idselectssetores15.style.display = 'block';
+            idselectssetores16.style.display = 'block';
+            idselectssetores17.style.display = 'block';
+            idselectssetores18.style.display = 'block';
+        } else if (qtdsetor == 19) {
+            idselectssetores.style.display = 'block';
+            idselectssetores2.style.display = 'block';
+            idselectssetores3.style.display = 'block';
+            idselectssetores4.style.display = 'block';
+            idselectssetores5.style.display = 'block';
+            idselectssetores6.style.display = 'block';
+            idselectssetores7.style.display = 'block';
+            idselectssetores8.style.display = 'block';
+            idselectssetores9.style.display = 'block';
+            idselectssetores10.style.display = 'block';
+            idselectssetores11.style.display = 'block';
+            idselectssetores12.style.display = 'block';
+            idselectssetores13.style.display = 'block';
+            idselectssetores14.style.display = 'block';
+            idselectssetores15.style.display = 'block';
+            idselectssetores16.style.display = 'block';
+            idselectssetores17.style.display = 'block';
+            idselectssetores18.style.display = 'block';
+            idselectssetores19.style.display = 'block';
+        } else if (qtdsetor == 20) {
+            alert('Outros')
+        } else {
+            alert('ERRO')
+        }
+
+    }
+
+    function mostrarcalculo() {
+        var sim1 = Number(simu1.value); var sim2 = Number(simu2.value); var sim3 = Number(simu3.value); var sim4 = Number(simu4.value);
+        var sim5 = Number(simu5.value); var sim6 = Number(simu6.value); var sim7 = Number(simu7.value); var sim8 = Number(simu8.value);
+        var sim9 = Number(simu9.value); var sim10 = Number(simu10.value); var sim11 = Number(simu11.value); var sim12 = Number(simu12.value);
+        var sim13 = Number(simu13.value); var sim14 = Number(simu14.value); var sim15 = Number(simu15.value); var sim16 = Number(simu16.value);
+        var sim17 = Number(simu17.value); var sim18 = Number(simu18.value); var sim19 = Number(simu19.value);
+
+
+        total = sim1 + sim2 + sim3 + sim4 + sim5 + sim6 + sim7 + sim8 + sim9 + sim10 + sim11 + sim12 + sim13 + sim14 + sim15 + sim16 +
+            sim17 + sim18 + sim19
+
+        iddentrolayoutresultado.innerHTML = `${total}`
+    }
+
+</script>
+
+</html>
