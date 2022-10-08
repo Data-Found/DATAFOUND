@@ -45,7 +45,7 @@ CREATE TABLE Usuario(
 CREATE TABLE Setor(
 	idSetor INT PRIMARY KEY AUTO_INCREMENT,
     nomeSetor VARCHAR(45) NOT NULL,
-    prateleira VARCHAR(25) NOT NULL,
+    prateleira VARCHAR(25),
     fkEmpresa INT, CONSTRAINT fkIdEmpresaSetor
     FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa)
 );
@@ -59,8 +59,8 @@ CREATE TABLE Sensor(
 
 CREATE TABLE Leitura(
 	idLeitura INT PRIMARY KEY AUTO_INCREMENT,
-    movimentEntrada BIT NOT NULL,
-    movimentSetor BIT NOT NULL,
+    movimentEntrada BIT,
+    movimentSetor BIT,
     dtLeitura TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     fkSensor INT, CONSTRAINT fkIdSensor FOREIGN KEY (fkSensor) REFERENCES Sensor(idSensor)
 );
@@ -109,13 +109,22 @@ INSERT INTO Sensor (statusSensor, dtInclusao, fkSetor) VALUES
 ('Inativo','2022-10-28',2), ('Ativo','2022-10-20', 10),('Ativo','2022-10-17',5),('Inativo','2022-10-11',8),('Inativo','2022-05-05',9);
 
 INSERT INTO Sensor (statusSensor, dtInclusao, fkSetor) VALUES
+();
+
+INSERT INTO Sensor (statusSensor, dtInclusao, fkSetor) VALUES
 ('Inativo','2022-10-11',8),('Inativo','2022-05-05',9);
 
+-- LEITURA dos sensores de setores
 INSERT INTO Leitura (movimentEntrada, movimentSetor, fkSensor) VALUES
 (null,1,1),(0,0,2),(1,1,3),(1,0,4),(1,1,5),(0,0,6),(0,1,7),(1,1,8),(1,0,9),(1,1,10);
 
+-- LEITURA dos sensores de entradas
 INSERT INTO Leitura (movimentEntrada, movimentSetor, fkSensor) VALUES
 (1,null,11),(1,null,12);
+
+-- LEITURA dos sensores de entradas e setores
+INSERT INTO Leitura (movimentEntrada, movimentSetor, fkSensor) VALUES
+(),();
 
 -- SELECTS --
 SELECT * FROM Endereco;
@@ -147,6 +156,44 @@ SELECT * FROM Leitura
 	JOIN Sensor ON fkSensor = idSensor
     JOIN Setor ON fkSetor = idSetor;
     
+-- EMPRESA E SENSOR
+SELECT * FROM Empresa 
+	JOIN Setor ON idEmpresa = fkEmpresa;
+    
+-- SETORES E SENSORES
+SELECT * FROM Setor 
+	JOIN Sensor ON idSetor = fkSetor;
+
+-- TODOS OS DADOS DOS SETORES, SENSORES E LEITURA
+SELECT * FROM Setor
+	JOIN Sensor ON idSetor = fkSetor
+		JOIN Leitura ON idSensor = fkSensor;
+        
+-- O MESMO DO ACIMA, PORÉM SEM ID's e FK's
+SELECT seto.nomeSetor AS 'Setor', seto.prateleira AS 'Prateleira',
+	sens.statusSensor AS 'On/Off', sens.dtInclusao AS 'Data da Instalação',
+    lei.movimentEntrada AS 'Entrada do Setor', lei.movimentSetor AS 'Leitura das Prateleiras', lei.dtLeitura as 'Registro'
+    FROM Setor AS seto
+		JOIN Sensor AS sens ON seto.idSetor = sens.fkSetor
+			JOIN Leitura AS lei ON sens.idSensor = lei.fkSensor;
+            
+-- SENSORES DE UMA EMPRESA
+SELECT emp.razaoSocial AS 'Empresa', seto.nomeSetor AS 'Setor', seto.prateleira AS 'Prateleira',
+lei.movimentEntrada AS 'Entrada do Setor', lei.movimentSetor AS 'Leitura das Prateleiras', lei.dtLeitura AS 'Registro'
+    FROM Empresa AS emp
+		JOIN Setor AS seto ON emp.idEmpresa = fkEmpresa
+			JOIN Sensor AS sens ON seto.idSetor = fkSetor
+				JOIN Leitura AS lei ON sens.idSensor = lei.fkSensor
+					where idEmpresa = 2;
+            
+-- O MESMO DO ACIMA, PORÉM SEM ID's e FK's e DATAS DE INSTALAÇÃO
+SELECT seto.nomeSetor AS 'Setor', seto.prateleira AS 'Prateleira',
+	sens.statusSensor AS 'Conexão',
+    lei.movimentEntrada AS 'Entrada do Setor', lei.movimentSetor AS 'Leitura das Prateleiras', lei.dtLeitura as 'Registro'
+    FROM Setor AS seto
+		JOIN Sensor AS sens ON seto.idSetor = sens.fkSetor
+			JOIN Leitura AS lei ON sens.idSensor = lei.fkSensor;            
+        
 SELECT * FROM Estado AS est
 	JOIN Endereco AS endco ON endco.fkEstado = est.idEstado
 		JOIN Empresa AS emp ON emp.fkEndereco = endco.idEndereco
@@ -169,6 +216,7 @@ SELECT emp.nomeFantasia AS 'Nome da Empresa', emp.responsavel AS 'Responsável',
 						JOIN Setor AS setor ON setor.fkEmpresa = emp.idEmpresa
 							JOIN Sensor AS sens ON sens.fkSetor = setor.idSetor
 								JOIN Leitura AS ler ON ler.fkSensor = sens.idSensor;
+
 
 -- Todos as empresas e o seu maior fluxo de pessoas em algum setor
 /*
