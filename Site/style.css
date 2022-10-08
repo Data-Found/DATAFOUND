@@ -643,63 +643,72 @@ footer .container {
 
 /* LOGIN */
 
-.descricao-card .textologin {
-  display: flex;
-  flex-direction: column;
-  /* border: solid 3px green; */
-  color: #13354f;
-  justify-content: center;
-  align-items: center;
-
-}
-
-.containerlogin {
+.camposlogin {
+  order: 1;
+  background-color: rgb(243, 242, 242);
+  color: #0c2233;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 800px;
-  height: 560px;
-  margin: 1px 0px 0px 0px;
-  z-index: 2;
+  flex-flow: wrap;
+  width: 50%;
+  height: 600px;
+  /* border: solid 1px rgb(0, 0, 0); */
 }
 
-.mainlogin {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: fit-content;
-  width: 100%;
 
-  flex-direction: column;
+.imglogin {
+  width: 50%;
+  height: 600px;
+
 }
 
-.cardlogin {
-  min-width: 270px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.imglogin img {
+  width: 140%;
+  height: 600px;
+  background-image: url(img/bglogin2.png) no-repeat;
+  background-size: 100%;
   background-color: rgb(243, 242, 242);
-  border-radius: 10px;
-  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-  padding: 20px;
-  margin: 80px 0px 0px 0px;
+  max-width: 160%;
+  max-height: 100%;
 }
 
-.textologin .inputs {
-  display: flex;
-  align-items: flex-end;
-  flex-direction: column;
-  padding: 10px;
-  border-radius: 10px;
+.areainputslogin {
+  color: #0c2233;
+  padding-top: 20px;
+  /* border: solid 1px green; */
+  height: 170px;
 }
 
-.textologin h5 {
-  padding-top: 10px;
+.areainputslogin p {
+  padding-left: 20px;
+}
+
+.areainputslogin h4 {
   font-size: 10px;
+  padding-left: 23px;
 }
 
-.textologin a{
+.areainputslogin a {
   color: #168aad;
+}
+
+.areabotaologin {
+  display: flex;
+  width: 100%;
+  height: 200px;
+  align-items: start;
+  justify-content: center;
+}
+
+.logintexto {
+  height: 150px;
+  display: flex;
+  font-weight: 900;
+  /* border: solid 1px green; */
+  align-items: end;
+  justify-content: center;
+  width: 100%;
 }
 
 /* CADASTRO */
@@ -724,7 +733,7 @@ footer .container {
 
 
 
- .textocadastro {
+.textocadastro {
   background-color: rgb(243, 242, 242);
   color: #0c2233;
   display: flex;
@@ -767,7 +776,7 @@ footer .container {
 
 .areainputs {
   color: #0c2233;
-  font-weight: bold;
+
   padding-top: 20px;
   /* border: solid 1px green; */
   height: 360px;
@@ -776,35 +785,36 @@ footer .container {
 
 .areainputs p {
   padding-left: 20px;
-  
+
 }
+
 .areainputs2 p {
   padding-left: 20px;
-  
+
 }
 
 .areainputs2 {
   color: #0c2233;
-  font-weight: bold;
+
   padding-top: 20px;
   height: 360px;
 }
 
 .inputs {
-  padding: 10px;
+  padding: 10px 20px;
   margin: 0px 10px 10px 10px;
-  border-radius: 10px;
-  border: #152657 solid 1px;
+  border-radius: 15px;
+  border: #9E9E9E solid 1px;
 }
 
 .areabotao {
-display: flex;
-width: 100%;
-height: 100px;
-margin-left: 60px;
+  display: flex;
+  width: 100%;
+  height: 100px;
+  margin-left: 60px;
 
-align-items: start;
-justify-content: center;
+  align-items: start;
+  justify-content: center;
 
 }
 
@@ -818,11 +828,15 @@ justify-content: center;
   margin-left: 60px;
 
 }
-.cadastrotexto h3{
+
+.cadastrotexto h3 {
   color: #0c2233;
   font-size: 28px;
-  
+
 }
+
+
+/* SIMULADOR  */
 
 .containersessaosimulador {
   display: flex;
@@ -833,14 +847,15 @@ justify-content: center;
 .sessaosimulador {
   width: 50%;
   height: 630px;
-  background-color: rgb(243, 242, 242);;
+  background-color: rgb(243, 242, 242);
+  ;
   display: flex;
   flex-direction: column;
 }
 
 .simuqtd {
-border: solid 1px black;
-width: 100%;
+  border: solid 1px black;
+  width: 100%;
 }
 
 .selectssetores {
@@ -862,6 +877,7 @@ width: 100%;
   width: 50%;
   height: 400px;
 }
+
 .coluna2selects {
   /* border: solid 1px rgb(255, 0, 0); */
   width: 50%;
@@ -879,15 +895,18 @@ width: 100%;
 .layoutresultado {
   display: flex;
   flex-direction: column;
-  background-color: rgb(243, 242, 242);;
+  background-color: rgb(243, 242, 242);
+  ;
   border: solid 1px rgb(255, 0, 0);
   width: 50%;
   align-items: center;
   padding: 10px 0px;
 }
+
 .dentrolayoutresultado {
   display: flex;
-  background-color: rgb(243, 242, 242);;
+  background-color: rgb(243, 242, 242);
+  ;
   border: solid 1px rgb(255, 0, 0);
   justify-content: center;
   padding: 10px 0px;
