@@ -170,6 +170,7 @@ h2 {
   border-radius: 20px;
   align-items: center;
   padding: 20px;
+  /* justify-content: space-around; */
 } 
 
 .data_menu .card_menu {
@@ -299,9 +300,9 @@ h3 {
   /* background-color: black;  */
 }
 
-.graf-pizza {
-  /* background-color: yellow; */
-}
+/* .graf-pizza {
+  background-color: yellow;
+} */
 
 .foot {
   width: 100vw;
@@ -309,6 +310,7 @@ h3 {
   position: absolute;
   z-index: 2;
   background-image: url(assets/imgFooter.svg);
+  /* background-repeat: no-repeat; */
   margin-top: 5%;
 }
 
@@ -376,4 +378,13 @@ h3 {
   text-align: left;
   color: white;
   font-family: 'Inter', sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(187, 187, 187);
+  border-radius: 50px;
 }
