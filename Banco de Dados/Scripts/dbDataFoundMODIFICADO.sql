@@ -45,22 +45,22 @@ CREATE TABLE Usuario(
 CREATE TABLE Setor(
 	idSetor INT PRIMARY KEY AUTO_INCREMENT,
     nomeSetor VARCHAR(45) NOT NULL,
-    prateleira VARCHAR(25),
     fkEmpresa INT, CONSTRAINT fkIdEmpresaSetor
     FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa)
 );
 
 CREATE TABLE Sensor(
 	idSensor INT PRIMARY KEY AUTO_INCREMENT,
+    tipoSensor CHAR(2) NOT NULL, CONSTRAINT chktipoSensor CHECK (tipoSensor IN('EN','PR')),
     statusSensor VARCHAR(25) NOT NULL, CONSTRAINT chkSensor CHECK (statusSensor IN('Ativo','Inativo','Manutenção')),
     dtInclusao DATE NOT NULL,
+    prateleira VARCHAR(25),
     fkSetor INT, CONSTRAINT fkIdSetor FOREIGN KEY (fkSetor) REFERENCES Setor(idSetor)
 );
 
 CREATE TABLE Leitura(
 	idLeitura INT PRIMARY KEY AUTO_INCREMENT,
-    movimentEntrada BIT,
-    movimentSetor BIT,
+    movimento BIT,
     dtLeitura TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     fkSensor INT, CONSTRAINT fkIdSensor FOREIGN KEY (fkSensor) REFERENCES Sensor(idSensor)
 );
@@ -184,7 +184,7 @@ lei.movimentEntrada AS 'Entrada do Setor', lei.movimentSetor AS 'Leitura das Pra
 		JOIN Setor AS seto ON emp.idEmpresa = fkEmpresa
 			JOIN Sensor AS sens ON seto.idSetor = fkSetor
 				JOIN Leitura AS lei ON sens.idSensor = lei.fkSensor
-					where idEmpresa = 2;
+					where idEmpresa = 9; -- ID DA EMPRESA QUE QUERO VER
             
 -- O MESMO DO ACIMA, PORÉM SEM ID's e FK's e DATAS DE INSTALAÇÃO
 SELECT seto.nomeSetor AS 'Setor', seto.prateleira AS 'Prateleira',
