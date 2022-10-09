@@ -111,76 +111,127 @@ INSERT INTO Sensor (tipoSensor, statusSensor, dtInclusao, prateleira, fkSetor) V
 
 -- LEITURA dos sensores de setores
 INSERT INTO Leitura (movimento, dtLeitura, fkSensor) VALUES
-(1,'2022-10-01',1),(0,'2022-10-02',2),(1,'2022-10-03',3),(0,'2022-10-01',4),(1,'2022-10-02',5),(0,'2022-10-03',6),(0,'2022-10-04',7),(1,'2022-10-05',8),(1,'2022-10-06',9),(1,'2022-10-07',10);
+(1,'2022-10-01',1),(1,'2022-10-02',1),(1,'2022-10-03',1),(1,'2022-10-04',1),(1,'2022-10-05',1),(0,'2022-10-02',2),(1,'2022-10-03',3),
+(0,'2022-10-01',4),(1,'2022-10-02',5),(0,'2022-10-03',6),(0,'2022-10-04',7),(1,'2022-10-05',8),(1,'2022-10-06',9),(1,'2022-10-07',10);
 
 -- SELECTS --
+SHOW TABLES;
+SELECT * FROM Empresa;
 SELECT * FROM Endereco;
 SELECT * FROM Estado;
+SELECT * FROM Leitura;
+SELECT * FROM Sensor;
+SELECT * FROM Setor;
+SELECT * FROM Usuario;
+
+-- SELECTS COM JOINS --
+
+-- ENDEREÇO + ESTADO --
 SELECT * FROM Endereco 
-	JOIN Estado ON fkEstado = idEstado; 
+	JOIN Estado ON fkEstado = idEstado;
     
-SELECT * FROM Empresa;
+-- O MESMO DO ACIMA, PORÉM SEM ID's e FK's --
+SELECT endco.cep AS 'CEP', endco.numero AS 'Número', 
+		est.nomeEstado AS 'Estado', est.sigla AS 'Sigla' FROM Endereco AS endco
+			JOIN Estado AS est ON endco.fkEstado = est.idEstado;
+    
+-- EMPRESA + ENDEREÇO --
 SELECT * FROM Empresa 
 	JOIN Endereco ON fkEndereco = idEndereco;
     
-SELECT * FROM Usuario;
+-- O MESMO DO ACIMA, PORÉM SEM ID's e FK's --
+SELECT emp.razaoSocial AS 'Razão Social', emp.nomeFantasia AS 'Nome', emp.cnpj AS 'CNPJ',  emp.responsavel AS 'Responsável', emp.ddd AS 'DDD', emp.celular AS 'Telefone Celular',
+	endco.cep AS 'CEP', endco.numero AS 'Número' FROM Empresa AS emp
+		JOIN Endereco AS endco ON emp.fkEndereco = endco.idEndereco;
+    
+-- USUÁRIO + EMPRESA --
 SELECT * FROM Usuario 
 	JOIN Empresa ON fkEmpresa = idEmpresa;
+
+-- O MESMO DO ACIMA, PORÉM SEM ID's e FK's --
+SELECT usu.nomeUsuario AS 'Usuario', usu.email AS 'E-mail', usu.senha AS 'Senha', 
+		emp.razaoSocial AS 'Razão Social', emp.nomeFantasia AS 'Nome', emp.cnpj AS 'CNPJ', emp.responsavel AS 'Responsável', emp.ddd AS 'DDD', emp.celular AS 'Telefone Celular' FROM Usuario AS usu
+		JOIN Empresa AS emp ON usu.fkEmpresa = emp.idEmpresa;
     
-SELECT * FROM Setor;
+-- SETOR + EMPRESA -- 
 SELECT * FROM Setor 
 	JOIN Empresa ON fkEmpresa = idEmpresa;
     
-SELECT * FROM Sensor;
+-- O MESMO DO ACIMA, PORÉM SEM ID's e FK's --
+SELECT setor.nomeSetor AS 'Setor', setor.maxSetor AS 'Capacidade máxima',
+		emp.razaoSocial AS 'Razão Social', emp.nomeFantasia AS 'Nome', emp.cnpj AS 'CNPJ', emp.responsavel AS 'Responsável', emp.ddd AS 'DDD', emp.celular AS 'Telefone Celular' FROM Setor AS setor
+		JOIN Empresa AS emp ON setor.fkEmpresa = emp.idEmpresa;
+    
+-- SENSOR + SETOR --
 SELECT * FROM Sensor 
 	JOIN Setor ON fkSetor = idSetor;
+        
+-- O MESMO DO ACIMA, PORÉM SEM ID's e FK's -- 
+SELECT sensor.tipoSensor AS 'Tipo do Sensor', sensor.dtInclusao AS 'Data de inclusão', sensor.prateleira AS 'Prateleira',
+		setor.nomeSetor AS 'Setor', setor.maxSetor AS 'Capacidade máxima' FROM Sensor AS sensor
+		JOIN Setor AS setor ON sensor.fkSetor = setor.idSetor;        
     
-SELECT * FROM Leitura;
+-- LEITURA + SENSOR --
 SELECT * FROM Leitura 
 	JOIN Sensor ON fkSensor = idSensor;
     
+-- O MESMO DO ACIMA, PORÉM SEM ID's e FK's --
+SELECT ler.movimento AS 'Movimento', ler.dtLeitura AS 'Data de leitura',
+		sensor.tipoSensor AS 'Tipo do Sensor', sensor.dtInclusao AS 'Data de inclusão', sensor.prateleira AS 'Prateleira' FROM Leitura AS ler
+		JOIN Sensor AS sensor ON ler.fkSensor = sensor.idSensor;
+    
+-- LEITURA + SENSOR + SETOR --
 SELECT * FROM Leitura 
 	JOIN Sensor ON fkSensor = idSensor
     JOIN Setor ON fkSetor = idSetor;
+    
+-- O MESMO DO ACIMA, PORÉM SEM ID's e FK's --
+SELECT ler.movimento AS 'Movimento', ler.dtLeitura AS 'Data de leitura',
+		sensor.tipoSensor AS 'Tipo do sensor', sensor.statusSensor AS 'Status do sensor', sensor.dtInclusao AS 'Data de inclusão', sensor.prateleira AS 'Prateleira',
+		setor.nomeSetor AS 'Setor', setor.maxSetor AS 'Capacidade máxima' FROM Leitura AS ler
+			JOIN Sensor AS sensor ON ler.fkSensor = sensor.idSensor
+				JOIN Setor AS setor ON sensor.fkSetor = setor.idSetor;
     
 -- EMPRESA E SENSOR
 SELECT * FROM Empresa 
 	JOIN Setor ON idEmpresa = fkEmpresa;
     
--- SETORES E SENSORES
-SELECT * FROM Setor 
-	JOIN Sensor ON idSetor = fkSetor;
-
--- TODOS OS DADOS DOS SETORES, SENSORES E LEITURA
+-- O MESMO DO ACIMA, PORÉM SEM ID's e FK's --
+SELECT emp.razaoSocial AS 'Razão Social', emp.nomeFantasia AS 'Nome', emp.cnpj AS 'CNPJ', emp.responsavel AS 'Responsável', emp.ddd AS 'DDD', emp.Celular AS 'Celular',
+		setor.nomeSetor AS 'Setor', setor.maxSetor AS 'Capacidade máxima' FROM Empresa AS emp
+		JOIN Setor AS setor ON emp.idEmpresa = setor.fkEmpresa;
+        
+-- TODOS OS DADOS DOS SETORES, SENSORES E LEITURA --
 SELECT * FROM Setor
 	JOIN Sensor ON idSetor = fkSetor
 		JOIN Leitura ON idSensor = fkSensor;
         
--- O MESMO DO ACIMA, PORÉM SEM ID's e FK's
-SELECT seto.nomeSetor AS 'Setor', seto.prateleira AS 'Prateleira',
-	sens.statusSensor AS 'On/Off', sens.dtInclusao AS 'Data da Instalação',
-    lei.movimentEntrada AS 'Entrada do Setor', lei.movimentSetor AS 'Leitura das Prateleiras', lei.dtLeitura as 'Registro'
-    FROM Setor AS seto
-		JOIN Sensor AS sens ON seto.idSetor = sens.fkSetor
-			JOIN Leitura AS lei ON sens.idSensor = lei.fkSensor;
+-- O MESMO DO ACIMA, PORÉM SEM ID's e FK's --
+SELECT setor.nomeSetor AS 'Setor', setor.maxSetor AS 'Capacidade Máxima',
+	sensor.tipoSensor AS 'Tipo do sensor', sensor.statusSensor AS 'Status do Sensor', sensor.dtInclusao AS 'Data da Instalação', sensor.prateleira AS 'Prateleira',
+    ler.movimento AS 'Movimento', ler.dtLeitura as 'Data do Registro'
+    FROM Setor AS setor
+		JOIN Sensor AS sensor ON setor.idSetor = sensor.fkSetor
+			JOIN Leitura AS ler ON sensor.idSensor = ler.fkSensor;
             
--- SENSORES DE UMA EMPRESA
-SELECT emp.razaoSocial AS 'Empresa', seto.nomeSetor AS 'Setor', seto.prateleira AS 'Prateleira',
-lei.movimentEntrada AS 'Entrada do Setor', lei.movimentSetor AS 'Leitura das Prateleiras', lei.dtLeitura AS 'Registro'
-    FROM Empresa AS emp
-		JOIN Setor AS seto ON emp.idEmpresa = fkEmpresa
-			JOIN Sensor AS sens ON seto.idSetor = fkSetor
-				JOIN Leitura AS lei ON sens.idSensor = lei.fkSensor
-					where idEmpresa = 9; -- ID DA EMPRESA QUE QUERO VER
+-- SENSORES DE UMA EMPRESA --
+SELECT emp.razaoSocial AS 'Empresa', 
+		setor.nomeSetor AS 'Setor', setor.maxSetor AS 'Capacidade Máxima',
+		ler.movimento AS 'Movimento', ler.dtLeitura as 'Data do Registro'
+			FROM Empresa AS emp
+				JOIN Setor AS setor ON emp.idEmpresa = setor.fkEmpresa
+					JOIN Sensor AS sensor ON setor.idSetor = sensor.fkSetor
+						JOIN Leitura AS ler ON sensor.idSensor = ler.fkSensor
+							WHERE idEmpresa = 2; -- ID DA EMPRESA QUE QUERO VER
             
--- O MESMO DO ACIMA, PORÉM SEM ID's e FK's e DATAS DE INSTALAÇÃO
-SELECT seto.nomeSetor AS 'Setor', seto.prateleira AS 'Prateleira',
-	sens.statusSensor AS 'Conexão',
-    lei.movimentEntrada AS 'Entrada do Setor', lei.movimentSetor AS 'Leitura das Prateleiras', lei.dtLeitura as 'Registro'
-    FROM Setor AS seto
-		JOIN Sensor AS sens ON seto.idSetor = sens.fkSetor
-			JOIN Leitura AS lei ON sens.idSensor = lei.fkSensor;            
+-- O MESMO DO ACIMA, PORÉM SEM ID's e FK's e DATAS DE INSTALAÇÃO --
+SELECT setor.nomeSetor AS 'Setor', setor.maxSetor AS 'Capacidade Máxima',
+	sensor.tipoSensor AS 'Tipo do sensor', sensor.statusSensor AS 'Status do Sensor', sensor.dtInclusao AS 'Data da Instalação', sensor.prateleira AS 'Prateleira',
+    ler.movimento AS 'Movimento', ler.dtLeitura as 'Data do Registro' FROM Setor AS setor
+		JOIN Sensor AS sensor ON setor.idSetor = sensor.fkSetor
+			JOIN Leitura AS ler ON sensor.idSensor = ler.fkSensor;            
         
+-- JOIN EM TODAS TABELAS --
 SELECT * FROM Estado AS est
 	JOIN Endereco AS endco ON endco.fkEstado = est.idEstado
 		JOIN Empresa AS emp ON emp.fkEndereco = endco.idEndereco
@@ -188,29 +239,28 @@ SELECT * FROM Estado AS est
 				JOIN Setor AS setor ON setor.fkEmpresa = emp.idEmpresa
 					JOIN Sensor AS sens ON sens.fkSetor = setor.idSetor
 						JOIN Leitura AS ler ON ler.fkSensor = sens.idSensor;  
-                        
+
+-- JOIN EM TODAS TABELAS PARAMETRIZADA --
 SELECT emp.nomeFantasia AS 'Nome da Empresa', emp.responsavel AS 'Responsável', 
 		endco.cep AS 'CEP', endco.numero AS 'Número', 
 		est.nomeEstado AS 'Estado',
         usu.nomeUsuario AS 'Usuário', usu.email AS 'E-mail', 
-        setor.nomeSetor AS 'Setor', setor.prateleira AS 'Prateleira',
-        sens.statusSensor AS 'Status sensor',
-        ler.movimentEntrada AS 'Movimento entrada', ler.movimentSetor AS 'Movimento setor', ler.dtLeitura AS 'Data leitura' 
-        FROM empresa AS emp
+        setor.nomeSetor AS 'Setor', setor.maxSetor AS 'Capacidade Máxima',
+        sensor.tipoSensor AS 'Tipo do sensor', sensor.statusSensor AS 'Status do Sensor', sensor.dtInclusao AS 'Data da Instalação', sensor.prateleira AS 'Prateleira',
+        ler.movimento AS 'Movimento', ler.dtLeitura AS 'Data do Registro' FROM empresa AS emp
 			JOIN Endereco AS endco ON  emp.fkEndereco = endco.idEndereco
 				JOIN Estado AS est ON endco.fkEstado = est.idEstado
 					JOIN Usuario AS usu ON usu.fkEmpresa = emp.idEmpresa
 						JOIN Setor AS setor ON setor.fkEmpresa = emp.idEmpresa
-							JOIN Sensor AS sens ON sens.fkSetor = setor.idSetor
-								JOIN Leitura AS ler ON ler.fkSensor = sens.idSensor;
+							JOIN Sensor AS sensor ON sensor.fkSetor = setor.idSetor
+								JOIN Leitura AS ler ON ler.fkSensor = sensor.idSensor;
 
-
--- Todos as empresas e o seu maior fluxo de pessoas em algum setor
 /*
+-- EMPRESA COM MAIOR FLUXO DE PESSOAS EM DETERMINADO SETOR --
 SELECT emp.nomeFantasia AS 'Nome da Empresa', 
-		setor.nomeSetor AS 'Nome setor',
-		MAX(ler.movimentSetor) AS 'Movimento setor' FROM empresa AS emp
+		setor.nomeSetor AS 'Nome setor', setor.maxSetor AS 'Capacidade máxima',
+		COUNT(ler.movimento) AS 'Movimento setor' FROM empresa AS emp
 			JOIN Setor AS setor ON setor.fkEmpresa = emp.idEmpresa
-				JOIN Sensor AS sens ON sens.fkSetor = setor.idSetor
-					JOIN Leitura AS ler ON ler.fkSensor = sens.idSensor;       
+				JOIN Sensor AS sensor ON sensor.fkSetor = setor.idSetor
+					JOIN Leitura AS ler ON ler.fkSensor = sensor.idSensor;
 */
