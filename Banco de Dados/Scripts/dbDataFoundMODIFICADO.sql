@@ -45,6 +45,7 @@ CREATE TABLE Usuario(
 CREATE TABLE Setor(
 	idSetor INT PRIMARY KEY AUTO_INCREMENT,
     nomeSetor VARCHAR(45) NOT NULL,
+    maxSetor INT NOT NULL,
     fkEmpresa INT, CONSTRAINT fkIdEmpresaSetor
     FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa)
 );
@@ -100,31 +101,17 @@ INSERT INTO Usuario (nomeUsuario, email, senha, fkEmpresa) VALUES
 ('Regina Stella Dias','regina.stella.dias@recoferindustria.com.br','pXY9s15HB0',9), 
 ('Iago Carlos Eduardo Cavalcanti','iagocarloscavalcanti@dsladvogados.adv.br','CcsGOiLdAN',10);
 
-INSERT INTO Setor (nomeSetor, prateleira, fkEmpresa) VALUES
-('Eletrodomésticos','11-A',1), ('Vestuário','13-B',2), ('Alimentos','14-C',3), ('Calçados','15-E',4), ('Têxtil','17-G',5), 
-('Móveis','20-A', 6), ('Eletrônicos','25-B',7), ('Brinquedos','F23',8), ('Linha lar','G-29',9), ('Colchões','Z-14',10);
+INSERT INTO Setor (nomeSetor, maxSetor, fkEmpresa) VALUES
+('Eletrodomésticos',11,1), ('Vestuário',24,2), ('Alimentos',12,3), ('Calçados',17,4), ('Têxtil',16,5), 
+('Móveis',26,6), ('Eletrônicos',10,7), ('Brinquedos',14,8), ('Linha lar',18,9), ('Colchões',23,10);
 
-INSERT INTO Sensor (statusSensor, dtInclusao, fkSetor) VALUES
-('Ativo','2022-10-01',1),('Inativo','2022-10-10',2),('Ativo','2022-10-05',3),('Inativo','2022-10-30',6),('Ativo','2022-10-09',5),
-('Inativo','2022-10-28',2), ('Ativo','2022-10-20', 10),('Ativo','2022-10-17',5),('Inativo','2022-10-11',8),('Inativo','2022-05-05',9);
-
-INSERT INTO Sensor (statusSensor, dtInclusao, fkSetor) VALUES
-();
-
-INSERT INTO Sensor (statusSensor, dtInclusao, fkSetor) VALUES
-('Inativo','2022-10-11',8),('Inativo','2022-05-05',9);
+INSERT INTO Sensor (tipoSensor, statusSensor, dtInclusao, prateleira, fkSetor) VALUES
+('EN','Ativo','2022-10-01','11-A',1),('PR','Inativo','2022-10-10','13-B',2),('EN','Ativo','2022-10-05','14-C',3),('PR','Inativo','2022-10-30','15-E',6),('EN','Ativo','2022-10-09','17-G',5),
+('PR','Inativo','2022-10-28','20-A',2), ('PR','Ativo','2022-10-20','25-B', 10),('EN','Ativo','2022-10-17','F23',5),('PR','Inativo','2022-10-11','G-29',8),('EN','Inativo','2022-05-05','Z-14',9);
 
 -- LEITURA dos sensores de setores
-INSERT INTO Leitura (movimentEntrada, movimentSetor, fkSensor) VALUES
-(null,1,1),(0,0,2),(1,1,3),(1,0,4),(1,1,5),(0,0,6),(0,1,7),(1,1,8),(1,0,9),(1,1,10);
-
--- LEITURA dos sensores de entradas
-INSERT INTO Leitura (movimentEntrada, movimentSetor, fkSensor) VALUES
-(1,null,11),(1,null,12);
-
--- LEITURA dos sensores de entradas e setores
-INSERT INTO Leitura (movimentEntrada, movimentSetor, fkSensor) VALUES
-(),();
+INSERT INTO Leitura (movimento, dtLeitura, fkSensor) VALUES
+(1,'2022-10-01',1),(0,'2022-10-02',2),(1,'2022-10-03',3),(0,'2022-10-01',4),(1,'2022-10-02',5),(0,'2022-10-03',6),(0,'2022-10-04',7),(1,'2022-10-05',8),(1,'2022-10-06',9),(1,'2022-10-07',10);
 
 -- SELECTS --
 SELECT * FROM Endereco;
