@@ -6,19 +6,23 @@
   box-sizing: border-box;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 nav {
   width: 100vw;
-  height: 10%;
+  height: 15.5%;
   display: flex;
-  align-items: center;
   justify-content: center;
   position: absolute;
   z-index: 2;
+  background-image: url(assets/headerBack.svg);
 }
 
 .container-nav {
-  width: 60%;
-  height: 30%;
+  width: 90%;
+  height: 60%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -26,8 +30,9 @@ nav {
 }
 
 .img_user {
-  width: 65px;
-  height: 65px;
+  /* background-color: pink; */
+  width: 5vw;
+  height: 5vh;
 }
 
 nav img {
@@ -69,11 +74,14 @@ ul li a:hover {
 }
 
 .imgHeader {
-  width: 100vw;
+  width: 98vw;
 }
 
 .kpi_container {
+  width: 100%;
   display: flex;
+  /* background-color: pink; */
+  margin-top: 8%;
 }
 
 .btn-login:hover {
@@ -100,14 +108,12 @@ ul li a:hover {
   width: 90%;
   margin: auto;
   display: flex;
-  justify-content: center;
-  /* flex-direction: ; */
-  /* background-color: pink; */
+  justify-content: space-between;
 }
 
-/* .containerAll {
-  margin-left: 50%;
-} */
+.containerAll {
+  margin-top: 1%;
+}
 
 .box_metricas {
   width: 100%;
@@ -156,22 +162,17 @@ h2 {
 .data_menu {
   width: 20vw;
   height: 60%;
-  /* justify-content: center; */
   align-self: center;
-  /* background-color: violet; */
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-right: 5%;
   border-radius: 20px;
   align-items: center;
-  /* box-shadow: 2px 1px 10px 1px rgb(187, 187, 187); */
   padding: 20px;
 } 
 
 .data_menu .card_menu {
-  /* background-color: red; */
-  /* border: 2px solid black; */
   width: 18vw;
   height: 50%;
   box-shadow: 2px 1px 10px 5px rgb(187, 187, 187);
@@ -204,12 +205,6 @@ h2 {
   font-size: 20px;
 }
 
-.box {
-  display: flex;
-  flex-direction: row;
-  /* background-color: red; */
-}
-
 .box .boxes{
   width: 350px;
   align-self: center;
@@ -219,6 +214,7 @@ h2 {
 .box_metricasCards {
   width: 680px;
   align-self: center;
+  margin-top: 30%;
 }
 
 .container_cards {
@@ -233,11 +229,11 @@ h2 {
 }
 
 .container_cards .box_card {
+  height: 58%;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap; 
-  /* width: 80%; */
-  /* border: 5px solid blue; */
+  overflow-y: scroll;
 }
 
 .container_cards .box_card .card {
@@ -275,7 +271,7 @@ h3 {
   font-size: 24px;
   text-align: center;
   font-weight: 900;
-  margin: 5% 0;
+  margin-bottom: 5%;
 }
 
 .title_setor {
@@ -290,5 +286,94 @@ h3 {
 }
 
 .imgFooter {
+  width: 1500px;
+  /* background-color: green; */
+}
+
+.box {
+  width: 30vw;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  margin-left: 5%;
+  /* background-color: black;  */
+}
+
+.graf-pizza {
+  /* background-color: yellow; */
+}
+
+.foot {
   width: 100vw;
+  height: 20.7%;
+  position: absolute;
+  z-index: 2;
+  background-image: url(assets/imgFooter.svg);
+  margin-top: 5%;
+}
+
+.container_footer {
+  width: 115vw;
+  align-items: center;
+  margin: auto;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.box_footer {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: pink; */
+}
+
+.copyright {
+  width: 20vw;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  color: white;
+  font-weight: 700;
+  margin-left: 10%;
+}
+
+.container_links {
+  width: 20vw;
+  height: 15vh;
+  display: flex;
+  border: 1px solid white;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  margin-right: 5%;
+}
+
+.box_links_footer span {
+  width: 145px;
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  color: white;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  margin: 10px;
+}
+
+.product {
+  padding-right: 80px;
+}
+
+.box_links_footer ul{
+  display: flex;
+  width: 10vw;
+  height: 10vh;
+  flex-direction: column;
+}
+
+.box_links_footer ul p{
+  width: 90%;
+  text-align: left;
+  color: white;
+  font-family: 'Inter', sans-serif;
 }
