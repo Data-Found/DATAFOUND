@@ -2,8 +2,10 @@ CREATE DATABASE dataFound;
 USE dataFound;
 
 -- CREATE TABLE --
-CREATE TABLE Estado(
-	idEstado INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE Endereco(
+	idEndereco INT PRIMARY KEY AUTO_INCREMENT,
+    cep CHAR(8) NOT NULL, 
+    numero VARCHAR(7) NOT NULL,
     nomeEstado VARCHAR(45) NOT NULL, CONSTRAINT chkNomeEstado 
 		CHECK (nomeEstado IN('Acre','Alagoas','Amazonas','Amapá','Bahia','Ceará','Distrito Federal','Espirito Santo'
 		,'Goiás','Maranhão','Mato Grosso','Mato Grosso do Sul','Minas Gerais','Pará','Paraiba','Paraná','Pernambuco','Piauí'
@@ -11,14 +13,6 @@ CREATE TABLE Estado(
     sigla CHAR(2) NOT NULL, CONSTRAINT chkSiglaEstado 
 		CHECK (sigla IN('AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MT','MS','MG','PA','PB','PR'
 		,'PE','PI','RJ','RN','RS','RO','RR','SC','SP','SE','TO'))
-);
-
-CREATE TABLE Endereco(
-	idEndereco INT PRIMARY KEY AUTO_INCREMENT,
-    cep CHAR(8) NOT NULL, 
-    numero VARCHAR(7) NOT NULL,
-    fkEstado INT, CONSTRAINT fkIdEstado 
-    FOREIGN KEY (fkEstado) REFERENCES Estado(idEstado)
 );
 
 CREATE TABLE Empresa(
@@ -67,15 +61,9 @@ CREATE TABLE Leitura(
 );
 
 -- INSERTS  --
-INSERT INTO Estado (nomeEstado, sigla) VALUES
-('Acre','AC'), ('Alagoas','AL'), ('Amazonas','AM'), ('Amapá','AP'), ('Bahia','BA'), ('Ceará','CE'), ('Distrito Federal','DF'), ('Espirito Santo','ES'),
-('Goiás','GO'), ('Maranhão','MA'), ('Mato Grosso','MT'), ('Mato Grosso do Sul','MS'), ('Minas Gerais','MG'), ('Pará','PA'), ('Paraiba','PB'), 
-('Paraná','PR'), ('Pernambuco','PE'), ('Piauí', 'PI'), ('Rio de Janeiro','RJ'), ('Rio Grande do Norte','RN'), ('Rio Grande do Sul','RS'), 
-('Rondônia','RO'), ('Roraima','RR'), ('Santa Catarina','SC'), ('São Paulo','SP'), ('Sergipe','SE'), ('Tocantins','TO');
-
-INSERT INTO Endereco (cep, numero, fkEstado) VALUES
-('33902110','10',13), ('72255524','13/15',7), ('69315685','55',23), ('78051902','103','11'),
-('07177038','502','25'), ('69088746','200','3'), ('69305070','23','23'), ('41205185','100','5'), ('78550017','H-1','11');
+INSERT INTO Endereco (cep, numero, nomeEstado, sigla) VALUES
+('33902110','10','Acre','AC'), ('72255524','13/15','Alagoas','AL'), ('69315685','55','São Paulo','SP'), ('78051902','103','Rio de Janeiro','RJ'),
+('07177038','502','Bahia','BA'), ('69088746','200','Minas Gerais','MG'), ('69305070','23','Santa Catarina','SC'), ('41205185','100','Espirito Santo','ES'), ('78550017','H-1','Distrito Federal','DF');
 
 INSERT INTO Empresa (razaoSocial, nomeFantasia, cnpj, responsavel, celular, ddd, fkEndereco) VALUES
 ('Diogo e Laura Entregas Expressas Ltda','Diogo e Laura Entregas Expressas','39892768000152','Laura','998974997','11', 5), 
@@ -118,7 +106,6 @@ INSERT INTO Leitura (movimento, dtLeitura, fkSensor) VALUES
 SHOW TABLES;
 SELECT * FROM Empresa;
 SELECT * FROM Endereco;
-SELECT * FROM Estado;
 SELECT * FROM Leitura;
 SELECT * FROM Sensor;
 SELECT * FROM Setor;
@@ -126,15 +113,7 @@ SELECT * FROM Usuario;
 
 -- SELECTS COM JOINS --
 
--- ENDEREÇO + ESTADO --
-SELECT * FROM Endereco 
-	JOIN Estado ON fkEstado = idEstado;
-    
--- O MESMO DO ACIMA, PORÉM SEM ID's e FK's --
-SELECT endco.cep AS 'CEP', endco.numero AS 'Número', 
-		est.nomeEstado AS 'Estado', est.sigla AS 'Sigla' FROM Endereco AS endco
-			JOIN Estado AS est ON endco.fkEstado = est.idEstado;
-    
+   
 -- EMPRESA + ENDEREÇO --
 SELECT * FROM Empresa 
 	JOIN Endereco ON fkEndereco = idEndereco;
@@ -232,28 +211,25 @@ SELECT setor.nomeSetor AS 'Setor', setor.maxSetor AS 'Capacidade Máxima',
 			JOIN Leitura AS ler ON sensor.idSensor = ler.fkSensor;            
         
 -- JOIN EM TODAS TABELAS --
-SELECT * FROM Estado AS est
-	JOIN Endereco AS endco ON endco.fkEstado = est.idEstado
-		JOIN Empresa AS emp ON emp.fkEndereco = endco.idEndereco
-			JOIN Usuario AS usu ON usu.fkEmpresa = emp.idEmpresa
-				JOIN Setor AS setor ON setor.fkEmpresa = emp.idEmpresa
-					JOIN Sensor AS sens ON sens.fkSetor = setor.idSetor
-						JOIN Leitura AS ler ON ler.fkSensor = sens.idSensor;  
+SELECT * FROM Endereco AS endco
+	JOIN Empresa AS emp ON emp.fkEndereco = endco.idEndereco
+		JOIN Usuario AS usu ON usu.fkEmpresa = emp.idEmpresa
+			JOIN Setor AS setor ON setor.fkEmpresa = emp.idEmpresa
+				JOIN Sensor AS sens ON sens.fkSetor = setor.idSetor
+					JOIN Leitura AS ler ON ler.fkSensor = sens.idSensor;  
 
 -- JOIN EM TODAS TABELAS PARAMETRIZADA --
 SELECT emp.nomeFantasia AS 'Nome da Empresa', emp.responsavel AS 'Responsável', 
 		endco.cep AS 'CEP', endco.numero AS 'Número', 
-		est.nomeEstado AS 'Estado',
         usu.nomeUsuario AS 'Usuário', usu.email AS 'E-mail', 
         setor.nomeSetor AS 'Setor', setor.maxSetor AS 'Capacidade Máxima',
         sensor.tipoSensor AS 'Tipo do sensor', sensor.statusSensor AS 'Status do Sensor', sensor.dtInclusao AS 'Data da Instalação', sensor.prateleira AS 'Prateleira',
         ler.movimento AS 'Movimento', ler.dtLeitura AS 'Data do Registro' FROM empresa AS emp
 			JOIN Endereco AS endco ON  emp.fkEndereco = endco.idEndereco
-				JOIN Estado AS est ON endco.fkEstado = est.idEstado
-					JOIN Usuario AS usu ON usu.fkEmpresa = emp.idEmpresa
-						JOIN Setor AS setor ON setor.fkEmpresa = emp.idEmpresa
-							JOIN Sensor AS sensor ON sensor.fkSetor = setor.idSetor
-								JOIN Leitura AS ler ON ler.fkSensor = sensor.idSensor;
+				JOIN Usuario AS usu ON usu.fkEmpresa = emp.idEmpresa
+					JOIN Setor AS setor ON setor.fkEmpresa = emp.idEmpresa
+						JOIN Sensor AS sensor ON sensor.fkSetor = setor.idSetor
+							JOIN Leitura AS ler ON ler.fkSensor = sensor.idSensor;
 
 /*
 -- EMPRESA COM MAIOR FLUXO DE PESSOAS EM DETERMINADO SETOR --
