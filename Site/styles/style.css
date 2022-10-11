@@ -4,7 +4,7 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-body {}
+/* body {} */
 
 #background1 {
   background: rgba(51, 159, 163, 1);
@@ -90,7 +90,6 @@ ul li .navlink:hover {
 
 .enter {
   width: 25px;
-
 }
 
 .btn-login {
@@ -112,7 +111,6 @@ ul li .navlink:hover {
 .btn-login:hover {
   background-color: rgb(38, 107, 255);
   color: white;
-
 }
 
 
@@ -123,10 +121,7 @@ ul li .navlink:hover {
   align-items: center;
   height: fit-content;
   width: 100%;
-
   flex-direction: column;
-
-
 }
 
 .main .container {
@@ -137,7 +132,6 @@ ul li .navlink:hover {
   height: 700px;
   margin: 80px 0px 0px 0px;
   z-index: 2;
-
 }
 
 .heroText {
@@ -191,7 +185,13 @@ ul li .navlink:hover {
   width: 100%;
   transform: rotate(180deg);
   position: relative;
+}
 
+.wave-2-cad {
+  width: 100%;
+  transform: rotate(180deg);
+  position: relative;
+  z-index: -1;
 }
 
 .wave-4 {
@@ -217,7 +217,6 @@ ul li .navlink:hover {
 }
 
 .quemsomos .container {
-
   width: 1200px;
   display: flex;
   justify-content: center;
@@ -225,14 +224,10 @@ ul li .navlink:hover {
 }
 
 .quemsomos .container img {
-
-
   display: flex;
-
 }
 
 .img-quem-somos {
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -266,7 +261,6 @@ ul li .navlink:hover {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
 }
 
 .nossa-equipe h2 {
@@ -278,9 +272,7 @@ ul li .navlink:hover {
 .equipe {
   display: flex;
   justify-content: center;
-
   margin: 0px 0px 80px 0px;
-
 }
 
 .equipe .container {
@@ -318,7 +310,6 @@ ul li .navlink:hover {
 
 
 .descricao-card {
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -366,7 +357,6 @@ ul li .navlink:hover {
 }
 
 .missao-valores .container {
-
   width: 1200px;
   display: flex;
   padding: 0px 0px 100px 0px;
@@ -435,8 +425,6 @@ ul li .navlink:hover {
   align-items: center;
   justify-content: center;
   padding: 100px 0px;
-
-
 }
 
 /* .imgFundo{
@@ -465,7 +453,6 @@ ul li .navlink:hover {
 }
 
 .texto-dash h2 {
-
   font-size: 40px;
   padding: 20px 0px;
 }
@@ -524,7 +511,6 @@ ul li .navlink:hover {
   min-height: 500px;
   display: flex;
   flex-direction: column;
-
   border-radius: 15px;
   justify-content: center;
   padding: 50px 10px;
@@ -559,7 +545,6 @@ textarea {
 }
 
 .container textarea {
-
   height: 80%;
 }
 
@@ -568,18 +553,15 @@ textarea {
   flex-direction: column;
   padding: 0px 0px 10px 0px;
   margin: 0px 0px 10px 0px;
-
 }
 
 .fale-conosco .container label {
-
   padding: 20px;
   margin: 10px;
   font-size: 22px;
 }
 
 .fale-conosco .container .btn-form {
-
   display: flex;
   justify-content: center;
 }
@@ -593,18 +575,12 @@ textarea {
 }
 
 .fale-conosco .container .btn-form button:hover {
-
   background-color: #ffffff;
   color: black;
   border: 1px solid black;
 }
 
 footer {
-  background: rgb(51, 159, 163);
-  background: linear-gradient(133deg,
-      rgba(51, 159, 163, 1) 0%,
-      rgba(35, 174, 190, 1) 27%,
-      rgba(7, 34, 83, 1) 100%);
   display: flex;
   justify-content: center;
 }
@@ -643,271 +619,6 @@ footer .container {
 
 /* LOGIN */
 
-.camposlogin {
-  order: 1;
-  background-color: rgb(243, 242, 242);
-  color: #0c2233;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-flow: wrap;
-  width: 50%;
-  height: 600px;
-  /* border: solid 1px rgb(0, 0, 0); */
-}
-
-
-.imglogin {
-  width: 50%;
-  height: 600px;
-
-}
-
-.imglogin img {
-  width: 140%;
-  height: 600px;
-  background-image: url(img/bglogin2.png) no-repeat;
-  background-size: 100%;
-  background-color: rgb(243, 242, 242);
-  max-width: 160%;
-  max-height: 100%;
-}
-
-.areainputslogin {
-  color: #0c2233;
-  padding-top: 20px;
-  /* border: solid 1px green; */
-  height: 170px;
-}
-
-.areainputslogin p {
-  padding-left: 20px;
-}
-
-.areainputslogin h4 {
-  font-size: 10px;
-  padding-left: 23px;
-}
-
-.areainputslogin a {
-  color: #168aad;
-}
-
-.areabotaologin {
-  display: flex;
-  width: 100%;
-  height: 200px;
-  align-items: start;
-  justify-content: center;
-}
-
-.logintexto {
-  height: 150px;
-  display: flex;
-  font-weight: 900;
-  /* border: solid 1px green; */
-  align-items: end;
-  justify-content: center;
-  width: 100%;
-}
-
-/* CADASTRO */
-
-.navcadastro {
-  background-color: #0c2233;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-}
-
-.navcadastro .container {
-  background-color: #0c2233;
-  width: 1200px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 80px;
-}
-
-
-
-.textocadastro {
-  background-color: rgb(243, 242, 242);
-  color: #0c2233;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-flow: wrap;
-  width: 50%;
-  height: 600px;
-  /* border: solid 1px green; */
-}
-
-.textocadastro2 {
-  display: flex;
-  justify-content: space-between;
-  width: 50%;
-  height: 600px;
-}
-
-.textocadastro2 img {
-  width: 100%;
-  max-width: 100%;
-  max-height: 100%;
-  background-color: rgb(243, 242, 242);
-  background-image: url(img/Group\ 21\ 1.png) no-repeat;
-  background-size: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-}
-
-.sessaoum {
-  margin: 0px;
-  display: flex;
-  width: 100%;
-  height: 700px;
-  flex-direction: row;
-  /* border: solid 1px green; */
-}
-
-.areainputs {
-  color: #0c2233;
-
-  padding-top: 20px;
-  /* border: solid 1px green; */
-  height: 360px;
-  margin-left: 60px;
-}
-
-.areainputs p {
-  padding-left: 20px;
-
-}
-
-.areainputs2 p {
-  padding-left: 20px;
-
-}
-
-.areainputs2 {
-  color: #0c2233;
-
-  padding-top: 20px;
-  height: 360px;
-}
-
-.inputs {
-  padding: 10px 20px;
-  margin: 0px 10px 10px 10px;
-  border-radius: 15px;
-  border: #9E9E9E solid 1px;
-}
-
-.areabotao {
-  display: flex;
-  width: 100%;
-  height: 100px;
-  margin-left: 60px;
-
-  align-items: start;
-  justify-content: center;
-
-}
-
-.cadastrotexto {
-  display: flex;
-  /* border: solid 1px green; */
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin-top: 40px;
-  margin-left: 60px;
-
-}
-
-.cadastrotexto h3 {
-  color: #0c2233;
-  font-size: 28px;
-
-}
 
 
 /* SIMULADOR  */
-
-.containersessaosimulador {
-  display: flex;
-  flex-direction: row;
-  border: solid 3px black;
-}
-
-.sessaosimulador {
-  width: 50%;
-  height: 630px;
-  background-color: rgb(243, 242, 242);
-  ;
-  display: flex;
-  flex-direction: column;
-}
-
-.simuqtd {
-  border: solid 1px black;
-  width: 100%;
-}
-
-.selectssetores {
-  flex-direction: row;
-  border: solid 1px black;
-  padding: 10px;
-}
-
-.layoutselectssetores {
-  display: flex;
-  border: solid 1px rgb(52, 0, 238);
-  width: 100%;
-  height: 430px;
-  flex-direction: row;
-}
-
-.coluna1selects {
-  /* border: solid 1px rgb(255, 0, 0); */
-  width: 50%;
-  height: 400px;
-}
-
-.coluna2selects {
-  /* border: solid 1px rgb(255, 0, 0); */
-  width: 50%;
-  height: 400px;
-}
-
-.botaoresultado {
-  border: solid 1px rgb(255, 0, 0);
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 0px;
-}
-
-.layoutresultado {
-  display: flex;
-  flex-direction: column;
-  background-color: rgb(243, 242, 242);
-  ;
-  border: solid 1px rgb(255, 0, 0);
-  width: 50%;
-  align-items: center;
-  padding: 10px 0px;
-}
-
-.dentrolayoutresultado {
-  display: flex;
-  background-color: rgb(243, 242, 242);
-  ;
-  border: solid 1px rgb(255, 0, 0);
-  justify-content: center;
-  padding: 10px 0px;
-}

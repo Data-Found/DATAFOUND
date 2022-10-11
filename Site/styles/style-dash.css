@@ -17,7 +17,7 @@ nav {
   justify-content: center;
   position: absolute;
   z-index: 2;
-  background-image: url(assets/headerBack.svg);
+  background-image: url("/Site/assets/headerBack.svg");
 }
 
 .container-nav {
