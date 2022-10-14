@@ -5,84 +5,68 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=had, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="styles/login.css">
-    
     <title> Login </title>
 </head>
 
 <body>
-    <div id="backgroundLogin">
-        <div class="navCadastro">
-            <div class="container">
-                <a href="index.html"><img class="logo" src="./assets/logo-nav.png" /></a>
-                <ul>
-                    <!-- <li class="lista"><a href="#" class="navlink">Home</a></li> -->
-                    <li class="lista"><a href="simulador.html" class="navlink">Simulador</a></li>
-                    <!-- <li class="lista"><a href="dashboard.html" class="navlink">Dashboard</a></li> -->
-                    <!-- <li class="lista"> <a href="login.html" class="btn-login">Login <img src="assets/enter.png" alt=""
-                                class="enter"> </a> -->
-                    </li>
-                    <li class="lista"><a class="btn-cadastrar" href="cadastrar.html">Cadastrar</a></li>
-
-                </ul>
+    <header>
+        <nav>
+            <div class="container-nav">
+                <img class="logo" src="assets/logo-nav.png" />
+                <img class="img_user" src="assets/user.svg" />
             </div>
-        </div>
+        </nav>
+    </header>
 
-        <div class="sessaoUm">
-            <div class="camposLogin">
+    <div class="sessaoUm">
+        <div class="camposLogin">
+            <div class="box_login">
                 <div class="loginTexto">
                     <h3>Login</h3>
                 </div>
                 <div class="areaInputsLogin">
-                    <p>Email</p>
+                    <!-- <p>Email</p> -->
                     <input class="inputs" type="email" placeholder="Email">
-                    <p>Senha</p>
-                    <input class="inputs" type="password" placeholder="******" >
+                    <!-- <p>Senha</p> -->
+                    <input class="inputs" type="password" placeholder="Senha">
                     <h4>Não possui uma conta? <a href="cadastrar.html">Cadastre-se</a> </h4>
                 </div>
-
-                <div class="areaBotaoLogin"><button class="btn-cadastrar"> Entrar </button></div>
+    
+                <div class="areaBotaoLogin"><button class="btn_entrar"> Entrar </button></div>
             </div>
-            <div class="imgLogin"><img src="img/bglogin2.png"></div>
         </div>
+        <div><img class="imgLogin" src="img/bglogin2.png"></div>
+    </div>
 
-        <div id="background1">
-            <img src="assets/svg.png" alt="" class="wave-2-cad">
-            <footer>
-                <div class="container">
-                    <div class="img-footer">
-                        <img src="./assets/icon-main.png" alt="">
-                    </div>
-                    <div class="texto-footer">
-                        <div class="copy-footer">
-                            <p>©Copyright 2022- Todos os direitos reservados <b> Data Found</b></p>
-                        </div>
-        
-                    </div>
-                    <div class="sobre-footer">
-                        <div class="sobre1-footer">
-                            <b>Sobre a Data Found</b>
-                            <br>
-                            <p>Inicio</p>
+    <footer class="foot">
+        <div class="container_footer">
+            <div class="box_footer">
+                <div class="box_img">
+                    <img src="assets/data_white_icon.svg" alt="logo">
+                </div>
+                <span class="copyright">© Copyright 2022 - Todos os direitos reservados Data Found</span>
+                <div class="container_links">
+                    <div class="box_links_footer">
+                        <span>Sobre a data found</span>
+                        <ul>
+                            <p>Início</p>
                             <p>FAQ</p>
                             <p>Sobre nós</p>
-                        </div>
-                        <div class="sobre2-footer">
-                            <b>Produto</b>
-        
+                        </ul>
+                    </div>
+                    <div class="box_links_footer">
+                        <span>Produto</span>
+                        <ul>
                             <p>Ajuda</p>
                             <p>Como funciona</p>
-                            <p>Pagamento</p>
-                        </div>
-        
+                            <p>Formas de pagamentos</p>
+                        </ul>
                     </div>
                 </div>
-            </footer>
+            </div>
         </div>
+    </footer>
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;600;700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;600;700&display=swap');
 
 * {
   margin: 0;
@@ -17,7 +17,7 @@ nav {
   justify-content: center;
   position: absolute;
   z-index: 2;
-  background-image: url("/Site/assets/headerBack.svg");
+  background-image: url("../assets/headerBack.svg");
 }
 
 .container-nav {
@@ -37,28 +37,6 @@ nav {
 
 nav img {
   width: 180px;
-}
-
-ul {
-  display: flex;
-  width: 500px;
-  align-items: center;
-  justify-content: space-between;
-}
-
-ul li {
-  list-style: none;
-  margin-left: 20px;
-}
-
-ul li a {
-  text-decoration: none;
-  color: white;
-  transition: all 0.3s;
-}
-
-ul li a:hover {
-  color: #168aad;
 }
 
 .btn-login {
@@ -287,11 +265,6 @@ h3 {
   margin: 5% 0 0 10%;
 }
 
-.imgFooter {
-  width: 1500px;
-  /* background-color: green; */
-}
-
 .box {
   width: 30vw;
   justify-content: center;
@@ -301,18 +274,14 @@ h3 {
   /* background-color: black;  */
 }
 
-/* .graf-pizza {
-  background-color: yellow;
-} */
-
 .foot {
-  width: 100vw;
+  width: 100%;
   height: 20.7%;
   position: absolute;
   z-index: 2;
-  background-image: url(assets/imgFooter.svg);
-  /* background-repeat: no-repeat; */
-  margin-top: 5%;
+  background-image: url("../assets/imgFooter.svg");
+  background-repeat: no-repeat;
+  margin-top: 5%; 
 }
 
 .container_footer {
@@ -355,16 +324,11 @@ h3 {
 .box_links_footer span {
   width: 145px;
   display: flex;
-  justify-content: center;
   text-align: left;
   color: white;
   font-weight: 700;
   font-family: 'Inter', sans-serif;
   margin: 10px;
-}
-
-.product {
-  padding-right: 80px;
 }
 
 .box_links_footer ul{
@@ -379,6 +343,7 @@ h3 {
   text-align: left;
   color: white;
   font-family: 'Inter', sans-serif;
+  margin: 8px;
 }
 
 ::-webkit-scrollbar {

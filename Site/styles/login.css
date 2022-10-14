@@ -1,42 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;600;700&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  outline: 0;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: rgb(243, 242, 242);
+}
+
+nav {
+  width: 100vw;
+  height: 15.5%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  z-index: 2;
+  background-image: url("../assets/headerBack.svg");
+}
+
+.container-nav {
+  width: 75%;
+  height: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5%;
+  /* background-color: black; */
+}
+
+.img_user {
+  width: 5vw;
+  height: 5vh;
+}
+
+.logo {
+  width: 230px;
+}
+
+.btn-login {
+  height: 50px;
+  width: 120px;
+  border-radius: 7px;
+  color: white;
+  font-size: 17px;
+  background-color: #1a759f;
+  border: none;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.imgHeader {
+  width: 98vw;
+}
+
+#background1 {
+  background: rgba(51, 159, 163, 1);
+  background: linear-gradient(133deg,
+      rgba(51, 159, 163, 1) 0%,
+      rgba(35, 174, 190, 1) 27%,
+      rgba(7, 34, 83, 1) 100%);
+}
+
+.sessaoUm {
+  height: 90vh;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  background-color: #168aad;
+  background-color: rgb(243, 242, 242);
+}
+
 .camposLogin {
+  width: 50%;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; 
   order: 1;
   background-color: rgb(243, 242, 242);
   color: #0c2233;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-flow: wrap;
-  width: 50%;
-  height: 600px;
+  margin-top: 5%;
+  margin-right: 10%;
   /* border: solid 1px rgb(0, 0, 0); */
 }
 
-
-.imgLogin {
-  width: 50%;
-  height: 600px;
-
+.box_login {
+  width: 365px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.imgLogin img {
-  width: 140%;
-  height: 600px;
-  background-image: url(img/bglogin2.png) no-repeat;
-  background-size: 100%;
-  background-color: rgb(243, 242, 242);
-  max-width: 160%;
-  max-height: 100%;
+.loginTexto {
+  display: flex;
+  font-weight: 900;
+  /* border: solid 1px green; */
+  align-items: end;
+  justify-content: center;
+}
+
+.loginTexto h3 {
+  font-size: 28px;
+  font-family: 'Inter', sans-serif;
 }
 
 .areaInputsLogin {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   color: #0c2233;
   padding-top: 20px;
-  /* border: solid 1px green; */
-  height: 170px;
+  margin-bottom: 5%;
 }
 
-.areaInputsLogin p {
+/* .areaInputsLogin p {
   padding-left: 20px;
+} */
+
+.inputs {
+  width: 250px;
+  height: 18px;
+  padding: 12px 20px;
+  margin: 20px 0px 10px 0px;
+  border-radius: 15px;
+  border: #9E9E9E solid 1px;
+}
+
+.inputs:focus {
+  border: 2px solid #1E6091;  
 }
 
 .areaInputsLogin h4 {
@@ -51,140 +149,106 @@
 .areaBotaoLogin {
   display: flex;
   width: 100%;
-  height: 200px;
   align-items: start;
   justify-content: center;
 }
 
-.loginTexto {
-  height: 150px;
-  display: flex;
-  font-weight: 900;
-  /* border: solid 1px green; */
-  align-items: end;
-  justify-content: center;
-  width: 100%;
-}
-
-/* CADASTRO */
-
-.navCadastro {
-  background-color: #0c2233;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-}
-
-.navCadastro .container {
-  background-color: #0c2233;
-  width: 1200px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 80px;
-}
-
-
-
-.textoCadastro {
-  background-color: rgb(243, 242, 242);
-  color: #0c2233;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-flow: wrap;
-  width: 50%;
-  height: 600px;
-  /* border: solid 1px green; */
-}
-
-.textoCadastro2 {
-  display: flex;
-  justify-content: space-between;
-  width: 50%;
-  height: 600px;
-}
-
-.textoCadastro2 img {
-  width: 100%;
-  max-width: 100%;
-  max-height: 100%;
-  background-color: rgb(243, 242, 242);
-  background-image: url(img/Group\ 21\ 1.png) no-repeat;
-  background-size: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-}
-
-.sessaoUm {
-  margin: 0px;
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  /* border: solid 1px green; */
-}
-
-.areaInputs {
-  color: #0c2233;
-
-  padding-top: 20px;
-  /* border: solid 1px green; */
-  height: 360px;
-  margin-left: 60px;
-}
-
-.areaInputs p {
-  padding-left: 20px;
-
-}
-
-.areaInputs2 p {
-  padding-left: 20px;
-
-}
-
-.areaInputs2 {
-  color: #0c2233;
-
-  padding-top: 20px;
-  height: 360px;
-}
-
-.inputs {
-  padding: 10px 20px;
-  margin: 0px 10px 10px 10px;
+.btn_entrar {
+  width: 290px;
+  height: 43px;
+  background-color: #1E6091;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: white;
+  border: none;
   border-radius: 15px;
-  border: #9E9E9E solid 1px;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
-.areaBotao {
-  display: flex;
-  width: 100%;
-  height: 100px;
-  margin-left: 60px;
-
-  align-items: start;
-  justify-content: center;
-
+.btn_entrar:hover {
+  transition: all 0.3s;
+  background-color: #4361EE;
 }
 
-.cadastroTexto {
-  display: flex;
-  /* border: solid 1px green; */
+.imgLogin {
+  width: 140%;
+  height: 105%;
+  object-fit: cover;
+}
+
+.foot {
+  width: 100vw;
+  height: 20.7%;
+  position: absolute;
+  z-index: 2;
+  background-image: url("../assets/imgFooter.svg");
+  background-repeat: no-repeat;
+  bottom: 0px;
+}
+
+.container_footer {
+  width: 95vw;
   align-items: center;
+  margin: auto;
+  position: absolute;
+  bottom: 0;
+  display: flex;
   justify-content: center;
-  width: 100%;
-  margin-top: 40px;
-  margin-left: 60px;
-
+  margin-left: 10%;
 }
 
-.cadastroTexto h3 {
-  color: #0c2233;
-  font-size: 28px;
+.box_footer {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: pink; */
+}
 
+.copyright {
+  width: 20vw;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  color: white;
+  font-weight: 700;
+  margin-left: 5%;
+}
+
+.container_links {
+  width: 20vw;
+  height: 15vh;
+  display: flex;
+  border: 1px solid white;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  margin-right: 5%;
+}
+
+.box_links_footer span {
+  width: 145px;
+  display: flex;
+  text-align: left;
+  color: white;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  margin: 10px;
+}
+
+.box_links_footer ul{
+  width: 10vw;
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+.box_links_footer ul p{
+  width: 90%;
+  text-align: left;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  margin: 8px;
 }
