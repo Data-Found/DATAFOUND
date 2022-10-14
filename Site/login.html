@@ -27,13 +27,15 @@
                 </div>
                 <div class="areaInputsLogin">
                     <!-- <p>Email</p> -->
-                    <input class="inputs" type="email" placeholder="Email">
+                    <input id="inpEmail" class="inputs" type="email" placeholder="Email"
+                    onclick="defaultColor()">
                     <!-- <p>Senha</p> -->
-                    <input class="inputs" type="password" placeholder="Senha">
+                    <input id="inpSenha" class="inputs" type="password" placeholder="Senha" 
+                    onclick="defaultColor()">
                     <h4>Não possui uma conta? <a href="cadastrar.html">Cadastre-se</a> </h4>
                 </div>
     
-                <div class="areaBotaoLogin"><button class="btn_entrar"> Entrar </button></div>
+                <div class="areaBotaoLogin"><button class="btn_entrar" onclick="validaInputLogin()"> Entrar </button></div>
             </div>
         </div>
         <div><img class="imgLogin" src="img/bglogin2.png"></div>
@@ -68,5 +70,5 @@
         </div>
     </footer>
 </body>
-
+<script src="script/validacaoAcesso.js"></script>
 </html>
