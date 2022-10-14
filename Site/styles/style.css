@@ -4,6 +4,10 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 /* body {} */
 
 #background1 {
@@ -38,8 +42,6 @@
   justify-content: space-between;
   min-height: 80px;
 }
-
-
 
 ul {
   display: flex;
@@ -616,9 +618,3 @@ footer .container {
 .sobre2-footer {
   margin: 0px 20px;
 }
-
-/* LOGIN */
-
-
-
-/* SIMULADOR  */
