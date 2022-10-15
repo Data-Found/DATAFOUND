@@ -25,7 +25,7 @@ body {
     padding: px;
     border-radius: 10px;
     background-color: white;
-    box-shadow: 3px 3px 3px #1E6091;
+    box-shadow: 2px 1px 10px 1px rgb(187, 187, 187);
     display: flex;
     align-self: center;
     flex-direction: column;
@@ -78,7 +78,7 @@ body {
     /* height: 100%; */
     border: 2px solid #1E6091;  
     border-radius: 10px;
-    box-shadow: 3px 3px 3px #1E6091;
+    box-shadow: 2px 1px 10px 1px rgb(187, 187, 187);
     padding: 10px;
 }
 
