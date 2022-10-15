@@ -2,46 +2,41 @@ CREATE DATABASE dataFound;
 USE dataFound;
 
 -- CREATE TABLE --
-CREATE TABLE Endereco(
-	idEndereco INT PRIMARY KEY AUTO_INCREMENT,
-    cep CHAR(8) NOT NULL, 
-    numero VARCHAR(7) NOT NULL,
-    nomeEstado VARCHAR(45) NOT NULL, CONSTRAINT chkNomeEstado 
-		CHECK (nomeEstado IN('Acre','Alagoas','Amazonas','Amapá','Bahia','Ceará','Distrito Federal','Espirito Santo'
-		,'Goiás','Maranhão','Mato Grosso','Mato Grosso do Sul','Minas Gerais','Pará','Paraiba','Paraná','Pernambuco','Piauí'
-		,'Rio de Janeiro','Rio Grande do Norte','Rio Grande do Sul','Rondônia','Roraima','Santa Catarina','São Paulo','Sergipe','Tocantins')),
-    sigla CHAR(2) NOT NULL, CONSTRAINT chkSiglaEstado 
-		CHECK (sigla IN('AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MT','MS','MG','PA','PB','PR'
-		,'PE','PI','RJ','RN','RS','RO','RR','SC','SP','SE','TO'))
-);
-
 CREATE TABLE Empresa(
 	idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
-    razaoSocial VARCHAR(75) NOT NULL,
     nomeFantasia VARCHAR(75) NOT NULL,
     cnpj CHAR(14) NOT NULL,
     responsavel VARCHAR(100) NOT NULL,
-    celular CHAR(9) NOT NULL,
-    ddd VARCHAR(3) NOT NULL,
-    fkEndereco INT, CONSTRAINT fkIdEndereco 
-    FOREIGN KEY (fkEndereco) REFERENCES endereco(idEndereco)
+    fkMatriz INT, CONSTRAINT fkIdMatriz 
+    FOREIGN KEY (fkMatriz) REFERENCES Empresa(idEmpresa)
+);
+
+CREATE TABLE Endereco(
+	idEndereco INT AUTO_INCREMENT,
+    cep CHAR(8) NOT NULL, 
+    numero VARCHAR(7) NOT NULL,
+	fkEmpresa INT, CONSTRAINT fkIdEmpresa 
+    FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa),
+    PRIMARY KEY(idEndereco, fkEmpresa)
 );
 
 CREATE TABLE Usuario(
-	idUsuario INT PRIMARY KEY AUTO_INCREMENT,
+	idUsuario INT AUTO_INCREMENT,
     nomeUsuario VARCHAR(75) NOT NULL,
     email VARCHAR(256) NOT NULL, CONSTRAINT chkEmailusuario CHECK (email LIKE '%@%'), 
-    senha VARCHAR(15) NOT NULL, CONSTRAINT chkSenha CHECK (length(senha) > 5),
-    fkEmpresa INT, CONSTRAINT fkIdEmpresa 
-    FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa)
+    senha VARCHAR(25) NOT NULL, CONSTRAINT chkSenha CHECK (length(senha) > 5),
+    fkEmpresa INT, CONSTRAINT ctfkIdEmpresa 
+    FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa),
+    PRIMARY KEY(idUsuario, fkEmpresa)
 );
 
 CREATE TABLE Setor(
-	idSetor INT PRIMARY KEY AUTO_INCREMENT,
+	idSetor INT AUTO_INCREMENT,
     nomeSetor VARCHAR(45) NOT NULL,
     maxSetor INT NOT NULL,
     fkEmpresa INT, CONSTRAINT fkIdEmpresaSetor
-    FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa)
+    FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa),
+    PRIMARY KEY(idSetor, fkEmpresa)
 );
 
 CREATE TABLE Sensor(
@@ -54,28 +49,30 @@ CREATE TABLE Sensor(
 );
 
 CREATE TABLE Leitura(
-	idLeitura INT PRIMARY KEY AUTO_INCREMENT,
+	idLeitura INT AUTO_INCREMENT,
     movimento BIT,
     dtLeitura TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    fkSensor INT, CONSTRAINT fkIdSensor FOREIGN KEY (fkSensor) REFERENCES Sensor(idSensor)
+    fkSensor INT, CONSTRAINT fkIdSensor FOREIGN KEY (fkSensor) REFERENCES Sensor(idSensor),
+    PRIMARY KEY(idLeitura, fkSensor)
 );
 
 -- INSERTS  --
-INSERT INTO Endereco (cep, numero, nomeEstado, sigla) VALUES
-('33902110','10','Acre','AC'), ('72255524','13/15','Alagoas','AL'), ('69315685','55','São Paulo','SP'), ('78051902','103','Rio de Janeiro','RJ'),
-('07177038','502','Bahia','BA'), ('69088746','200','Minas Gerais','MG'), ('69305070','23','Santa Catarina','SC'), ('41205185','100','Espirito Santo','ES'), ('78550017','H-1','Distrito Federal','DF');
 
-INSERT INTO Empresa (razaoSocial, nomeFantasia, cnpj, responsavel, celular, ddd, fkEndereco) VALUES
-('Diogo e Laura Entregas Expressas Ltda','Diogo e Laura Entregas Expressas','39892768000152','Laura','998974997','11', 5), 
-('Benedito e Filipe Informática ME','Benedito e Filipe Informática','28136753000148','Benedito','991304235','31', 1), 
-('Luiz e Sophie Entregas Expressas Ltda','Luiz e Sophie Entregas Expressas','09838199000104','Luiz','985879052','61', 2), 
-('Eliane e Danilo Financeira Ltda','Eliane e Danilo Financeira','14762677000171','Eliane','998369200','95', 3), 
-('Daiane e Vera Contábil Ltda','Daiane e Vera Contábil','22505301000100','Vera','982527340','65', 4),
-('Stella e Hadassa Filmagens Ltda','Stella e Hadassa Filmagens','57512408000160','Stella','982722635','92', 6), 
-('Jennifer e Sophie Telas ME','Jennifer e Sophie Telas','09426710000152','Sophie','992325442','95',7), 
-('Emanuel e Isabella Publicidade e Propaganda Ltda','Emanuel e Isabella Publicidade e Propaganda','59342482000100','Isabella','992608945','71',8), 
-('Hugo e Isaac Filmagens ME','Hugo e Isaac Filmagens','34154793000115','Hugo','984721212','65',9), 
-('Ester e Eduarda Contábil Ltda','Ester e Eduarda Contábil','56218837000166','Eduarda','992964117','65', 9);
+INSERT INTO Empresa (nomeFantasia, cnpj, responsavel, fkMatriz) VALUES
+('Diogo e Laura Entregas Expressas','39892768000152','Laura', null), 
+('Benedito e Filipe Informática','28136753000148','Benedito', null), 
+('Hugo e Isaac Filmagens','34154793000115','Hugo', null), 
+('Eliane e Danilo Financeira','14762677000171','Eliane', null), 
+('Daiane e Vera Contábil','22505301000100','Vera', null),
+('Benedito e Filipe Informática','28136753000148','Filipe', 2), 
+('Jennifer e Sophie Telas','09426710000152','Sophie', null), 
+('Emanuel e Isabella Publicidade e Propaganda','59342482000100','Isabella', null), 
+('Hugo e Isaac Filmagens','34154793000115','Isaac', 4), 
+('Ester e Eduarda Contábil','56218837000166','Eduarda', null);
+
+INSERT INTO Endereco (cep, numero, fkEmpresa) VALUES
+('33902110','10',1), ('72255524','13/15',2), ('69315685','55',3), ('78051902','103',4),
+('07177038','502',5), ('69088746','200',6), ('69305070','23',7), ('41205185','100',8), ('78550017','H-1',9), ('02875100', 234, 10);
 
 INSERT INTO Usuario (nomeUsuario, email, senha, fkEmpresa) VALUES
 ('Milena Bianca Castro','milena_castro@redhouse.com.br','Yy6gFuIcPy',1), 
@@ -93,6 +90,10 @@ INSERT INTO Setor (nomeSetor, maxSetor, fkEmpresa) VALUES
 ('Eletrodomésticos',11,1), ('Vestuário',24,2), ('Alimentos',12,3), ('Calçados',17,4), ('Têxtil',16,5), 
 ('Móveis',26,6), ('Eletrônicos',10,7), ('Brinquedos',14,8), ('Linha lar',18,9), ('Colchões',23,10);
 
+-- ADICIONANDO MAIS SETORES NUMA EMPRESA SÓ, PELO ID
+INSERT INTO Setor (nomeSetor, maxSetor, fkEmpresa) VALUES
+('Eletrônicos',14,1),('Instrumentos Musicais',10,1),('Presentes e Lembranças',10,1),('Jardinagem',10,1),('Quintal',12,1);
+
 INSERT INTO Sensor (tipoSensor, statusSensor, dtInclusao, prateleira, fkSetor) VALUES
 ('EN','Ativo','2022-10-01','11-A',1),('PR','Inativo','2022-10-10','13-B',2),('EN','Ativo','2022-10-05','14-C',3),('PR','Inativo','2022-10-30','15-E',6),('EN','Ativo','2022-10-09','17-G',5),
 ('PR','Inativo','2022-10-28','20-A',2), ('PR','Ativo','2022-10-20','25-B', 10),('EN','Ativo','2022-10-17','F23',5),('PR','Inativo','2022-10-11','G-29',8),('EN','Inativo','2022-05-05','Z-14',9);
@@ -104,7 +105,7 @@ INSERT INTO Leitura (movimento, dtLeitura, fkSensor) VALUES
 
 -- SELECTS --
 SHOW TABLES;
-SELECT * FROM Empresa;
+SELECT * FROM Empresa ;
 SELECT * FROM Endereco;
 SELECT * FROM Leitura;
 SELECT * FROM Sensor;
@@ -112,96 +113,102 @@ SELECT * FROM Setor;
 SELECT * FROM Usuario;
 
 -- SELECTS COM JOINS --
-
-   
--- EMPRESA + ENDEREÇO --
+-- EMPRESAS + ENDEREÇO --
 SELECT * FROM Empresa 
-	JOIN Endereco ON fkEndereco = idEndereco;
+	JOIN Endereco ON idEmpresa = fkEmpresa;
     
--- O MESMO DO ACIMA, PORÉM SEM ID's e FK's --
-SELECT emp.razaoSocial AS 'Razão Social', emp.nomeFantasia AS 'Nome', emp.cnpj AS 'CNPJ',  emp.responsavel AS 'Responsável', emp.ddd AS 'DDD', emp.celular AS 'Telefone Celular',
-	endco.cep AS 'CEP', endco.numero AS 'Número' FROM Empresa AS emp
-		JOIN Endereco AS endco ON emp.fkEndereco = endco.idEndereco;
+	-- O MESMO DO ACIMA, PORÉM SEM ID's e FK's --
+	SELECT emp.idEmpresa AS 'ID da Empresa', emp.nomeFantasia AS 'Nome da Empresa', emp.cnpj AS 'CNPJ',  emp.responsavel AS 'Responsável', emp.fkMatriz as 'Filial da empresa:',
+		endco.cep AS 'CEP', endco.numero AS 'Número' FROM Empresa AS emp
+			JOIN Endereco AS endco ON emp.idEmpresa = endco.fkEmpresa;
     
 -- USUÁRIO + EMPRESA --
 SELECT * FROM Usuario 
 	JOIN Empresa ON fkEmpresa = idEmpresa;
-
--- O MESMO DO ACIMA, PORÉM SEM ID's e FK's --
-SELECT usu.nomeUsuario AS 'Usuario', usu.email AS 'E-mail', usu.senha AS 'Senha', 
-		emp.razaoSocial AS 'Razão Social', emp.nomeFantasia AS 'Nome', emp.cnpj AS 'CNPJ', emp.responsavel AS 'Responsável', emp.ddd AS 'DDD', emp.celular AS 'Telefone Celular' FROM Usuario AS usu
-		JOIN Empresa AS emp ON usu.fkEmpresa = emp.idEmpresa;
+    
+	SELECT usu.nomeUsuario AS 'Usuário', usu.email AS 'E-mail', 
+	emp.nomeFantasia AS 'Empresa', emp.responsavel AS 'Responsável' 
+		FROM Usuario AS usu JOIN Empresa AS emp ON fkEmpresa = idEmpresa;
     
 -- SETOR + EMPRESA -- 
 SELECT * FROM Setor 
-	JOIN Empresa ON fkEmpresa = idEmpresa;
+	JOIN Empresa ON fkEmpresa = idEmpresa order by Setor.nomeSetor;
     
--- O MESMO DO ACIMA, PORÉM SEM ID's e FK's --
-SELECT setor.nomeSetor AS 'Setor', setor.maxSetor AS 'Capacidade máxima',
-		emp.razaoSocial AS 'Razão Social', emp.nomeFantasia AS 'Nome', emp.cnpj AS 'CNPJ', emp.responsavel AS 'Responsável', emp.ddd AS 'DDD', emp.celular AS 'Telefone Celular' FROM Setor AS setor
-		JOIN Empresa AS emp ON setor.fkEmpresa = emp.idEmpresa;
-    
+	-- O MESMO DO ACIMA, PORÉM SEM ID's e FK's --
+	SELECT setor.nomeSetor AS 'Setor', setor.maxSetor AS 'Capacidade máxima',
+			emp.nomeFantasia AS 'Empresa', emp.cnpj AS 'CNPJ', emp.responsavel AS 'Responsável' FROM Setor AS setor
+			JOIN Empresa AS emp ON setor.fkEmpresa = emp.idEmpresa;
+            
+-- EMPRESA E SEUS SETORES
+SELECT * FROM Empresa JOIN Setor ON idEmpresa = fkEmpresa;
+
+	-- O MESMO DO ACIMA, PORÉM SEM ID's e FK's --
+    SELECT emp.nomeFantasia AS 'Empresa', seto.nomeSetor AS 'Setor', seto.maxSetor AS 'Capacidade Máxima'
+		FROM Empresa AS emp JOIN Setor AS seto ON idEmpresa = fkEMpresa
+			WHERE idEmpresa = 1;   -- SETORES DE UMA EMPRESA PELO ID
+
 -- SENSOR + SETOR --
 SELECT * FROM Sensor 
 	JOIN Setor ON fkSetor = idSetor;
         
--- O MESMO DO ACIMA, PORÉM SEM ID's e FK's -- 
-SELECT sensor.tipoSensor AS 'Tipo do Sensor', sensor.dtInclusao AS 'Data de inclusão', sensor.prateleira AS 'Prateleira',
-		setor.nomeSetor AS 'Setor', setor.maxSetor AS 'Capacidade máxima' FROM Sensor AS sensor
-		JOIN Setor AS setor ON sensor.fkSetor = setor.idSetor;        
+	-- O MESMO DO ACIMA, PORÉM SEM ID's e FK's -- 
+	SELECT sensor.tipoSensor AS 'Tipo do Sensor', sensor.dtInclusao AS 'Data de inclusão', sensor.prateleira AS 'Prateleira',
+			setor.nomeSetor AS 'Setor', setor.maxSetor AS 'Capacidade máxima' FROM Sensor AS sensor
+			JOIN Setor AS setor ON sensor.fkSetor = setor.idSetor;        
     
 -- LEITURA + SENSOR --
 SELECT * FROM Leitura 
 	JOIN Sensor ON fkSensor = idSensor;
     
--- O MESMO DO ACIMA, PORÉM SEM ID's e FK's --
-SELECT ler.movimento AS 'Movimento', ler.dtLeitura AS 'Data de leitura',
-		sensor.tipoSensor AS 'Tipo do Sensor', sensor.dtInclusao AS 'Data de inclusão', sensor.prateleira AS 'Prateleira' FROM Leitura AS ler
-		JOIN Sensor AS sensor ON ler.fkSensor = sensor.idSensor;
+	-- O MESMO DO ACIMA, PORÉM SEM ID's e FK's --
+	SELECT ler.movimento AS 'Movimento', ler.dtLeitura AS 'Data de leitura',
+			sensor.tipoSensor AS 'Tipo do Sensor', sensor.dtInclusao AS 'Data de inclusão', sensor.prateleira AS 'Prateleira' FROM Leitura AS ler
+			JOIN Sensor AS sensor ON ler.fkSensor = sensor.idSensor;
     
 -- LEITURA + SENSOR + SETOR --
 SELECT * FROM Leitura 
 	JOIN Sensor ON fkSensor = idSensor
     JOIN Setor ON fkSetor = idSetor;
     
--- O MESMO DO ACIMA, PORÉM SEM ID's e FK's --
-SELECT ler.movimento AS 'Movimento', ler.dtLeitura AS 'Data de leitura',
-		sensor.tipoSensor AS 'Tipo do sensor', sensor.statusSensor AS 'Status do sensor', sensor.dtInclusao AS 'Data de inclusão', sensor.prateleira AS 'Prateleira',
-		setor.nomeSetor AS 'Setor', setor.maxSetor AS 'Capacidade máxima' FROM Leitura AS ler
-			JOIN Sensor AS sensor ON ler.fkSensor = sensor.idSensor
-				JOIN Setor AS setor ON sensor.fkSetor = setor.idSetor;
+	-- O MESMO DO ACIMA, PORÉM SEM ID's e FK's --
+	SELECT ler.movimento AS 'Movimento', ler.dtLeitura AS 'Data de leitura',
+			sensor.tipoSensor AS 'Tipo do sensor', sensor.statusSensor AS 'Status do sensor', sensor.dtInclusao AS 'Data de inclusão', sensor.prateleira AS 'Prateleira',
+			setor.nomeSetor AS 'Setor', setor.maxSetor AS 'Capacidade máxima' FROM Leitura AS ler
+				JOIN Sensor AS sensor ON ler.fkSensor = sensor.idSensor
+					JOIN Setor AS setor ON sensor.fkSetor = setor.idSetor 
+						WHERE sensor.statusSensor = 'Ativo';  -- FILTRO DE TODOS INSTALADOS E FUNCIONANDO
     
 -- EMPRESA E SENSOR
 SELECT * FROM Empresa 
 	JOIN Setor ON idEmpresa = fkEmpresa;
     
--- O MESMO DO ACIMA, PORÉM SEM ID's e FK's --
-SELECT emp.razaoSocial AS 'Razão Social', emp.nomeFantasia AS 'Nome', emp.cnpj AS 'CNPJ', emp.responsavel AS 'Responsável', emp.ddd AS 'DDD', emp.Celular AS 'Celular',
-		setor.nomeSetor AS 'Setor', setor.maxSetor AS 'Capacidade máxima' FROM Empresa AS emp
-		JOIN Setor AS setor ON emp.idEmpresa = setor.fkEmpresa;
+	-- O MESMO DO ACIMA, PORÉM SEM ID's e FK's --
+	SELECT emp.nomeFantasia AS 'Nome', emp.cnpj AS 'CNPJ', emp.fkMatriz AS 'Filial de',
+			setor.nomeSetor AS 'Setor', setor.maxSetor AS 'Capacidade máxima' FROM Empresa AS emp
+			JOIN Setor AS setor ON emp.idEmpresa = setor.fkEmpresa order by emp.nomeFantasia;
         
 -- TODOS OS DADOS DOS SETORES, SENSORES E LEITURA --
 SELECT * FROM Setor
 	JOIN Sensor ON idSetor = fkSetor
 		JOIN Leitura ON idSensor = fkSensor;
         
--- O MESMO DO ACIMA, PORÉM SEM ID's e FK's --
-SELECT setor.nomeSetor AS 'Setor', setor.maxSetor AS 'Capacidade Máxima',
-	sensor.tipoSensor AS 'Tipo do sensor', sensor.statusSensor AS 'Status do Sensor', sensor.dtInclusao AS 'Data da Instalação', sensor.prateleira AS 'Prateleira',
-    ler.movimento AS 'Movimento', ler.dtLeitura as 'Data do Registro'
-    FROM Setor AS setor
-		JOIN Sensor AS sensor ON setor.idSetor = sensor.fkSetor
-			JOIN Leitura AS ler ON sensor.idSensor = ler.fkSensor;
-            
--- SENSORES DE UMA EMPRESA --
-SELECT emp.razaoSocial AS 'Empresa', 
-		setor.nomeSetor AS 'Setor', setor.maxSetor AS 'Capacidade Máxima',
+	-- O MESMO DO ACIMA, PORÉM SEM ID's e FK's --
+	SELECT setor.nomeSetor AS 'Setor', setor.maxSetor AS 'Capacidade Máxima',
+		sensor.tipoSensor AS 'Tipo do sensor', sensor.statusSensor AS 'Status do Sensor', sensor.dtInclusao AS 'Data da Instalação', sensor.prateleira AS 'Prateleira',
 		ler.movimento AS 'Movimento', ler.dtLeitura as 'Data do Registro'
-			FROM Empresa AS emp
-				JOIN Setor AS setor ON emp.idEmpresa = setor.fkEmpresa
-					JOIN Sensor AS sensor ON setor.idSetor = sensor.fkSetor
-						JOIN Leitura AS ler ON sensor.idSensor = ler.fkSensor
-							WHERE idEmpresa = 2; -- ID DA EMPRESA QUE QUERO VER
+		FROM Setor AS setor
+			JOIN Sensor AS sensor ON setor.idSetor = sensor.fkSetor
+				JOIN Leitura AS ler ON sensor.idSensor = ler.fkSensor;
+            
+	-- SENSORES DE UMA EMPRESA --
+	SELECT emp.nomeFantasia AS 'Empresa', 
+			setor.nomeSetor AS 'Setor', setor.maxSetor AS 'Capacidade Máxima',
+			ler.movimento AS 'Movimento', ler.dtLeitura as 'Data do Registro'
+				FROM Empresa AS emp
+					JOIN Setor AS setor ON emp.idEmpresa = setor.fkEmpresa
+						JOIN Sensor AS sensor ON setor.idSetor = sensor.fkSetor
+							JOIN Leitura AS ler ON sensor.idSensor = ler.fkSensor
+								WHERE idEmpresa = 1; -- ID DA EMPRESA QUE QUERO VER
             
 -- O MESMO DO ACIMA, PORÉM SEM ID's e FK's e DATAS DE INSTALAÇÃO --
 SELECT setor.nomeSetor AS 'Setor', setor.maxSetor AS 'Capacidade Máxima',
@@ -225,7 +232,7 @@ SELECT emp.nomeFantasia AS 'Nome da Empresa', emp.responsavel AS 'Responsável',
         setor.nomeSetor AS 'Setor', setor.maxSetor AS 'Capacidade Máxima',
         sensor.tipoSensor AS 'Tipo do sensor', sensor.statusSensor AS 'Status do Sensor', sensor.dtInclusao AS 'Data da Instalação', sensor.prateleira AS 'Prateleira',
         ler.movimento AS 'Movimento', ler.dtLeitura AS 'Data do Registro' FROM empresa AS emp
-			JOIN Endereco AS endco ON  emp.fkEndereco = endco.idEndereco
+			JOIN Endereco AS endco ON  emp.idEmpresa = endco.fkEmpresa
 				JOIN Usuario AS usu ON usu.fkEmpresa = emp.idEmpresa
 					JOIN Setor AS setor ON setor.fkEmpresa = emp.idEmpresa
 						JOIN Sensor AS sensor ON sensor.fkSetor = setor.idSetor
