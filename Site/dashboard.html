@@ -28,41 +28,77 @@
                 <h2>Indicadores</h2>
                 <div class="box_menu">
                     <div class="card_menu">
-                        <span>Setor mais visitado: </span>
-                        <span class="kpiTextSetor">Moda</span>
-                        <p class="kpiTextPessoas">(200 pessoas)</p>
+                        <div class="box_kpi">
+                            <span>Setor mais visitado (Dia): </span>
+                            <span class="kpiTextSetor">Moda</span>
+                        </div>
+                        <div class="box_kpi">
+                            <p class="kpiTextPessoas">Quantidade de pessoas: </p>
+                            <span>(200 pessoas)</span>
+                        </div>
+                        <div class="box_kpi">
+                            <p class="kpiTextPessoas">Data e hora:</p>
+                            <span>12/04/2022 - 18:00</span>
+                        </div>
                     </div>
                     <div class="card_menu">
-                        <span>Setor menos visitado: </span>
-                        <span class="kpiTextSetor">Camas</span>
-                        <p class="kpiTextPessoas">(50 pessoas)</p>
+                        <div class="box_kpi">
+                            <span>Setor menos visitado (Dia): </span>
+                            <span class="kpiTextSetor">Camas</span>
+                        </div>
+                        <div class="box_kpi">
+                            <p class="kpiTextPessoas">Quantidade de pessoas: </p>
+                            <span>(50 pessoas)</span>
+                        </div>
+
+                        <div class="box_kpi">
+                            <p class="kpiTextPessoas">Data e hora:</p>
+                            <span>12/04/2022 - 18:00</span>
+                        </div>
                     </div>
                     <div class="card_menu">
-                        <span>Horario de pico: </span>
-                        <span class="kpiTextSetor">12:00</span>
-                        <p class="kpiTextPessoas">(150 pessoas)</p>
+                        <div class="box_kpi">
+                            <span class="horario_pico">Horario de pico (Dia): </span>
+                            <span class="kpiTextSetor">12:00</span>
+                        </div>
+                        <div class="box_kpi">
+                            <p class="kpiTextPessoas">Quantidade de pessoas: </p>
+                            <span>(150 pessoas)</span>
+                        </div>
+                        <div class="box_kpi">
+                            <p class="kpiTextPessoas">Data:</p>
+                            <span>12/04/2022</span>
+                        </div>
+
                     </div>
                 </div>
             </div>
             <div class="containerAll">
-                <h3>Fluxo de pessoas nos setores</h3>
+                <div class="title_fluxo">
+                    <h3>Fluxo de pessoas nos setores</h3>
+                    <span class="daily">- Diário -</span>
+                </div>
                 <div class="container_cards">
                     <div class="box_metricasCards">
                         <div class="box_metricas">
                             <div class="metricas perigo">
-                                <span>Perigo 15%</span>
+                                <span>Perigo</span>
+                                <span>Pouco fluxo 15%</span>
                             </div>
                             <div class="metricas atencao">
-                                <span>Atenção 75%</span>
+                                <span>Atenção</span>
+                                <span>Pouco fluxo 25%</span>
                             </div>
                             <div class="metricas ideal">
-                                <span>Ideal 50%</span>
+                                <span>Fluxo Ideal 50%</span>
                             </div>
                             <div class="metricas atencao">
-                                <span>Atenção 25%</span>
+                                <span>Atenção</span>
+                                <span>Superlotação 75%</span>
                             </div>
                             <div class="metricas perigo">
-                                <span>Perigo 90%</span>
+                                <span>Perigo</span>
+                                <span>Superlotação 90%</span>
                             </div>
                         </div>
                         <div class="box_card">
@@ -70,54 +106,63 @@
                                 <span class="title_setor">Eletrônicos</span>
                                 <span class="text_setor">Fluxo no setor: 10</span>
                                 <span class="text_setor">Máx: 11</span>
+                                <span class="text_setor_fluxoPercent">Fluxo: 95%</span>
                                 <img src="assets/exclamationRed.svg" alt="">
                             </div>
                             <div class="card">
                                 <span class="title_setor">Vestuário</span>
                                 <span class="text_setor">Fluxo no setor: 8</span>
                                 <span class="text_setor">Máx: 11</span>
+                                <span class="text_setor_fluxoPercent">Fluxo: 80%</span>
                                 <img src="assets/exclamationYellow.svg" alt="">
                             </div>
                             <div class="card">
                                 <span class="title_setor">Brinquedos</span>
                                 <span class="text_setor">Fluxo no setor: 5</span>
                                 <span class="text_setor">Máx: 12</span>
+                                <span class="text_setor_fluxoPercent">Fluxo: 80%</span>
                                 <img src="assets/correct.svg" alt="">
                             </div>
                             <div class="card">
                                 <span class="title_setor">Cosméticos</span>
                                 <span class="text_setor">Fluxo no setor: 14</span>
                                 <span class="text_setor">Máx: 15</span>
+                                <span class="text_setor_fluxoPercent">Fluxo: 95%</span>
                                 <img src="assets/exclamationRed.svg" alt="">
                             </div>
                             <div class="card">
                                 <span class="title_setor">Alimentício</span>
                                 <span class="text_setor">Fluxo no setor: 10</span>
                                 <span class="text_setor">Máx: 15</span>
+                                <span class="text_setor_fluxoPercent">Fluxo: 75%</span>
                                 <img src="assets/exclamationYellow.svg" alt="">
                             </div>
                             <div class="card">
                                 <span class="title_setor">Moda</span>
                                 <span class="text_setor">Fluxo no setor: 5</span>
                                 <span class="text_setor">Máx: 15</span>
+                                <span class="text_setor_fluxoPercent">Fluxo: 48%</span>
                                 <img src="assets/correct.svg" alt="">
                             </div>
                             <div class="card">
                                 <span class="title_setor">Higiene</span>
                                 <span class="text_setor">Fluxo no setor: 14</span>
                                 <span class="text_setor">Máx: 15</span>
+                                <span class="text_setor_fluxoPercent">Fluxo: 97%</span>
                                 <img src="assets/exclamationRed.svg" alt="">
                             </div>
                             <div class="card">
                                 <span class="title_setor">Bebidas</span>
                                 <span class="text_setor">Fluxo no setor: 10</span>
                                 <span class="text_setor">Máx: 15</span>
+                                <span class="text_setor_fluxoPercent">Fluxo: 76%</span>
                                 <img src="assets/exclamationYellow.svg" alt="">
                             </div>
                             <div class="card">
                                 <span class="title_setor">Eletrodomésticos</span>
                                 <span class="text_setor">Fluxo no setor: 5</span>
                                 <span class="text_setor">Máx: 15</span>
+                                <span class="text_setor_fluxoPercent">Fluxo: 45%</span>
                                 <img src="assets/correct.svg" alt="">
                             </div>
                         </div>
@@ -182,7 +227,7 @@
         options: {
             title: {
                 display: true,
-                text: "Fluxo de pessoas diário"
+                text: "Fluxo de pessoas (Tempo real)"
             }
         }
     });
