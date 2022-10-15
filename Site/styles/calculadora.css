@@ -1,0 +1,120 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: rgb(243, 242, 242);
+}
+
+.containerSimulador {
+    width: 80%;
+    height: 500px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.simulador {
+    width: 50%;
+    height: 50%;
+    border: 2px solid #1E6091;  
+    padding: px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 3px 3px 3px #1E6091;
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.simulador h1, .simuladorTela h1 {
+    font-size: 2em;
+    margin: 5px 0;
+}
+
+.inicioSimulador {
+    margin: auto;
+}
+
+.inicioSimulador select, .simuladorTela select {
+    border: 1px solid lightgrey;
+    border-radius: 15px;
+    width: 150px;
+    padding: 15px 20px;
+    font-size: 16px;
+}
+
+.inicioSimulador .btn{
+    width: 80%;
+    height: 43px;
+    background-color: #1E6091;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-top: 7%;
+    transition: all 0.3s;
+}
+
+.inicioSimulador .btn:hover, .simuladorTela .btn:hover {
+    transition: all 0.3s;
+    background-color: #4361EE;
+}
+
+.simuladorTela {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    /* height: 100%; */
+    border: 2px solid #1E6091;  
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px #1E6091;
+    padding: 10px;
+}
+
+.simuladorTela hr {
+    width: 100%;
+}
+
+.simuladorTela .escolhaSetores {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: row;    
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 30px 0px;
+    justify-content: center;
+}
+
+.simuladorTela .btn {
+    width: 46%;
+    height: 43px;
+    background-color: #1E6091;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin: 0 10px;
+}
+
+.simuladorTela .escolhaSetores .setores {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+}

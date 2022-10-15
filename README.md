@@ -28,7 +28,6 @@ O nosso papel é direcionar nossos clientes com base de dados relevantes para o 
 - [Samuel-Oli-P](https://github.com/Samuel-Oli-P)
 - [Fernandeess](https://github.com/Fernandeess)
 - [Matheu5Leone](https://github.com/Matheu5Leone)
-- [VitorSPaiva01](https://github.com/VItorSPaiva01)
 
 
 

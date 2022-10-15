@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador</title>
+    <!-- <link rel="stylesheet" href="styles/login.css"> -->
+    <link rel="stylesheet" href="styles/calculadora.css">
+</head>
+
+<body>
+
+    <div class="containerSimulador">
+        <div class="simulador" id="simuladorTelaInicio">
+            <h1>Simule seu negócio aqui!</h1>
+            <hr>
+            <div class="inicioSimulador">
+                <span>Selecione quantos departamentos sua loja possui: </span><select id="selNumSetor">
+                    <option value="0">Selecione</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                </select>
+                <button onclick="mostrarSetor()" class="btn">Iniciar</button>
+            </div>
+        </div>
+        <div id="simuladorTela" class="simuladorTela" style="display: none;">
+            <h1>Simulação</h1>
+            <hr>
+            <div class="escolhaSetores" id="escolhaSetores"></div>
+            <button onclick="simular()" class="btn">Simule aqui</button>
+            <div class="resultado" id="resultado"></div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function mostrarSetor() {
+        var numSetor = Number(selNumSetor.value);
+        var count = 0;
+
+        if (numSetor == 0) {
+            alert("Selecione uma opção válida!");
+            selNumSetor.style = "border:1px solid red;"
+        } else {
+            simuladorTelaInicio.style.display = "none";
+            simuladorTela.style.display = "flex";
+
+
+            while (count < numSetor) {
+                count++;
+                escolhaSetores.innerHTML += `
+                    <div class="setores">
+                        <select id="selSetores">
+                            <option value="0">Setor ${count}</option>
+                            <option value="1">Eletronicos</option>
+                            <option value="2">Moda</option>
+                            <option value="3">Higiene</option>
+                            <option value="4">Beleza</option>
+                            <option value="5">Alimentos</option>
+                            <option value="6">Bebidas</option>
+                            <option value="7">Brinquedos</option>
+                            <option value="8">Papelaria</option>
+                            <option value="9">Cama</option>
+                            <option value="10">Mesa</option>
+                            <option value="11">Banho</option>
+                            <option value="12">Saúde</option>
+                            <option value="13">Eletrodomésticos</option>
+                            <option value="14">Esporte e Fitness</option>
+                            <option value="15">Games</option>
+                            <option value="16">Instrumentos Musicais</option>
+                            <option value="17">Livraria</option>
+                            <option value="18">Móveis</option>
+                            <option value="19">Materiais de Construção</option>
+                            <option value="20">Outro</option>
+                        </select>
+                    </div>
+            `;
+            }
+        }
+    }
+    
+    function simular() {
+        var lucroSetor = Number(selSetores.value);
+
+        if (lucroSetor == 0) {
+            alert("Selecione uma opção válida");
+            selSetores.style = "border:1px solid red;"
+        } else {
+            resultado.innerHTML += `AAAAAAAAAAAAAAAAAAAAAAAAA`;
+        }
+
+    }
+</script>
