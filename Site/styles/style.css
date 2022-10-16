@@ -79,9 +79,10 @@ ul li .navlink:hover {
   color: white;
   font-size: 17px;
   background-color: #1c43ad;
-  border: none;
+  border: 1px solid #1a759f;
   transition: all 0.3s;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .btn-cadastrar:hover {
@@ -108,6 +109,7 @@ ul li .navlink:hover {
   border: 1px solid #19658c;
   cursor: pointer;
   transition: all 0.3s;
+  text-decoration: none;
 }
 
 .btn-login:hover {
@@ -187,6 +189,7 @@ ul li .navlink:hover {
   width: 100%;
   transform: rotate(180deg);
   position: relative;
+  bottom: 1px;
 }
 
 .wave-2-cad {

@@ -18,6 +18,7 @@ nav {
   position: absolute;
   z-index: 2;
   background-image: url("../assets/headerBack.svg");
+  background-size: cover;
 }
 
 .container-nav {
