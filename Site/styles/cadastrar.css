@@ -222,6 +222,7 @@ nav ul {
   align-items: start;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 
 }
 
@@ -238,3 +239,14 @@ nav ul {
   font-size: 28px;
 
 }
+
+.linkparalogin {
+  padding-top: 20px;
+  font-size: 12px;
+}
+
+.linkparalogin a {
+  color: #168aad;
+}
+
+
