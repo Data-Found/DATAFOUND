@@ -416,28 +416,20 @@ ul li .navlink:hover {
   width: 85%;
   height: 100%;
 }
-
-.dash {
+.dash{
   color: white;
-  background: rgba(51, 159, 163, 1);
-  background: linear-gradient(133deg,
-      rgba(51, 159, 163, 0.8) 0%,
-      rgba(35, 174, 190, 0.8) 27%,
-      rgba(7, 34, 83, 0.8) 100%), url(img/str.jpg) no-repeat;
-  background-size: cover;
-  height: 500px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 100px 0px;
+    background: rgba(51, 159, 163, 1);
+    background: linear-gradient(133deg,
+        rgba(51, 159, 163, 0.8) 0%,
+        rgba(35, 174, 190, 0.8) 27%,
+        rgba(7, 34, 83, 0.8) 100%), url(../assets/img/str.jpg) no-repeat;
+    background-size: cover;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 0px;
 }
-
-/* .imgFundo{
-  
-  z-index: -6;
-  position:fixed;
-  bottom: 10px;
-} */
 
 .dash .container {
   width: 1200px;
@@ -588,6 +580,12 @@ textarea {
 footer {
   display: flex;
   justify-content: center;
+  background: rgba(51, 159, 163, 1);
+    background: linear-gradient(133deg,
+        rgba(51, 159, 163, 1) 0%,
+        rgba(35, 174, 190, 1) 27%,
+        rgba(7, 34, 83, 1) 100%);
+        z-index: 99999;
 }
 
 footer .container {
