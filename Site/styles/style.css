@@ -146,7 +146,7 @@ ul li .navlink:hover {
 }
 
 .heroText h2 {
-  font-size: 100px;
+  font-size: 70px;
   margin: 20px 0px;
 }
 
@@ -374,6 +374,7 @@ ul li .navlink:hover {
   justify-content: center;
   flex-direction: column;
   min-height: 470px;
+  max-width: 300px;
   margin: 30px;
   background-color: white;
   border-radius: 10px;
@@ -381,6 +382,7 @@ ul li .navlink:hover {
   padding: 0px 20px;
   margin: 50px 30px;
   color: #313131;
+  text-align: justify;
 }
 
 
@@ -488,6 +490,10 @@ ul li .navlink:hover {
   background-color: #ffffff;
   border: none;
   cursor: pointer;
+}
+
+.btn-dash a {
+  color: #168aad;
 }
 
 .container-inputs {
