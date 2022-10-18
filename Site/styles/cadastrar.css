@@ -1,3 +1,54 @@
+header {
+  width: 100%;
+  padding: 0px 0px 70px 0px;
+}
+
+nav {
+  width: 100vw;
+  height: 15.5%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  z-index: 2;
+  background-image: url("../assets/headerBack.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.container-nav {
+  width: 75%;
+  height: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5%;
+  /* background-color: black; */
+}
+
+nav ul li a {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.2s;
+}
+
+nav ul li a:hover {
+  color: #0c2233;
+  transition: all 0.2s;
+}
+
+nav ul li {
+  list-style: none;
+}
+
+nav ul {
+  width: 20%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .camposLogin {
   order: 1;
   background-color: rgb(243, 242, 242);
@@ -38,7 +89,7 @@
 }
 
 .areaInputsLogin p {
-  padding-left: 20px;
+  padding: 0px 0px 20px 20px;
 }
 
 .areaInputsLogin h4 {
@@ -70,7 +121,7 @@
 
 /* CADASTRO */
 
-.navcadastro {
+.navCadastro {
   background-color: #0c2233;
   width: 100%;
   display: flex;
@@ -79,7 +130,7 @@
 
 }
 
-.navcadastro .container {
+.navCadastro .container {
   background-color: #0c2233;
   width: 1200px;
   display: flex;
@@ -90,104 +141,112 @@
 
 
 
-.textocadastro {
+.Cadastro {
   background-color: rgb(243, 242, 242);
   color: #0c2233;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   flex-flow: wrap;
+  padding: 100px 0px 0px 0px;
   width: 50%;
-  height: 600px;
+  height: 60vh;
   /* border: solid 1px green; */
 }
 
-.textocadastro2 {
+.textoCadastro2 {
   display: flex;
   justify-content: space-between;
   width: 50%;
-  height: 600px;
+  height: 60vh
+  
+ 
 }
 
-.textocadastro2 img {
+.textoCadastro2 img {
   width: 100%;
   max-width: 100%;
-  max-height: 100%;
+  height: 120%;
   background-color: rgb(243, 242, 242);
-  background-image: url(img/Group\ 21\ 1.png) no-repeat;
   background-size: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: -2;
 
 }
 
-.sessaoum {
+.sessaoUm {
   margin: 0px;
   display: flex;
-  width: 100%;
-
   flex-direction: row;
   /* border: solid 1px green; */
 }
 
-.areainputs {
+.areaInputs {
   color: #0c2233;
-
-  padding-top: 20px;
+  padding: 20px 0px 0px 0px;
   /* border: solid 1px green; */
   height: 360px;
-  margin-left: 60px;
+ 
 }
 
-.areainputs p {
-  padding-left: 20px;
-
-}
-
-.areainputs2 p {
-  padding-left: 20px;
+.areaInputs p {
+  padding: 0px 0px 05px 20px;
 
 }
 
-.areainputs2 {
+.areaInputs2 p {
+  padding: 0px 0px 05px 20px;
+}
+
+.areaInputs2 {
   color: #0c2233;
 
   padding-top: 20px;
   height: 360px;
 }
 
-.inputs {
-  padding: 10px 20px;
+.inputCadastro ,select {
+  padding: 10px 10px;
   margin: 0px 10px 10px 10px;
   border-radius: 15px;
   border: #9E9E9E solid 1px;
+  text-align: left;
 }
 
-.areabotao {
+.areaBotao {
   display: flex;
   width: 100%;
   height: 100px;
-  margin-left: 60px;
-
   align-items: start;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
 }
 
-.cadastrotexto {
+.cadastroTexto {
   display: flex;
   /* border: solid 1px green; */
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin-top: 40px;
-  margin-left: 60px;
-
 }
 
-.cadastrotexto h3 {
+.cadastroTexto h3 {
   color: #0c2233;
   font-size: 28px;
 
 }
+
+.linkparalogin {
+  padding-top: 20px;
+  font-size: 12px;
+}
+
+.linkparalogin a {
+  color: #168aad;
+}
+
+

@@ -79,9 +79,10 @@ ul li .navlink:hover {
   color: white;
   font-size: 17px;
   background-color: #1c43ad;
-  border: none;
+  border: 1px solid #1a759f;
   transition: all 0.3s;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .btn-cadastrar:hover {
@@ -108,6 +109,7 @@ ul li .navlink:hover {
   border: 1px solid #19658c;
   cursor: pointer;
   transition: all 0.3s;
+  text-decoration: none;
 }
 
 .btn-login:hover {
@@ -144,7 +146,7 @@ ul li .navlink:hover {
 }
 
 .heroText h2 {
-  font-size: 100px;
+  font-size: 70px;
   margin: 20px 0px;
 }
 
@@ -187,6 +189,7 @@ ul li .navlink:hover {
   width: 100%;
   transform: rotate(180deg);
   position: relative;
+  bottom: 1px;
 }
 
 .wave-2-cad {
@@ -371,6 +374,7 @@ ul li .navlink:hover {
   justify-content: center;
   flex-direction: column;
   min-height: 470px;
+  max-width: 300px;
   margin: 30px;
   background-color: white;
   border-radius: 10px;
@@ -378,6 +382,7 @@ ul li .navlink:hover {
   padding: 0px 20px;
   margin: 50px 30px;
   color: #313131;
+  text-align: justify;
 }
 
 
@@ -413,28 +418,20 @@ ul li .navlink:hover {
   width: 85%;
   height: 100%;
 }
-
-.dash {
+.dash{
   color: white;
-  background: rgba(51, 159, 163, 1);
-  background: linear-gradient(133deg,
-      rgba(51, 159, 163, 0.8) 0%,
-      rgba(35, 174, 190, 0.8) 27%,
-      rgba(7, 34, 83, 0.8) 100%), url(img/str.jpg) no-repeat;
-  background-size: cover;
-  height: 500px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 100px 0px;
+    background: rgba(51, 159, 163, 1);
+    background: linear-gradient(133deg,
+        rgba(51, 159, 163, 0.8) 0%,
+        rgba(35, 174, 190, 0.8) 27%,
+        rgba(7, 34, 83, 0.8) 100%), url(../assets/img/str.jpg) no-repeat;
+    background-size: cover;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 0px;
 }
-
-/* .imgFundo{
-  
-  z-index: -6;
-  position:fixed;
-  bottom: 10px;
-} */
 
 .dash .container {
   width: 1200px;
@@ -485,6 +482,10 @@ ul li .navlink:hover {
   background-color: #ffffff;
   border: none;
   cursor: pointer;
+}
+
+.btn-dash a {
+  color: #168aad;
 }
 
 .container-inputs {
@@ -585,6 +586,12 @@ textarea {
 footer {
   display: flex;
   justify-content: center;
+  background: rgba(51, 159, 163, 1);
+    background: linear-gradient(133deg,
+        rgba(51, 159, 163, 1) 0%,
+        rgba(35, 174, 190, 1) 27%,
+        rgba(7, 34, 83, 1) 100%);
+        z-index: 99999;
 }
 
 footer .container {

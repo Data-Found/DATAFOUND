@@ -4,97 +4,102 @@
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=had, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/style.css" />
-    <link rel="stylesheet" href="styles/cadastrar.css">
+    <link rel="stylesheet" href="styles/style.css" >
+    <link rel="stylesheet" href="styles/cadastrar.css" >
     <title> Cadastro </title>
 </head>
 
 <body>
-    <div  id="background1">
-        <div class="navCadastro">
-            <div class="container">
-                <a href="index.html"><img class="logo" src="./assets/logo-nav.png" /></a>
-                <ul>
-                    <!-- <li class="lista"><a href="#" class="navlink">Home</a></li> -->
-                    <li class="lista"><a href="simulador.html" class="navlink">Simulador</a></li>
-                    <!-- <li class="lista"><a href="dashboard.html" class="navlink">Dashboard</a></li> -->
-                    <!-- <li class="lista"> <a href="login.html" class="btn-login">Login <img src="assets/enter.png" alt=""
-                                class="enter"> </a> -->
-                    </li>
-                    <li class="lista"><a class="btn-cadastrar" href="login.html">Login</a></li>
-
-                </ul>
-            </div>
-        </div>
-        <div class="sessaoum">
-            <div class="textocadastro">
-                <div class="cadastrotexto"><h3>Cadastro</h3></div>
-                <div class="areainputs">
-                    <p>Nome da empresa</p>
-                    <input class="inputs" type="text">
-                    <p>CNPJ</p>
-                    <input class="inputs" type="text">
-                    <p>Email</p>
-                    <input class="inputs" type="email">
-                    <p>Senha</p>
-                    <input class="inputs" type="password">
-                    <p>Confirme sua senha</p>
-                    <input class="inputs" type="password">
+    
+        <header>
+            <nav>
+                <div class="container-nav">
+                    <a href="index.html"><img class="logo" src="./assets/logo-nav.png" /></a>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="simulador.html">Simulador</a></li>
+                    </ul>
                 </div>
-                <div class="areainputs2">
+            </nav>
+        </header>
+        <div class="sessaoUm">
+            <div class="Cadastro">
+                <div class="cadastroTexto">
+                    <h3>Cadastro</h3>
+                </div>
+                <div class="areaInputs">
+                    <p>Nome da empresa</p>
+                    <input onclick="defaultColor()" class="inputCadastro" type="text" id="inpNomeEmpresa" maxlength="75">
+                    <p>CNPJ</p>
+                    <input onclick="defaultColor()" class="inputCadastro" type="text" id="inpCNPJ" maxlength="14">
+                    <p>Email</p>
+                    <input onclick="defaultColor()" class="inputCadastro" type="email" id="inpEmail" maxlength="256">
+                    <p>Senha</p>
+                    <input onclick="defaultColor()" class="inputCadastro" type="password" id="inpSenha" maxlength="25">
+                    <p>Confirme sua senha</p>
+                    <input onclick="defaultColor()" class="inputCadastro" type="password" id="inpSenhaConfirm" maxlength="25" >
+                </div>
+                <div class="areaInputs2">
                     <p>Número</p>
-                    <input class="inputs" type="text">
-                    <p>Razão social</p>
-                    <input class="inputs" type="text">
-                    <p>Responsável</p>
-                    <input class="inputs" type="text">
-                    <p>Nome de Usuário</p>
-                    <input class="inputs" type="text">
+                    <input onclick="defaultColor()" class="inputCadastro" type="text" id="inpNumero" maxlength="7">
                     <p>CEP</p>
-                    <input class="inputs" type="text">
+                    <input onclick="defaultColor()" class="inputCadastro" type="text" id="inpCep" maxlength="8">
+                    <p>Responsável</p>
+                    <input onclick="defaultColor()" class="inputCadastro" type="text" id="inpResponsavel" maxlength="100">
+                    <p>Nome de Usuário</p>
+                    <input onclick="defaultColor()" class="inputCadastro" type="text" id="inpNomeUsuario" maxlength="75">
+                    <p>Tipo</p>
+                <select onclick="defaultColor()" class="inputCadastro" name="tipo" id="inpTipo">
+                        <option value="0">Selecione</option>
+                        <option value="1">Filial</option>
+                        <option value="2">Matriz</option>
+                    </select>
                     <p></p>
                 </div>
-                <div class="areabotao"><button class="btn-cadastrar"> Cadastrar </button></div>
+                <div class="areaBotao"><button class="btn-cadastrar" onclick="validaInputLogin()"> Cadastrar </button>
+                    <div class="linkparalogin"><p>Já possui uma conta? <a href="login.html">Entre</a> </p></div></div>
+                
             </div>
-            <div class="textocadastro2"><img src="img/Group 21 1.png"></div>
+            <div class="textoCadastro2">
+                <img src="assets/img/Group 21 1.png">
+            </div>
         </div>
 
-        <div >
-        <footer>
-            <div class="container">
-                <div class="img-footer">
-                    <img src="./assets/icon-main.png" alt="">
-                </div>
-                <div class="texto-footer">
-                    <div class="copy-footer">
-                        <p>©Copyright 2022- Todos os direitos reservados <b> Data Found</b></p>
+        <div>
+            <footer>
+                <div class="container">
+                    <div class="img-footer">
+                        <img src="./assets/icon-main.png" alt="">
                     </div>
+                    <div class="texto-footer">
+                        <div class="copy-footer">
+                            <p>©Copyright 2022- Todos os direitos reservados <b> Data Found</b></p>
+                        </div>
 
-                </div>
-                <div class="sobre-footer">
-                    <div class="sobre1-footer">
-                        <b>Sobre a Data Found</b>
-                        <br>
-                        <p>Inicio</p>
-                        <p>FAQ</p>
-                        <p>Sobre nós</p>
                     </div>
-                    <div class="sobre2-footer">
-                        <b>Produto</b>
-
-                        <p>Ajuda</p>
-                        <p>Como funciona</p>
-                        <p>Pagamento</p>
+                    <div class="sobre-footer">
+                        <div class="sobre1-footer">
+                            <b>Sobre a Data Found</b>
+                            <br>
+                            <p>Inicio</p>
+                            <p>FAQ</p>
+                            <p>Sobre nós</p>
+                        </div>
+                        <div class="sobre2-footer">
+                            <b>Produto</b>
+                            <p>Ajuda</p>
+                            <p>Como funciona</p>
+                            <p>Pagamento</p>
+                        </div>
                     </div>
-
                 </div>
-            </div>
-        </footer>
+            </footer>
         </div>
 </body>
 
 </html>
+<script src="scripts/validacaoCadastro.js"></script>
