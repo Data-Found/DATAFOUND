@@ -47,6 +47,7 @@ const serial = async (
         throw new Error('Ambiente não configurado. Verifique o arquivo "main.js" e tente novamente.');
     }
 
+
     const portas = await serialport.SerialPort.list();
     const portaArduino = portas.find((porta) => porta.vendorId == 2341 && porta.productId == 43);
     if (!portaArduino) {
@@ -72,7 +73,7 @@ const serial = async (
         const chave2 = Math.random(0,1).toFixed();
         const chave3 = Math.random(0,1).toFixed();
         const chave4 = Math.random(0,1).toFixed();
-		
+
         // valoresDht11Umidade.push(dht11Umidade);
         // valoresDht11Temperatura.push(dht11Temperatura);
         // valoresLuminosidade.push(luminosidade);
