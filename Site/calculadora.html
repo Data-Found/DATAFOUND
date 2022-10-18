@@ -67,49 +67,49 @@
             simuladorTelaInicio.style.display = "none";
             simuladorTela.style.display = "flex";
 
-
             while (count < numSetor) {
                 count++;
                 escolhaSetores.innerHTML += `
                     <div class="setores">
-                        <select id="selSetores">
+                        <select id="selSetores${count}">
                             <option value="0">Setor ${count}</option>
-                            <option value="1">Eletronicos</option>
-                            <option value="2">Moda</option>
-                            <option value="3">Higiene</option>
-                            <option value="4">Beleza</option>
-                            <option value="5">Alimentos</option>
-                            <option value="6">Bebidas</option>
-                            <option value="7">Brinquedos</option>
-                            <option value="8">Papelaria</option>
-                            <option value="9">Cama</option>
-                            <option value="10">Mesa</option>
-                            <option value="11">Banho</option>
-                            <option value="12">Saúde</option>
-                            <option value="13">Eletrodomésticos</option>
-                            <option value="14">Esporte e Fitness</option>
-                            <option value="15">Games</option>
-                            <option value="16">Instrumentos Musicais</option>
-                            <option value="17">Livraria</option>
-                            <option value="18">Móveis</option>
-                            <option value="19">Materiais de Construção</option>
-                            <option value="20">Outro</option>
+                            <option value="0.07">Eletronicos</option>
+                            <option value="0.063">Moda</option>
+                            <option value="0.20">Higiene</option>
+                            <option value="0.15">Beleza</option>
+                            <option value="0.27">Alimentos</option>
+                            <option value="0.17">Bebidas</option>
+                            <option value="0.35">Brinquedos</option>
+                            <option value="0.20">Papelaria</option>
+                            <option value="0.25">Cama</option>
+                            <option value="0.25">Mesa</option>
+                            <option value="0.25">Banho</option>
+                            <option value="0.20">Saúde</option>
+                            <option value="0.11">Eletrodomésticos</option>
+                            <option value="0.25">Esporte e Fitness</option>
+                            <option value="0.15">Games</option>
+                            <option value="0.17">Instrumentos Musicais</option>
+                            <option value="0.10">Livraria</option>
+                            <option value="0.15">Móveis</option>
+                            <option value="0.15">Materiais de Construção</option>
                         </select>
                     </div>
-            `;
+                    `;
             }
         }
     }
-    
+
     function simular() {
-        var lucroSetor = Number(selSetores.value);
+        var numSetor = Number(selNumSetor.value);
 
-        if (lucroSetor == 0) {
-            alert("Selecione uma opção válida");
-            selSetores.style = "border:1px solid red;"
-        } else {
-            resultado.innerHTML += `AAAAAAAAAAAAAAAAAAAAAAAAA`;
+        if (numSetor > 1) {
+            var setores = document.querySelectorAll('select');
+
+            for (i = 0; i < setores.length; i++) {
+                if (setores[i] != setores[0]) {
+                    console.log(setores[i].value);
+                } 
+            }
         }
-
     }
 </script>
