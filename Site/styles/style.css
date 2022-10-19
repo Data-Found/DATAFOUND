@@ -117,8 +117,6 @@ ul li .navlink:hover {
   color: white;
 }
 
-
-
 .main {
   display: flex;
   justify-content: center;
@@ -169,13 +167,16 @@ ul li .navlink:hover {
   border-radius: 7px;
   color: white;
   font-size: 17px;
-  background-color: none;
+  background-color: rgb(38, 57, 77, 0.5);
   transition: all 0.3s;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .simule-aqui:hover {
-  background-color: #13354f;
+  transition: all 0.3s;
+  background-color: transparent;
+  border: 1px solid white;
 }
 
 .wave-1 {
@@ -476,21 +477,22 @@ text-align: left;
   height: 55px;
   width: 135px;
   border-radius: 7px;
-  color: rgb(0, 0, 0);
   font-size: 17px;
-  background-color: #ffffff;
+  background-color: rgb(38, 57, 77, 0.5);
   border: none;
   cursor: pointer;
-  
 }
 
 .btn-dash a {
-  color: #168aad;
+  color: white;
   text-decoration: none;
-<<<<<<< HEAD
-=======
-  font-weight: bold;
->>>>>>> 28e8ff747faeb1609868ffb53a24a19dbb3ee70f
+  transition: all 0.3s;
+}
+
+.btn-dash:hover {
+  transition: all 0.3s;
+  background-color: transparent;
+  border: 1px solid white;
 }
 
 .container-inputs {
@@ -583,6 +585,8 @@ textarea {
   border-radius: 8px;
   background-color: #19719A;
   color: white;
+  font-size: 17px;
+  font-weight: bold;
   border: 1px solid #19719A;
 }
 
