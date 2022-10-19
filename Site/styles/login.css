@@ -19,7 +19,7 @@ header {
 
 nav {
   width: 100vw;
-  height: 15.5%;
+  height: 16.5%;
   display: flex;
   justify-content: center;
   position: absolute;
@@ -61,6 +61,7 @@ nav ul {
   width: 20%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .img_user {
@@ -190,7 +191,7 @@ nav ul {
 
 .btn_entrar:hover {
   transition: all 0.3s;
-  background-color: #4361EE;
+  background-color: black;
 }
 
 .imgLogin {
