@@ -188,7 +188,8 @@ nav ul {
   padding: 20px 0px 0px 0px;
   /* border: solid 1px green; */
   height: 360px;
- 
+  display: flex;
+  flex-direction: column; 
 }
 
 .areaInputs p {
@@ -205,11 +206,13 @@ nav ul {
 
   padding-top: 20px;
   height: 360px;
+  display: flex;
+    flex-direction: column;
 }
 
 .inputCadastro ,select {
   padding: 10px 10px;
-  margin: 0px 10px 10px 10px;
+  margin: 15px 10px;
   border-radius: 15px;
   border: #9E9E9E solid 1px;
   text-align: left;
