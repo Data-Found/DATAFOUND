@@ -256,6 +256,7 @@ ul li .navlink:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: justify;
 }
 
 .nossa-equipe {
@@ -288,8 +289,6 @@ ul li .navlink:hover {
   align-items: center;
 }
 
-
-
 .card {
   min-width: 270px;
   display: flex;
@@ -311,8 +310,6 @@ ul li .navlink:hover {
   border-radius: 100%;
   margin: 40px;
 }
-
-
 
 .descricao-card {
   display: flex;
@@ -385,7 +382,6 @@ ul li .navlink:hover {
   text-align: justify;
 }
 
-
 .img-mvv {
   display: flex;
   align-items: center;
@@ -417,7 +413,9 @@ ul li .navlink:hover {
 .texto-mvv p {
   width: 85%;
   height: 100%;
+  text-align: left;
 }
+
 .dash{
   color: white;
     background: rgba(51, 159, 163, 1);
@@ -486,6 +484,7 @@ ul li .navlink:hover {
 
 .btn-dash a {
   color: #168aad;
+  text-decoration: none;
 }
 
 .container-inputs {
@@ -586,11 +585,11 @@ textarea {
 footer {
   display: flex;
   justify-content: center;
-  background: rgba(51, 159, 163, 1);
-    background: linear-gradient(133deg,
+  /* background: rgba(51, 159, 163, 1);
+   background: linear-gradient(133deg,
         rgba(51, 159, 163, 1) 0%,
         rgba(35, 174, 190, 1) 27%,
-        rgba(7, 34, 83, 1) 100%);
+        rgba(7, 34, 83, 1) 100%); */
         z-index: 99999;
 }
 

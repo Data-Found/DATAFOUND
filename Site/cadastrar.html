@@ -12,16 +12,14 @@
     <link rel="stylesheet" href="styles/cadastrar.css" >
     <title> Cadastro </title>
 </head>
-
 <body>
-    
         <header>
             <nav>
                 <div class="container-nav">
-                    <a href="index.html"><img class="logo" src="./assets/logo-nav.png" /></a>
+                    <a href="index.html"><img class="logo" src="./assets/logo-nav.png" alt="Logo DataFound"/></a>
                     <ul>
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="simulador.html">Simulador</a></li>
+                        <li><a href="calculadora.html">Simulador</a></li>
                     </ul>
                 </div>
             </nav>
@@ -53,7 +51,7 @@
                     <p>Nome de Usuário</p>
                     <input onclick="defaultColor()" class="inputCadastro" type="text" id="inpNomeUsuario" maxlength="75">
                     <p>Tipo</p>
-                <select onclick="defaultColor()" class="inputCadastro" name="tipo" id="inpTipo">
+                    <select onclick="defaultColor()" class="inputCadastro" name="tipo" id="inpTipo">
                         <option value="0">Selecione</option>
                         <option value="1">Filial</option>
                         <option value="2">Matriz</option>
@@ -62,24 +60,21 @@
                 </div>
                 <div class="areaBotao"><button class="btn-cadastrar" onclick="validaInputLogin()"> Cadastrar </button>
                     <div class="linkparalogin"><p>Já possui uma conta? <a href="login.html">Entre</a> </p></div></div>
-                
-            </div>
+                </div>
             <div class="textoCadastro2">
-                <img src="assets/img/Group 21 1.png">
+                <img src="assets/img/Group 21 1.png" alt="Imagem cadastro">
             </div>
         </div>
-
         <div>
             <footer>
                 <div class="container">
                     <div class="img-footer">
-                        <img src="./assets/icon-main.png" alt="">
+                        <img src="./assets/icon-main.png" alt="Logo alternativa DataFound">
                     </div>
                     <div class="texto-footer">
                         <div class="copy-footer">
                             <p>©Copyright 2022- Todos os direitos reservados <b> Data Found</b></p>
                         </div>
-
                     </div>
                     <div class="sobre-footer">
                         <div class="sobre1-footer">
@@ -100,6 +95,5 @@
             </footer>
         </div>
 </body>
-
 </html>
 <script src="scripts/validacaoCadastro.js"></script>
