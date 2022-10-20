@@ -61,22 +61,23 @@
             <div class="escolhaSetores" id="escolhaSetores"></div>
             <button onclick="simular()" class="btn">Simule aqui</button>
             <div class="resultado" id="resultado"></div>
+            <div class="resultado2" id="resultado2"></div>
         </div>
-        
+
     </div>
-    
+
 </body>
 
 </html>
 
 <script>
-var somaTotalValues = 0;
+    var somaTotalValues = 0;
 
     function mostrarSetor() {
-        var numSetor = Number(selNumSetor.value);     
+        var numSetor = Number(selNumSetor.value);
         var count = 0;
-        var listaValores = [];
-        var teste = document.getElementsByClassName('setores')
+        /*         var listaValores = [];
+                var teste = document.getElementsByClassName('setores') */
 
         if (numSetor == 0) {
             alert("Selecione uma opção válida!");
@@ -92,24 +93,24 @@ var somaTotalValues = 0;
                         <select id="selSetores${count}">
                             <option value="0">Setor ${count}</option>
                             <option value="0.07">Eletronicos</option>
-                            <option value="0.063">Moda</option>
-                            <option value="0.20">Higiene</option>
-                            <option value="0.15">Beleza</option>
-                            <option value="0.27">Alimentos</option>
-                            <option value="0.17">Bebidas</option>
-                            <option value="0.35">Brinquedos</option>
-                            <option value="0.20">Papelaria</option>
-                            <option value="0.25">Cama</option>
-                            <option value="0.25">Mesa</option>
-                            <option value="0.25">Banho</option>
-                            <option value="0.20">Saúde</option>
-                            <option value="0.11">Eletrodomésticos</option>
-                            <option value="0.25">Esporte e Fitness</option>
-                            <option value="0.15">Games</option>
-                            <option value="0.17">Instrumentos Musicais</option>
-                            <option value="0.10">Livraria</option>
-                            <option value="0.15">Móveis</option>
-                            <option value="0.15">Materiais de Construção</option>
+                            <option value="0.07">Moda</option>
+                            <option value="0.18">Higiene</option>
+                            <option value="0.13">Beleza</option>
+                            <option value="0.23">Alimentos</option>
+                            <option value="0.13">Bebidas</option>
+                            <option value="0.26">Brinquedos</option>
+                            <option value="0.18">Papelaria</option>
+                            <option value="0.22">Cama</option>
+                            <option value="0.22">Mesa</option>
+                            <option value="0.22">Banho</option>
+                            <option value="0.18">Saúde</option>
+                            <option value="0.09">Eletrodomésticos</option>
+                            <option value="0.22">Esporte e Fitness</option>
+                            <option value="0.13">Games</option>
+                            <option value="0.15">Instrumentos Musicais</option>
+                            <option value="0.09">Livraria</option>
+                            <option value="0.13">Móveis</option>
+                            <option value="0.13">Materiais de Construção</option>
                         </select>
                     </div>
                     `;
@@ -119,35 +120,54 @@ var somaTotalValues = 0;
 
     function simular() {
         var numSetor = Number(selNumSetor.value);
-
+        calculoDosSetores()
         if (numSetor > 1) {
             var setores = document.querySelectorAll('select');
 
             for (i = 0; i < setores.length; i++) {
-                if (setores[i] != setores[0]) {
+                if (setores[i] != 0) {
                     console.log(setores[i].value);
-                } 
+                    console.log(somaTotalValues);
+                }
             }
+
         }
     }
 
+    function calculoDosSetores() {
 
-    // populando o array de elementos html "selectSetores"
-var htmlSelectsSetores = [ob1, ob2, ob3, ob4];
-var id = "idSelSetores";
+        // populando o array de elementos html "selectSetores"
+        var htmlSelectsSetores = [/* ob1, ob2, ob3, ob4 */];
+        var id = "selSetores";
 
-for (let indice = 1 ; indice < 20; indice++) {
-    var elementoHtml = document.getElementById(id+indice);
-    if(elementoHtml != null){
-        htmlSelectsSetores.push(elementoHtml);
+        for (let indice = 1; indice < 20; indice++) {
+            var elementoHtml = document.getElementById(id + indice);
+            if (elementoHtml != null) {
+                htmlSelectsSetores.push(elementoHtml);
+            }
+        }
+
+        // pegando os values e somando todos.
+
+        for (let indice = 0; indice < htmlSelectsSetores.length; indice++) {
+            var elemento = Number(htmlSelectsSetores[indice].value);
+            somaTotalValues += elemento;
+        }
+        resultado.innerHTML =  ` `
+        resultado2.innerHTML = ` `
+        var qtdCusto = Number(InpQtdCusto.value);
+        var calculoCusto = (1 + somaTotalValues) * qtdCusto;
+        var lucroLiquido = calculoCusto - qtdCusto;
+        var porcentagemMargemLucro = somaTotalValues * 100;
+        resultado.innerHTML += `O <b>lucro bruto</b> médio para este modelo de loja é R$${calculoCusto.toFixed(2)} <br>
+            O seu lucro líquido é <b>R$${lucroLiquido.toFixed(2)}</b> <br>
+            Sua Margem de lucro é de <b>${porcentagemMargemLucro.toFixed(2)}%</b> <br> `
+        resultado.innerHTML += ` Com o serviço Datafound, a estimativa de lucro é projetada em um acréscimo de 14% <br>
+            chegando em ${(porcentagemMargemLucro + 14).toFixed(2)}% de margem e R$${(lucroLiquido * 1.14).toFixed(2)} de lucro liquido `
+
+        resultado2.innerHTML += ` A Datafound faz pesquisas de mercado em setores especificos periódicamente, 
+        analisando a margem de lucro média/esperada em cada um destes setores.`
+        somaTotalValues = 0;
+
     }
-}
-
-// pegando os values e somando todos.
-
-for(let indice = 0; indice < htmlSelectsSetores.length; indice++) {
-    var elemento = htmlSelectsSetores[indice];
-    somaTotalValues += elemento.value;
-}
-
 </script>
