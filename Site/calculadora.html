@@ -76,12 +76,17 @@
     function mostrarSetor() {
         var numSetor = Number(selNumSetor.value);
         var count = 0;
+        var qtdCustos = Number(InpQtdCusto.value);
         /*         var listaValores = [];
                 var teste = document.getElementsByClassName('setores') */
 
         if (numSetor == 0) {
             alert("Selecione uma opção válida!");
             selNumSetor.style = "border:1px solid red;"
+        }else if(qtdCustos <= 0){
+            alert("o valor não pode ser vazio");
+
+
         } else {
             simuladorTelaInicio.style.display = "none";
             simuladorTela.style.display = "flex";
@@ -120,6 +125,10 @@
 
     function simular() {
         var numSetor = Number(selNumSetor.value);
+        if(numSetor == 0){
+            alert("Selecione mais de um setor");
+            return
+        }
         calculoDosSetores()
         if (numSetor > 1) {
             var setores = document.querySelectorAll('select');
@@ -128,6 +137,8 @@
                 if (setores[i] != 0) {
                     console.log(setores[i].value);
                     console.log(somaTotalValues);
+                }else{
+                    alert("Selecione os setores")
                 }
             }
 
@@ -137,11 +148,11 @@
     function calculoDosSetores() {
 
         // populando o array de elementos html "selectSetores"
-        var htmlSelectsSetores = [/* ob1, ob2, ob3, ob4 */];
-        var id = "selSetores";
+        var htmlSelectsSetores = [/* ob1, ob2, ob3, ob4 setando uma array */];
+        var id = "selSetores"; // endereçando o valor do id
 
         for (let indice = 1; indice < 20; indice++) {
-            var elementoHtml = document.getElementById(id + indice);
+            var elementoHtml = document.getElementById(id + indice); 
             if (elementoHtml != null) {
                 htmlSelectsSetores.push(elementoHtml);
             }
@@ -150,7 +161,12 @@
         // pegando os values e somando todos.
 
         for (let indice = 0; indice < htmlSelectsSetores.length; indice++) {
+            
             var elemento = Number(htmlSelectsSetores[indice].value);
+            if (elemento == "0") {
+                alert("selecione todos os setores")
+                return
+            }
             somaTotalValues += elemento;
         }
         resultado.innerHTML =  ` `
