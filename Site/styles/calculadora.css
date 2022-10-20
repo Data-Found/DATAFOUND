@@ -6,7 +6,8 @@
 }
 
 body {
-    background-color: rgb(243, 242, 242);
+    /* overflow-y: hidden; */
+    background-color: white;
 }
 
 .containerSimulador {
@@ -22,7 +23,7 @@ body {
     width: 50%;
     height: 50%;
     border: 2px solid #1E6091;  
-    padding: px;
+    padding: 10px;
     border-radius: 10px;
     background-color: white;
     box-shadow: 2px 1px 10px 1px rgb(187, 187, 187);
@@ -30,6 +31,7 @@ body {
     align-self: center;
     flex-direction: column;
     text-align: center;
+    margin-top: 25%;
 }
 
 .simulador h1, .simuladorTela h1 {
@@ -60,7 +62,7 @@ body {
     border: none;
     border-radius: 15px;
     cursor: pointer;
-    margin-top: 7%;
+    margin-top: 10%;
     transition: all 0.3s;
 }
 
@@ -80,6 +82,7 @@ body {
     border-radius: 10px;
     box-shadow: 2px 1px 10px 1px rgb(187, 187, 187);
     padding: 10px;
+    margin-top: 25%;
 }
 
 .simuladorTela hr {
@@ -118,3 +121,47 @@ body {
     flex-wrap: wrap;
 
 }
+
+footer {
+    display: flex;
+    justify-content: center;
+    /* background: rgba(51, 159, 163, 1);
+     background: linear-gradient(133deg,
+          rgba(51, 159, 163, 1) 0%,
+          rgba(35, 174, 190, 1) 27%,
+          rgba(7, 34, 83, 1) 100%); */
+          z-index: 99999;
+
+  }
+  
+  footer .container {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px 0px;
+    width: 100%;
+    color: white;
+  }
+  
+  .img-footer img {
+    width: 150px;
+  }
+  
+  .texto-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .sobre-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 10px;
+  
+  }
+  
+  .sobre1-footer,
+  .sobre2-footer {
+    margin: 0px 20px;
+  }

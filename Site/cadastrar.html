@@ -12,16 +12,14 @@
     <link rel="stylesheet" href="styles/cadastrar.css" >
     <title> Cadastro </title>
 </head>
-
 <body>
-    
         <header>
             <nav>
                 <div class="container-nav">
-                    <a href="index.html"><img class="logo" src="./assets/logo-nav.png" /></a>
+                    <a href="index.html"><img class="logo" src="./assets/logo-nav.png" alt="Logo DataFound"/></a>
                     <ul>
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="simulador.html">Simulador</a></li>
+                        <li><a href="calculadora.html">Simulador</a></li>
                     </ul>
                 </div>
             </nav>
@@ -32,74 +30,68 @@
                     <h3>Cadastro</h3>
                 </div>
                 <div class="areaInputs">
-                    <p>Nome da empresa</p>
-                    <input onclick="defaultColor()" class="inputCadastro" type="text" id="inpNomeEmpresa" maxlength="75">
-                    <p>CNPJ</p>
-                    <input onclick="defaultColor()" class="inputCadastro" type="text" id="inpCNPJ" maxlength="14">
-                    <p>Email</p>
-                    <input onclick="defaultColor()" class="inputCadastro" type="email" id="inpEmail" maxlength="256">
-                    <p>Senha</p>
-                    <input onclick="defaultColor()" class="inputCadastro" type="password" id="inpSenha" maxlength="25">
-                    <p>Confirme sua senha</p>
-                    <input onclick="defaultColor()" class="inputCadastro" type="password" id="inpSenhaConfirm" maxlength="25" >
+                    
+                    <input onclick="defaultColor()" class="inputCadastro" type="text" id="inpNomeEmpresa" maxlength="75" placeholder="Nome da empresa">
+                    
+                    <input onclick="defaultColor()" class="inputCadastro" type="text" id="inpCNPJ" maxlength="14" placeholder="CNPJ">
+                    
+                    <input onclick="defaultColor()" class="inputCadastro" type="email" id="inpEmail" maxlength="256" placeholder="Email">
+                    
+                    <input onclick="defaultColor()" class="inputCadastro" type="password" id="inpSenha" maxlength="25" placeholder="Senha">
+                    
+                    <input onclick="defaultColor()" class="inputCadastro" type="password" id="inpSenhaConfirm" maxlength="25"  placeholder="Confirme sua senha">
                 </div>
                 <div class="areaInputs2">
-                    <p>Número</p>
-                    <input onclick="defaultColor()" class="inputCadastro" type="text" id="inpNumero" maxlength="7">
-                    <p>CEP</p>
-                    <input onclick="defaultColor()" class="inputCadastro" type="text" id="inpCep" maxlength="8">
-                    <p>Responsável</p>
-                    <input onclick="defaultColor()" class="inputCadastro" type="text" id="inpResponsavel" maxlength="100">
-                    <p>Nome de Usuário</p>
-                    <input onclick="defaultColor()" class="inputCadastro" type="text" id="inpNomeUsuario" maxlength="75">
-                    <p>Tipo</p>
-                <select onclick="defaultColor()" class="inputCadastro" name="tipo" id="inpTipo">
-                        <option value="0">Selecione</option>
+                    
+                    <input onclick="defaultColor()" class="inputCadastro" type="text" id="inpNumero" maxlength="7" placeholder="Número">
+                    
+                    <input onclick="defaultColor()" class="inputCadastro" type="text" id="inpCep" maxlength="8" placeholder="CEP">
+                    
+                    <input onclick="defaultColor()" class="inputCadastro" type="text" id="inpResponsavel" maxlength="100" placeholder="Responsável">
+                    
+                    <input onclick="defaultColor()" class="inputCadastro" type="text" id="inpNomeUsuario" maxlength="75" placeholder="Nome de Usuário">
+                    
+                    <select onclick="defaultColor()" class="inputCadastroSelect" name="tipo" id="inpTipo">
+                        <option value="0">Selecione um tipo</option>
                         <option value="1">Filial</option>
                         <option value="2">Matriz</option>
                     </select>
-                    <p></p>
                 </div>
                 <div class="areaBotao"><button class="btn-cadastrar" onclick="validaInputLogin()"> Cadastrar </button>
-                    <div class="linkparalogin"><p>Já possui uma conta? <a href="login.html">Entre</a> </p></div></div>
-                
-            </div>
-            <div class="textoCadastro2">
-                <img src="assets/img/Group 21 1.png">
+                    <div class="linkparalogin"><h4>Já possui uma conta? <a href="login.html">Entre</a> </h4></div></div>
+                </div>
+            <div class="box_imgCadastro">
+                <img class="imgCadastro" src="assets/img/imgCadastro.png" alt="Imagem cadastro">
             </div>
         </div>
-
-        <div>
-            <footer>
-                <div class="container">
-                    <div class="img-footer">
-                        <img src="./assets/icon-main.png" alt="">
+        <footer class="foot">
+            <div class="container_footer">
+                <div class="box_footer">
+                    <div class="box_img">
+                        <img src="assets/data_white_icon.svg" alt="Logo alternativa DataFound">
                     </div>
-                    <div class="texto-footer">
-                        <div class="copy-footer">
-                            <p>©Copyright 2022- Todos os direitos reservados <b> Data Found</b></p>
+                    <span class="copyright">© Copyright 2022 - Todos os direitos reservados Data Found</span>
+                    <div class="container_links">
+                        <div class="box_links_footer">
+                            <span>Sobre a data found</span>
+                            <ul>
+                                <p>Início</p>
+                                <p>FAQ</p>
+                                <p>Sobre nós</p>
+                            </ul>
                         </div>
-
-                    </div>
-                    <div class="sobre-footer">
-                        <div class="sobre1-footer">
-                            <b>Sobre a Data Found</b>
-                            <br>
-                            <p>Inicio</p>
-                            <p>FAQ</p>
-                            <p>Sobre nós</p>
-                        </div>
-                        <div class="sobre2-footer">
-                            <b>Produto</b>
-                            <p>Ajuda</p>
-                            <p>Como funciona</p>
-                            <p>Pagamento</p>
+                        <div class="box_links_footer">
+                            <span>Produto</span>
+                            <ul>
+                                <p>Ajuda</p>
+                                <p>Como funciona</p>
+                                <p>Formas de pagamento</p>
+                            </ul>
                         </div>
                     </div>
                 </div>
-            </footer>
-        </div>
+            </div>
+        </footer>
 </body>
-
 </html>
 <script src="scripts/validacaoCadastro.js"></script>

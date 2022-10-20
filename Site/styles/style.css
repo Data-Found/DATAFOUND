@@ -65,7 +65,7 @@ ul .lista .navlink {
 }
 
 ul li .navlink:hover {
-  color: #168aad;
+  color: black;
 }
 
 
@@ -113,11 +113,9 @@ ul li .navlink:hover {
 }
 
 .btn-login:hover {
-  background-color: rgb(38, 107, 255);
+  background-color: black;
   color: white;
 }
-
-
 
 .main {
   display: flex;
@@ -169,13 +167,16 @@ ul li .navlink:hover {
   border-radius: 7px;
   color: white;
   font-size: 17px;
-  background-color: none;
+  background-color: rgb(38, 57, 77, 0.5);
   transition: all 0.3s;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .simule-aqui:hover {
-  background-color: #13354f;
+  transition: all 0.3s;
+  background-color: transparent;
+  border: 1px solid white;
 }
 
 .wave-1 {
@@ -256,6 +257,7 @@ ul li .navlink:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: justify;
 }
 
 .nossa-equipe {
@@ -288,8 +290,6 @@ ul li .navlink:hover {
   align-items: center;
 }
 
-
-
 .card {
   min-width: 270px;
   display: flex;
@@ -311,8 +311,6 @@ ul li .navlink:hover {
   border-radius: 100%;
   margin: 40px;
 }
-
-
 
 .descricao-card {
   display: flex;
@@ -385,7 +383,6 @@ ul li .navlink:hover {
   text-align: justify;
 }
 
-
 .img-mvv {
   display: flex;
   align-items: center;
@@ -412,12 +409,15 @@ ul li .navlink:hover {
   align-items: center;
   justify-content: center;
   font-size: 16px;
+text-align: left;
 }
 
 .texto-mvv p {
   width: 85%;
   height: 100%;
+  text-align: left;
 }
+
 .dash{
   color: white;
     background: rgba(51, 159, 163, 1);
@@ -477,15 +477,22 @@ ul li .navlink:hover {
   height: 55px;
   width: 135px;
   border-radius: 7px;
-  color: rgb(0, 0, 0);
   font-size: 17px;
-  background-color: #ffffff;
+  background-color: rgb(38, 57, 77, 0.5);
   border: none;
   cursor: pointer;
 }
 
 .btn-dash a {
-  color: #168aad;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.btn-dash:hover {
+  transition: all 0.3s;
+  background-color: transparent;
+  border: 1px solid white;
 }
 
 .container-inputs {
@@ -515,16 +522,16 @@ ul li .navlink:hover {
   display: flex;
   flex-direction: column;
   border-radius: 15px;
-  justify-content: center;
-  padding: 50px 10px;
-  box-shadow: rgb(38 57 77) 0px 20px 30px -10px;
+  justify-content: space-evenly;
+  
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   color: #313131;
   align-items: center;
 }
 
 .inputs {
   display: flex;
-  align-items: flex-end;
+  align-items:center;
   flex-direction: column;
   padding: 20px;
 }
@@ -533,6 +540,10 @@ ul li .navlink:hover {
   width: 400px;
   padding: 10px;
   margin: 10px;
+  display: flex;
+} 
+textarea {
+ width: 300px;
   display: flex;
 }
 
@@ -554,13 +565,13 @@ textarea {
 .input-text-form {
   display: flex;
   flex-direction: column;
-  padding: 0px 0px 10px 0px;
-  margin: 0px 0px 10px 0px;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0px;
 }
 
 .fale-conosco .container label {
   padding: 20px;
-  margin: 10px;
   font-size: 22px;
 }
 
@@ -574,6 +585,8 @@ textarea {
   border-radius: 8px;
   background-color: #19719A;
   color: white;
+  font-size: 17px;
+  font-weight: bold;
   border: 1px solid #19719A;
 }
 
@@ -586,11 +599,11 @@ textarea {
 footer {
   display: flex;
   justify-content: center;
-  background: rgba(51, 159, 163, 1);
-    background: linear-gradient(133deg,
+  /* background: rgba(51, 159, 163, 1);
+   background: linear-gradient(133deg,
         rgba(51, 159, 163, 1) 0%,
         rgba(35, 174, 190, 1) 27%,
-        rgba(7, 34, 83, 1) 100%);
+        rgba(7, 34, 83, 1) 100%); */
         z-index: 99999;
 }
 

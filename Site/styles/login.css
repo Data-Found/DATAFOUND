@@ -9,6 +9,7 @@
 
 body {
   overflow-x: hidden;
+  overflow-y: hidden;
   background-color: rgb(243, 242, 242);
 }
 
@@ -18,7 +19,7 @@ header {
 
 nav {
   width: 100vw;
-  height: 15.5%;
+  height: 16.5%;
   display: flex;
   justify-content: center;
   position: absolute;
@@ -60,6 +61,7 @@ nav ul {
   width: 20%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .img_user {
@@ -189,7 +191,7 @@ nav ul {
 
 .btn_entrar:hover {
   transition: all 0.3s;
-  background-color: #4361EE;
+  background-color: black;
 }
 
 .imgLogin {
@@ -200,13 +202,14 @@ nav ul {
 
 .foot {
   width: 100vw;
-  height: 20.7%;
+  height: 20vh;
   position: absolute;
   z-index: 2;
   background-image: url("../assets/imgFooter.svg");
   background-size: cover;
   background-repeat: no-repeat;
-  bottom: 0px;
+  top: 80%;
+  /* margin-top: 0.1%; */
 }
 
 .container_footer {
