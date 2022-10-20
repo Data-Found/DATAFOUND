@@ -21,12 +21,14 @@
     <header>
         <nav>
             <div class="container-nav">
-                <a href="index.html"><img class="logo" src="../assets/logo-nav.png" alt="Logo DataFound" /></a>
+                <a href="../index.html"><img class="logo" src="../assets/logo-nav.png" alt="Logo DataFound" /></a>
                 <ul>
-                    <li><span>Olá ADM</span></li>
                     <li><a href="/dashboard.html">Dash Geral</a></li>
+                    <div class="box_user">
+                        <li><span>Olá ADM</span></li>
+                        <img class="img_user" src="../assets/user.svg" />
+                    </div>
                     <li><a href="/index.html">Sair</a></li>
-                    <img class="img_user" src="../assets/user.svg" />
                 </ul>
             </div>
         </nav>
@@ -51,17 +53,17 @@
     </div>
 
     <script>
-        /* -- chave */
-        var contextoChave3 = document.getElementById('chartLine').getContext('2d');
-        contextoChave3.canvas.width = 1000;
-        contextoChave3.canvas.height = 300;
-        var chave3 = new Chart(
-            contextoChave3,
+        /* -- chave --*/
+        var contextoChave = document.getElementById('chartLine').getContext('2d');
+        contextoChave.canvas.width = 1000;
+        contextoChave.canvas.height = 300;
+        var chave = new Chart(
+            contextoChave,
             {
                 type: 'line',
                 data: {
                     datasets: [{
-                        label: 'Gráfico de fluxo em tempo real',
+                        label: 'Fluxo em tempo real',
                         type: 'line',
                         borderColor: ['#ffd902'],
                         backgroundColor: ['#ffe135']
@@ -92,12 +94,12 @@
             }
         );
 
-        /* -- chave */
-        var contextoChave4 = document.getElementById('chartBar').getContext('2d');
-        contextoChave4.canvas.width = 1000;
-        contextoChave4.canvas.height = 300;
-        var chave4 = new Chart(
-            contextoChave4,
+        /* -- chave 2 -- */
+        var contextoChave2 = document.getElementById('chartBar').getContext('2d');
+        contextoChave2.canvas.width = 1000;
+        contextoChave2.canvas.height = 300;
+        var chave2 = new Chart(
+            contextoChave2,
             {
                 type: 'line',
                 data: {
@@ -136,10 +138,10 @@
         var paginacao = {};
         var tempo = {};
 
-        function obterDados3(grafico) {
-            var endpoint = 'chave3';
+        function obterDados(grafico) {
+            var endpoint = 'chave';
             var http = new XMLHttpRequest();
-            http.open('GET', 'http://localhost:3300/sensores/chave3', false);
+            http.open('GET', 'http://localhost:3300/sensores/chave', false);
             http.send(null);
             var valores = JSON.parse(http.responseText);
             if (paginacao[endpoint] == null) {
@@ -165,10 +167,10 @@
             })
         }
 
-        function obterDados4(grafico) {
-            var endpoint = 'chave4';
+        function obterDados2(grafico) {
+            var endpoint = 'chave2';
             var http = new XMLHttpRequest();
-            http.open('GET', 'http://localhost:3300/sensores/chave4', false);
+            http.open('GET', 'http://localhost:3300/sensores/chave2', false);
             http.send(null);
             var valores = JSON.parse(http.responseText);
             if (paginacao[endpoint] == null) {
@@ -195,8 +197,8 @@
         }
 
         setInterval(() => {
-            obterDados3(chave3);
-            obterDados4(chave4);
+            obterDados(chave);
+            obterDados2(chave2);
         }, 1000);
 
     </script>
