@@ -8,6 +8,7 @@
 
 body {
   overflow-x: hidden;
+  
 }
 
 header {
@@ -130,7 +131,8 @@ nav ul {
   margin: auto;
   display: flex;
   justify-content: space-between;
-  padding: 0 0 200px 0;
+  height: 110vh;
+  
 }
 
 .containerAll {
