@@ -59,9 +59,13 @@
 </html>
 
 <script>
+var somaTotalValues = 0;
+
     function mostrarSetor() {
         var numSetor = Number(selNumSetor.value);     
         var count = 0;
+        var listaValores = [];
+        var teste = document.getElementsByClassName('setores')
 
         if (numSetor == 0) {
             alert("Selecione uma opção válida!");
@@ -69,7 +73,6 @@
         } else {
             simuladorTelaInicio.style.display = "none";
             simuladorTela.style.display = "flex";
-
 
             while (count < numSetor) {
                 count++;
@@ -98,22 +101,42 @@
                             <option value="0.15">Materiais de Construção</option>
                         </select>
                     </div>
-            `;
+                    `;
             }
         }
     }
-    
+
     function simular() {
-        var lucroSetor = Number(selSetores(count).value);       
-        var LucroTotal = 0;
+        var numSetor = Number(selNumSetor.value);
 
-        if (lucroSetor == 0) {
-            alert("Selecione uma opção válida");
-            
-            selSetores.style = "border:1px solid red;"
-        } else {
-            resultado.innerHTML += `AAAAAAAAAAAAAAAAAAAAAAAAA`;
+        if (numSetor > 1) {
+            var setores = document.querySelectorAll('select');
+
+            for (i = 0; i < setores.length; i++) {
+                if (setores[i] != setores[0]) {
+                    console.log(setores[i].value);
+                } 
+            }
         }
-
     }
+
+
+    // populando o array de elementos html "selectSetores"
+var htmlSelectsSetores = [ob1, ob2, ob3, ob4];
+var id = "idSelSetores";
+
+for (let indice = 1 ; indice < 20; indice++) {
+    var elementoHtml = document.getElementById(id+indice);
+    if(elementoHtml != null){
+        htmlSelectsSetores.push(elementoHtml);
+    }
+}
+
+// pegando os values e somando todos.
+
+for(let indice = 0; indice < htmlSelectsSetores.length; indice++) {
+    var elemento = htmlSelectsSetores[indice];
+    somaTotalValues += elemento.value;
+}
+
 </script>

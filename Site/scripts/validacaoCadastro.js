@@ -5,7 +5,6 @@ function defaultColor() {
     inpSenha.style = " border: 1px solid #9E9E9E ;"
     inpSenhaConfirm.style = " border: 1px solid #9E9E9E ;"
     inpNumero.style = " border: 1px solid #9E9E9E ;"
-    inpSenha.style = " border:1px solid #9E9E9E ;"
     inpTipo.style = "border: 1px solid #9E9E9E ;"
 }
 function validaInputLogin() {
@@ -45,19 +44,20 @@ function validaInputLogin() {
         inpSenhaConfirm.style = "border:1px solid red;";
         inpSenha.style = "border:1px solid red;";
         alert("As senhas não coincidem")
+    }else if(numero == ""){
+        inpNumero.style = "border:1px solid red;";
+        alert("Digite o Numero");
     } else if (cep.includes(".") == true || cep.includes("-") == true) {
         inpCep.style = "border:1px solid red;";
         alert("Digite o cep sem incluir ponto ou simbolos especiais");
     } else if (resp == "") {
         inpResponsavel.style = "border:1px solid red;";
         alert("Digite um responsavel");
-    }else if (username == ""){
+    } else if (username == "") {
         inpNomeUsuario.style = "border:1px solid red;";
         alert("Digite um nome de usuario!");
-    } else if (username > 75) {
-        inpNomeUsario.style = "border:1px solid red;";
-        alert("Nome muito grande");
     } else if (tipo == "0") {
+        inpTipo.style = "border:1px solid red;";
         alert("Selecione uma das outras opções");
     } else {
         alert("Usuario Criado");
