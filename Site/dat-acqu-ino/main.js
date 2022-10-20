@@ -78,6 +78,8 @@ const serial = async (
         // valoresDht11Temperatura.push(dht11Temperatura);
         // valoresLuminosidade.push(luminosidade);
         // valoresLm35Temperatura.push(lm35Temperatura);
+        
+        // === Push adiciona o valor na última posição do array (Vetor) ===
         valoresChave.push(chave);
         valoresChave2.push(chave2);
         valoresChave3.push(chave3);

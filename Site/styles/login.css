@@ -39,7 +39,7 @@ nav {
   /* background-color: black; */
 }
 
-nav ul li a {
+nav ul li a{
   text-decoration: none;
   font-size: 18px;
   font-weight: 600;
@@ -151,10 +151,6 @@ nav ul {
   margin: 20px 0px 10px 0px;
   border-radius: 15px;
   border: #9E9E9E solid 1px;
-}
-
-.inputs:focus {
-  border: 2px solid #1E6091;  
 }
 
 .areaInputsLogin h4 {

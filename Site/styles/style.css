@@ -588,6 +588,7 @@ textarea {
   font-size: 17px;
   font-weight: bold;
   border: 1px solid #19719A;
+  cursor: pointer;
 }
 
 .fale-conosco .container .btn-form button:hover {
