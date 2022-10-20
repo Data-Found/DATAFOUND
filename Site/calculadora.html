@@ -28,6 +28,7 @@
             <h1>Simule seu negócio aqui!</h1>
             <hr>
             <div class="inicioSimulador">
+                <span>Qual o custo mensal da sua loja? <input id="InpQtdCusto"></span>
                 <span>Selecione quantos departamentos sua loja possui: </span><select id="selNumSetor">
                     <option value="0">Selecione</option>
                     <option value="1">1</option>
@@ -61,43 +62,21 @@
             <button onclick="simular()" class="btn">Simule aqui</button>
             <div class="resultado" id="resultado"></div>
         </div>
+        
     </div>
-    <footer class="foot">
-        <div class="container_footer">
-            <div class="box_footer">
-                <div class="box_img">
-                    <img src="assets/data_white_icon.svg" alt="Logo alternativa DataFound">
-                </div>
-                <span class="copyright">© Copyright 2022 - Todos os direitos reservados Data Found</span>
-                <div class="container_links">
-                    <div class="box_links_footer">
-                        <span>Sobre a data found</span>
-                        <ul>
-                            <p>Início</p>
-                            <p>FAQ</p>
-                            <p>Sobre nós</p>
-                        </ul>
-                    </div>
-                    <div class="box_links_footer">
-                        <span>Produto</span>
-                        <ul>
-                            <p>Ajuda</p>
-                            <p>Como funciona</p>
-                            <p>Formas de pagamento</p>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    
 </body>
 
 </html>
 
 <script>
+var somaTotalValues = 0;
+
     function mostrarSetor() {
-        var numSetor = Number(selNumSetor.value);
+        var numSetor = Number(selNumSetor.value);     
         var count = 0;
+        var listaValores = [];
+        var teste = document.getElementsByClassName('setores')
 
         if (numSetor == 0) {
             alert("Selecione uma opção válida!");
@@ -151,4 +130,24 @@
             }
         }
     }
+
+
+    // populando o array de elementos html "selectSetores"
+var htmlSelectsSetores = [ob1, ob2, ob3, ob4];
+var id = "idSelSetores";
+
+for (let indice = 1 ; indice < 20; indice++) {
+    var elementoHtml = document.getElementById(id+indice);
+    if(elementoHtml != null){
+        htmlSelectsSetores.push(elementoHtml);
+    }
+}
+
+// pegando os values e somando todos.
+
+for(let indice = 0; indice < htmlSelectsSetores.length; indice++) {
+    var elemento = htmlSelectsSetores[indice];
+    somaTotalValues += elemento.value;
+}
+
 </script>
