@@ -12,7 +12,7 @@ body {
 
 .containerSimulador {
     width: 80%;
-    height: 500px;
+    height: 60vh;
     margin: auto;
     display: flex;
     align-items: center;
@@ -41,6 +41,9 @@ body {
 
 .inicioSimulador {
     margin: auto;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
 }
 
 .inicioSimulador select, .simuladorTela select {
@@ -62,7 +65,6 @@ body {
     border: none;
     border-radius: 15px;
     cursor: pointer;
-    margin-top: 10%;
     transition: all 0.3s;
 }
 
