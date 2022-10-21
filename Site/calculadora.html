@@ -83,8 +83,10 @@
         if (numSetor == 0) {
             alert("Selecione uma opção válida!");
             selNumSetor.style = "border:1px solid red;"
+        }else if(isNaN(qtdCustos)){
+            alert("O valor deve ser um número");
         }else if(qtdCustos <= 0){
-            alert("o valor não pode ser vazio");
+            alert("O valor não pode ser vazio");
 
 
         } else {
@@ -164,7 +166,7 @@
             
             var elemento = Number(htmlSelectsSetores[indice].value);
             if (elemento == "0") {
-                alert("selecione todos os setores")
+                alert("Selecione todos os setores")
                 return
             }
             somaTotalValues += elemento;
@@ -181,8 +183,8 @@
         resultado.innerHTML += ` Com o serviço Datafound, a estimativa de lucro é projetada em um acréscimo de 14% <br>
             chegando em ${(porcentagemMargemLucro * 1.14).toFixed(2)}% de margem e R$${(lucroLiquido * 1.14).toFixed(2)} de lucro liquido `
 
-        resultado2.innerHTML += ` A Datafound faz pesquisas de mercado em setores especificos periódicamente, 
-        analisando a margem de lucro média/esperada em cada um destes setores.`
+        resultado2.innerHTML += `A Datafound faz pesquisas de mercado em setores especificos periódicamente, 
+        analisando a margem de lucro média/esperada em cada um destes setores. <br>`
         somaTotalValues = 0;
 
     }
