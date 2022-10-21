@@ -56,6 +56,15 @@ CREATE TABLE Leitura(
     PRIMARY KEY(idLeitura, fkSensor)
 );
 
+CREATE TABLE formContato(
+	idFormContato int primary key AUTO_INCREMENT NOT NULL,
+	nomeForm VARCHAR(75),
+	emailForm VARCHAR(256),
+	CONSTRAINT chkEmailusuarioForm CHECK (emailForm LIKE '%@%'),
+	assunto VARCHAR(75),
+	mensagem VARCHAR(500)
+);
+
 -- INSERTS  --
 
 INSERT INTO Empresa (nomeFantasia, cnpj, responsavel, fkMatriz) VALUES
@@ -102,6 +111,11 @@ INSERT INTO Sensor (tipoSensor, statusSensor, dtInclusao, prateleira, fkSetor) V
 INSERT INTO Leitura (movimento, dtLeitura, fkSensor) VALUES
 (1,'2022-10-01',1),(1,'2022-10-02',1),(1,'2022-10-03',1),(1,'2022-10-04',1),(1,'2022-10-05',1),(0,'2022-10-02',2),(1,'2022-10-03',3),
 (0,'2022-10-01',4),(1,'2022-10-02',5),(0,'2022-10-03',6),(0,'2022-10-04',7),(1,'2022-10-05',8),(1,'2022-10-06',9),(1,'2022-10-07',10);
+
+INSERT INTO formContato (nomeForm,emailForm,assunto,mensagem) VALUES
+("Matheus Fernandes Rodrigues","Fernandes@gmail.com","Duvida","Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab aperiam eligendi quis magnam dignissimos deserunt eveniet ex quo cumque recusandae!"),
+("Matheus Leone","Leone@gmail.com","Como Funciona","Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore odit, aliquid a dolor aliquam quae perspiciatis eius, ut dolorum suscipit praesentium rem, excepturi magnam optio omnis. Rem praesentium enim repellendus quaerat, earum ipsum sint error nulla alias, ad fuga accusantium facilis recusandae ducimus architecto. Assumenda veniam voluptatem natus temporibus ipsa?"),
+("Rebeca Lia","lia@gmail.com","Quero Fechar Negocio","Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure dolorem maxime iste ea quos officiis deserunt consequuntur inventore delectus perspiciatis, blanditiis doloremque, aut autem laboriosam vitae dolorum. Facilis consectetur necessitatibus ipsa perspiciatis voluptas ratione dignissimos iure vero harum earum. Minima commodi eveniet suscipit veniam id distinctio, eum odit voluptatibus porro sapiente eligendi earum maiores laboriosam corrupti quisquam incidunt dignissimos atque.");
 
 -- SELECTS --
 SHOW TABLES;
@@ -237,7 +251,7 @@ SELECT emp.nomeFantasia AS 'Nome da Empresa', emp.responsavel AS 'Responsável',
 					JOIN Setor AS setor ON setor.fkEmpresa = emp.idEmpresa
 						JOIN Sensor AS sensor ON sensor.fkSetor = setor.idSetor
 							JOIN Leitura AS ler ON ler.fkSensor = sensor.idSensor;
-
+SELECT * FROM formContato;
 /*
 -- EMPRESA COM MAIOR FLUXO DE PESSOAS EM DETERMINADO SETOR --
 SELECT emp.nomeFantasia AS 'Nome da Empresa', 
