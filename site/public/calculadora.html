@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="styles/calculadora.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="container-nav">
+                <a href="index.html"><img class="logo" src="./assets/logo-nav.png" alt="Logo DataFound" /></a>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="calculadora.html">Simulador</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="containerSimulador">
+            <div class="simulador" id="simuladorTelaInicio">
+                <h1>Simule seu negócio aqui!</h1>
+                <hr>
+                <div class="inicioSimulador">
+                    <span>Qual o custo mensal da sua loja? R$  <input id="InpQtdCusto"></span>
+                    <span>Selecione quantos departamentos sua loja possui: <select id="selNumSetor">
+                            <option value="0">Selecione</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                        </select>
+                    </span>
+                    <button onclick="mostrarSetor()" class="btn">Iniciar</button>
+                </div>
+            </div>
+            <div id="simuladorTela" class="simuladorTela" style="display: none;">
+                <h1>Simulação</h1>
+                <hr>
+                <div class="escolhaSetores" id="escolhaSetores"></div>
+                <button onclick="simular()" class="btn">Simule aqui</button>
+                <div class="resultado" id="resultado"></div>
+                <div class="resultado2" id="resultado2"></div>
+            </div>
+        
+        </div>
+    </main>
+
+</body>
+
+</html>
+
+<script>
+    var somaTotalValues = 0;
+
+    function mostrarSetor() {
+        var numSetor = Number(selNumSetor.value);
+        var count = 0;
+        var qtdCustos = Number(InpQtdCusto.value);
+        /*         var listaValores = [];
+                var teste = document.getElementsByClassName('setores') */
+
+        if (numSetor == 0) {
+            alert("Selecione uma opção válida!");
+            selNumSetor.style = "border:1px solid red;"
+        }else if(isNaN(qtdCustos)){
+            alert("O valor deve ser um número");
+        }else if(qtdCustos <= 0){
+            alert("O valor não pode ser vazio");
+
+
+        } else {
+            simuladorTelaInicio.style.display = "none";
+            simuladorTela.style.display = "flex";
+
+            while (count < numSetor) {
+                count++;
+                escolhaSetores.innerHTML += `
+                    <div class="setores">
+                        <select id="selSetores${count}">
+                            <option value="0">Setor ${count}</option>
+                            <option value="0.07">Eletronicos</option>
+                            <option value="0.07">Moda</option>
+                            <option value="0.18">Higiene</option>
+                            <option value="0.13">Beleza</option>
+                            <option value="0.23">Alimentos</option>
+                            <option value="0.13">Bebidas</option>
+                            <option value="0.26">Brinquedos</option>
+                            <option value="0.18">Papelaria</option>
+                            <option value="0.22">Cama</option>
+                            <option value="0.22">Mesa</option>
+                            <option value="0.22">Banho</option>
+                            <option value="0.18">Saúde</option>
+                            <option value="0.09">Eletrodomésticos</option>
+                            <option value="0.22">Esporte e Fitness</option>
+                            <option value="0.13">Games</option>
+                            <option value="0.15">Instrumentos Musicais</option>
+                            <option value="0.09">Livraria</option>
+                            <option value="0.13">Móveis</option>
+                            <option value="0.13">Materiais de Construção</option>
+                        </select>
+                    </div>
+                    `;
+            }
+        }
+    }
+
+    function simular() {
+        var numSetor = Number(selNumSetor.value);
+        if(numSetor == 0){
+            alert("Selecione mais de um setor");
+            return
+        }
+        calculoDosSetores()
+        if (numSetor > 1) {
+            var setores = document.querySelectorAll('select');
+
+            for (i = 0; i < setores.length; i++) {
+                if (setores[i] != 0) {
+                    console.log(setores[i].value);
+                    console.log(somaTotalValues);
+                }else{
+                    alert("Selecione os setores")
+                }
+            }
+
+        }
+    }
+
+    function calculoDosSetores() {
+
+        // populando o array de elementos html "selectSetores"
+        var htmlSelectsSetores = [/* ob1, ob2, ob3, ob4 setando uma array */];
+        var id = "selSetores"; // endereçando o valor do id
+
+        for (let indice = 1; indice < 20; indice++) {
+            var elementoHtml = document.getElementById(id + indice); 
+            if (elementoHtml != null) {
+                htmlSelectsSetores.push(elementoHtml);
+            }
+        }
+
+        // pegando os values e somando todos.
+
+        for (let indice = 0; indice < htmlSelectsSetores.length; indice++) {
+            
+            var elemento = Number(htmlSelectsSetores[indice].value);
+            if (elemento == "0") {
+                alert("Selecione todos os setores")
+                return
+            }
+            somaTotalValues += elemento;
+        }
+        resultado.innerHTML =  ` `
+        resultado2.innerHTML = ` `
+        var qtdCusto = Number(InpQtdCusto.value);
+        var calculoCusto = (1 + somaTotalValues) * qtdCusto;
+        var lucroLiquido = calculoCusto - qtdCusto;
+        var porcentagemMargemLucro = somaTotalValues * 100; 
+        // <p></p> <b></b>
+        resultado.innerHTML += `<p>O <b>lucro bruto</b> médio para este modelo de loja é <b>R$${calculoCusto.toFixed(2)}</b></p>
+            <p>O seu lucro líquido é <b>R$${lucroLiquido.toFixed(2)}</b></p>
+            <p>Sua Margem de lucro é de <b>${porcentagemMargemLucro.toFixed(2)}%</b></p> `
+        resultado.innerHTML += `<p>Com o serviço Datafound, a estimativa de lucro é projetada em um acréscimo de <b>14%</b> </p> 
+        <p>chegando em <b>${(porcentagemMargemLucro * 1.14).toFixed(2)}%</b> de margem e <b>R$${(lucroLiquido * 1.14).toFixed(2)}</b> de lucro liquido</p>  `
+
+        resultado2.innerHTML += `<p>A Datafound faz pesquisas de mercado em setores especificos periódicamente, 
+        analisando a margem de lucro média/esperada em cada um destes setores. <p>`
+        somaTotalValues = 0;
+
+    }
+</script>

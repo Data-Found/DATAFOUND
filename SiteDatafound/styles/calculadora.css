@@ -1,0 +1,210 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    /* overflow-y: hidden; */
+    background-color: white;
+}
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.containerSimulador {
+    width: 80%;
+    height: 100vh;
+    
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+span{
+    margin: 20px 0px;
+}
+.simulador {
+    min-width: 600px;
+    width: 50%;
+    height: fit-content;
+    border: 2px solid #1E6091;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 2px 1px 10px 1px rgb(187, 187, 187);
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex-direction: column;
+    text-align: center;
+    
+}
+
+.simulador h1,
+.simuladorTela h1 {
+    font-size: 2em;
+    margin: 5px 0;
+}
+
+.inicioSimulador {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content:end;
+    align-items: center;
+}
+.inicioSimulador input {
+border: 1px solid lightgrey;
+    border-radius: 15px;
+    width: 150px;
+    padding: 15px 20px;
+    font-size: 16px;
+    
+}
+.inicioSimulador select,
+.simuladorTela select {
+    border: 1px solid lightgrey;
+    border-radius: 15px;
+    width: 150px;
+    padding: 15px 20px;
+    font-size: 16px;
+}
+
+.inicioSimulador .btn {
+
+    padding: 15px 30px;
+    margin: 20px 0px;
+    background-color: #1E6091;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.inicioSimulador .btn:hover,
+.simuladorTela .btn:hover {
+    transition: all 0.3s;
+    background-color: #4361EE;
+}
+
+.simuladorTela {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    max-width: 100%;
+    width:fit-content;
+    min-width: 500px;
+    /* height: 100%; */
+    border: 2px solid #1E6091;
+    border-radius: 10px;
+    box-shadow: 2px 1px 10px 1px rgb(187, 187, 187);
+    padding: 10px;
+   
+}
+
+.simuladorTela hr {
+    width: 100%;
+}
+
+.simuladorTela .escolhaSetores {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 30px 0px;
+    justify-content: center;
+}
+
+.simuladorTela .btn {
+    padding: 15px 30px;
+        margin: 20px 0px;
+        background-color: #1E6091;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 18px;
+        color: white;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s;
+}
+
+.simuladorTela .escolhaSetores .setores {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+}
+.simuladorTela p{
+    
+font-size: 20px;
+margin: 20px 5px;
+
+}
+b{
+    color: rgb(0, 220, 0);
+}
+.resultado{
+    width: 1000px;
+    
+}
+.resultado2 {
+    border-top: 1px solid black;
+    width: 1000px;
+   
+    
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    /* background: rgba(51, 159, 163, 1);
+     background: linear-gradient(133deg,
+          rgba(51, 159, 163, 1) 0%,
+          rgba(35, 174, 190, 1) 27%,
+          rgba(7, 34, 83, 1) 100%); */
+    z-index: 99999;
+
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px 0px;
+    width: 100%;
+    color: white;
+}
+
+.img-footer img {
+    width: 150px;
+}
+
+.texto-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sobre-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 10px;
+
+}
+
+.sobre1-footer,
+.sobre2-footer {
+    margin: 0px 20px;
+}

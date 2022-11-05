@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/login.css">
+    <title> Login </title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="container-nav">
+                <a href="index.html"><img class="logo" src="./assets/logo-nav.png" alt="Logo DataFound" /></a>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="calculadora.html">Simulador</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="sessaoUm">
+        <div class="camposLogin">
+            <div class="box_login">
+                <div class="loginTexto">
+                    <h3>Login</h3>
+                </div>
+                <div class="areaInputsLogin">
+                    <!-- <p>Email</p> -->
+                    <input id="email_input" class="inputs" type="email" placeholder="Email" onclick="defaultColor()">
+                    <!-- <p>Senha</p> -->
+                    <input id="senha_input" class="inputs" type="password" placeholder="Senha" onclick="defaultColor()">
+                    <h4>Não possui uma conta? <a href="cadastrar.html">Cadastre-se</a> </h4>
+                </div>
+
+                <div class="areaBotaoLogin"><button class="btn_entrar" onclick="entrar()"> Entrar </button>
+                </div>
+            </div>
+        </div>
+        <div><img class="imgLogin" src="assets/img/bglogin2.png" alt="Imagem login"></div>
+    </div>
+    <footer class="foot">
+        <div class="container_footer">
+            <div class="box_footer">
+                <div class="box_img">
+                    <img src="assets/data_white_icon.svg" alt="Logo alternativa DataFound">
+                </div>
+                <span class="copyright">© Copyright 2022 - Todos os direitos reservados Data Found</span>
+                <div class="container_links">
+                    <div class="box_links_footer">
+                        <span>Sobre a data found</span>
+                        <ul>
+                            <p>Início</p>
+                            <p>FAQ</p>
+                            <p>Sobre nós</p>
+                        </ul>
+                    </div>
+                    <div class="box_links_footer">
+                        <span>Produto</span>
+                        <ul>
+                            <p>Ajuda</p>
+                            <p>Como funciona</p>
+                            <p>Formas de pagamento</p>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
+<script>
+
+
+    function entrar() {
+
+
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+
+                    setTimeout(function () {
+                        window.location = "./dashboard/cards.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+</script>
+<script src="scripts/validacaoAcesso.js"></script>
