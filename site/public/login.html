@@ -30,10 +30,10 @@
                 </div>
                 <div class="areaInputsLogin">
                     <!-- <p>Email</p> -->
-                    <input id="email_input" class="inputs" type="email" placeholder="Email" onclick="defaultColor()">
+                    <input id="email_input" class="inputs" type="email" placeholder="Email"">
                     <!-- <p>Senha</p> -->
-                    <input id="senha_input" class="inputs" type="password" placeholder="Senha" onclick="defaultColor()">
-                    <h4>Não possui uma conta? <a href="cadastrar.html">Cadastre-se</a> </h4>
+                    <input id="senha_input" class="inputs" type="password" placeholder="Senha" ">
+                    <h4>Não possui uma conta? <a href=" cadastrar.html">Cadastre-se</a> </h4>
                 </div>
 
                 <div class="areaBotaoLogin"><button class="btn_entrar" onclick="entrar()"> Entrar </button>
@@ -42,6 +42,7 @@
         </div>
         <div><img class="imgLogin" src="assets/img/bglogin2.png" alt="Imagem login"></div>
     </div>
+
     <footer class="foot">
         <div class="container_footer">
             <div class="box_footer">
@@ -91,7 +92,7 @@
             return false;
         }
         else {
-            setInterval(sumirMensagem, 5000)
+            // setInterval(sumirMensagem, 5000)
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -121,7 +122,7 @@
                     sessionStorage.ID_USUARIO = json.id;
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location = "dashboard/dashboard.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
@@ -132,7 +133,7 @@
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                    finalizarAguardar(texto);
+                    // finalizarAguardar(texto);
                 });
             }
 
@@ -143,9 +144,8 @@
         return false;
     }
 
-    function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
+    // function sumirMensagem() {
+    //     cardErro.style.display = "none"
+    // }
 
 </script>
-<script src="scripts/validacaoAcesso.js"></script>
