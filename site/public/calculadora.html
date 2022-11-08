@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulador</title>
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/login.css">
-    <link rel="stylesheet" href="styles/calculadora.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/calculadora.css">
 </head>
 
 <body>
@@ -29,7 +29,7 @@
                 <h1>Simule seu negócio aqui!</h1>
                 <hr>
                 <div class="inicioSimulador">
-                    <span>Qual o custo mensal da sua loja? R$  <input id="InpQtdCusto"></span>
+                    <span>Qual o custo mensal da sua loja? R$ <input id="InpQtdCusto"></span>
                     <span>Selecione quantos departamentos sua loja possui: <select id="selNumSetor">
                             <option value="0">Selecione</option>
                             <option value="1">1</option>
@@ -65,7 +65,7 @@
                 <div class="resultado" id="resultado"></div>
                 <div class="resultado2" id="resultado2"></div>
             </div>
-        
+
         </div>
     </main>
 
@@ -86,9 +86,9 @@
         if (numSetor == 0) {
             alert("Selecione uma opção válida!");
             selNumSetor.style = "border:1px solid red;"
-        }else if(isNaN(qtdCustos)){
+        } else if (isNaN(qtdCustos)) {
             alert("O valor deve ser um número");
-        }else if(qtdCustos <= 0){
+        } else if (qtdCustos <= 0) {
             alert("O valor não pode ser vazio");
 
 
@@ -130,7 +130,7 @@
 
     function simular() {
         var numSetor = Number(selNumSetor.value);
-        if(numSetor == 0){
+        if (numSetor == 0) {
             alert("Selecione mais de um setor");
             return
         }
@@ -142,7 +142,7 @@
                 if (setores[i] != 0) {
                     console.log(setores[i].value);
                     console.log(somaTotalValues);
-                }else{
+                } else {
                     alert("Selecione os setores")
                 }
             }
@@ -157,7 +157,7 @@
         var id = "selSetores"; // endereçando o valor do id
 
         for (let indice = 1; indice < 20; indice++) {
-            var elementoHtml = document.getElementById(id + indice); 
+            var elementoHtml = document.getElementById(id + indice);
             if (elementoHtml != null) {
                 htmlSelectsSetores.push(elementoHtml);
             }
@@ -166,7 +166,7 @@
         // pegando os values e somando todos.
 
         for (let indice = 0; indice < htmlSelectsSetores.length; indice++) {
-            
+
             var elemento = Number(htmlSelectsSetores[indice].value);
             if (elemento == "0") {
                 alert("Selecione todos os setores")
@@ -174,12 +174,12 @@
             }
             somaTotalValues += elemento;
         }
-        resultado.innerHTML =  ` `
+        resultado.innerHTML = ` `
         resultado2.innerHTML = ` `
         var qtdCusto = Number(InpQtdCusto.value);
         var calculoCusto = (1 + somaTotalValues) * qtdCusto;
         var lucroLiquido = calculoCusto - qtdCusto;
-        var porcentagemMargemLucro = somaTotalValues * 100; 
+        var porcentagemMargemLucro = somaTotalValues * 100;
         // <p></p> <b></b>
         resultado.innerHTML += `<p>O <b>lucro bruto</b> médio para este modelo de loja é <b>R$${calculoCusto.toFixed(2)}</b></p>
             <p>O seu lucro líquido é <b>R$${lucroLiquido.toFixed(2)}</b></p>
