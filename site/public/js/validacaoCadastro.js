@@ -1,12 +1,12 @@
-function defaultColor() {
-    inpNomeEmpresa.style = " border: 1px solid #9E9E9E ;"
-    inpCNPJ.style = " border: 1px solid #9E9E9E ;"
-    inpEmail.style = " border: 1px solid #9E9E9E ;"
-    inpSenha.style = " border: 1px solid #9E9E9E ;"
-    inpSenhaConfirm.style = " border: 1px solid #9E9E9E ;"
-    inpNumero.style = " border: 1px solid #9E9E9E ;"
-    inpTipo.style = "border: 1px solid #9E9E9E ;"
-}
+// function defaultColor() {
+//     inpNomeEmpresa.style = " border: 1px solid #9E9E9E ;"
+//     inpCNPJ.style = " border: 1px solid #9E9E9E ;"
+//     inpEmail.style = " border: 1px solid #9E9E9E ;"
+//     inpSenha.style = " border: 1px solid #9E9E9E ;"
+//     inpSenhaConfirm.style = " border: 1px solid #9E9E9E ;"
+//     inpNumero.style = " border: 1px solid #9E9E9E ;"
+//     inpTipo.style = "border: 1px solid #9E9E9E ;"
+// }
 function validaInputLogin() {
     var nomeEmpresa = inpNomeEmpresa.value;
     var cnpj = inpCNPJ.value;

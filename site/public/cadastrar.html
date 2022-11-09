@@ -32,42 +32,42 @@
             </div>
             <div class="areaInputs">
 
-                <input onclick="defaultColor()" class="inputCadastro" type="text" id="inpNomeEmpresa" maxlength="75"
+                <input  class="inputCadastro" type="text" id="inpNomeEmpresa" maxlength="75"
                     placeholder="Nome da empresa">
 
-                <input onclick="defaultColor()" class="inputCadastro" type="text" id="inpCNPJ" maxlength="14"
+                <input  class="inputCadastro" type="text" id="inpCNPJ" maxlength="14"
                     placeholder="CNPJ">
 
-                <input onclick="defaultColor()" class="inputCadastro" type="email" id="inpEmail" maxlength="256"
+                <input  class="inputCadastro" type="email" id="inpEmail" maxlength="256"
                     placeholder="Email">
 
-                <input onclick="defaultColor()" class="inputCadastro" type="password" id="inpSenha" maxlength="25"
+                <input  class="inputCadastro" type="password" id="inpSenha" maxlength="25"
                     placeholder="Senha">
 
-                <input onclick="defaultColor()" class="inputCadastro" type="password" id="inpSenhaConfirm"
+                <input  class="inputCadastro" type="password" id="inpSenhaConfirm"
                     maxlength="25" placeholder="Confirme sua senha">
             </div>
             <div class="areaInputs2">
 
-                <input onclick="defaultColor()" class="inputCadastro" type="text" id="inpNumero" maxlength="7"
+                <input  class="inputCadastro" type="text" id="inpNumero" maxlength="7"
                     placeholder="Número">
 
-                <input onclick="defaultColor()" class="inputCadastro" type="text" id="inpCep" maxlength="8"
+                <input  class="inputCadastro" type="text" id="inpCep" maxlength="8"
                     placeholder="CEP">
 
-                <input onclick="defaultColor()" class="inputCadastro" type="text" id="inpResponsavel" maxlength="100"
+                <input  class="inputCadastro" type="text" id="inpResponsavel" maxlength="100"
                     placeholder="Responsável">
 
-                <input onclick="defaultColor()" class="inputCadastro" type="text" id="inpNomeUsuario" maxlength="75"
+                <input  class="inputCadastro" type="text" id="inpNomeUsuario" maxlength="75"
                     placeholder="Nome de Usuário">
 
-                <select onclick="defaultColor()" class="inputCadastroSelect" name="tipo" id="inpTipo">
+                <select  class="inputCadastroSelect" name="tipo" id="inpTipo">
                     <option value="0">Selecione um tipo</option>
                     <option value="1">Filial</option>
                     <option value="2">Matriz</option>
                 </select>
             </div>
-            <div class="areaBotao"><button class="btn-cadastrar" onclick="validaInputLogin()"> Cadastrar </button>
+            <div class="areaBotao"><button class="btn-cadastrar" onclick="cadastrar()"> Cadastrar </button>
                 <div class="linkparalogin">
                     <h4>Já possui uma conta? <a href="login.html">Entre</a> </h4>
                 </div>
@@ -110,24 +110,27 @@
 </html>
 <script>
     function cadastrar() {
-        aguardar();
-
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
-        var nomeVar = nome_input.value;
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
-        var confirmacaoSenhaVar = confirmacao_senha_input.value;
+        var nomeEmpresa = inpNomeEmpresa.value;
+        var cnpj = inpCNPJ.value;
+        var email = inpEmail.value;
+        var senha = inpSenha.value;
+        var confirmSenha = inpSenhaConfirm.value;
+        var numero = inpNumero.value;
+        var cep = inpCep.value;
+        var responsavel = inpResponsavel.value;
+        var username = inpNomeUsuario.value;
+        var tipoEmpresa = inpTipo.value;
 
-        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+        if (nomeEmpresa == "" || cnpj == "" || email == "" || senha == "" || confirmSenha == "" || numero == " " || cep == "" || responsavel == "" || username == "" || tipoEmpresa == "") {
 
-            finalizarAguardar();
+            alert("Mensagem de erro para todos os campos em branco");
+
             return false;
         }
         else {
-            setInterval(sumirMensagem, 5000)
+            
         }
 
         // Enviando o valor da nova input
@@ -139,9 +142,16 @@
             body: JSON.stringify({
                 // crie um atributo que recebe o valor recuperado aqui
                 // Agora vá para o arquivo routes/usuario.js
-                nomeServer: nomeVar,
-                emailServer: emailVar,
-                senhaServer: senhaVar
+                nomeEmpresaServer: nomeEmpresa,
+                cnpjServer: cnpj,
+                emailServer: email,
+                senhaServer: senha,
+                numeroServer: numero,
+                cepServer: cep,
+                responsavelServer: responsavel,
+                usernameServer: username,
+                tipoEmpresaServer: tipoEmpresa
+
             })
         }).then(function (resposta) {
 
@@ -156,22 +166,19 @@
                     window.location = "login.html";
                 }, "2000")
 
-                limparFormulario();
-                finalizarAguardar();
+                
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-            finalizarAguardar();
+            
         });
 
         return false;
     }
 
-    function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
+
 
 </script>
-<script src="scripts/validacaoCadastro.js"></script>
+<!-- <script src="scripts/validacaoCadastro.js"></script> -->
