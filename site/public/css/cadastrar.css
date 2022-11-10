@@ -222,7 +222,6 @@ nav ul {
 
 .inputCadastro{
   width: 85%;
-  height: 20%;
   padding: 12px 20px;
   margin: 20px 0px 10px 0px;
   border-radius: 15px;
@@ -231,7 +230,6 @@ nav ul {
 
 .inputCadastroSelect {
   width: 105%;
-  height: 20%;
   padding: 12px 20px;
   margin: 20px 0px 10px 0px;
   border-radius: 15px;
