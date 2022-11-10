@@ -49,6 +49,8 @@
             </div>
             <div class="areaInputs2">
 
+                <input class="inputCadastro" type="text" id="inpToken" placeholder="Token">
+
                 <input  class="inputCadastro" type="text" id="inpNumero" maxlength="7"
                     placeholder="Número">
 
@@ -112,6 +114,7 @@
     function cadastrar() {
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
+        var token = inpToken.value;
         var nomeEmpresa = inpNomeEmpresa.value;
         var cnpj = inpCNPJ.value;
         var email = inpEmail.value;
@@ -123,7 +126,8 @@
         var username = inpNomeUsuario.value;
         var tipoEmpresa = inpTipo.value;
 
-        if (nomeEmpresa == "" || cnpj == "" || email == "" || senha == "" || confirmSenha == "" || numero == " " || cep == "" || responsavel == "" || username == "" || tipoEmpresa == "") {
+
+        if ( token == "" || nomeEmpresa == "" || cnpj == "" || email == "" || senha == "" || confirmSenha == "" || numero == " " || cep == "" || responsavel == "" || username == "" || tipoEmpresa == "") {
 
             alert("Mensagem de erro para todos os campos em branco");
 
@@ -150,7 +154,9 @@
                 cepServer: cep,
                 responsavelServer: responsavel,
                 usernameServer: username,
-                tipoEmpresaServer: tipoEmpresa
+                tipoEmpresaServer: tipoEmpresa,
+                tokenServer : token
+                
 
             })
         }).then(function (resposta) {

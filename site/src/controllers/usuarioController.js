@@ -72,6 +72,7 @@ function cadastrar(req, res) {
     var resp = req.body.responsavelServer;
     var username = req.body.usernameServer;
     var tipoEmpresa = req.body.tipoEmpresaServer;
+    var token = req.body.tokenServer;
 
     // Faça as validações dos valores
     if (nomeEmpresa == undefined) {
@@ -92,10 +93,12 @@ function cadastrar(req, res) {
         res.status(400).send("Seu usuário está undefined!");
     } else if (tipoEmpresa == undefined) {
         res.status(400).send("Seu tipo da empresa está undefined!");
+    }  else if (token == undefined) {
+        res.status(400).send("Seu Token está undefined!");
      } else {
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nomeEmpresa, email, senha, cnpj, numero, cep, resp, username, tipoEmpresa)
+        usuarioModel.cadastrar(nomeEmpresa, email, senha, cnpj, numero, cep, resp, username, tipoEmpresa, token)
             .then(
                 function (resultado) {
                     res.json(resultado);
