@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/login.css">
+    <script src="js/validacaoAcesso.js"></script>
     <title> Login </title>
 </head>
 
@@ -30,9 +31,9 @@
                 </div>
                 <div class="areaInputsLogin">
                     <!-- <p>Email</p> -->
-                    <input id="email_input" class="inputs" type="email" placeholder="Email"">
+                    <input id="email_input" class="inputs" type="email" placeholder="Email">
                     <!-- <p>Senha</p> -->
-                    <input id="senha_input" class="inputs" type="password" placeholder="Senha" ">
+                    <input id="senha_input" class="inputs" type="password" placeholder="Senha">
                     <h4>Não possui uma conta? <a href=" cadastrar.html">Cadastre-se</a> </h4>
                 </div>
 
@@ -85,15 +86,19 @@
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
 
-        if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
-            return false;
-        }
-        else {
-            // setInterval(sumirMensagem, 5000)
-        }
+        const em = document.querySelector(".inputs");
+
+        validaInputLogin(emailVar, senhaVar, em);
+
+        // if (emailVar == "" || senhaVar == "") {
+        //     cardErro.style.display = "block"
+        //     mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+        //     finalizarAguardar();
+        //     return false;
+        // }
+        // else {
+        //     // setInterval(sumirMensagem, 5000)
+        // }
 
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
@@ -118,8 +123,8 @@
                     console.log(JSON.stringify(json));
 
                     sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.NOME_USUARIO = json.nomeUsuario;
+                    sessionStorage.ID_USUARIO = json.idUsuario;
 
                     setTimeout(function () {
                         window.location = "dashboard/dashboard.html";

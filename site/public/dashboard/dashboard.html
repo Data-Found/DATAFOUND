@@ -10,21 +10,34 @@
     <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
     <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
     <script src="path/to/chartjs/dist/chart.js"></script>
+    <script src="../js/funcoes.js"></script>
 </head>
 
-<body>
+<body onload="validarSessao()">
     <header>
         <nav>
             <div class="container-nav">
                 <a href="index.html"><img class="logo" src="../assets/logo-nav.png" alt="Logo DataFound" /></a>
                 <ul>
                     <div class="box_user">
-                        <li><span>Olá ADM</span></li>
+                        <li><span id="welcome"></span></li>
                         <img class="img_user" src="../assets/user.svg" />
                     </div>
-                    <li><a href="index.html">Sair</a></li>
+                    <li><a href="../js/funcoes.js" onclick="limparSessao()">Sair</a>
+                        <button onclick="limparSessao()">Sair</button>
+                    </li>
                 </ul>
-            </div>
+            </div><html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Document</title>
+            </head>
+            <body>
+                
+            </body>
+            </html>
         </nav>
     </header>
 
@@ -218,10 +231,15 @@
             </div>
         </div>
     </footer> -->
+    <footer>
+        <div> <a href="">! Baixar o sistema DataFound </a></div>
+    </footer>
 </body>
 
 </html>
 <script>
+
+    welcome.innerHTML = sessionStorage.NOME_USUARIO;
 
     // INÍCIO DO GRÁFICO DE PIZZA - FLUXO DE DEPARTAMENTO
     const ctxFluxo = document.getElementById('setor').getContext('2d');

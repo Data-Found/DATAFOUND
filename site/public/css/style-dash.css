@@ -453,3 +453,7 @@ h3 {
   background-color: rgb(187, 187, 187);
   border-radius: 50px;
 }
+
+#welcome {
+  text-transform: capitalize;
+}

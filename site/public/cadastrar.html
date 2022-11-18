@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/cadastrar.css">
+    <script src="js/validacaoCadastro.js"></script>
     <title> Cadastro </title>
 </head>
 
@@ -57,17 +58,11 @@
                 <input  class="inputCadastro" type="text" id="inpCep" maxlength="8"
                     placeholder="CEP"> -->
 
-                <input  class="inputCadastro" type="text" id="inpResponsavel" maxlength="100"
-                    placeholder="Responsável">
+                <!-- <input  class="inputCadastro" type="text" id="inpResponsavel" maxlength="100"
+                    placeholder="Responsável"> -->
 
                 <input  class="inputCadastro" type="text" id="inpNomeUsuario" maxlength="75"
                     placeholder="Nome de Usuário">
-
-                <select  class="inputCadastroSelect" name="tipo" id="inpTipo">
-                    <option value="0">Selecione um tipo</option>
-                    <option value="1">Filial</option>
-                    <option value="2">Matriz</option>
-                </select>
             </div>
             <div class="areaBotao"><button class="btn-cadastrar" onclick="cadastrar()"> Cadastrar </button>
                 <div class="linkparalogin">
@@ -115,27 +110,17 @@
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
         var token = inpToken.value;
-        var nomeEmpresa = inpNomeEmpresa.value;
-        var cnpj = inpCNPJ.value;
+        // var nomeEmpresa = inpNomeEmpresa.value;
+        // var cnpj = inpCNPJ.value;
         var email = inpEmail.value;
         var senha = inpSenha.value;
         var confirmSenha = inpSenhaConfirm.value;
-        var numero = inpNumero.value;
-        var cep = inpCep.value;
-        var responsavel = inpResponsavel.value;
+        // var numero = inpNumero.value;
+        // var cep = inpCep.value;
+        // var responsavel = inpResponsavel.value;
         var username = inpNomeUsuario.value;
-        var tipoEmpresa = inpTipo.value;
 
-
-        if ( token == "" || nomeEmpresa == "" || cnpj == "" || email == "" || senha == "" || confirmSenha == "" || numero == " " || cep == "" || responsavel == "" || username == "" || tipoEmpresa == "") {
-
-            alert("Mensagem de erro para todos os campos em branco");
-
-            return false;
-        }
-        else {
-            
-        }
+        validaInputCadastro(username, email, senha, confirmSenha, token);
 
         // Enviando o valor da nova input
         fetch("/usuarios/cadastrar", {
@@ -146,15 +131,15 @@
             body: JSON.stringify({
                 // crie um atributo que recebe o valor recuperado aqui
                 // Agora vá para o arquivo routes/usuario.js
-                nomeEmpresaServer: nomeEmpresa,
-                cnpjServer: cnpj,
+                // nomeEmpresaServer: nomeEmpresa,
+                // cnpjServer: cnpj,
                 emailServer: email,
                 senhaServer: senha,
-                numeroServer: numero,
-                cepServer: cep,
-                responsavelServer: responsavel,
+                // numeroServer: numero,
+                // cepServer: cep,
+                // responsavelServer: responsavel,
                 usernameServer: username,
-                tipoEmpresaServer: tipoEmpresa,
+                // tipoEmpresaServer: tipoEmpresa,
                 tokenServer : token
                 
 
@@ -164,13 +149,13 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                cardErro.style.display = "block";
+                // cardErro.style.display = "block";
 
-                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
                 setTimeout(() => {
-                    window.location = "login.html";
-                }, "2000")
+                    window.location.href = "login.html";
+                }, 1000)
 
                 
             } else {

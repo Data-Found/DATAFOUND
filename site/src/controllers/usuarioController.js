@@ -63,42 +63,30 @@ function entrar(req, res) {
 
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var nomeEmpresa = req.body.nomeEmpresaServer;
+    // var nomeEmpresa = req.body.nomeEmpresaServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
-    var cnpj = req.body.cnpjServer;
-    var numero = req.body.numeroServer;
-    var cep = req.body.cepServer;
-    var resp = req.body.responsavelServer;
+    // var cnpj = req.body.cnpjServer;
+    // var numero = req.body.numeroServer;
+    // var cep = req.body.cepServer;
+    // var resp = req.body.responsavelServer;
     var username = req.body.usernameServer;
-    var tipoEmpresa = req.body.tipoEmpresaServer;
+    // var tipoEmpresa = req.body.tipoEmpresaServer;
     var token = req.body.tokenServer;
 
     // Faça as validações dos valores
-    if (nomeEmpresa == undefined) {
-        res.status(400).send("Seu nome está undefined!");
-    } else if (email == undefined) {
+    if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");  
-    } else if (cnpj == undefined) {
-        res.status(400).send("Seu cnpj está undefined!");
-    } else if (numero == undefined) {
-        res.status(400).send("Seu numero está undefined!");
-    } else if (cep == undefined) {
-        res.status(400).send("Seu cep está undefined!");
-    } else if (resp == undefined) {
-        res.status(400).send("Seu responsável está undefined!");
     } else if (username == undefined) {
         res.status(400).send("Seu usuário está undefined!");
-    } else if (tipoEmpresa == undefined) {
-        res.status(400).send("Seu tipo da empresa está undefined!");
-    }  else if (token == undefined) {
+    } else if (token == undefined) {
         res.status(400).send("Seu Token está undefined!");
-     } else {
+    } else {
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nomeEmpresa, email, senha, cnpj, numero, cep, resp, username, tipoEmpresa, token)
+        usuarioModel.cadastrar(email, senha, username, token)
             .then(
                 function (resultado) {
                     res.json(resultado);
