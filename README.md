@@ -8,12 +8,10 @@ O nosso papel é direcionar nossos clientes com base de dados relevantes para o 
 
 ## Documentação de cores
 
-| Cor               | Hexadecimal                                                      |
+| Cor               | Hexadecimal                                                      
 | ----------------- | ---------------------------------------------------------------- |
-| Cor exemplo       |  #0B1927                                                         |
-| Cor exemplo       |  #FFFFFF                                                         |
-| Cor exemplo       |  #000000                                                         |
-
+| Azul Datafound    |  #0B1927                                                         |
+| Verde Fluxo       |  #52cbbe                                                         |
 
 
 ## Documentação
