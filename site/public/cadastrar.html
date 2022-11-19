@@ -16,65 +16,69 @@
 
 <body>
     <header>
-        <nav>
-            <div class="container-nav">
-                <a href="index.html"><img class="logo" src="./assets/logo-nav.png" alt="Logo DataFound" /></a>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="calculadora.html">Simulador</a></li>
-                </ul>
-            </div>
-        </nav>
+        <div class="container">
+            <nav>
+                <div class="container-nav">
+                    <a href="index.html"><img class="logo" src="./assets/logo-nav.png" alt="Logo DataFound" /></a>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="calculadora.html">Simulador</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
     </header>
     <div class="sessaoUm">
         <div class="Cadastro">
+           <div>
             <div class="cadastroTexto">
                 <h3>Cadastro</h3>
             </div>
-            <div class="areaInputs">
+            <div class="inputForm">
+                <div class="areaInputs">
 
-                <!-- <input  class="inputCadastro" type="text" id="inpNomeEmpresa" maxlength="75"
-                    placeholder="Nome da empresa">
-
-                <input  class="inputCadastro" type="text" id="inpCNPJ" maxlength="14"
-                    placeholder="CNPJ"> -->
-
-                <input  class="inputCadastro" type="email" id="inpEmail" maxlength="256"
-                    placeholder="Email">
-
-                <input  class="inputCadastro" type="password" id="inpSenha" maxlength="25"
-                    placeholder="Senha">
-
-                <input  class="inputCadastro" type="password" id="inpSenhaConfirm"
-                    maxlength="25" placeholder="Confirme sua senha">
-            </div>
-            <div class="areaInputs2">
-
-                <input class="inputCadastro" type="text" id="inpToken" placeholder="Token">
-
-                <!-- <input  class="inputCadastro" type="text" id="inpNumero" maxlength="7"
-                    placeholder="Número">
-
-                <input  class="inputCadastro" type="text" id="inpCep" maxlength="8"
-                    placeholder="CEP"> -->
-
-                <!-- <input  class="inputCadastro" type="text" id="inpResponsavel" maxlength="100"
-                    placeholder="Responsável"> -->
-
-                <input  class="inputCadastro" type="text" id="inpNomeUsuario" maxlength="75"
-                    placeholder="Nome de Usuário">
+                    <!-- <input  class="inputCadastro" type="text" id="inpNomeEmpresa" maxlength="75"
+                        placeholder="Nome da empresa">
+    
+                    <input  class="inputCadastro" type="text" id="inpCNPJ" maxlength="14"
+                        placeholder="CNPJ"> -->
+    
+                    <input class="inputCadastro" type="email" id="inpEmail" maxlength="256" placeholder="Email">
+    
+                    <input class="inputCadastro" type="password" id="inpSenha" maxlength="25" placeholder="Senha">
+    
+                    <input class="inputCadastro" type="password" id="inpSenhaConfirm" maxlength="25"
+                        placeholder="Confirme sua senha">
+                </div>
+                <div class="areaInputs2">
+    
+                    <input class="inputCadastro" type="text" id="inpToken" placeholder="Token">
+    
+                    <!-- <input  class="inputCadastro" type="text" id="inpNumero" maxlength="7"
+                        placeholder="Número">
+    
+                    <input  class="inputCadastro" type="text" id="inpCep" maxlength="8"
+                        placeholder="CEP"> -->
+    
+                    <!-- <input  class="inputCadastro" type="text" id="inpResponsavel" maxlength="100"
+                        placeholder="Responsável"> -->
+    
+                    <input class="inputCadastro" type="text" id="inpNomeUsuario" maxlength="75"
+                        placeholder="Nome de Usuário">
+                </div>
             </div>
             <div class="areaBotao"><button class="btn-cadastrar" onclick="cadastrar()"> Cadastrar </button>
                 <div class="linkparalogin">
                     <h4>Já possui uma conta? <a href="login.html">Entre</a> </h4>
                 </div>
             </div>
+           </div>
         </div>
         <div class="box_imgCadastro">
-            <img class="imgCadastro" src="assets/img/imgCadastro.png" alt="Imagem cadastro">
+            
         </div>
     </div>
-    <footer class="foot">
+    <footer >
         <div class="container_footer">
             <div class="box_footer">
                 <div class="box_img">
@@ -109,17 +113,26 @@
     function cadastrar() {
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
-        var token = inpToken.value;
         // var nomeEmpresa = inpNomeEmpresa.value;
         // var cnpj = inpCNPJ.value;
-        var email = inpEmail.value;
-        var senha = inpSenha.value;
-        var confirmSenha = inpSenhaConfirm.value;
         // var numero = inpNumero.value;
         // var cep = inpCep.value;
         // var responsavel = inpResponsavel.value;
+        var token = inpToken.value;
+        var email = inpEmail.value;
+        var senha = inpSenha.value;
+        var confirmSenha = inpSenhaConfirm.value;
         var username = inpNomeUsuario.value;
-
+        confirmSenha.trimStart();
+        senha.trimStart();
+        email.trimStart();
+        token.trimStart();
+        username.trimStart();
+        senha.trimEnd();
+        email.trimEnd();
+        token.trimEnd();
+        username.trimEnd();
+        console.log(token,email,senha,confirmSenha,username)
         validaInputCadastro(username, email, senha, confirmSenha, token);
 
         // Enviando o valor da nova input
@@ -140,8 +153,8 @@
                 // responsavelServer: responsavel,
                 usernameServer: username,
                 // tipoEmpresaServer: tipoEmpresa,
-                tokenServer : token
-                
+                tokenServer: token
+
 
             })
         }).then(function (resposta) {
@@ -157,13 +170,13 @@
                     window.location.href = "login.html";
                 }, 1000)
 
-                
+
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-            
+
         });
 
         return false;
