@@ -46,7 +46,7 @@ function validaInputCadastro(u, e, s, cs, t) {
         iptPadrao();
         iptSenha.style = "border:1px solid red;";
         alert("Digite a senha");
-    } else if(iptSenha.trimEnd().trimStart() == '') {
+    } else if(senha.trimEnd().trimStart() == '') {
         iptPadrao();
         iptSenha.style = "border:1px solid red;";
         alert("Digite uma senha válida");

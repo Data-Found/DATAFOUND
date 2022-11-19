@@ -4,6 +4,10 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   overflow-x: hidden;
 }
@@ -632,10 +636,14 @@ footer .container {
   align-items: center;
   border: 1px solid white;
   border-radius: 10px;
-
 }
 
 .sobre1-footer,
 .sobre2-footer {
   margin: 0px 20px;
+}
+
+.sobre1-footer a {
+  color: white;
+  text-decoration: none;
 }
