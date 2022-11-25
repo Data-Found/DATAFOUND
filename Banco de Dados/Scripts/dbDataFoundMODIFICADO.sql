@@ -44,6 +44,7 @@ CREATE TABLE Sensor(
     tipoSensor CHAR(2) NOT NULL, CONSTRAINT chktipoSensor CHECK (tipoSensor IN('EN','PR')),
     statusSensor VARCHAR(25) NOT NULL, CONSTRAINT chkSensor CHECK (statusSensor IN('Ativo','Inativo','Manutenção')),
     dtInclusao DATE NOT NULL,
+    dtAtualizacao DATE,
     prateleira VARCHAR(25),
     fkSetor INT, CONSTRAINT fkIdSetor FOREIGN KEY (fkSetor) REFERENCES Setor(idSetor)
 );
