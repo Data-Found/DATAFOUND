@@ -7,13 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DataFond - DashBoard</title>
     <link rel="stylesheet" href="../css/style-dash.css">
-    <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
-    <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
-    <script src="path/to/chartjs/dist/chart.js"></script>
+    <link rel="shortcut icon" href="assets/icon/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../js/funcoes.js"></script>
 </head>
 
-<body onload="validarSessao()">
+<body onload="validarSessao(), carregarGrafico()">
     <header>
         <nav>
             <div class="container-nav">
@@ -23,8 +22,7 @@
                         <li><span id="welcome"></span></li>
                         <img class="img_user" src="../assets/user.svg" />
                     </div>
-                    <li><a href="../js/funcoes.js" onclick="limparSessao()">Sair</a>
-                        <button onclick="limparSessao()">Sair</button>
+                        <button onclick="limparSessao()" class="btnExit">Sair</button>
                     </li>
                 </ul>
             </div>
@@ -200,11 +198,37 @@
 
 </html>
 <script>
-
+    var idUsuario = sessionStorage.ID_USUARIO;
     welcome.innerHTML = sessionStorage.NOME_USUARIO;
 
+    function carregarGrafico() {
+        fetch(`/fluxo/listar/${idUsuario}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+
+                });
+
+            } else {
+                throw ("Houve um erro ao tentar realizar a listagem!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
     // INÍCIO DO GRÁFICO DE PIZZA - FLUXO DE DEPARTAMENTO
-    const ctxFluxo = document.getElementById('setor').getContext('2d');
+    const ctxFluxo = document.getElementById('setor');
     const chartFluxo = new Chart("setor", {
         type: "pie",
         data: {
@@ -225,81 +249,83 @@
             }
         }
     });
+  
+
     // FIM DO GRÁFICO DE PIZZA - FLUXO DE DEPARTAMENTO
 
     // INÍCIO DO GRÁFICO DE LINHA - ENTRADA DE PESSOAS
-    const ctxEntrada = document.getElementById('entrada').getContext('2d');
-    const chartEntrada = new Chart(ctxEntrada, {
-        type: 'line',
-        data: {
-            labels: ["Eletrônicos", "Vestuário", "Brinquedos", "Cosméticos", "Alimentício"],
-            datasets: [{
-                label: 'Entrada de pessoas',
-                data: [12, 19, 3, 5, 2],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
+    // const ctxEntrada = document.getElementById('entrada');
+    // const chartEntrada = new Chart(ctxEntrada, {
+    //     type: 'line',
+    //     data: {
+    //         labels: ["Eletrônicos", "Vestuário", "Brinquedos", "Cosméticos", "Alimentício"],
+    //         datasets: [{
+    //             label: 'Entrada de pessoas',
+    //             data: [12, 19, 3, 5, 2],
+    //             backgroundColor: [
+    //                 'rgba(255, 99, 132, 0.2)',
+    //                 'rgba(54, 162, 235, 0.2)',
+    //                 'rgba(255, 206, 86, 0.2)',
+    //                 'rgba(75, 192, 192, 0.2)',
+    //                 'rgba(153, 102, 255, 0.2)',
+    //                 'rgba(255, 159, 64, 0.2)'
+    //             ],
+    //             borderColor: [
+    //                 'rgba(255, 99, 132, 1)',
+    //                 'rgba(54, 162, 235, 1)',
+    //                 'rgba(255, 206, 86, 1)',
+    //                 'rgba(75, 192, 192, 1)',
+    //                 'rgba(153, 102, 255, 1)',
+    //                 'rgba(255, 159, 64, 1)'
+    //             ],
+    //             borderWidth: 1
+    //         }]
+    //     },
+    //     options: {
+    //         scales: {
+    //             y: {
+    //                 beginAtZero: true
+    //             }
+    //         }
+    //     }
+    // });
     // FIM DO GRÁFICO DE LINHA - ENTRADA DE PESSOAS
 
     // INÍCIO DO GRÁFICO DE BARRA - PRODUTOS DE SETORES
-    const ctxProdutos = document.getElementById('produtos').getContext('2d');
-    const charProdutos = new Chart(ctxProdutos, {
-        type: 'bar',
-        data: {
-            labels: ['Notebook', 'Mouse', 'Teclado', 'Headset', 'Microfone', 'Mouse pad'],
-            datasets: [{
-                label: 'Produtos mais requisitados - Setor de eletrônicos',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
+    // const ctxProdutos = document.getElementById('produtos');
+    // const charProdutos = new Chart(ctxProdutos, {
+    //     type: 'bar',
+    //     data: {
+    //         labels: ['Notebook', 'Mouse', 'Teclado', 'Headset', 'Microfone', 'Mouse pad'],
+    //         datasets: [{
+    //             label: 'Produtos mais requisitados - Setor de eletrônicos',
+    //             data: [12, 19, 3, 5, 2, 3],
+    //             backgroundColor: [
+    //                 'rgba(255, 99, 132, 0.2)',
+    //                 'rgba(54, 162, 235, 0.2)',
+    //                 'rgba(255, 206, 86, 0.2)',
+    //                 'rgba(75, 192, 192, 0.2)',
+    //                 'rgba(153, 102, 255, 0.2)',
+    //                 'rgba(255, 159, 64, 0.2)'
+    //             ],
+    //             borderColor: [
+    //                 'rgba(255, 99, 132, 1)',
+    //                 'rgba(54, 162, 235, 1)',
+    //                 'rgba(255, 206, 86, 1)',
+    //                 'rgba(75, 192, 192, 1)',
+    //                 'rgba(153, 102, 255, 1)',
+    //                 'rgba(255, 159, 64, 1)'
+    //             ],
+    //             borderWidth: 1
+    //         }]
+    //     },
+    //     options: {
+    //         scales: {
+    //             y: {
+    //                 beginAtZero: true
+    //             }
+    //         }
+    //     }
+    // });
 // FIM DO GRÁFICO DE BARRA - PRODUTOS DE SETORES
 </script>

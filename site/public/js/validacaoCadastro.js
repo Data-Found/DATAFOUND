@@ -7,6 +7,9 @@
 //     inpNumero.style = " border: 1px solid #9E9E9E ;"
 //     inpTipo.style = "border: 1px solid #9E9E9E ;"
 // }
+
+var msg = '';
+
 function validaInputCadastro(u, e, s, cs, t) {
     // var nomeEmpresa = inpNomeEmpresa.value;
     // var cnpj = inpCNPJ.value;
@@ -30,63 +33,120 @@ function validaInputCadastro(u, e, s, cs, t) {
     // var token = inpToken.value;
 
 
-     if (email == "") {
+    if (email == "") {
         iptPadrao();
         iptEmail.style = "border:1px solid red;";
-        alert("Digite o email");
+        msg = ''
+        alertCadastro("Digite o email");
     } else if (email.includes("@") == false) {
         iptPadrao();
         iptEmail.style = "border:1px solid red;";
-        alert("Email invalido: não contem @");
-    } else if(email.trimEnd().trimStart() == '') {
+        msg = ''
+        msg = "Email invalido: não contem @"
+        alertCadastro(msg);
+    } else if (email.trimEnd().trimStart() == '') {
         iptPadrao();
         iptEmail.style = "border:1px solid red;";
-        alert("Digite um email válido");  
+        msg = ''
+        msg = "Digite um email válido"
+        alertCadastro(msg);
     } else if (senha == "") {
         iptPadrao();
         iptSenha.style = "border:1px solid red;";
-        alert("Digite a senha");
-    } else if(senha.trimEnd().trimStart() == '') {
+        msg = ''
+        msg = "Digite a senha"
+        alertCadastro(msg);
+    } else if (senha.trimEnd().trimStart() == '') {
         iptPadrao();
         iptSenha.style = "border:1px solid red;";
-        alert("Digite uma senha válida");
+        msg = ''
+        msg = "Digite uma senha válida"
+        alertCadastro(msg);
     } else if (confirmSenha == "") {
         iptPadrao();
-        iptSenhaConfirm.style = "border:1px solid red;";
-        alert("Por favor confirme a senha");
+        iptSenhaC.style = "border:1px solid red;";
+        msg = ''
+        msg = "Por favor confirme a senha"
+        alertCadastro(msg);
     } else if (senha != confirmSenha) {
         iptPadrao();
-        inpSenhaConfirm.style = "border:1px solid red;";
+        iptSenhaC.style = "border:1px solid red;";
         inpSenha.style = "border:1px solid red;";
-        alert("As senhas não coincidem")
+        msg = ''
+        msg = "As senhas não coincidem"
+        alertCadastro(msg)
     } else if (token == "") {
         iptPadrao();
         iptToken.style = "border:1px solid red;";
-        alert("Digite um token!")
+        msg = ''
+        msg = "Digite um token!"
+        alertCadastro(msg)
     } else if (username == "") {
         iptPadrao();
         inpNomeUsuario.style = "border:1px solid red;";
-        alert("Digite um nome de usuario!");
+        msg = ''
+        msg = "Digite um nome de usuario!"
+        alertCadastro(msg);
+    } else if (senha.length < 6) {
+        msg = '';
+        msg = "Digite uma senha maior que 6 digitos";
+        iptPadrao();
+        iptSenha.style = "border:1px solid red;"
+        alertLogin(msg);
+        return false;
     } else {
         iptPadrao();
-        alert("Usuario Criado");
+        alertCadastro("Usuario Criado");
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                // nomeEmpresaServer: nomeEmpresa,
+                // cnpjServer: cnpj,
+                emailServer: email,
+                senhaServer: senha,
+                // numeroServer: numero,
+                // cepServer: cep,
+                // responsavelServer: responsavel,
+                usernameServer: username,
+                // tipoEmpresaServer: tipoEmpresa,
+                tokenServer: token
+
+
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                // cardErro.style.display = "block";
+
+                // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                setTimeout(() => {
+                    window.location.href = "login.html";
+                }, 1000)
+
+
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+                msg = ''
+                msg = "Houve um erro ao tentar realizar o cadastro!"
+                alertCadastro(msg);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+
+        });
+
+        return false;
+
+
     }
-    //    if (email == '') {
-    //        inpEmail.style = "border:1px solid red;"
-    //        alert("Digite um email no primeiro campo")
-    //    }else if(){
-    //    }
-    // else if (email.includes("@") == false) {
-    //    inpEmail.style = "border:1px solid red;"
-    //    alert("Email invalido: não contem @")
-    //    }else if (senha == '') {
-    //        inpSenha.style = "border:1px solid red;"
-    //        alert("Digite uma senha no primeiro campo")
-    //    }else if(email == "adm@datafound.com" && senha == "1234"){
-    //        window.location.href = "dashboard.html"
-    //    }else{
-    //        alert("Usuario e email invalido");
-    //    }
     iptPadrao();
 }
 
@@ -100,4 +160,15 @@ function iptPadrao() {
     iptSenha.style = "border: #9E9E9E solid 1px;";
     iptSenhaC.style = "border: #9E9E9E solid 1px;";
     iptToken.style = "border: #9E9E9E solid 1px;";
+}
+
+function alertCadastro(msg) {
+    console.log(msg);
+
+    Swal.fire({
+        title: 'Error ao realizar cadastro',
+        text: msg,
+        icon: 'error',
+        confirmButtonText: 'Ok'
+    })
 }

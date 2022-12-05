@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="assets/icon/favicon.ico" type="image/x-icon">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="css/cadastrar.css">
     <script src="js/validacaoCadastro.js"></script>
     <title> Cadastro </title>
@@ -136,50 +138,7 @@
         validaInputCadastro(username, email, senha, confirmSenha, token);
 
         // Enviando o valor da nova input
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                // nomeEmpresaServer: nomeEmpresa,
-                // cnpjServer: cnpj,
-                emailServer: email,
-                senhaServer: senha,
-                // numeroServer: numero,
-                // cepServer: cep,
-                // responsavelServer: responsavel,
-                usernameServer: username,
-                // tipoEmpresaServer: tipoEmpresa,
-                tokenServer: token
-
-
-            })
-        }).then(function (resposta) {
-
-            console.log("resposta: ", resposta);
-
-            if (resposta.ok) {
-                // cardErro.style.display = "block";
-
-                // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-                setTimeout(() => {
-                    window.location.href = "login.html";
-                }, 1000)
-
-
-            } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-
-        });
-
-        return false;
+        
     }
 
 
