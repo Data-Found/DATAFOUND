@@ -7,7 +7,7 @@ router.get("/", function (req, res) {
     fluxoController.testar(req, res);
 });
 
-router.get("/listar", function (req, res) {
+router.get("/listar/:idUsuario", function (req, res) {
     fluxoController.listar(req, res);
 });
 

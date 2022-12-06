@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Line Chart</title>
+    <link rel="stylesheet" href="setorDash.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
+    <link rel="shortcut icon" href="assets/icon/favicon.ico" type="image/x-icon">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="container-nav">
+                <a href="../index.html"><img class="logo" src="../../assets/logo-nav.png" alt="Logo DataFound" /></a>
+                <ul>
+                    <li><a href="/dashboard.html">Dash Geral</a></li>
+                    <div class="box_user">
+                        <li><span>Olá ADM</span></li>
+                        <img class="img_user" src="../../assets/user.svg" />
+                    </div>
+                    <li><a href="/index.html">Sair</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div style="padding-top: 8%;">
+        <div style="display: flex; justify-content: center;">
+            <h1
+                style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+                Setor de eletrônicos
+            </h1>
+        </div>
+        <div
+            style="width: 87%; height: 45vh; display: flex; background-color: #F2F2F2; border-radius: 15px; box-shadow: 1px 1px 15px 1px #808080; margin: 5% 5%; padding: 10px;">
+            <div style="position: relative; height: 50%; width: 50%; margin-top: 5%">
+                <canvas id="chartLine"></canvas>
+            </div>
+            <hr style="width: 3px; background-color: #808080; border: none; border-radius: 10px; margin: 0 10px;">
+            <div style="position: relative; height: 50%; width: 50%; margin-top: 5%">
+                <canvas id="chartBar"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var limitAlertaMax = false;
+        var alertaMax = false;
+        var alertaMin = false;
+        var alertaNormal = false;
+
+      
+
+        /* -- chave --*/
+        var contextoChave = document.getElementById('chartLine');
+        var chave = new Chart(
+            contextoChave,
+            {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'Fluxo em tempo real',
+                        type: 'line',
+                        borderColor: ['#ffd902'],
+                        backgroundColor: ['#ffe135']
+                    }]
+                },
+            }
+        );
+
+        
+
+        // var paginacao = {};
+        // var tempo = {};
+
+        // function obterDados(grafico) {
+        //     var endpoint = 'chave';
+        //     var http = new XMLHttpRequest();
+        //     http.open('GET', 'http://localhost:3300/sensores/chave', false);
+        //     http.send(null);
+        //     var valores = JSON.parse(http.responseText);
+        //     if (paginacao[endpoint] == null) {
+        //         paginacao[endpoint] = 0;
+        //     }
+        //     if (tempo[endpoint] == null) {
+        //         tempo[endpoint] = 0;
+        //     }
+        //     // Exibir à partir do último elemento exibido anteriormente
+        //     var ultimaPaginacao = paginacao[endpoint];
+        //     paginacao[endpoint] = valores.length;
+        //     var valores = valores.slice(ultimaPaginacao);
+        //     valores.forEach((valor) => {
+        //         //Máximo de 60 itens exibidos no gráfico
+        //         if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
+        //             grafico.data.labels.shift();
+        //             grafico.data.datasets[0].data.shift();
+        //         }
+
+        //         grafico.data.labels.push(tempo[endpoint]++);
+        //         grafico.data.datasets[0].data.push(parseFloat(valor));
+        //         grafico.update();
+        //     })
+        // }
+
+        // function obterDados2(grafico) {
+        //     var endpoint = 'chave2';
+        //     var http = new XMLHttpRequest();
+        //     http.open('GET', 'http://localhost:3300/sensores/chave2', false);
+        //     http.send(null);
+        //     var valores = JSON.parse(http.responseText);
+        //     if (paginacao[endpoint] == null) {
+        //         paginacao[endpoint] = 0;
+        //     }
+        //     if (tempo[endpoint] == null) {
+        //         tempo[endpoint] = 0;
+        //     }
+        //     // Exibir à partir do último elemento exibido anteriormente
+        //     var ultimaPaginacao = paginacao[endpoint];
+        //     paginacao[endpoint] = valores.length;
+        //     var valores = valores.slice(ultimaPaginacao);
+        //     valores.forEach((valor) => {
+        //         //Máximo de 60 itens exibidos no gráfico
+        //         if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
+        //             grafico.data.labels.shift();
+        //             grafico.data.datasets[0].data.shift();
+        //         }
+
+        //         grafico.data.labels.push(tempo[endpoint]++);
+        //         grafico.data.datasets[0].data.push(parseFloat(valor));
+        //         grafico.update();
+        //     })
+        // }
+
+        // setInterval(() => {
+        //     obterDados(chave);
+        //     obterDados2(chave2);
+        //     VerifyAlert();
+        // }, 1000);
+
+        // function VerifyAlert() {
+        //     const maxSetor = 15;
+        //     const minSetor = 5;
+        //     var qtd = 0;
+        //     var msg = ''
+
+        //     var http = new XMLHttpRequest();
+        //     http.open('GET', 'http://localhost:3300/sensores/chave', false);
+        //     http.send(null);
+
+        //     var valores = JSON.parse(http.responseText);
+
+        //     // qtd = fluxo.length;
+
+        //     for (let index = 0; index < valores.length; index++) {
+        //         if (valores[index] == 1) {
+        //             qtd++;
+        //         }
+        //     }
+
+        //     if (qtd == maxSetor - 1 && alertaMax == false) {
+        //         alertaMax = true;
+        //         msg = 'CAPACIDADE PERTO DO LIMITE: ' + qtd + ' DE ' + maxSetor
+        //         alertDash(msg);
+        //     }
+
+        //     if (qtd > maxSetor && limitAlertaMax == false) {
+        //         limitAlertaMax = true;
+        //         msg = 'LIMITE EXCEDIDO!! ' + qtd + ' DE ' + maxSetor
+        //         alertDash(msg);
+
+        //     }
+        //     if (qtd > minSetor && qtd < maxSetor && alertaNormal == false) {
+        //         alertaNormal = true;
+        //         msg = 'ATIVIDADE NORMAL: ' + qtd + ' DE ' + maxSetor
+        //         alertDash(msg);
+        //     }
+        //     if (qtd <= minSetor && alertaMin == false) {
+        //         alertaMin = true;
+        //         msg = 'BAIXA ATIVIDADE: ' + qtd + ' DE ' + maxSetor
+        //         alertDash(msg);
+        //     }
+        // }
+
+        // function alertDash(msg) {
+        //     Swal.fire({
+        //         title: msg,
+        //         imageUrl: '',
+        //         icon: 'success',
+        //         confirmButtonText: 'CEO?'
+        //     })
+        // }
+
+    </script>
+</body>
+
+</html>

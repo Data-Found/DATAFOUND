@@ -1,18 +1,20 @@
 body {
+  overflow-y: hidden;
   font-family: 'Inter', sans-serif;
   background-color: rgb(243, 242, 242);
 }
 
 header {
-width: 100%;
- height: fit-content; 
- background: rgba(51, 159, 163, 1);
- background: linear-gradient(133deg,
-     rgba(51, 159, 163, 1) 0%,
-     rgba(35, 174, 190, 1) 27%,
-     rgba(7, 34, 83, 1) 100%);
+  width: 100%;
+  height: fit-content;
+  background: rgba(51, 159, 163, 1);
+  background: linear-gradient(133deg,
+      rgba(51, 159, 163, 1) 0%,
+      rgba(35, 174, 190, 1) 27%,
+      rgba(7, 34, 83, 1) 100%);
 }
-header .container{
+
+header .container {
   display: flex;
   justify-content: center;
 }
@@ -23,8 +25,8 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  
-  
+
+
 }
 
 .container-nav {
@@ -79,9 +81,10 @@ nav ul {
   height: 600px;
 }
 
-#background5 footer{
+#background5 footer {
   background-color: none;
 }
+
 /* CADASTRO */
 
 .navCadastro {
@@ -102,7 +105,7 @@ nav ul {
   min-height: 80px;
 }
 
-.box_imgCadastro{
+.box_imgCadastro {
   /* assets/img/imgCadastro.png */
   width: 50%;
   background-image: url("../assets/img/imgCadastro.png");
@@ -117,7 +120,7 @@ nav ul {
   align-items: center;
   flex-flow: wrap;
   width: 50%;
-  
+
   /* border: solid 1px green; */
 }
 
@@ -144,11 +147,13 @@ nav ul {
   display: flex;
   height: 70vh;
 }
-.inputForm{
+
+.inputForm {
   display: flex;
   justify-content: space-around;
   width: 500px;
 }
+
 .areaInputs {
   color: #0c2233;
   display: flex;
@@ -173,7 +178,7 @@ nav ul {
   width: fit-content;
 }
 
-.inputCadastro{
+.inputCadastro {
   width: 85%;
   padding: 12px 20px;
   margin: 20px 0px 10px 0px;
@@ -211,7 +216,7 @@ nav ul {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-margin: 30px 0px;
+  margin: 30px 0px;
 }
 
 .cadastroTexto {
@@ -241,7 +246,7 @@ margin: 30px 0px;
 footer {
   height: 200px;
   width: 100%;
- 
+
   background: rgba(51, 159, 163, 1);
   background: linear-gradient(133deg,
       rgba(51, 159, 163, 1) 0%,
@@ -249,9 +254,9 @@ footer {
       rgba(7, 34, 83, 1) 100%);
   background-size: cover;
   background-repeat: no-repeat;
-  position:relative;
+  position: relative;
   left: 0;
-  bottom: 0; 
+  bottom: 0;
   /* margin-top: 0.1%; */
 }
 
@@ -260,7 +265,7 @@ footer {
   height: 200px;
   align-items: center;
   margin: auto;
- 
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -304,7 +309,7 @@ footer {
   margin: 10px;
 }
 
-.box_links_footer ul{
+.box_links_footer ul {
   width: 10vw;
   height: 10vh;
   display: flex;
@@ -312,7 +317,7 @@ footer {
   font-size: 14px;
 }
 
-.box_links_footer ul p{
+.box_links_footer ul p {
   width: 90%;
   text-align: left;
   color: white;

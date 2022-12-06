@@ -12,11 +12,11 @@ void loop(){
 
     if(digitalRead(switch_pin) == LOW) {
 
-        Serial.println(0);
+        Serial.println(1);
 
     } else {
 
-        Serial.println(1);
+        Serial.println(0);
     }
 
     delay (1000);
