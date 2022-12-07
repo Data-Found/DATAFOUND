@@ -167,11 +167,11 @@ INSERT INTO Usuario (nomeUsuario, email, senha, fkEmpresa) VALUES
 -- WARNEAR
 ('Fernanda Caramico','caramicofernanda@nearexpress.com.br','0X6FOfBHOc',2);
 
-INSERT INTO Setor (nomeSetor, maxSetor, fkEmpresa) VALUES
+INSERT INTO Setor (idSetor, nomeSetor, maxSetor, fkEmpresa) VALUES
 -- GOLDEN HONOR
-('Eletrônicos',11,1), ('Vestuário',15,1), ('Brinquedos',10,1), ('Cosméticos',12,1), ('Alimentício',13,1),
+(1,'Eletrônicos',11,1), (2,'Vestuário',15,1), (3,'Brinquedos',10,1), (4,'Cosméticos',12,1), (5,'Alimentício',13,1),
 -- WARNEAR
-('Moda',20,2), ('Higiene',10,2), ('Bebidas',14,2), ('Eletrodomésticos',18,2), ('Eletrônicos',20,2);
+(6,'Moda',20,2), (7,'Higiene',10,2), (8,'Bebidas',14,2), (9,'Eletrodomésticos',18,2), (10'Eletrônicos',20,2);
 
 INSERT INTO Sensor (tipoSensor, statusSensor, dtInclusao, prateleira, fkSetor) VALUES
 -- GOLDEN HONOR ENTRADAS
@@ -181,10 +181,10 @@ INSERT INTO Sensor (tipoSensor, statusSensor, dtInclusao, prateleira, fkSetor) V
 ('PR','Ativo','2022-10-01','2',1),('PR','Ativo','2022-10-01','12',2),('PR','Ativo','2022-10-01','22-C',3),('PR','Ativo','2022-10-01','32',4),('PR','Ativo','2022-10-01','42',5),
 
 -- WARNEAR ENTRADAS
-('EN','Ativo','2022-10-28',null,1), ('EN','Ativo','2022-10-28',null,2),('EN','Ativo','2022-10-28',null,3),('EN','Ativo','2022-10-28',null,4),('EN','Ativo','2022-10-28',null,5),
+('EN','Ativo','2022-10-28',null,6), ('EN','Ativo','2022-10-28',null,7),('EN','Ativo','2022-10-28',null,8),('EN','Ativo','2022-10-28',null,9),('EN','Ativo','2022-10-28',null,10),
 -- PRATELEIRAS
-('PR','Ativo','2022-10-28','01-A',1), ('PR','Ativo','2022-10-28','01-B',2),('PR','Ativo','2022-10-28','3C',3),('PR','Ativo','2022-10-28','1D',4),('PR','Ativo','2022-10-28','01-E',5),
-('PR','Ativo','2022-10-28','02-A',1), ('PR','Ativo','2022-10-28','02-B',2),('PR','Ativo','2022-10-28','5C',3),('PR','Ativo','2022-10-28','2D',4),('PR','Ativo','2022-10-28','02-E',5);
+('PR','Ativo','2022-10-28','01-A',6), ('PR','Ativo','2022-10-28','01-B',7),('PR','Ativo','2022-10-28','3C',8),('PR','Ativo','2022-10-28','1D',9),('PR','Ativo','2022-10-28','01-E',10),
+('PR','Ativo','2022-10-28','02-A',6), ('PR','Ativo','2022-10-28','02-B',7),('PR','Ativo','2022-10-28','5C',8),('PR','Ativo','2022-10-28','2D',9),('PR','Ativo','2022-10-28','02-E',10);
 
 -- LEITURA dos sensores de setores
 INSERT INTO Leitura (movimento, dtLeitura, fkSensor) VALUES

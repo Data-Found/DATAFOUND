@@ -5,6 +5,7 @@ const mysql = require('mysql2');
 const sql = require('mssql');
 var test = [];
 var qtd = 0;
+// var setor = sessionStorage.ID_ELET;
 
 // não altere!
 const SERIAL_BAUD_RATE = 9600;
@@ -23,9 +24,9 @@ const AMBIENTE = 'producao';
 const serial = async (
     valoresChave,
     valoresChave2,
-    // valoresChave3,
-    // valoresChave4,
-    // valoresChave5
+    valoresChave3,
+    valoresChave4,
+    valoresChave5
 ) => {
     let poolBancoDados = ''
 
@@ -65,16 +66,16 @@ const serial = async (
         //console.log(data);
         const valores = data.split(';');
         const chave = parseInt(valores[0]);
-        // const chave2 = parseInt(Math.random(0, 1).toFixed());
-        // const chave3 = parseInt(Math.random(0,1).toFixed());
-        // const chave4 = parseInt(Math.random(0,1).toFixed());
-        // const chave5 = parseInt(Math.random(0,1).toFixed());
+        const chave2 = parseInt(Math.random(0, 1).toFixed());
+        const chave3 = parseInt(Math.random(0, 1).toFixed());
+        const chave4 = parseInt(Math.random(0, 1).toFixed());
+        const chave5 = parseInt(Math.random(0, 1).toFixed());
 
         valoresChave.push(chave);
-        // valoresChave2.push(chave2);
-        // valoresChave3.push(chave3);
-        // valoresChave4.push(chave4);
-        // valoresChave5.push(chave5);
+        valoresChave2.push(chave2);
+        valoresChave3.push(chave3);
+        valoresChave4.push(chave4);
+        valoresChave5.push(chave5);
 
         if (HABILITAR_OPERACAO_INSERIR) {
             if (AMBIENTE == 'producao') {
@@ -94,10 +95,54 @@ const serial = async (
                 // if(chave == 1) {
                 //     qtd++
                 // }
+                console.log("AAAAAAAAAAAAAAAAAAAAA")
+                console.log("valoresChave", valoresChave)
+                console.log("valoresChave2", valoresChave2)
+                console.log("valoresChave3", valoresChave3)
+                console.log("valoresChave4", valoresChave4)
+                console.log("valoresChave5", valoresChave5)
 
-                sqlquery =
-                    `INSERT INTO Leitura (movimento, fkSensor) VALUES
-                (${chave}, 2);`;
+                // alert("ta caindo aqui antes do if")
+
+                if (valoresChave != '') {
+                    sqlquery =
+                        `INSERT INTO Leitura (movimento, fkSensor) VALUES
+                        (${chave}, 1);`;
+                    console.log("Entrei no 1")
+                }
+
+
+                if (valoresChave2 != '') {
+                    sqlquery =
+                        `INSERT INTO Leitura (movimento, fkSensor) VALUES
+                        (${chave2}, 2);`;
+                    console.log("Entrei no 2")
+                }
+
+                if (valoresChave3 != '') {
+                    sqlquery =
+                        `INSERT INTO Leitura (movimento, fkSensor) VALUES
+                        (${chave3}, 3);`;
+                    console.log("Entrei no 3")
+                }
+
+                if (valoresChave4 != '') {
+                    sqlquery =
+                        `INSERT INTO Leitura (movimento, fkSensor) VALUES
+                        (${chave4}, 4);`;
+                    console.log("Entrei no 4")
+                }
+
+                if (valoresChave5 != '') {
+                    sqlquery =
+                        `INSERT INTO Leitura (movimento, fkSensor) VALUES
+                        (${chave5}, 5);`;
+                    console.log("Entrei no 5")
+                }
+
+                // sqlquery =
+                //     `INSERT INTO Leitura (movimento, fkSensor, fkSetor) VALUES
+                // (${chave}, 2);`;
                 const connStr = "Server=datafound.database.windows.net;Database=bdDataFound;User Id=root_datafound;Password=#Gfgrupo6;";
                 function inserirComando(conn, sqlquery) {
                     conn.query(sqlquery);
@@ -107,7 +152,7 @@ const serial = async (
                     if (chave == 1) {
                         qtd++
                     }
-                    console.log("Fluxo cadastrado: " + test + " -- " + qtd)
+                    // console.log("Fluxo cadastrado: " + test + " -- " + qtd)
 
                 }
 
@@ -130,9 +175,9 @@ const serial = async (
 const servidor = (
     valoresChave,
     valoresChave2,
-    // valoresChave3,
-    // valoresChave4,
-    // valoresChave5
+    valoresChave3,
+    valoresChave4,
+    valoresChave5
 ) => {
     const app = express();
     app.use((request, response, next) => {
@@ -150,35 +195,35 @@ const servidor = (
     app.get('/sensores/chave2', (_, response) => {
         return response.json(valoresChave2);
     });
-    // app.get('/sensores/chave3', (_, response) => {
-    //     return response.json(valoresChave3);
-    // });
-    // app.get('/sensores/chave4', (_, response) => {
-    //     return response.json(valoresChave4);
-    // });
-    // app.get('/sensores/chave5', (_, response) => {
-    //     return response.json(valoresChave5);
-    // });
+    app.get('/sensores/chave3', (_, response) => {
+        return response.json(valoresChave3);
+    });
+    app.get('/sensores/chave4', (_, response) => {
+        return response.json(valoresChave4);
+    });
+    app.get('/sensores/chave5', (_, response) => {
+        return response.json(valoresChave5);
+    });
 }
 
 (async () => {
     const valoresChave = [];
     const valoresChave2 = [];
-    // const valoresChave3 = [];
-    // const valoresChave4 = [];
-    // const valoresChave5 = [];
+    const valoresChave3 = [];
+    const valoresChave4 = [];
+    const valoresChave5 = [];
     await serial(
         valoresChave,
         valoresChave2,
-        // valoresChave3,
-        // valoresChave4,
-        // valoresChave5,
+        valoresChave3,
+        valoresChave4,
+        valoresChave5,
     );
     servidor(
         valoresChave,
         valoresChave2,
-        // valoresChave3,
-        // valoresChave4,
-        // valoresChave5
+        valoresChave3,
+        valoresChave4,
+        valoresChave5
     );
 })();

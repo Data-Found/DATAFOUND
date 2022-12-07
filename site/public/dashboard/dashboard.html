@@ -115,15 +115,13 @@
                             </div>
                         </div>
                         <div class="box_card">
-                            <a href="eletronicos.html">
-                                <div class="card">
-                                    <span class="title_setor">Eletrônicos</span>
-                                    <span class="text_setor">Fluxo no setor: 10</span>
-                                    <span class="text_setor">Máx: 11</span>
-                                    <span class="text_setor_fluxoPercent">Fluxo: 95%</span>
-                                    <img src="../assets/exclamationRed.svg" alt="">
-                                </div>
-                            </a>
+                            <div class="card" onclick="RedEletronicos()">
+                                <span class="title_setor">Eletrônicos</span>
+                                <span class="text_setor">Fluxo no setor: 10</span>
+                                <span class="text_setor">Máx: 11</span>
+                                <span class="text_setor_fluxoPercent">Fluxo: 95%</span>
+                                <img src="../assets/exclamationRed.svg" alt="">
+                            </div>
                             <div class="card">
                                 <span class="title_setor">Vestuário</span>
                                 <span class="text_setor">Fluxo no setor: 8</span>
@@ -202,15 +200,16 @@
     welcome.innerHTML = sessionStorage.NOME_USUARIO;
 
     function carregarGrafico(idUsuario) {
-        fetch(`/fluxo/listar/${idUsuario}`).then(function (resposta) {
+        fetch(`/fluxo/listar/${idUsuario}`)
+        .then(function (resposta) {
 
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                // resposta.json().then(json => {
-                //     console.log(json);
-                //     console.log(JSON.stringify(json));
-                // });
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                });
             } else {
                 throw ("Houve um erro ao tentar realizar a listagem!");
             }
@@ -243,6 +242,14 @@
             }
         }
     });
+
+    function RedEletronicos() {
+        var setor = 10;
+        sessionStorage.setItem("ID_ELET", setor);
+        var idElec = sessionStorage.ID_ELET;
+        console.log(idElec);
+        window.location.href = "eletronicos.html";
+    }
   
 
     // FIM DO GRÁFICO DE PIZZA - FLUXO DE DEPARTAMENTO
