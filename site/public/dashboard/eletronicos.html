@@ -9,6 +9,8 @@
     <link rel="shortcut icon" href="assets/icon/favicon.ico" type="image/x-icon">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/funcoes.js"></script>
+    <link rel="stylesheet" href="../css/style-setores.css">
     <style>
         canvas {
             -moz-user-select: none;
@@ -19,18 +21,18 @@
     </style>
 </head>
 
-<body>
+<body onload="validarSessao()">
     <header>
         <nav>
             <div class="container-nav">
                 <a href="../index.html"><img class="logo" src="../../assets/logo-nav.png" alt="Logo DataFound" /></a>
                 <ul>
-                    <li><a href="/dashboard.html">Dash Geral</a></li>
+                    <li><a href="dashboard.html">Dash Geral</a></li>
                     <div class="box_user">
-                        <li><span>Olá ADM</span></li>
+                        <li><span id="welcome"></span></li>
                         <img class="img_user" src="../../assets/user.svg" />
                     </div>
-                    <li><a href="/index.html">Sair</a></li>
+                    <button onclick="limparSessao()" class="btnExit">Sair</button>
                 </ul>
             </div>
         </nav>
@@ -55,12 +57,13 @@
     </div>
 
     <script>
+        welcome.innerHTML = sessionStorage.NOME_USUARIO;
         var limitAlertaMax = false;
         var alertaMax = false;
         var alertaMin = false;
         var alertaNormal = false;
 
-      
+
 
         /* -- chave --*/
         var contextoChave = document.getElementById('chartLine');
@@ -79,7 +82,7 @@
             }
         );
 
-        
+
 
         // var paginacao = {};
         // var tempo = {};

@@ -1,0 +1,11 @@
+nav ul  {
+    width: 40%;
+}
+
+.container-nav .btnExit {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+  }

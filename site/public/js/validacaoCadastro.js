@@ -32,12 +32,14 @@ function validaInputCadastro(u, e, s, cs, t) {
     // var tipo = inpTipo.value;
     // var token = inpToken.value;
 
+    iptPadrao();
 
     if (email == "") {
         iptPadrao();
         iptEmail.style = "border:1px solid red;";
         msg = ''
-        alertCadastro("Digite o email");
+        msg = "Digite o email"
+        alertCadastro(msg);
     } else if (email.includes("@") == false) {
         iptPadrao();
         iptEmail.style = "border:1px solid red;";
@@ -71,7 +73,7 @@ function validaInputCadastro(u, e, s, cs, t) {
     } else if (senha != confirmSenha) {
         iptPadrao();
         iptSenhaC.style = "border:1px solid red;";
-        inpSenha.style = "border:1px solid red;";
+        iptSenha.style = "border:1px solid red;";
         msg = ''
         msg = "As senhas não coincidem"
         alertCadastro(msg)
@@ -83,20 +85,20 @@ function validaInputCadastro(u, e, s, cs, t) {
         alertCadastro(msg)
     } else if (username == "") {
         iptPadrao();
-        inpNomeUsuario.style = "border:1px solid red;";
+        iptUser.style = "border:1px solid red;";
         msg = ''
         msg = "Digite um nome de usuario!"
         alertCadastro(msg);
     } else if (senha.length < 6) {
-        msg = '';
-        msg = "Digite uma senha maior que 6 digitos";
         iptPadrao();
         iptSenha.style = "border:1px solid red;"
-        alertLogin(msg);
+        msg = '';
+        msg = "Digite uma senha maior que 6 digitos";
+        alertCadastro(msg);
         return false;
     } else {
         iptPadrao();
-        alertCadastro("Usuario Criado");
+        // alertCadastro("Usuario Criado");
         fetch("/usuarios/cadastrar", {
             method: "POST",
             headers: {
@@ -126,17 +128,38 @@ function validaInputCadastro(u, e, s, cs, t) {
                 // cardErro.style.display = "block";
 
                 // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
+                let timerInterval
+                Swal.fire({
+                    icon: 'success',
+                    title: `Usuário ${username} criado com sucesso!`,
+                    timer: 2000,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                        Swal.showLoading()
+                        const b = Swal.getHtmlContainer().querySelector('b')
+                        timerInterval = setInterval(() => {
+                            b.textContent = Swal.getTimerLeft()
+                        }, 100)
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval)
+                    }
+                }).then((result) => {
+                    /* Read more about handling dismissals below */
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        console.log('I was closed by the timer')
+                    }
+                })
                 setTimeout(() => {
                     window.location.href = "login.html";
-                }, 1000)
+                }, 2000)
 
 
             } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
                 msg = ''
                 msg = "Houve um erro ao tentar realizar o cadastro!"
                 alertCadastro(msg);
+                throw ("Houve um erro ao tentar realizar o cadastro!");
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
@@ -147,7 +170,6 @@ function validaInputCadastro(u, e, s, cs, t) {
 
 
     }
-    iptPadrao();
 }
 
 function iptPadrao() {
@@ -155,11 +177,13 @@ function iptPadrao() {
     var iptSenha = document.getElementById('inpSenha');
     var iptSenhaC = document.getElementById('inpSenhaConfirm');
     var iptToken = document.getElementById('inpToken');
+    var iptUser = document.getElementById('inpUsername');
 
-    inpEmail.style = "border: #9E9E9E solid 1px;";
+    iptEmail.style = "border: #9E9E9E solid 1px;";
     iptSenha.style = "border: #9E9E9E solid 1px;";
     iptSenhaC.style = "border: #9E9E9E solid 1px;";
     iptToken.style = "border: #9E9E9E solid 1px;";
+    iptUser.style = "border: #9E9E9E solid 1px;";
 }
 
 function alertCadastro(msg) {

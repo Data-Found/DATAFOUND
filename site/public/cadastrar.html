@@ -47,9 +47,9 @@
     
                     <input class="inputCadastro" type="email" id="inpEmail" maxlength="256" placeholder="Email">
     
-                    <input class="inputCadastro" type="password" id="inpSenha" maxlength="25" placeholder="Senha">
+                    <input class="inputCadastro" type="password" id="inpSenha" minlength="6" maxlength="25" placeholder="Senha">
     
-                    <input class="inputCadastro" type="password" id="inpSenhaConfirm" maxlength="25"
+                    <input class="inputCadastro" type="password" id="inpSenhaConfirm" minlength="6" maxlength="25"
                         placeholder="Confirme sua senha">
                 </div>
                 <div class="areaInputs2">
@@ -65,7 +65,7 @@
                     <!-- <input  class="inputCadastro" type="text" id="inpResponsavel" maxlength="100"
                         placeholder="Responsável"> -->
     
-                    <input class="inputCadastro" type="text" id="inpNomeUsuario" maxlength="75"
+                    <input class="inputCadastro" type="text" id="inpUsername" maxlength="75"
                         placeholder="Nome de Usuário">
                 </div>
             </div>
@@ -124,7 +124,8 @@
         var email = inpEmail.value;
         var senha = inpSenha.value;
         var confirmSenha = inpSenhaConfirm.value;
-        var username = inpNomeUsuario.value;
+        var username = inpUsername.value;
+
         confirmSenha.trimStart();
         senha.trimStart();
         email.trimStart();
@@ -134,6 +135,7 @@
         email.trimEnd();
         token.trimEnd();
         username.trimEnd();
+        
         console.log(token,email,senha,confirmSenha,username)
         validaInputCadastro(username, email, senha, confirmSenha, token);
 
