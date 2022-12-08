@@ -230,3 +230,20 @@ EXEC sys.sp_addrolemember @rolename = N'db_datawriter',
 
 EXEC sys.sp_addrolemember @rolename = N'db_datareader',
 @membername = N'usuarioParaAPIWebDataViz_datawriter_datareader';
+
+SELECT nomeSetor, count(Leitura.movimento) FROM Setor
+	JOIN Sensor ON Setor.idSetor = Sensor.fkSetor
+		JOIN Leitura ON Sensor.idSensor = Leitura.fkSensor
+			JOIN Empresa ON Setor.fkEmpresa = Empresa.idEmpresa
+			WHERE Empresa.idEmpresa = 1 AND Leitura.movimento = 1
+				GROUP BY Setor.nomeSetor;
+
+
+-- Quantidade de fluxo no setor alimentício
+
+SELECT nomeSetor, count(Leitura.movimento) FROM Setor
+	JOIN Sensor ON Setor.idSetor = Sensor.fkSetor
+		JOIN Leitura ON Sensor.idSensor = Leitura.fkSensor
+			JOIN Empresa ON Setor.fkEmpresa = Empresa.idEmpresa
+			WHERE Empresa.idEmpresa = 1 AND Leitura.movimento = 1 AND Sensor.idSensor = 5
+				GROUP BY Setor.nomeSetor;

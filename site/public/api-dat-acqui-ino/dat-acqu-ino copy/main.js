@@ -71,6 +71,8 @@ const serial = async (
         const chave4 = parseInt(Math.random(0, 1).toFixed());
         const chave5 = parseInt(Math.random(0, 1).toFixed());
 
+
+
         valoresChave.push(chave);
         valoresChave2.push(chave2);
         valoresChave3.push(chave3);
@@ -103,62 +105,76 @@ const serial = async (
                 console.log("valoresChave5", valoresChave5)
 
                 // alert("ta caindo aqui antes do if")
+                const connStr = "Server=datafound.database.windows.net;Database=bdDataFound;User Id=root_datafound;Password=#Gfgrupo6;";
 
                 if (valoresChave != '') {
                     sqlquery =
                         `INSERT INTO Leitura (movimento, fkSensor) VALUES
                         (${chave}, 1);`;
+                    function inserirComando(conn, sqlquery) {
+                        conn.query(sqlquery);
+                    }
+                    sql.connect(connStr)
+                        .then(conn => inserirComando(conn, sqlquery))
+                        .catch(err => console.log("erro! " + err));
                     console.log("Entrei no 1")
                 }
 
-
                 if (valoresChave2 != '') {
-                    sqlquery =
+                    sqlquery2 =
                         `INSERT INTO Leitura (movimento, fkSensor) VALUES
                         (${chave2}, 2);`;
+                    function inserirComando(conn, sqlquery2) {
+                        conn.query(sqlquery2);
+                    }
+                    sql.connect(connStr)
+                        .then(conn => inserirComando(conn, sqlquery2))
+                        .catch(err => console.log("erro! " + err));
                     console.log("Entrei no 2")
+                    console.log(chave2);
                 }
 
                 if (valoresChave3 != '') {
-                    sqlquery =
+                    sqlquery3 =
                         `INSERT INTO Leitura (movimento, fkSensor) VALUES
-                        (${chave3}, 3);`;
+                    (${chave3}, 3);`;
+                    function inserirComando(conn, sqlquery3) {
+                        conn.query(sqlquery3);
+                    }
+                    sql.connect(connStr)
+                        .then(conn => inserirComando(conn, sqlquery3))
+                        .catch(err => console.log("erro! " + err));
                     console.log("Entrei no 3")
+                    console.log(chave3);
                 }
 
                 if (valoresChave4 != '') {
-                    sqlquery =
+                    sqlquery4 =
                         `INSERT INTO Leitura (movimento, fkSensor) VALUES
                         (${chave4}, 4);`;
+                    function inserirComando(conn, sqlquery4) {
+                        conn.query(sqlquery4);
+                    }
+                    sql.connect(connStr)
+                        .then(conn => inserirComando(conn, sqlquery4))
+                        .catch(err => console.log("erro! " + err));
                     console.log("Entrei no 4")
+                    console.log(chave4);
                 }
 
                 if (valoresChave5 != '') {
-                    sqlquery =
+                    sqlquery5 =
                         `INSERT INTO Leitura (movimento, fkSensor) VALUES
                         (${chave5}, 5);`;
-                    console.log("Entrei no 5")
-                }
-
-                // sqlquery =
-                //     `INSERT INTO Leitura (movimento, fkSensor, fkSetor) VALUES
-                // (${chave}, 2);`;
-                const connStr = "Server=datafound.database.windows.net;Database=bdDataFound;User Id=root_datafound;Password=#Gfgrupo6;";
-                function inserirComando(conn, sqlquery) {
-                    conn.query(sqlquery);
-                    // console.log(chave)
-                    test.push(chave);
-
-                    if (chave == 1) {
-                        qtd++
+                    function inserirComando(conn, sqlquery5) {
+                        conn.query(sqlquery5);
                     }
-                    // console.log("Fluxo cadastrado: " + test + " -- " + qtd)
-
+                    sql.connect(connStr)
+                        .then(conn => inserirComando(conn, sqlquery5))
+                        .catch(err => console.log("erro! " + err));
+                    console.log("Entrei no 5")
+                    console.log(chave5);
                 }
-
-                sql.connect(connStr)
-                    .then(conn => inserirComando(conn, sqlquery))
-                    .catch(err => console.log("erro! " + err));
 
             } else {
                 throw new Error('Ambiente não configurado. Verifique o arquivo "main.js" e tente novamente.');
