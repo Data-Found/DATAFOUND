@@ -56,7 +56,7 @@ function validaInputLogin(e, s, emailVar, senhaVar) {
                 console.log(resposta);
                 let timerInterval
                 Swal.fire({
-                    icon:'success',
+                    icon: 'success',
                     title: `Seja Bem Vindo! ${email}`,
                     timer: 1500,
                     timerProgressBar: true,
@@ -83,6 +83,7 @@ function validaInputLogin(e, s, emailVar, senhaVar) {
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nomeUsuario;
                     sessionStorage.ID_USUARIO = json.idUsuario;
+                    sessionStorage.ID_EMPRESA = json.fkEmpresa;
 
                     setTimeout(function () {
                         window.location = "dashboard/dashboard.html";
@@ -108,7 +109,7 @@ function validaInputLogin(e, s, emailVar, senhaVar) {
 
         return false;
     }
-    
+
     iptPadrao();
 }
 
@@ -121,12 +122,12 @@ function iptPadrao() {
 }
 
 function alertLogin(msg) {
-        console.log(msg);
+    console.log(msg);
 
-        Swal.fire({
-            title: 'Error ao realizar login',
-            text: msg,
-            icon: 'error',
-            confirmButtonText: 'Ok'
-        })
+    Swal.fire({
+        title: 'Error ao realizar login',
+        text: msg,
+        icon: 'error',
+        confirmButtonText: 'Ok'
+    })
 }

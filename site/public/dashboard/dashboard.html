@@ -183,7 +183,10 @@
                 </div>
             </div>
             <div class="box">
-                <div class="boxes graf-pizza">
+                <div id="load" style="display: none;">
+                    <img src="../assets/dataLoad.gif">
+                </div>
+                <div class="boxes graf-pizza" id="grafico">
                     <canvas id="setor" width="800" height="1250"></canvas>
                 </div>
             </div>
@@ -196,12 +199,22 @@
 
 </html>
 <script>
-    var idUsuario = sessionStorage.ID_USUARIO;
+    var idEmpresa = sessionStorage.ID_EMPRESA;
     welcome.innerHTML = sessionStorage.NOME_USUARIO;
+    var setores = [];
+    var qtd = [];
+    var qtdReal = [];
+    var loading = false;
 
-    function carregarGrafico(idUsuario) {
-        fetch(`/fluxo/listar/${idUsuario}`)
-        .then(function (resposta) {
+    function carregarGrafico(idEmpresa) {
+        setores = [];
+        qtd = [];
+        fetch(`/fluxo/listar/${idEmpresa}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        }).then(function (resposta) {
 
             console.log("resposta: ", resposta);
 
@@ -209,6 +222,14 @@
                 resposta.json().then(json => {
                     console.log(json);
                     console.log(JSON.stringify(json));
+
+                    for(let i = 0; i <= json.length; i++) {
+                        // console.log(json[i].setor)
+                        // console.log(json[i].leitura)
+                        setores.push(json[i].setor);
+                        qtd.push(json[i].leitura);
+                    }
+
                 });
             } else {
                 throw ("Houve um erro ao tentar realizar a listagem!");
@@ -218,21 +239,32 @@
         });
     }
 
-    carregarGrafico(idUsuario)
+    
 
     // INÍCIO DO GRÁFICO DE PIZZA - FLUXO DE DEPARTAMENTO
     const ctxFluxo = document.getElementById('setor');
-    const chartFluxo = new Chart("setor", {
+    setInterval(() => {
+        if (loading == true) {
+            setTimeout(() => {
+                grafico.style.display = "none";
+                load.style.display = "block";
+                loading = false;
+            },500);
+        } else {
+            setTimeout(() => {
+                grafico.style.display = "block";
+                load.style.display = "none";
+                const chartFluxo = new Chart("setor", {
         type: "pie",
         data: {
-            labels: ["Eletrônicos", "Vestuário", "Brinquedos", "Cosméticos", "Alimentício"],
+            labels: setores,
             datasets: [{
                 backgroundColor: ["#b91d47",
                     "#00aba9",
                     "#2b5797",
                     "#e8c3b9",
                     "#1e7145"],
-                data: [55, 49, 44, 24, 15]
+                data: qtd
             }]
         },
         options: {
@@ -242,6 +274,19 @@
             }
         }
     });
+                loading = true;
+            },5000);
+            // console.log('DESENHOU UM GRÁFICÃO')
+        }
+}, "10000")
+// setInterval(() => {
+//     window.location.reload(true)
+// }, 5000);
+// setInterval(() => {
+//         qtdReal = qtd;
+//         carregarGrafico(idEmpresa)
+//     }, 5000);
+ carregarGrafico(idEmpresa)
 
     function RedEletronicos() {
         var setor = 10;

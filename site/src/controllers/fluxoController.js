@@ -8,9 +8,9 @@ function testar(req, res) {
 }
 
 function listar(req, res) {
-    var idUsuario = req.params.idUsuario;
-    console.log(idUsuario)
-    fluxoModel.listar(idUsuario)
+    var idEmpresa = req.params.idEmpresa;
+    console.log(idEmpresa)
+    fluxoModel.listar(idEmpresa)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
