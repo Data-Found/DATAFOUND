@@ -12,11 +12,11 @@
     <script src="../js/funcoes.js"></script>
 </head>
 
-<body onload="validarSessao()">
+<body onload="">
     <header>
         <nav>
             <div class="container-nav">
-                <a href="../index.html"><img class="logo" src="../assets/logo-nav.png" alt="Logo DataFound" /></a>
+                <a href="index.html"><img class="logo" src="../assets/logo-nav.png" alt="Logo DataFound" /></a>
                 <ul>
                     <div class="box_user">
                         <li><span id="welcome"></span></li>
@@ -115,13 +115,15 @@
                             </div>
                         </div>
                         <div class="box_card">
-                            <div class="card" onclick="RedEletronicos()">
-                                <span class="title_setor">Eletrônicos</span>
-                                <span class="text_setor">Fluxo no setor: 10</span>
-                                <span class="text_setor">Máx: 11</span>
-                                <span class="text_setor_fluxoPercent">Fluxo: 95%</span>
-                                <img src="../assets/exclamationRed.svg" alt="">
-                            </div>
+                            <a href="eletronicos.html">
+                                <div class="card">
+                                    <span class="title_setor">Eletrônicos</span>
+                                    <span class="text_setor">Fluxo no setor: 10</span>
+                                    <span class="text_setor">Máx: 11</span>
+                                    <span class="text_setor_fluxoPercent">Fluxo: 95%</span>
+                                    <img src="../assets/exclamationRed.svg" alt="">
+                                </div>
+                            </a>
                             <div class="card">
                                 <span class="title_setor">Vestuário</span>
                                 <span class="text_setor">Fluxo no setor: 8</span>
@@ -183,10 +185,7 @@
                 </div>
             </div>
             <div class="box">
-                <div id="load" style="display: none;">
-                    <img src="../assets/dataLoad.gif">
-                </div>
-                <div class="boxes graf-pizza" id="grafico">
+                <div class="boxes graf-pizza">
                     <canvas id="setor" width="800" height="1250"></canvas>
                 </div>
             </div>
@@ -199,179 +198,160 @@
 
 </html>
 <script>
-    var idEmpresa = sessionStorage.ID_EMPRESA;
+    var idUsuario = sessionStorage.ID_USUARIO;
     welcome.innerHTML = sessionStorage.NOME_USUARIO;
-    var setores = [];
-    var qtd = [];
-    var qtdReal = [];
-    var loading = false;
 
-    function carregarGrafico(idEmpresa) {
-        setores = [];
-        qtd = [];
-        fetch(`/fluxo/listar/${idEmpresa}`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            },
-        }).then(function (resposta) {
+    let proximaAtualizacao;
+    window.onload = obterDados(idUsuario);
 
-            console.log("resposta: ", resposta);
+    function obterDados(idUsuario) {
+        
+        fetch(`/fluxo/obterDados/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
 
-            if (resposta.ok) {
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    /* resposta.reverse(); */
 
-                    for(let i = 0; i <= json.length; i++) {
-                        // console.log(json[i].setor)
-                        // console.log(json[i].leitura)
-                        setores.push(json[i].setor);
-                        qtd.push(json[i].leitura);
-                    }
-
+                    
+                    setTimeout(() => desenharGrafico(resposta, idUsuario), 500);
+                    
                 });
             } else {
-                throw ("Houve um erro ao tentar realizar a listagem!");
+                console.error('Nenhum dado encontrado ou erro na API');
             }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
     }
 
-    
 
-    // INÍCIO DO GRÁFICO DE PIZZA - FLUXO DE DEPARTAMENTO
-    const ctxFluxo = document.getElementById('setor');
-    setInterval(() => {
-        if (loading == true) {
-            setTimeout(() => {
-                grafico.style.display = "none";
-                load.style.display = "block";
-                loading = false;
-            },500);
-        } else {
-            setTimeout(() => {
-                grafico.style.display = "block";
-                load.style.display = "none";
-                const chartFluxo = new Chart("setor", {
-        type: "pie",
-        data: {
-            labels: setores,
+    function desenharGrafico(resposta, idUsuario) {
+        
+        console.log('iniciando plotagem do gráfico...');
+
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: labels,
             datasets: [{
-                backgroundColor: ["#b91d47",
-                    "#00aba9",
-                    "#2b5797",
-                    "#e8c3b9",
-                    "#1e7145"],
-                data: qtd
+                label: [],
+                data: [],
+                fill: false,
+                borderColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(102, 43, 153)',
+                    'rgb(130, 255, 193)',
+                    'rgb(200, 60, 10)',
+                    'rgb(255, 205, 86)'
+                ],
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(102, 43, 153)',
+                    'rgb(130, 255, 193)',
+                    'rgb(200, 60, 10)',
+                    'rgb(255, 205, 86)'
+                ],
+                tension: 0.1
             }]
-        },
-        options: {
-            title: {
-                display: true,
-                text: "Fluxo de pessoas (Tempo real)"
-            }
-        }
-    });
-                loading = true;
-            },5000);
-            // console.log('DESENHOU UM GRÁFICÃO')
-        }
-}, "10000")
-// setInterval(() => {
-//     window.location.reload(true)
-// }, 5000);
-// setInterval(() => {
-//         qtdReal = qtd;
-//         carregarGrafico(idEmpresa)
-//     }, 5000);
- carregarGrafico(idEmpresa)
+        };
 
-    function RedEletronicos() {
-        var setor = 10;
-        sessionStorage.setItem("ID_ELET", setor);
-        var idElec = sessionStorage.ID_ELET;
-        console.log(idElec);
-        window.location.href = "eletronicos.html";
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDados" e passados para "desenharGrafico":')
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            console.log(registro)
+            labels.push(registro.nomeSetor);
+            dados.datasets[0].data.push(registro.qtdSetor);
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets[0].data)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'pie',
+            data: dados
+        };
+        
+        // Adicionando gráfico criado em div na tela
+        let setor = new Chart(
+            document.getElementById(`setor`),
+            config
+        );
+        
+        setTimeout(() => atualizarGrafico(idUsuario, dados, setor), 5000);
     }
-  
 
-    // FIM DO GRÁFICO DE PIZZA - FLUXO DE DEPARTAMENTO
 
-    // INÍCIO DO GRÁFICO DE LINHA - ENTRADA DE PESSOAS
-    // const ctxEntrada = document.getElementById('entrada');
-    // const chartEntrada = new Chart(ctxEntrada, {
-    //     type: 'line',
-    //     data: {
-    //         labels: ["Eletrônicos", "Vestuário", "Brinquedos", "Cosméticos", "Alimentício"],
-    //         datasets: [{
-    //             label: 'Entrada de pessoas',
-    //             data: [12, 19, 3, 5, 2],
-    //             backgroundColor: [
-    //                 'rgba(255, 99, 132, 0.2)',
-    //                 'rgba(54, 162, 235, 0.2)',
-    //                 'rgba(255, 206, 86, 0.2)',
-    //                 'rgba(75, 192, 192, 0.2)',
-    //                 'rgba(153, 102, 255, 0.2)',
-    //                 'rgba(255, 159, 64, 0.2)'
-    //             ],
-    //             borderColor: [
-    //                 'rgba(255, 99, 132, 1)',
-    //                 'rgba(54, 162, 235, 1)',
-    //                 'rgba(255, 206, 86, 1)',
-    //                 'rgba(75, 192, 192, 1)',
-    //                 'rgba(153, 102, 255, 1)',
-    //                 'rgba(255, 159, 64, 1)'
-    //             ],
-    //             borderWidth: 1
-    //         }]
-    //     },
-    //     options: {
-    //         scales: {
-    //             y: {
-    //                 beginAtZero: true
-    //             }
-    //         }
-    //     }
-    // });
-    // FIM DO GRÁFICO DE LINHA - ENTRADA DE PESSOAS
+    function atualizarGrafico(idUsuario, dados, setor) {
 
-    // INÍCIO DO GRÁFICO DE BARRA - PRODUTOS DE SETORES
-    // const ctxProdutos = document.getElementById('produtos');
-    // const charProdutos = new Chart(ctxProdutos, {
-    //     type: 'bar',
-    //     data: {
-    //         labels: ['Notebook', 'Mouse', 'Teclado', 'Headset', 'Microfone', 'Mouse pad'],
-    //         datasets: [{
-    //             label: 'Produtos mais requisitados - Setor de eletrônicos',
-    //             data: [12, 19, 3, 5, 2, 3],
-    //             backgroundColor: [
-    //                 'rgba(255, 99, 132, 0.2)',
-    //                 'rgba(54, 162, 235, 0.2)',
-    //                 'rgba(255, 206, 86, 0.2)',
-    //                 'rgba(75, 192, 192, 0.2)',
-    //                 'rgba(153, 102, 255, 0.2)',
-    //                 'rgba(255, 159, 64, 0.2)'
-    //             ],
-    //             borderColor: [
-    //                 'rgba(255, 99, 132, 1)',
-    //                 'rgba(54, 162, 235, 1)',
-    //                 'rgba(255, 206, 86, 1)',
-    //                 'rgba(75, 192, 192, 1)',
-    //                 'rgba(153, 102, 255, 1)',
-    //                 'rgba(255, 159, 64, 1)'
-    //             ],
-    //             borderWidth: 1
-    //         }]
-    //     },
-    //     options: {
-    //         scales: {
-    //             y: {
-    //                 beginAtZero: true
-    //             }
-    //         }
-    //     }
-    // });
-// FIM DO GRÁFICO DE BARRA - PRODUTOS DE SETORES
+fetch(`/fluxo/atualizarGrafico/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+    if (response.ok) {
+        response.json().then(function (novoRegistro) {
+
+            console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+            console.log(`Dados atuais do gráfico:`);
+            console.log(dados);
+
+            /* document.getElementById("avisoCaptura").innerHTML = "" */
+
+            if (novoRegistro[0].qtdSetor == dados.labels[dados.labels.length - 1]) {
+                console.log("---------------------------------------------------------------")
+                console.log("Como não há data novos para captura, o gráfico não atualizará.")
+                /* document.getElementById("avisoCaptura").innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará." */
+                console.log("Horário do novo dado capturado:")
+                console.log(novoRegistro[0].qtdSetor)
+                console.log("Horário do último dado capturado:")
+                console.log(dados.labels[dados.labels.length - 1])
+                console.log("---------------------------------------------------------------")
+            } else {
+                for (i = 0; i < novoRegistro.length; i++) {
+            var registro = novoRegistro[i];
+            console.log(registro)
+            dados.labels.shift(5);
+            dados.datasets[0].data.shift(5);
+            dados.labels.push(registro.nomeSetor);
+            dados.datasets[0].data.push(registro.qtdSetor);
+        }
+                
+                // tirando e colocando valores no gráfico
+                
+                    /* dados.datasets[0].data.push(registro.qtdSetor); */
+
+/*                 data.datasets[0].data.shift();  // apagar o primeiro de umidade
+                data.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+                data.datasets[1].data.shift();  // apagar o primeiro de temperatura
+                data.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura */
+                setor.update();
+            }
+
+            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+            proximaAtualizacao = setTimeout(() => atualizarGrafico(idUsuario, dados, setor), 5000);
+        });
+    } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        proximaAtualizacao = setTimeout(() => atualizarGrafico(idUsuario, dados, setor), 5000);
+    }
+})
+    .catch(function (error) {
+        console.error(`Erro na obtenção dos data p/ gráfico: ${error.message}`);
+    });
+
+}
+
 </script>
