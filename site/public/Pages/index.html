@@ -3,12 +3,14 @@
 
 <head>
     <title>Line Chart</title>
-    <link rel="stylesheet" href="./setorDash.css">
+    <link rel="stylesheet" href="setorDash.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="shortcut icon" href="assets/icon/favicon.ico" type="image/x-icon">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/funcoes.js"></script>
+    <link rel="stylesheet" href="../css/style-setores.css">
     <style>
         canvas {
             -moz-user-select: none;
@@ -55,7 +57,11 @@
     </div>
 
     <script>
-        var fluxo = 0;
+        // welcome.innerHTML = sessionStorage.NOME_USUARIO;
+        var limitAlertaMax = false;
+        var alertaMax = false;
+        var alertaMin = false;
+        var alertaNormal = false;
 
         /* -- chave --*/
         var contextoChave = document.getElementById('chartLine');
@@ -154,14 +160,61 @@
 
         setInterval(() => {
             obterDados(chave);
-            obterDados2(chave2);         
+            obterDados2(chave2);
+            VerifyAlert();
         }, 1000);
-        
+
         function VerifyAlert() {
+            const maxSetor = 20;
+            const minSetor = 5;
+            var qtd = 0;
+            var msg = ''
+
             var http = new XMLHttpRequest();
             http.open('GET', 'http://localhost:3300/sensores/chave', false);
             http.send(null);
+
             var valores = JSON.parse(http.responseText);
+
+            // qtd = fluxo.length;
+
+            for (let index = 0; index < valores.length; index++) {
+                if (valores[index] == 1) {
+                    qtd++;
+                }
+            }
+
+            if (qtd == maxSetor - 1 && alertaMax == false) {
+                alertaMax = true;
+                msg = 'CAPACIDADE PERTO DO LIMITE: ' + qtd + ' DE ' + maxSetor
+                alertDash(msg);
+            }
+
+            if (qtd > maxSetor && limitAlertaMax == false) {
+                limitAlertaMax = true;
+                msg = 'LIMITE EXCEDIDO!! ' + qtd + ' DE ' + maxSetor
+                alertDash(msg);
+
+            }
+            if (qtd > minSetor && qtd < maxSetor && alertaNormal == false) {
+                alertaNormal = true;
+                msg = 'ATIVIDADE NORMAL: ' + qtd + ' DE ' + maxSetor
+                alertDash(msg);
+            }
+            if (qtd <= minSetor && alertaMin == false) {
+                alertaMin = true;
+                msg = 'BAIXA ATIVIDADE: ' + qtd + ' DE ' + maxSetor
+                alertDash(msg);
+            }
+        }
+
+        function alertDash(msg) {
+            Swal.fire({
+                title: msg,
+                imageUrl: '',
+                icon: 'success',
+                confirmButtonText: 'CEO?'
+            })
         }
 
     </script>

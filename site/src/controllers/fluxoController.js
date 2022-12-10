@@ -27,9 +27,104 @@ function listar(req, res) {
 }
 
 function obterDados(req, res) {
-    var idUsuario = req.params.idUsuario;
-    console.log(idUsuario)
-    fluxoModel.obterDados(idUsuario)
+    var idEmpresa = req.params.idEmpresa;
+    console.log(idEmpresa)
+    fluxoModel.obterDados(idEmpresa)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function obterDadosGrafico(req, res) {
+    var idEmpresa = req.params.idEmpresa;
+    console.log(idEmpresa)
+    fluxoModel.obterDadosGrafico(idEmpresa)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function obterMaxDados(req, res) {
+    var idEmpresa = req.params.idEmpresa;
+    console.log(idEmpresa)
+    fluxoModel.obterMaxDados(idEmpresa)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function obterMinDados(req, res) {
+    var idEmpresa = req.params.idEmpresa;
+    console.log(idEmpresa)
+    fluxoModel.obterMinDados(idEmpresa)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function obterPicoDados(req, res) {
+    var idEmpresa = req.params.idEmpresa;
+    console.log(idEmpresa)
+    fluxoModel.obterPicoDados(idEmpresa)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function obterSetores(req, res) {
+    var idEmpresa = req.params.idEmpresa;
+    console.log(idEmpresa)
+    fluxoModel.obterSetores(idEmpresa)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -47,11 +142,11 @@ function obterDados(req, res) {
 
 function atualizarGrafico(req, res) {
 
-    var idUsuario = req.params.idUsuario;
+    var idEmpresa = req.params.idEmpresa;
 
     console.log(`Recuperando counts em tempo real`);
 
-    fluxoModel.atualizarGrafico(idUsuario).then(function (resultado) {
+    fluxoModel.atualizarGrafico(idEmpresa).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -69,5 +164,10 @@ module.exports = {
     listar,
     testar,
     obterDados,
+    obterDadosGrafico,
+    obterMaxDados,
+    obterMinDados,
+    obterPicoDados,
+    obterSetores,
     atualizarGrafico
 }

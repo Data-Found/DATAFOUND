@@ -14,33 +14,126 @@ function listar(idUsuario) {
     return database.executar(instrucao);
 }
 
-function obterDados(idUsuario) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+// Acho que falta os sensores no setor de jardinagem, nesse select não retorna esse setor
+function obterDados(idEmpresa) {
+    console.log("ACESSEI O USUARIO MODEL PARA OBTER OS DADOS \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
-    SELECT Setor.nomeSetor, count(Leitura.movimento) AS 'qtdSetor' FROM Leitura 
+    SELECT TOP 5 Setor.nomeSetor, count(Leitura.movimento) AS 'qtdSetor' FROM Leitura 
 	JOIN Sensor ON Leitura.fkSensor = Sensor.idSensor
 		JOIN Setor ON Sensor.fkSetor = Setor.idSetor
 			JOIN Empresa ON Setor.fkEmpresa = Empresa.idEmpresa
-				WHERE Empresa.idEmpresa = ${idUsuario}
+				WHERE Empresa.idEmpresa = ${idEmpresa}
 					AND Leitura.movimento = 1
 						GROUP BY Setor.nomeSetor;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
+function obterDados(idEmpresa) {
+    console.log("ACESSEI O USUARIO MODEL PARA OBTER OS DADOS \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    SELECT Setor.nomeSetor, count(Leitura.movimento) AS 'qtdSetor' FROM Leitura 
+	JOIN Sensor ON Leitura.fkSensor = Sensor.idSensor
+		JOIN Setor ON Sensor.fkSetor = Setor.idSetor
+			JOIN Empresa ON Setor.fkEmpresa = Empresa.idEmpresa
+				WHERE Empresa.idEmpresa = ${idEmpresa}
+					AND Leitura.movimento = 1
+						GROUP BY Setor.nomeSetor
+						    ORDER BY Setor.nomeSetor DESC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
 
-function atualizarGrafico(idUsuario) {
+function obterDadosGrafico(idEmpresa) {
+    console.log("ACESSEI O USUARIO MODEL PARA OBTER OS DADOS DO GRÁFICO \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    SELECT TOP 5 Setor.nomeSetor, count(Leitura.movimento) AS 'qtdSetor' FROM Leitura 
+	JOIN Sensor ON Leitura.fkSensor = Sensor.idSensor
+		JOIN Setor ON Sensor.fkSetor = Setor.idSetor
+			JOIN Empresa ON Setor.fkEmpresa = Empresa.idEmpresa
+				WHERE Empresa.idEmpresa = ${idEmpresa}
+					AND Leitura.movimento = 1
+						GROUP BY Setor.nomeSetor
+                            ORDER BY COUNT(Leitura.movimento) DESC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function obterMaxDados(idEmpresa) {
+    console.log("ACESSEI O FLUXO MODEL PARA OBTER O MAX DE DADOS \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    SELECT TOP 1 Setor.nomeSetor, MAX(CONVERT(varchar, Leitura.dtLeitura, 103)) dataHora, COUNT(Leitura.movimento) qtdMax FROM Leitura 
+    JOIN Sensor ON Leitura.fkSensor = Sensor.idSensor
+        JOIN Setor ON Sensor.fkSetor = Setor.idSetor
+            JOIN Empresa ON Setor.fkEmpresa = Empresa.idEmpresa
+                WHERE Empresa.idEmpresa = ${idEmpresa}
+                    AND Leitura.movimento = 1
+                        GROUP BY Setor.nomeSetor
+                             ORDER BY qtdMax DESC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function obterMinDados(idEmpresa) {
+    console.log("ACESSEI O FLUXO MODEL PARA OBTER O MIN DE DADOS \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    SELECT TOP 1 Setor.nomeSetor, MAX(CONVERT(varchar, Leitura.dtLeitura, 103)) dataHora, COUNT(Leitura.movimento) qtdMax FROM Leitura 
+    JOIN Sensor ON Leitura.fkSensor = Sensor.idSensor
+        JOIN Setor ON Sensor.fkSetor = Setor.idSetor
+            JOIN Empresa ON Setor.fkEmpresa = Empresa.idEmpresa
+                WHERE Empresa.idEmpresa = ${idEmpresa}
+                    AND Leitura.movimento = 1
+                        GROUP BY Setor.nomeSetor
+                             ORDER BY qtdMax;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function obterPicoDados(idEmpresa) {
+    console.log("ACESSEI O FLUXO MODEL PARA OBTER O PICO DE DADOS \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    SELECT CONVERT(varchar, Leitura.dtLeitura, 103) data, CONVERT(varchar, Leitura.dtLeitura, 108) hora, count(Leitura.movimento) qtd FROM Empresa
+    JOIN Setor ON Empresa.idEmpresa = Setor.fkEmpresa
+        JOIN Sensor ON Setor.idSetor = Sensor.fkSetor
+            JOIN Leitura ON Sensor.idSensor = Leitura.fkSensor
+                WHERE Empresa.idEmpresa = ${idEmpresa} 
+                    AND Leitura.movimento = 1
+                        GROUP BY Leitura.dtLeitura;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function obterSetores(idEmpresa) {
+    console.log("ACESSEI O FLUXO MODEL PARA OBTER O PICO DE DADOS \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    SELECT nomeSetor, maxSetor FROM Setor
+	JOIN Empresa ON fkEmpresa = idEmpresa
+		WHERE idEmpresa = ${idEmpresa}
+		    ORDER BY Setor.nomeSetor DESC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function atualizarGrafico(idEmpresa) {
 
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `SELECT Setor.nomeSetor, count(Leitura.movimento) AS 'qtdSetor' FROM Leitura 
+        instrucaoSql = `
+        SELECT TOP 5 Setor.nomeSetor, count(Leitura.movimento) AS 'qtdSetor' FROM Leitura 
         JOIN Sensor ON Leitura.fkSensor = Sensor.idSensor
             JOIN Setor ON Sensor.fkSetor = Setor.idSetor
                 JOIN Empresa ON Setor.fkEmpresa = Empresa.idEmpresa
-                    WHERE Empresa.idEmpresa = ${idUsuario}  
+                    WHERE Empresa.idEmpresa = ${idEmpresa}
                         AND Leitura.movimento = 1
-                            GROUP BY Setor.nomeSetor;`;
+                            GROUP BY Setor.nomeSetor
+                                ORDER BY COUNT(Leitura.movimento) DESC;`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `none`;
@@ -56,5 +149,10 @@ function atualizarGrafico(idUsuario) {
 module.exports = {
     listar,
     obterDados,
+    obterDadosGrafico,
+    obterMaxDados,
+    obterMinDados,
+    obterPicoDados,
+    obterSetores,
     atualizarGrafico
 };

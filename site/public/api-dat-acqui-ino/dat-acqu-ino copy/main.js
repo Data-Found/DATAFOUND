@@ -22,11 +22,12 @@ const HABILITAR_OPERACAO_INSERIR = true;
 const AMBIENTE = 'producao';
 
 const serial = async (
-    valoresChave,
+    // valoresChave,
     valoresChave2,
     valoresChave3,
     valoresChave4,
-    valoresChave5
+    valoresChave5,
+    valoresChave6
 ) => {
     let poolBancoDados = ''
 
@@ -48,37 +49,39 @@ const serial = async (
     }
 
 
-    const portas = await serialport.SerialPort.list();
-    const portaArduino = portas.find((porta) => porta.vendorId == 2341 && porta.productId == 43);
-    if (!portaArduino) {
-        throw new Error('O arduino não foi encontrado em nenhuma porta serial');
-    }
-    const arduino = new serialport.SerialPort(
-        {
-            path: portaArduino.path,
-            baudRate: SERIAL_BAUD_RATE
-        }
-    );
-    arduino.on('open', () => {
-        console.log(`A leitura do arduino foi iniciada na porta ${portaArduino.path} utilizando Baud Rate de ${SERIAL_BAUD_RATE}`);
-    });
-    arduino.pipe(new serialport.ReadlineParser({ delimiter: '\r\n' })).on('data', async (data) => {
-        //console.log(data);
-        const valores = data.split(';');
-        const chave = parseInt(valores[0]);
+    // const portas = await serialport.SerialPort.list();
+    // const portaArduino = portas.find((porta) => porta.vendorId == 2341 && porta.productId == 43);
+    // if (!portaArduino) {
+    //     throw new Error('O arduino não foi encontrado em nenhuma porta serial');
+    // }
+    // const arduino = new serialport.SerialPort(
+    //     {
+    //         path: portaArduino.path,
+    //         baudRate: SERIAL_BAUD_RATE
+    //     }
+    // );
+    // arduino.on('open', () => {
+    //     console.log(`A leitura do arduino foi iniciada na porta ${portaArduino.path} utilizando Baud Rate de ${SERIAL_BAUD_RATE}`);
+    // });
+    // arduino.pipe(new serialport.ReadlineParser({ delimiter: '\r\n' })).on('data', async (data) => {
+    //     //console.log(data);
+    //     const valores = data.split(';');
+    
+    setInterval(() => {
+        // const chave = parseInt(valores[0]);
         const chave2 = parseInt(Math.random(0, 1).toFixed());
         const chave3 = parseInt(Math.random(0, 1).toFixed());
         const chave4 = parseInt(Math.random(0, 1).toFixed());
         const chave5 = parseInt(Math.random(0, 1).toFixed());
-
-
-
-        valoresChave.push(chave);
+        const chave6 = parseInt(Math.random(0, 1).toFixed());
+    
+    
+        // valoresChave.push(chave);
         valoresChave2.push(chave2);
         valoresChave3.push(chave3);
         valoresChave4.push(chave4);
         valoresChave5.push(chave5);
-
+        valoresChave6.push(chave6);
         if (HABILITAR_OPERACAO_INSERIR) {
             if (AMBIENTE == 'producao') {
                 // const chave = parseInt(Math.random(0, 1).toFixed());
@@ -98,27 +101,28 @@ const serial = async (
                 //     qtd++
                 // }
                 console.log("AAAAAAAAAAAAAAAAAAAAA")
-                console.log("valoresChave", valoresChave)
+                // console.log("valoresChave", valoresChave)
                 console.log("valoresChave2", valoresChave2)
                 console.log("valoresChave3", valoresChave3)
                 console.log("valoresChave4", valoresChave4)
                 console.log("valoresChave5", valoresChave5)
+                console.log("valoresChave6", valoresChave6)
 
                 // alert("ta caindo aqui antes do if")
                 const connStr = "Server=datafound.database.windows.net;Database=bdDataFound;User Id=root_datafound;Password=#Gfgrupo6;";
 
-                if (valoresChave != '') {
-                    sqlquery =
-                        `INSERT INTO Leitura (movimento, fkSensor) VALUES
-                        (${chave}, 1);`;
-                    function inserirComando(conn, sqlquery) {
-                        conn.query(sqlquery);
-                    }
-                    sql.connect(connStr)
-                        .then(conn => inserirComando(conn, sqlquery))
-                        .catch(err => console.log("erro! " + err));
-                    console.log("Entrei no 1")
-                }
+                // if (valoresChave != '') {
+                //     sqlquery =
+                //         `INSERT INTO Leitura (movimento, fkSensor) VALUES
+                //         (${chave}, 1);`;
+                //     function inserirComando(conn, sqlquery) {
+                //         conn.query(sqlquery);
+                //     }
+                //     sql.connect(connStr)
+                //         .then(conn => inserirComando(conn, sqlquery))
+                //         .catch(err => console.log("erro! " + err));
+                //     console.log("Entrei no 1")
+                // }
 
                 if (valoresChave2 != '') {
                     sqlquery2 =
@@ -176,24 +180,40 @@ const serial = async (
                     console.log(chave5);
                 }
 
+                if(valoresChave6 != '') {
+                    sqlquery6 =
+                        `INSERT INTO Leitura (movimento, fkSensor) VALUES
+                        (${chave6}, 31);`;
+                    function inserirComando(conn, sqlquery6) {
+                        conn.query(sqlquery6);
+                    }
+                    sql.connect(connStr)
+                        .then(conn => inserirComando(conn, sqlquery6))
+                        .catch(err => console.log("erro! " + err));
+                    console.log("Entrei no 6")
+                    console.log(chave6);
+                }
+
             } else {
                 throw new Error('Ambiente não configurado. Verifique o arquivo "main.js" e tente novamente.');
             }
         }
-    });
-    arduino.on('error', (mensagem) => {
-        console.error(`Erro no arduino (Mensagem: ${mensagem}`)
-    });
+        // });
+        // arduino.on('error', (mensagem) => {
+        //     console.error(`Erro no arduino (Mensagem: ${mensagem}`)
+        // });
+    }, 1000)
 }
 
 
 // não altere!
 const servidor = (
-    valoresChave,
+    // valoresChave,
     valoresChave2,
     valoresChave3,
     valoresChave4,
-    valoresChave5
+    valoresChave5,
+    valoresChave6
 ) => {
     const app = express();
     app.use((request, response, next) => {
@@ -205,9 +225,9 @@ const servidor = (
         console.log(`API executada com sucesso na porta ${SERVIDOR_PORTA}`);
     });
 
-    app.get('/sensores/chave', (_, response) => {
-        return response.json(valoresChave);
-    });
+    // app.get('/sensores/chave', (_, response) => {
+    //     return response.json(valoresChave);
+    // });
     app.get('/sensores/chave2', (_, response) => {
         return response.json(valoresChave2);
     });
@@ -220,26 +240,32 @@ const servidor = (
     app.get('/sensores/chave5', (_, response) => {
         return response.json(valoresChave5);
     });
+    app.get('/sensores/chave6', (_, response) => {
+        return response.json(valoresChave6);
+    });
 }
 
 (async () => {
-    const valoresChave = [];
+    // const valoresChave = [];
     const valoresChave2 = [];
     const valoresChave3 = [];
     const valoresChave4 = [];
     const valoresChave5 = [];
+    const valoresChave6 = [];
     await serial(
-        valoresChave,
+        // valoresChave,
         valoresChave2,
         valoresChave3,
         valoresChave4,
         valoresChave5,
+        valoresChave6
     );
     servidor(
-        valoresChave,
+        // valoresChave,
         valoresChave2,
         valoresChave3,
         valoresChave4,
-        valoresChave5
+        valoresChave5,
+        valoresChave6
     );
 })();

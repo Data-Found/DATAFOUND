@@ -22,7 +22,7 @@
                         <li><span id="welcome"></span></li>
                         <img class="img_user" src="../assets/user.svg" />
                     </div>
-                        <button onclick="limparSessao()" class="btnExit">Sair</button>
+                    <button onclick="limparSessao()" class="btnExit">Sair</button>
                     </li>
                 </ul>
             </div>
@@ -32,57 +32,41 @@
     <div class="container">
         <div class="kpi_container">
             <div class="data_menu">
-                <h2>Indicadores</h2>
+                <h2>Indicadores do dia</h2>
                 <div class="box_menu">
-                    <div class="card_menu">
+                    <div class="card_menu" id="maxVisitado">
                         <div class="box_kpi">
                             <span class="kpiTitle">Setor mais visitado (Dia): </span>
-                            <span class="kpiText">Moda</span>
+                            <span class="kpiText"></span>
                         </div>
                         <hr class="barra">
                         <div class="box_kpi">
                             <span class="kpiTitle">Quantidade de pessoas: </span>
-                            <span class="kpiText">(200 pessoas)</span>
-                        </div>
-                        <hr class="barra">
-                        <div class="box_kpi">
-                            <span class="kpiTitle">Data e hora: </span>
-                            <span class="kpiText">12/04/2022 - 18:00</span>
+                            <span class="kpiText"></span>
                         </div>
                     </div>
 
-                    <div class="card_menu">
+                    <div class="card_menu" id="minVisitado">
                         <div class="box_kpi">
                             <span class="kpiTitle">Setor menos visitado (Dia): </span>
-                            <span class="kpiText">Camas</span>
+                            <span class="kpiText"></span>
                         </div>
                         <hr class="barra">
                         <div class="box_kpi">
                             <span class="kpiTitle">Quantidade de pessoas: </span>
-                            <span class="kpiText">(50 pessoas)</span>
-                        </div>
-                        <hr class="barra">
-                        <div class="box_kpi">
-                            <span class="kpiTitle">Data e hora: </span>
-                            <span class="kpiText">12/04/2022 - 18:00</span>
+                            <span class="kpiText"></span>
                         </div>
                     </div>
-                    <div class="card_menu">
+                    <div class="card_menu" id="horarioPico">
                         <div class="box_kpi">
                             <span class="kpiTitle">Horario de pico (Dia): </span>
-                            <span class="kpiText">12:00</span>
+                            <span class="kpiText"></span>
                         </div>
                         <hr class="barra">
                         <div class="box_kpi">
                             <span class="kpiTitle">Quantidade de pessoas: </span>
-                            <span class="kpiText">(150 pessoas)</span>
+                            <span class="kpiText"></span>
                         </div>
-                        <hr class="barra">
-                        <div class="box_kpi">
-                            <span class="kpiTitle">Data: </span>
-                            <span class="kpiText">12/04/2022</span>
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -114,77 +98,14 @@
                                 <span>Superlotação 90%</span>
                             </div>
                         </div>
-                        <div class="box_card">
-                            <a href="eletronicos.html">
-                                <div class="card">
-                                    <span class="title_setor">Eletrônicos</span>
-                                    <span class="text_setor">Fluxo no setor: 10</span>
-                                    <span class="text_setor">Máx: 11</span>
-                                    <span class="text_setor_fluxoPercent">Fluxo: 95%</span>
-                                    <img src="../assets/exclamationRed.svg" alt="">
-                                </div>
-                            </a>
-                            <div class="card">
-                                <span class="title_setor">Vestuário</span>
-                                <span class="text_setor">Fluxo no setor: 8</span>
-                                <span class="text_setor">Máx: 11</span>
-                                <span class="text_setor_fluxoPercent">Fluxo: 80%</span>
-                                <img src="../assets/exclamationYellow.svg" alt="">
-                            </div>
-                            <div class="card">
-                                <span class="title_setor">Brinquedos</span>
-                                <span class="text_setor">Fluxo no setor: 5</span>
-                                <span class="text_setor">Máx: 12</span>
-                                <span class="text_setor_fluxoPercent">Fluxo: 80%</span>
-                                <img src="../assets/correct.svg" alt="">
-                            </div>
-                            <div class="card">
-                                <span class="title_setor">Cosméticos</span>
-                                <span class="text_setor">Fluxo no setor: 14</span>
-                                <span class="text_setor">Máx: 15</span>
-                                <span class="text_setor_fluxoPercent">Fluxo: 95%</span>
-                                <img src="../assets/exclamationRed.svg" alt="">
-                            </div>
-                            <div class="card">
-                                <span class="title_setor">Alimentício</span>
-                                <span class="text_setor">Fluxo no setor: 10</span>
-                                <span class="text_setor">Máx: 15</span>
-                                <span class="text_setor_fluxoPercent">Fluxo: 75%</span>
-                                <img src="../assets/exclamationYellow.svg" alt="">
-                            </div>
-                            <div class="card">
-                                <span class="title_setor">Moda</span>
-                                <span class="text_setor">Fluxo no setor: 5</span>
-                                <span class="text_setor">Máx: 15</span>
-                                <span class="text_setor_fluxoPercent">Fluxo: 48%</span>
-                                <img src="../assets/correct.svg" alt="">
-                            </div>
-                            <div class="card">
-                                <span class="title_setor">Higiene</span>
-                                <span class="text_setor">Fluxo no setor: 14</span>
-                                <span class="text_setor">Máx: 15</span>
-                                <span class="text_setor_fluxoPercent">Fluxo: 97%</span>
-                                <img src="../assets/exclamationRed.svg" alt="">
-                            </div>
-                            <div class="card">
-                                <span class="title_setor">Bebidas</span>
-                                <span class="text_setor">Fluxo no setor: 10</span>
-                                <span class="text_setor">Máx: 15</span>
-                                <span class="text_setor_fluxoPercent">Fluxo: 76%</span>
-                                <img src="../assets/exclamationYellow.svg" alt="">
-                            </div>
-                            <div class="card">
-                                <span class="title_setor">Eletrodomésticos</span>
-                                <span class="text_setor">Fluxo no setor: 5</span>
-                                <span class="text_setor">Máx: 15</span>
-                                <span class="text_setor_fluxoPercent">Fluxo: 45%</span>
-                                <img src="../assets/correct.svg" alt="">
-                            </div>
-                        </div>
+                        <div class="box_card" id="cards"></div>
                     </div>
                 </div>
             </div>
             <div class="box">
+                <div class="titleGraph">
+                    <h2>Setores com maior fluxo</h2>
+                </div>
                 <div class="boxes graf-pizza">
                     <canvas id="setor" width="800" height="1250"></canvas>
                 </div>
@@ -192,43 +113,241 @@
         </div>
     </div>
     <footer>
-        <div><a href="../downloadApi/dat-acqui-ino-datafound-main.zip" download="Sistema-DataFound">! Baixar o sistema DataFound </a></div>
+        <div><a href="../downloadApi/dat-acqui-ino-datafound-main.zip" download="Sistema-DataFound">! Baixar o sistema
+                DataFound </a></div>
     </footer>
 </body>
 
 </html>
 <script>
-    var idUsuario = sessionStorage.ID_USUARIO;
+    var idEmpresa = sessionStorage.ID_EMPRESA;
     welcome.innerHTML = sessionStorage.NOME_USUARIO;
 
     let proximaAtualizacao;
-    window.onload = obterDados(idUsuario);
+    window.onload = obterDados(idEmpresa);
+    window.onload = ListarSetorMaisVisitado(idEmpresa);
+    window.onload = ListarSetorMenosVisitado(idEmpresa);
+    window.onload = ListarHorarioPico(idEmpresa);
+    window.onload = GerarCards(idEmpresa);
 
-    function obterDados(idUsuario) {
-        
-        fetch(`/fluxo/obterDados/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+    function GerarCards(idEmpresa) {
+        fetch(`/fluxo/obterSetores/${idEmpresa}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    fetch(`/fluxo/obterDados/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
+
+                        var fluxo = 0
+                        var redAlert = "../assets/exclamationRed.svg";
+                        var yellowAlert = "../assets/exclamationYellow.svg";
+                        var greenAlert = "../assets/correct.svg";
+
+                        if (response.ok) {
+                            response.json().then(function (resposta) {
+                                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                                for (let i = 0; i <= json.length; i++) {
+                                    fluxo = ((resposta[i].qtdSetor / json[i].maxSetor) * 100).toFixed(2)
+
+
+                                    if (fluxo >= 95 || fluxo <= 5) {
+                                        cards.innerHTML += `
+                                            <div class="card">
+                                                <span class="title_setor">${json[i].nomeSetor}</span>
+                                                <span class="text_setor">Fluxo no setor: ${resposta[i].qtdSetor}</span>
+                                                <span class="text_setor">Máx: ${json[i].maxSetor}</span>
+                                                <span class="text_setor_fluxoPercent">Fluxo: ${fluxo}%</span>
+                                                <img src = "${redAlert}" alt="">
+                                            </div>
+                                        `
+                                    } else if (fluxo >= 85 || fluxo <= 15) {
+                                        cards.innerHTML += `
+                                            <div class="card">
+                                                <span class="title_setor">${json[i].nomeSetor}</span>
+                                                <span class="text_setor">Fluxo no setor: ${resposta[i].qtdSetor}</span>
+                                                <span class="text_setor">Máx: ${json[i].maxSetor}</span>
+                                                <span class="text_setor_fluxoPercent">Fluxo: ${fluxo}%</span>
+                                                <img src = "${yellowAlert}" alt="">
+                                            </div>
+                                        `
+                                        } else {
+                                            cards.innerHTML += `
+                                            <div class="card">
+                                                <span class="title_setor">${json[i].nomeSetor}</span>
+                                                <span class="text_setor">Fluxo no setor: ${resposta[i].qtdSetor}</span>
+                                                <span class="text_setor">Máx: ${json[i].maxSetor}</span>
+                                                <span class="text_setor_fluxoPercent">Fluxo: ${fluxo}%</span>
+                                                <img src = "${greenAlert}" alt="">
+                                            </div>
+                                        `
+                                        }
+                                    }
+                                });
+                        } else {
+                            console.error('Nenhum dado encontrado ou erro na API');
+                        }
+                    }).catch(function (error) {
+                        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+                    });
+
+                });
+
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        }).catch(function (error) {
+            console.error(`Erro na obtenção dos dados: ${error.message}`);
+        });
+    }
+
+    function ListarSetorMaisVisitado(idEmpresa) {
+        fetch(`/fluxo/obterMaxDados/${idEmpresa}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    maxVisitado.innerHTML = `
+                        <div class="box_kpi">
+                                <span class="kpiTitle">Setor mais visitado (Dia): </span>
+                                <span class="kpiText">${json[0].nomeSetor}</span>
+                            </div>
+                            <hr class="barra">
+                            <div class="box_kpi">
+                                <span class="kpiTitle">Quantidade de pessoas: </span>
+                                <span class="kpiText">${json[0].qtdMax} pessoas</span>
+                            </div>
+                        </div>
+                    `
+
+                });
+
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        }).catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+    }
+
+    function ListarSetorMenosVisitado(idEmpresa) {
+        fetch(`/fluxo/obterMinDados/${idEmpresa}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    minVisitado.innerHTML = `
+                        <div class="box_kpi">
+                                <span class="kpiTitle">Setor menos visitado (Dia): </span>
+                                <span class="kpiText">${json[0].nomeSetor}</span>
+                            </div>
+                            <hr class="barra">
+                            <div class="box_kpi">
+                                <span class="kpiTitle">Quantidade de pessoas: </span>
+                                <span class="kpiText">${json[0].qtdMax} pessoas</span>
+                            </div>
+                        </div>
+                    `
+
+                });
+
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        }).catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+    }
+
+    function ListarHorarioPico(idEmpresa) {
+        fetch(`/fluxo/obterPicoDados/${idEmpresa}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    horarioPico.innerHTML = `
+
+                    <div class="box_kpi">
+                            <span class="kpiTitle">Horario de pico (Dia): </span>
+                            <span class="kpiText">${json[0].hora}</span>
+                        </div>
+                        <hr class="barra">
+                        <div class="box_kpi">
+                            <span class="kpiTitle">Quantidade de pessoas: </span>
+                            <span class="kpiText">${json[0].qtd} pessoas</span>
+                        </div>
+                    `
+
+                });
+
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        }).catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+    }
+
+    function obterDados(idEmpresa) {
+
+        fetch(`/fluxo/obterDadosGrafico/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
 
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     /* resposta.reverse(); */
 
-                    
-                    setTimeout(() => desenharGrafico(resposta, idUsuario), 500);
-                    
+
+                    setTimeout(() => desenharGrafico(resposta, idEmpresa), 500);
+
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
             }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
+        }).catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
     }
 
 
-    function desenharGrafico(resposta, idUsuario) {
-        
+    function desenharGrafico(resposta, idEmpresa) {
+
         console.log('iniciando plotagem do gráfico...');
 
         // Criando estrutura para plotar gráfico - labels
@@ -280,72 +399,72 @@
             type: 'pie',
             data: dados
         };
-        
+
         // Adicionando gráfico criado em div na tela
         let setor = new Chart(
             document.getElementById(`setor`),
             config
         );
-        
-        setTimeout(() => atualizarGrafico(idUsuario, dados, setor), 5000);
+
+        setTimeout(() => atualizarGrafico(idEmpresa, dados, setor), 5000);
     }
 
 
-    function atualizarGrafico(idUsuario, dados, setor) {
+    function atualizarGrafico(idEmpresa, dados, setor) {
 
-fetch(`/fluxo/atualizarGrafico/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
-    if (response.ok) {
-        response.json().then(function (novoRegistro) {
+        fetch(`/fluxo/atualizarGrafico/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
 
-            console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-            console.log(`Dados atuais do gráfico:`);
-            console.log(dados);
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+                    console.log(dados);
 
-            /* document.getElementById("avisoCaptura").innerHTML = "" */
+                    /* document.getElementById("avisoCaptura").innerHTML = "" */
 
-            if (novoRegistro[0].qtdSetor == dados.labels[dados.labels.length - 1]) {
-                console.log("---------------------------------------------------------------")
-                console.log("Como não há data novos para captura, o gráfico não atualizará.")
-                /* document.getElementById("avisoCaptura").innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará." */
-                console.log("Horário do novo dado capturado:")
-                console.log(novoRegistro[0].qtdSetor)
-                console.log("Horário do último dado capturado:")
-                console.log(dados.labels[dados.labels.length - 1])
-                console.log("---------------------------------------------------------------")
+                    if (novoRegistro[0].qtdSetor == dados.labels[dados.labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há data novos para captura, o gráfico não atualizará.")
+                        /* document.getElementById("avisoCaptura").innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará." */
+                        console.log("Horário do novo dado capturado:")
+                        console.log(novoRegistro[0].qtdSetor)
+                        console.log("Horário do último dado capturado:")
+                        console.log(dados.labels[dados.labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+                        for (i = 0; i < novoRegistro.length; i++) {
+                            var registro = novoRegistro[i];
+                            console.log(registro)
+                            dados.labels.shift(5);
+                            dados.datasets[0].data.shift(5);
+                            dados.labels.push(registro.nomeSetor);
+                            dados.datasets[0].data.push(registro.qtdSetor);
+                        }
+
+                        // tirando e colocando valores no gráfico
+
+                        /* dados.datasets[0].data.push(registro.qtdSetor); */
+
+                        /*                 data.datasets[0].data.shift();  // apagar o primeiro de umidade
+                                        data.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+                                        data.datasets[1].data.shift();  // apagar o primeiro de temperatura
+                                        data.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura */
+                        setor.update();
+                    }
+
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idEmpresa, dados, setor), 5000);
+                });
             } else {
-                for (i = 0; i < novoRegistro.length; i++) {
-            var registro = novoRegistro[i];
-            console.log(registro)
-            dados.labels.shift(5);
-            dados.datasets[0].data.shift(5);
-            dados.labels.push(registro.nomeSetor);
-            dados.datasets[0].data.push(registro.qtdSetor);
-        }
-                
-                // tirando e colocando valores no gráfico
-                
-                    /* dados.datasets[0].data.push(registro.qtdSetor); */
-
-/*                 data.datasets[0].data.shift();  // apagar o primeiro de umidade
-                data.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
-                data.datasets[1].data.shift();  // apagar o primeiro de temperatura
-                data.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura */
-                setor.update();
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idEmpresa, dados, setor), 5000);
             }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos data p/ gráfico: ${error.message}`);
+            });
 
-            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGrafico(idUsuario, dados, setor), 5000);
-        });
-    } else {
-        console.error('Nenhum dado encontrado ou erro na API');
-        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-        proximaAtualizacao = setTimeout(() => atualizarGrafico(idUsuario, dados, setor), 5000);
     }
-})
-    .catch(function (error) {
-        console.error(`Erro na obtenção dos data p/ gráfico: ${error.message}`);
-    });
-
-}
 
 </script>
