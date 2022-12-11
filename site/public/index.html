@@ -26,7 +26,7 @@
                     <div id="botoes_logados" class="botoes_logados">
                         <li class="lista"><a href="dashboard/dashboard.html" class="navlink">Dash Geral</a></li>
                     </div>
-                    <button id="btnSair" onclick="limparSessao()">Sair</button>
+                    <button id="btnSair" class="btnSair" onclick="limparSessao()">Sair</button>
                     <!-- <li class="lista"><a href="dashboard.html" class="navlink">Dashboard</a></li> -->
                     <div id="botoes_deslogados">
                         <li class="lista"> <a href="login.html" class="btn-login">Login <img src="assets/img/enter.png"
@@ -311,7 +311,9 @@
         botoes_deslogados.style.display = 'none'
         botoes_logados.style.display = 'flex'
     } else {
-
+        botoes_deslogados.style.display = 'flex'
+        botoes_logados.style.display = 'none'
+        btnSair.style.display = 'none'
     }
 
     ScrollReveal().reveal('.main', { delay: 500, easing: 'ease-in' });

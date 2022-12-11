@@ -152,4 +152,4 @@ SELECT * FROM formContato;
 SELECT * FROM Setor;
 INSERT INTO Leitura (movimento, dtLeitura, fkSensor) VALUES
 -- GOLDEN HONOR
-(1,'2022-10-01 09:10:00',1)
+(1,'2022-10-01 09:12:00',1)
