@@ -121,6 +121,32 @@ ul li .navlink:hover {
   color: white;
 }
 
+.botoes_logados{
+  display: none;
+  width: 300px;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#btnSair{
+  color: white;
+  background-color: rgb(8, 51, 131);
+  border-radius: 7px;
+  font-size: 17px;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.5s;
+  font-weight: bold;
+  
+}
+#btnSair:hover{
+  background-color: rgba(34, 34, 34, 0.435);
+  color: white;
+  transform: scale(1.05);
+}
+
+
 .main {
   display: flex;
   justify-content: center;

@@ -28,7 +28,6 @@
                         <img class="img_user" src="../assets/img/user.svg" />
                     </div>
                     <button onclick="limparSessao()" class="btnExit">Sair</button>
-                    </li>
                 </ul>
             </div>
         </nav>
@@ -109,7 +108,7 @@
             </div>
             <div class="box">
                 <div class="titleGraph">
-                    <h2>Setores com maior fluxo</h2>
+                    <h2>Setores com maior fluxo hoje</h2>
                 </div>
                 <div class="boxes graf-pizza">
                     <canvas id="setor" width="800" height="1250"></canvas>
@@ -186,12 +185,13 @@
                                     var alertAmarelo = false;
                                     var alertVerde = false;
 
+                                
                                     if (fluxoYellow && alertAmarelo == false) {
                                         setorYellow.push(` ${json[i].nomeSetor}`)
-                                        dashYellowAlerts(msgYellow)
+                                        // dashYellowAlerts(msgYellow)
+
                                         alertAmarelo = true;
                                     }
-
                                     if (fluxoRed && alertVermelho == false) {
                                         setorRed.push(` ${json[i].nomeSetor}`)
                                         dashRedAlerts(msgRed)
@@ -284,6 +284,7 @@
                                 for (let i = 0; i < json.length; i++) {
                                     var zoneYellow = false;
                                     var zoneRed = false;
+                                    var zoneGreen = false;
                                     console.log(json[i].maxSetor);
                                     console.log(json);
                                     fluxo = ((resposta[i].qtdSetor / json[i].maxSetor) * 100).toFixed(2);
@@ -298,10 +299,11 @@
                                         alerta = yellowAlert;
                                         zoneYellow = true;
                                     } else {
-
+                                        alerta = greenAlert;
+                                        zoneGreen = true;
                                     }
 
-
+                                    
                                     cards.innerHTML += `
                                             <a href="${json[i].nomeSetor}.html">
                                                 <div class="card" id="card${i}">
@@ -309,7 +311,7 @@
                                                     <span id="text1_setor${i}" class="text_setor">Fluxo no setor: ${resposta[i].qtdSetor}</span>
                                                     <span id="text2_setor${i}" class="text_setor">Máx: ${json[i].maxSetor}</span>
                                                     <span id="text3_setor${i}" class="text_setor_fluxoPercent">Fluxo: ${fluxo}%</span>
-                                                    <span id="img_setor${i}"><img src = "${alerta}" alt=""></span>
+                                                    <span id="img_setor${i}"><img src = "${alerta}" alt=""></span>                                    
                                                 </div>
                                             </a>    
                                             `
@@ -324,7 +326,7 @@
                                     console.log(resposta[i].qtdSetor);
                                     text2.innerHTML = `Máx: ${json[i].maxSetor}`
                                     text3.innerHTML = `Fluxo: ${fluxo}%`
-                                    img.innerHTML = `<img src ="${alerta}" alt="a">`
+                                    img.innerHTML = `<img src ="${alerta}" alt="">`
 
                                     // } if (fluxoYellow) {
                                     //     cards.innerHTML += `
@@ -356,13 +358,22 @@
                                     if (zoneYellow == true) {
                                         var cardizin = document.getElementById(`card${i}`);
 
-                                        cardizin.style = 'background-color: #ffffc5; border: solid 3px #b8b81e;'
+                                        cardizin.style = 'background-color: rgba(255, 255, 197, 0.4); border: solid 3px rgb(184, 184, 30); box-shadow: 1px 1px 1px rgb(184, 184, 30);'
+                                        cardizin.classList.add('cardYellow');
                                     }
                                     if (zoneRed == true) {
                                         var cardizin = document.getElementById(`card${i}`);
 
-                                        cardizin.style = 'background-color: #ffc1be; border: solid 3px #c22722;'
+                                        cardizin.style = 'background-color: rgba(255, 193, 190, 0.4); border: solid 3px rgb(194, 39, 34); box-shadow: 1px 1px 1px rgb(194, 39, 34);'
+                                        cardizin.classList.add('cardRed');
                                     }
+                                    if(zoneGreen == true) {
+                                        var cardizin = document.getElementById(`card${i}`);
+
+                                        cardizin.style = 'background-color: rgba(189, 236, 182, 0.4); border: solid 3px rgb(51, 204, 35); box-shadow: 1px 1px 1px rgb(51, 204, 35);'
+                                        cardizin.classList.add('cardGreen');
+                                    }
+
                                 }
 
                             });

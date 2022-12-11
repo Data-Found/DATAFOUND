@@ -149,6 +149,17 @@ nav ul {
   margin-top: 1%;
 }
 
+.daily {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 4%;
+  color: #ffffff;
+  background-color: #0c2233;
+  border-radius: 15px;
+  padding: 5px 0px;
+}
+
 .box_metricas {
   width: 35.5vw;
   display: flex;
@@ -295,6 +306,7 @@ h2 {
   color: black;
 }
 
+
 /* Mano eu tirei o footer da dash, o que vc acha? */
 .container_cards .box_card .card {
   width: 200px;
@@ -302,23 +314,24 @@ h2 {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  border-radius: 20px;
+  border-radius: 10px;
   box-shadow: 2px 1px 10px 1px rgb(187, 187, 187);
   margin: 15px 0;
   cursor: pointer;
   transition: all 0.3s;
   word-wrap: break-word;
+
 }
 
 .card:hover {
   transition: all 0.3s;
-  background-color: rgb(241, 241, 241);
+  transform: scale(1.02);
 }
 
 .card img {
   display: flex;
   align-self: center;
-  margin: 15%;
+  margin: 15% 5% 15% 35%;
   width: 55px;
   height: 55px;
 }
@@ -501,3 +514,4 @@ footer div a {
   text-decoration: none;
   font-weight: bold;
 }
+

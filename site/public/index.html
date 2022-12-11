@@ -11,6 +11,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css" />
+    <script src="./js/funcoes.js"></script>
     <title>Data Found</title>
 </head>
 
@@ -22,11 +23,17 @@
                 <ul>
                     <!-- <li class="lista"><a href="#" class="navlink">Home</a></li> -->
                     <li class="lista"><a href="calculadora.html" class="navlink">Simulador</a></li>
+                    <div id="botoes_logados" class="botoes_logados">
+                        <li class="lista"><a href="dashboard/dashboard.html" class="navlink">Dash Geral</a></li>
+                    </div>
+                    <button id="btnSair" onclick="limparSessao()">Sair</button>
                     <!-- <li class="lista"><a href="dashboard.html" class="navlink">Dashboard</a></li> -->
-                    <li class="lista"> <a href="login.html" class="btn-login">Login <img src="assets/img/enter.png"
-                                alt="Ícone para entrar" class="enter"> </a>
-                    </li>
-                    <li class="lista"><a class="btn-cadastrar" href="cadastrar.html">Cadastrar</a></li>
+                    <div id="botoes_deslogados">
+                        <li class="lista"> <a href="login.html" class="btn-login">Login <img src="assets/img/enter.png"
+                                    alt="Ícone para entrar" class="enter"> </a>
+                        </li>
+                        <li class="lista"><a class="btn-cadastrar" href="cadastrar.html">Cadastrar</a></li>
+                    </div>
 
                 </ul>
             </div>
@@ -300,6 +307,13 @@
 </html>
 <script src="js/alerts.js"></script>
 <script>
+    if (sessionStorage.ID_USUARIO != null) {
+        botoes_deslogados.style.display = 'none'
+        botoes_logados.style.display = 'flex'
+    } else {
+
+    }
+
     ScrollReveal().reveal('.main', { delay: 500, easing: 'ease-in' });
     ScrollReveal().reveal('.quemsomos', { delay: 500, easing: 'ease-in' });
     ScrollReveal().reveal('.nossa-equipe', { delay: 500, easing: 'ease-in' });
@@ -307,6 +321,7 @@
     ScrollReveal().reveal('.dash', { delay: 500, easing: 'ease-in' });
     ScrollReveal().reveal('.fale-conosco', { delay: 500, easing: 'ease-in' });
     ScrollReveal().reveal('.maps', { delay: 500, easing: 'ease-in' });
+
 
     function enviar() {
         var nome = ipt_nome.value;
