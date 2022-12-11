@@ -174,7 +174,7 @@
                             response.json().then(function (resposta) {
                                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
-                                for (let i = 0; i <= json.length; i++) {
+                                for (let i = 0; i < json.length; i++) {
                                     fluxo = ((resposta[i].qtdSetor / json[i].maxSetor) * 100).toFixed(2);
 
                                     fluxoRed = fluxo >= 90 || fluxo <= 15
@@ -249,7 +249,10 @@
             console.error(`Erro na obtenção dos dados: ${error.message}`);
         });
     }
-
+    var redAlert = '../assets/img/exclamationRed.svg';
+    var yellowAlert = '../assets/img/exclamationYellow.svg';
+    var greenAlert = '../assets/img/correct.svg';
+    var alerta = '';
 
     function GerarCards(idEmpresa) {
         fetch(`/fluxo/obterSetores/${idEmpresa}`, {
@@ -276,58 +279,89 @@
                         if (response.ok) {
                             response.json().then(function (resposta) {
                                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-
-                                var redAlert = '../assets/img/exclamationRed.svg';
-                                var yellowAlert = '../assets/img/exclamationYellow.svg';
-                                var greenAlert = '../assets/img/correct.svg';
-
+                                
+                                cards.innerHTML = ''
                                 for (let i = 0; i < json.length; i++) {
+                                    var zoneYellow = false;
+                                    var zoneRed = false;
                                     console.log(json[i].maxSetor);
                                     console.log(json);
-
                                     fluxo = ((resposta[i].qtdSetor / json[i].maxSetor) * 100).toFixed(2);
 
                                     fluxoRed = fluxo >= 90 || fluxo <= 15
                                     fluxoYellow = fluxo >= 75 || fluxo <= 25
 
                                     if (fluxoRed) {
-                                        cards.innerHTML += `
+                                        alerta = redAlert;
+                                        zoneRed = true;
+                                    } else if (fluxoYellow) {
+                                        alerta = yellowAlert;
+                                        zoneYellow = true;
+                                    } else {
+
+                                    }
+
+
+                                    cards.innerHTML += `
                                             <a href="${json[i].nomeSetor}.html">
-                                                <div class="card">
-                                                    <span class="title_setor">${json[i].nomeSetor}</span>
-                                                    <span class="text_setor">Fluxo no setor: ${resposta[i].qtdSetor}</span>
-                                                    <span class="text_setor">Máx: ${json[i].maxSetor}</span>
-                                                    <span class="text_setor_fluxoPercent">Fluxo: ${fluxo}%</span>
-                                                    <img src = "${redAlert}" alt="">
+                                                <div class="card" id="card${i}">
+                                                    <span id="title_setor${i}" class="title_setor">${json[i].nomeSetor}</span>
+                                                    <span id="text1_setor${i}" class="text_setor">Fluxo no setor: ${resposta[i].qtdSetor}</span>
+                                                    <span id="text2_setor${i}" class="text_setor">Máx: ${json[i].maxSetor}</span>
+                                                    <span id="text3_setor${i}" class="text_setor_fluxoPercent">Fluxo: ${fluxo}%</span>
+                                                    <span id="img_setor${i}"><img src = "${alerta}" alt=""></span>
                                                 </div>
                                             </a>    
                                             `
+                                    var title = document.getElementById(`title_setor${i}`)
+                                    var text1 = document.getElementById(`text1_setor${i}`)
+                                    var text2 = document.getElementById(`text2_setor${i}`)
+                                    var text3 = document.getElementById(`text3_setor${i}`)
+                                    var img = document.getElementById(`img_setor${i}`)
 
-                                    } else if (fluxoYellow) {
-                                        cards.innerHTML += `
-                                            <a href="${json[i].nomeSetor}.html">
-                                                <div class="card">
-                                                    <span class="title_setor">${json[i].nomeSetor}</span>
-                                                    <span class="text_setor">Fluxo no setor: ${resposta[i].qtdSetor}</span>
-                                                    <span class="text_setor">Máx: ${json[i].maxSetor}</span>
-                                                    <span class="text_setor_fluxoPercent">Fluxo: ${fluxo}%</span>
-                                                    <img src = "${yellowAlert}" alt="">
-                                                </div>
-                                                </a>      
-                                            `
+                                    title.innerHTML = `${json[i].nomeSetor}`
+                                    text1.innerHTML = `Fluxo no setor: ${resposta[i].qtdSetor}`
+                                    console.log(resposta[i].qtdSetor);
+                                    text2.innerHTML = `Máx: ${json[i].maxSetor}`
+                                    text3.innerHTML = `Fluxo: ${fluxo}%`
+                                    img.innerHTML = `<img src ="${alerta}" alt="a">`
 
-                                    } else {
-                                        cards.innerHTML += `
-                                            <a href="${json[i].nomeSetor}.html">    
-                                                <div class="card">
-                                                    <span class="title_setor">${json[i].nomeSetor}</span>
-                                                    <span class="text_setor">Fluxo no setor: ${resposta[i].qtdSetor}</span>
-                                                    <span class="text_setor">Máx: ${json[i].maxSetor}</span>
-                                                    <span class="text_setor_fluxoPercent">Fluxo: ${fluxo}%</span>
-                                                    <img src = "${greenAlert}" alt="">
-                                                </div>
-                                                </a>      
-                                            `
+                                    // } if (fluxoYellow) {
+                                    //     cards.innerHTML += `
+                                    //         <a href="${json[i].nomeSetor}.html">
+                                    //             <div class="card">
+                                    //                 <span class="title_setor">${json[i].nomeSetor}</span>
+                                    //                 <span class="text_setor">Fluxo no setor: ${resposta[i].qtdSetor}</span>
+                                    //                 <span class="text_setor">Máx: ${json[i].maxSetor}</span>
+                                    //                 <span class="text_setor_fluxoPercent">Fluxo: ${fluxo}%</span>
+                                    //                 <img src = "${yellowAlert}" alt="">
+                                    //             </div>
+                                    //             </a>      
+                                    //         `
+
+                                    // } if (!fluxoYellow && !fluxoRed) {
+                                    //     cards.innerHTML += `
+                                    //         <a href="${json[i].nomeSetor}.html">    
+                                    //             <div class="card">
+                                    //                 <span class="title_setor">${json[i].nomeSetor}</span>
+                                    //                 <span class="text_setor">Fluxo no setor: ${resposta[i].qtdSetor}</span>
+                                    //                 <span class="text_setor">Máx: ${json[i].maxSetor}</span>
+                                    //                 <span class="text_setor_fluxoPercent">Fluxo: ${fluxo}%</span>
+                                    //                 <img src = "${greenAlert}" alt="">
+                                    //             </div>
+                                    //             </a>      
+                                    //         `
+                                    // }
+
+                                    if (zoneYellow == true) {
+                                        var cardizin = document.getElementById(`card${i}`);
+
+                                        cardizin.style = 'background-color: #ffffc5; border: solid 3px #b8b81e;'
+                                    }
+                                    if (zoneRed == true) {
+                                        var cardizin = document.getElementById(`card${i}`);
+
+                                        cardizin.style = 'background-color: #ffc1be; border: solid 3px #c22722;'
                                     }
                                 }
 
@@ -348,8 +382,8 @@
         });
     }
 
+    setInterval(() => { GerarCards(idEmpresa) }, 5000);
 
-    // setInterval(() => {GerarCards(idEmpresa)}, 1000);
 
     function ListarSetorMaisVisitado(idEmpresa) {
         fetch(`/fluxo/obterMaxDados/${idEmpresa}`, {
