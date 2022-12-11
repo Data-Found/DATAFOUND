@@ -1,4 +1,4 @@
-![Logo](Documenta%C3%A7%C3%A3o/Design/data.png)
+![logo-nav](https://user-images.githubusercontent.com/111136765/206927769-0065bf9b-3730-4463-84ff-9a571224b861.png)
 # DATAFOUND
 Empresa de sistema de processamento de dados
 
@@ -16,7 +16,7 @@ O nosso papel é direcionar nossos clientes com base de dados relevantes para o 
 
 ## Documentação
 
-[Documentação](Documenta%C3%A7%C3%A3o/datafound.docx)
+[DATAFOUND-DOCUMENTO.docx](https://github.com/Data-Found/DATAFOUND/files/10203250/DATAFOUND-DOCUMENTO.docx)
 
 
 ## Autores
@@ -33,4 +33,3 @@ O nosso papel é direcionar nossos clientes com base de dados relevantes para o 
 ## Feedback
 
 Se você tiver algum feedback, por favor nos deixe saber por meio de datafound@sptech.school.com
-
