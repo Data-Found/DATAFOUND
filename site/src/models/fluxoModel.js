@@ -14,7 +14,40 @@ function listar(idUsuario) {
     return database.executar(instrucao);
 }
 
-// Acho que falta os sensores no setor de jardinagem, nesse select não retorna esse setor
+function valoresSetor(idSetor, idEmpresa) {
+    console.log("ACESSEI O USUARIO MODEL - VALORESSETOR \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function valoresSetor()");
+    var instrucao = `
+    SELECT TOP 7 CONVERT(varchar, Leitura.dtLeitura, 108) AS 'horario', count(Leitura.movimento) AS 'qtdSetor' FROM Leitura 
+    JOIN Sensor ON Leitura.fkSensor = Sensor.idSensor
+        JOIN Setor ON Sensor.fkSetor = Setor.idSetor
+            JOIN Empresa ON Setor.fkEmpresa = Empresa.idEmpresa
+                WHERE Empresa.idEmpresa = ${idEmpresa}
+                    AND Leitura.movimento = 1
+                        AND Setor.idSetor = ${idSetor}
+                            GROUP BY CONVERT(varchar, Leitura.dtLeitura, 108)
+                            ORDER BY CONVERT(varchar, Leitura.dtLeitura, 108) DESC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function atualizarGraficoSetor(idSetor, idEmpresa) {
+    console.log("ACESSEI O USUARIO MODEL - ATUALIZAR GRÁFICO \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function valoresSetor()");
+    var instrucao = `
+    SELECT TOP 7 CONVERT(varchar, Leitura.dtLeitura, 108) AS 'horario', count(Leitura.movimento) AS 'qtdSetor' FROM Leitura 
+    JOIN Sensor ON Leitura.fkSensor = Sensor.idSensor
+        JOIN Setor ON Sensor.fkSetor = Setor.idSetor
+            JOIN Empresa ON Setor.fkEmpresa = Empresa.idEmpresa
+                WHERE Empresa.idEmpresa = ${idEmpresa}
+                    AND Leitura.movimento = 1
+                        AND Setor.idSetor = ${idSetor}
+                            GROUP BY CONVERT(varchar, Leitura.dtLeitura, 108)
+                            ORDER BY CONVERT(varchar, Leitura.dtLeitura, 108) DESC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function obterDados(idEmpresa) {
     console.log("ACESSEI O USUARIO MODEL PARA OBTER OS DADOS \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
@@ -148,6 +181,8 @@ function atualizarGrafico(idEmpresa) {
 
 module.exports = {
     listar,
+    valoresSetor,
+    atualizarGraficoSetor,
     obterDados,
     obterDadosGrafico,
     obterMaxDados,

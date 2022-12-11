@@ -413,7 +413,7 @@ ul li .navlink:hover {
   align-items: center;
   justify-content: center;
   font-size: 16px;
-text-align: left;
+  text-align: left;
 }
 
 .texto-mvv p {
@@ -546,8 +546,9 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   margin: 10px;
   display: flex;
 } 
+
 textarea {
- width: 300px;
+  width: 300px;
   display: flex;
 }
 
@@ -593,13 +594,60 @@ textarea {
   font-weight: bold;
   border: 1px solid #19719A;
   cursor: pointer;
+  transition: all 0.3s;
 }
 
 .fale-conosco .container .btn-form button:hover {
   background-color: #ffffff;
   color: black;
   border: 1px solid black;
+  transition: all 0.3s;
 }
+
+.maps {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.maps h2 {
+  font-size: 40px;
+  padding: 20px 0px;
+}
+
+.map_content {
+  width: 60%;
+  height: 450px;
+  border: none;
+  border-radius: 15px;
+  margin-bottom: 5%;
+}
+
+.formDefault {
+  border: 1px solid rgb(84, 84, 84);
+}
+
+input.formError, textarea.formError {
+  border: 1px solid red;
+}
+
+input.formError:focus, textarea.formError:focus {
+  border: 1px solid rgb(84, 84, 84);
+}
+
+input.formError:focus::placeholder, textarea.formError:focus::placeholder {
+  color: black;
+}
+
+input.formError::placeholder, textarea.formError::placeholder {
+  color: red;
+}
+
+input.formError:valid, textarea.formError:valid {
+  border: 1px solid rgb(84, 84, 84);
+}
+
 
 footer {
   display: flex;

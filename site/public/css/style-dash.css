@@ -23,7 +23,7 @@ nav {
   justify-content: center;
   position: absolute;
   z-index: 2;
-  background-image: url("../assets/headerBack.svg");
+  background-image: url("../assets/img/headerBack.svg");
   background-size: cover;
   background-repeat: no-repeat;
 }

@@ -7,6 +7,14 @@ router.get("/", function (req, res) {
     fluxoController.testar(req, res);
 });
 
+router.get("/valoresSetor/:empresaID/:setorID", function (req, res) {
+    fluxoController.valoresSetor(req, res)
+});
+
+router.get("/atualizarGraficoSetor/:empresaID/:setorID", function (req, res) {
+    fluxoController.atualizarGraficoSetor(req, res);
+});
+
 router.get("/listar/:idUsuario", function (req, res) {
     fluxoController.listar(req, res);
 });

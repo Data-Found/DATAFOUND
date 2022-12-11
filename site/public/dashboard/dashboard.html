@@ -9,18 +9,23 @@
     <link rel="stylesheet" href="../css/style-dash.css">
     <!-- <link rel="shortcut icon" href="assets/icon/favicon.ico" type="image/x-icon"> -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../js/funcoes.js"></script>
+    <link rel="shortcut icon" href="../assets/icon/favicon.ico" type="image/x-icon" />
+    <script data-jsd-embedded data-key="d319b21f-a38f-45ed-ac3b-1442696f0a83"
+        data-base-url="https://jsd-widget.atlassian.com"
+        src="https://jsd-widget.atlassian.com/assets/embed.js"></script>
 </head>
 
-<body onload="">
+<body onload="validarSessao()">
     <header>
         <nav>
             <div class="container-nav">
-                <a href="../index.html"><img class="logo" src="../assets/logo-nav.png" alt="Logo DataFound" /></a>
+                <a href="../index.html"><img class="logo" src="../assets/img/logo-nav.png" alt="Logo DataFound" /></a>
                 <ul>
                     <div class="box_user">
                         <li><span id="welcome"></span></li>
-                        <img class="img_user" src="../assets/user.svg" />
+                        <img class="img_user" src="../assets/img/user.svg" />
                     </div>
                     <button onclick="limparSessao()" class="btnExit">Sair</button>
                     </li>
@@ -116,12 +121,24 @@
         <div><a href="../downloadApi/dat-acqui-ino-datafound-main.zip" download="Sistema-DataFound">! Baixar o sistema
                 DataFound </a></div>
     </footer>
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
 </body>
 
 </html>
+<script src="../js/alerts.js"></script>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
 <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+
     var idEmpresa = sessionStorage.ID_EMPRESA;
     welcome.innerHTML = sessionStorage.NOME_USUARIO;
+    var fluxoRed = 0;
+    var fluxoYellow = 0;
 
     let proximaAtualizacao;
     window.onload = obterDados(idEmpresa);
@@ -129,8 +146,9 @@
     window.onload = ListarSetorMenosVisitado(idEmpresa);
     window.onload = ListarHorarioPico(idEmpresa);
     window.onload = GerarCards(idEmpresa);
+    window.onload = carregarAlerts();
 
-    function GerarCards(idEmpresa) {
+    function carregarAlerts() {
         fetch(`/fluxo/obterSetores/${idEmpresa}`, {
             method: "GET",
             headers: {
@@ -145,54 +163,76 @@
                     console.log(json);
                     console.log(JSON.stringify(json));
 
+
                     fetch(`/fluxo/obterDados/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
 
-                        var fluxo = 0
-                        var redAlert = "../assets/exclamationRed.svg";
-                        var yellowAlert = "../assets/exclamationYellow.svg";
-                        var greenAlert = "../assets/correct.svg";
+                        var setorRed = [];
+                        var setorYellow = [];
+                        var fluxo = 0;
 
                         if (response.ok) {
                             response.json().then(function (resposta) {
                                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
                                 for (let i = 0; i <= json.length; i++) {
-                                    fluxo = ((resposta[i].qtdSetor / json[i].maxSetor) * 100).toFixed(2)
+                                    fluxo = ((resposta[i].qtdSetor / json[i].maxSetor) * 100).toFixed(2);
 
+                                    fluxoRed = fluxo >= 90 || fluxo <= 15
+                                    fluxoYellow = fluxo >= 75 || fluxo <= 25
 
-                                    if (fluxo >= 95 || fluxo <= 5) {
-                                        cards.innerHTML += `
-                                            <div class="card">
-                                                <span class="title_setor">${json[i].nomeSetor}</span>
-                                                <span class="text_setor">Fluxo no setor: ${resposta[i].qtdSetor}</span>
-                                                <span class="text_setor">Máx: ${json[i].maxSetor}</span>
-                                                <span class="text_setor_fluxoPercent">Fluxo: ${fluxo}%</span>
-                                                <img src = "${redAlert}" alt="">
-                                            </div>
-                                        `
-                                    } else if (fluxo >= 85 || fluxo <= 15) {
-                                        cards.innerHTML += `
-                                            <div class="card">
-                                                <span class="title_setor">${json[i].nomeSetor}</span>
-                                                <span class="text_setor">Fluxo no setor: ${resposta[i].qtdSetor}</span>
-                                                <span class="text_setor">Máx: ${json[i].maxSetor}</span>
-                                                <span class="text_setor_fluxoPercent">Fluxo: ${fluxo}%</span>
-                                                <img src = "${yellowAlert}" alt="">
-                                            </div>
-                                        `
-                                        } else {
-                                            cards.innerHTML += `
-                                            <div class="card">
-                                                <span class="title_setor">${json[i].nomeSetor}</span>
-                                                <span class="text_setor">Fluxo no setor: ${resposta[i].qtdSetor}</span>
-                                                <span class="text_setor">Máx: ${json[i].maxSetor}</span>
-                                                <span class="text_setor_fluxoPercent">Fluxo: ${fluxo}%</span>
-                                                <img src = "${greenAlert}" alt="">
-                                            </div>
-                                        `
-                                        }
+                                    var msgRed = `O(s) setor(es) ${setorRed} está/estão em alerta vermelho`;
+                                    var msgYellow = `O(s) setor(es) ${setorYellow} está/estão em alerta amarelo`;
+                                    var alertVermelho = false;
+                                    var alertAmarelo = false;
+                                    var alertVerde = false;
+
+                                    if (fluxoYellow && alertAmarelo == false) {
+                                        setorYellow.push(` ${json[i].nomeSetor}`)
+                                        dashYellowAlerts(msgYellow)
+                                        alertAmarelo = true;
                                     }
-                                });
+
+                                    if (fluxoRed && alertVermelho == false) {
+                                        setorRed.push(` ${json[i].nomeSetor}`)
+                                        dashRedAlerts(msgRed)
+                                        alertVermelho = true;
+                                    }
+
+                                    // Outra lógica
+
+                                    // for (let index = 0; index < valores.length; index++) {
+                                    //     if (valores[index] == 1) {
+                                    //         qtd++;
+                                    //     }
+                                    // }
+
+                                    // if (qtd == maxSetor - 1 && alertaMax == false) {
+                                    //     alertaMax = true;
+                                    //     msg = 'CAPACIDADE PERTO DO LIMITE: ' + qtd + ' DE ' + maxSetor
+                                    //     alertDash(msg);
+                                    // }
+
+                                    // if (qtd > maxSetor && limitAlertaMax == false) {
+                                    //     limitAlertaMax = true;
+                                    //     msg = 'LIMITE EXCEDIDO!! ' + qtd + ' DE ' + maxSetor
+                                    //     alertDash(msg);
+
+                                    // }
+                                    // if (qtd > minSetor && qtd < maxSetor && alertaNormal == false) {
+                                    //     alertaNormal = true;
+                                    //     msg = 'ATIVIDADE NORMAL: ' + qtd + ' DE ' + maxSetor
+                                    //     alertDash(msg);
+                                    // }
+                                    // if (qtd <= minSetor && alertaMin == false) {
+                                    //     alertaMin = true;
+                                    //     msg = 'BAIXA ATIVIDADE: ' + qtd + ' DE ' + maxSetor
+                                    //     alertDash(msg);
+                                    // }
+
+
+                                }
+
+                            });
                         } else {
                             console.error('Nenhum dado encontrado ou erro na API');
                         }
@@ -209,6 +249,107 @@
             console.error(`Erro na obtenção dos dados: ${error.message}`);
         });
     }
+
+
+    function GerarCards(idEmpresa) {
+        fetch(`/fluxo/obterSetores/${idEmpresa}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    var at = false;
+                    var qtd = 0;
+
+                    fetch(`/fluxo/obterDados/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
+
+                        var fluxo = 0
+
+                        if (response.ok) {
+                            response.json().then(function (resposta) {
+                                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                                var redAlert = '../assets/img/exclamationRed.svg';
+                                var yellowAlert = '../assets/img/exclamationYellow.svg';
+                                var greenAlert = '../assets/img/correct.svg';
+
+                                for (let i = 0; i < json.length; i++) {
+                                    console.log(json[i].maxSetor);
+                                    console.log(json);
+
+                                    fluxo = ((resposta[i].qtdSetor / json[i].maxSetor) * 100).toFixed(2);
+
+                                    fluxoRed = fluxo >= 90 || fluxo <= 15
+                                    fluxoYellow = fluxo >= 75 || fluxo <= 25
+
+                                    if (fluxoRed) {
+                                        cards.innerHTML += `
+                                            <a href="${json[i].nomeSetor}.html">
+                                                <div class="card">
+                                                    <span class="title_setor">${json[i].nomeSetor}</span>
+                                                    <span class="text_setor">Fluxo no setor: ${resposta[i].qtdSetor}</span>
+                                                    <span class="text_setor">Máx: ${json[i].maxSetor}</span>
+                                                    <span class="text_setor_fluxoPercent">Fluxo: ${fluxo}%</span>
+                                                    <img src = "${redAlert}" alt="">
+                                                </div>
+                                            </a>    
+                                            `
+
+                                    } else if (fluxoYellow) {
+                                        cards.innerHTML += `
+                                            <a href="${json[i].nomeSetor}.html">
+                                                <div class="card">
+                                                    <span class="title_setor">${json[i].nomeSetor}</span>
+                                                    <span class="text_setor">Fluxo no setor: ${resposta[i].qtdSetor}</span>
+                                                    <span class="text_setor">Máx: ${json[i].maxSetor}</span>
+                                                    <span class="text_setor_fluxoPercent">Fluxo: ${fluxo}%</span>
+                                                    <img src = "${yellowAlert}" alt="">
+                                                </div>
+                                                </a>      
+                                            `
+
+                                    } else {
+                                        cards.innerHTML += `
+                                            <a href="${json[i].nomeSetor}.html">    
+                                                <div class="card">
+                                                    <span class="title_setor">${json[i].nomeSetor}</span>
+                                                    <span class="text_setor">Fluxo no setor: ${resposta[i].qtdSetor}</span>
+                                                    <span class="text_setor">Máx: ${json[i].maxSetor}</span>
+                                                    <span class="text_setor_fluxoPercent">Fluxo: ${fluxo}%</span>
+                                                    <img src = "${greenAlert}" alt="">
+                                                </div>
+                                                </a>      
+                                            `
+                                    }
+                                }
+
+                            });
+                        } else {
+                            console.error('Nenhum dado encontrado ou erro na API');
+                        }
+                    }).catch(function (error) {
+                        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+                    });
+                });
+
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        }).catch(function (error) {
+            console.error(`Erro na obtenção dos dados: ${error.message}`);
+        });
+    }
+
+
+    // setInterval(() => {GerarCards(idEmpresa)}, 1000);
 
     function ListarSetorMaisVisitado(idEmpresa) {
         fetch(`/fluxo/obterMaxDados/${idEmpresa}`, {
@@ -441,14 +582,6 @@
                             dados.datasets[0].data.push(registro.qtdSetor);
                         }
 
-                        // tirando e colocando valores no gráfico
-
-                        /* dados.datasets[0].data.push(registro.qtdSetor); */
-
-                        /*                 data.datasets[0].data.shift();  // apagar o primeiro de umidade
-                                        data.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
-                                        data.datasets[1].data.shift();  // apagar o primeiro de temperatura
-                                        data.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura */
                         setor.update();
                     }
 

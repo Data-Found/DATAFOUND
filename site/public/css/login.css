@@ -279,6 +279,14 @@ footer {
   font-size: 14px;
 }
 
+.box_links_footer ul a {
+  text-decoration: none;
+  width: 100%;
+  text-align: left;
+  color: white;
+  font-family: 'Inter', sans-serif;
+}
+
 .box_links_footer ul p {
   width: 90%;
   text-align: left;
