@@ -153,3 +153,23 @@ SELECT * FROM Setor;
 INSERT INTO Leitura (movimento, dtLeitura, fkSensor) VALUES
 -- GOLDEN HONOR
 (1,'2022-10-01 09:12:00',1)
+
+
+
+
+--------------------------------------------------------------------------------- NOVA EMPRESA
+INSERT INTO Empresa (nomeFantasia, cnpj, responsavel, fkMatriz) VALUES
+('EMPRESA NOVA','39892768000152','Victor', null);
+
+INSERT INTO Setor (nomeSetor, maxSetor, fkEmpresa) VALUES
+('Brinquedos',20,3), ('Cosméticos',20,3), ('Eletrônicos',30,3), ('Moda',28,3);
+
+INSERT INTO Sensor (tipoSensor, statusSensor, dtInclusao, prateleira, fkSetor) VALUES
+('EN','Ativo','2022-10-01',null,11),('EN','Ativo','2022-10-01',null,12),
+('EN','Ativo','2022-10-01',null,13),('EN','Ativo','2022-10-01',null,14);
+
+INSERT INTO Leitura (movimento, dtLeitura, fkSensor) VALUES
+(1,'2022-10-01 09:00:00',31),(1,'2022-10-01 09:00:00',32),
+(1,'2022-10-01 09:00:00',32),(1,'2022-10-01 09:00:00',33),
+(1,'2022-10-01 09:00:00',33),(1,'2022-10-01 09:01:00',34),
+(1,'2022-10-01 09:01:00',34);

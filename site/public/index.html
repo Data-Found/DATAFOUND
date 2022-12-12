@@ -21,13 +21,11 @@
             <div class="container">
                 <a href="index.html"><img class="logo" src="assets/img/logo-nav.png" alt="Logo DataFound" /></a>
                 <ul>
-                    <!-- <li class="lista"><a href="#" class="navlink">Home</a></li> -->
                     <li class="lista"><a href="calculadora.html" class="navlink">Simulador</a></li>
                     <div id="botoes_logados" class="botoes_logados">
                         <li class="lista"><a href="dashboard/dashboard.html" class="navlink">Dash Geral</a></li>
                     </div>
                     <button id="btnSair" class="btnSair" onclick="limparSessao()">Sair</button>
-                    <!-- <li class="lista"><a href="dashboard.html" class="navlink">Dashboard</a></li> -->
                     <div id="botoes_deslogados">
                         <li class="lista"> <a href="login.html" class="btn-login">Login <img src="assets/img/enter.png"
                                     alt="Ícone para entrar" class="enter"> </a>
@@ -213,7 +211,7 @@
                 <h2>Dados exibidos em dashboard</h2>
                 <p>Qual o setor mais visitado? O produto mais desejado? Monitore a quantidade de
                     pessoas em cada setor em tempo real!. </p>
-                <button class="btn-dash"> <a href="cadastrar.html"> Cadastre-se</a></button>
+                <button class="btn-dash" id="btndash"> <a href="cadastrar.html"> Cadastre-se</a></button>
             </div>
             <div class="img-dash"><img src="assets/img/dash.png" alt="Imagem dashboard"></div>
         </div>
@@ -310,6 +308,7 @@
     if (sessionStorage.ID_USUARIO != null) {
         botoes_deslogados.style.display = 'none'
         botoes_logados.style.display = 'flex'
+        btndash.style.display = 'none'
     } else {
         botoes_deslogados.style.display = 'flex'
         botoes_logados.style.display = 'none'

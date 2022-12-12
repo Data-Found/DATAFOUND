@@ -33,6 +33,14 @@
         </nav>
     </header>
 
+
+    <div vw class="enabled" style="display: block;">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
     <div class="container">
         <div class="kpi_container">
             <div class="data_menu">
@@ -116,23 +124,20 @@
             </div>
         </div>
     </div>
+    
+    </div>
     <footer>
         <div><a href="../downloadApi/dat-acqui-ino-datafound-main.zip" download="Sistema-DataFound">! Baixar o sistema
                 DataFound </a></div>
     </footer>
-    <div vw class="enabled">
-        <div vw-access-button class="active"></div>
-        <div vw-plugin-wrapper>
-            <div class="vw-plugin-top-wrapper"></div>
-        </div>
-    </div>
-</body>
 
-</html>
-<script src="../js/alerts.js"></script>
+</body>
 <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+</html>
+
+<script src="../js/alerts.js"></script>
 <script>
-    new window.VLibras.Widget('https://vlibras.gov.br/app');
+    
 
     var idEmpresa = sessionStorage.ID_EMPRESA;
     welcome.innerHTML = sessionStorage.NOME_USUARIO;
@@ -185,7 +190,7 @@
                                     var alertAmarelo = false;
                                     var alertVerde = false;
 
-                                
+
                                     if (fluxoYellow && alertAmarelo == false) {
                                         setorYellow.push(` ${json[i].nomeSetor}`)
                                         // dashYellowAlerts(msgYellow)
@@ -194,42 +199,9 @@
                                     }
                                     if (fluxoRed && alertVermelho == false) {
                                         setorRed.push(` ${json[i].nomeSetor}`)
-                                        dashRedAlerts(msgRed)
                                         alertVermelho = true;
                                     }
-
-                                    // Outra lógica
-
-                                    // for (let index = 0; index < valores.length; index++) {
-                                    //     if (valores[index] == 1) {
-                                    //         qtd++;
-                                    //     }
-                                    // }
-
-                                    // if (qtd == maxSetor - 1 && alertaMax == false) {
-                                    //     alertaMax = true;
-                                    //     msg = 'CAPACIDADE PERTO DO LIMITE: ' + qtd + ' DE ' + maxSetor
-                                    //     alertDash(msg);
-                                    // }
-
-                                    // if (qtd > maxSetor && limitAlertaMax == false) {
-                                    //     limitAlertaMax = true;
-                                    //     msg = 'LIMITE EXCEDIDO!! ' + qtd + ' DE ' + maxSetor
-                                    //     alertDash(msg);
-
-                                    // }
-                                    // if (qtd > minSetor && qtd < maxSetor && alertaNormal == false) {
-                                    //     alertaNormal = true;
-                                    //     msg = 'ATIVIDADE NORMAL: ' + qtd + ' DE ' + maxSetor
-                                    //     alertDash(msg);
-                                    // }
-                                    // if (qtd <= minSetor && alertaMin == false) {
-                                    //     alertaMin = true;
-                                    //     msg = 'BAIXA ATIVIDADE: ' + qtd + ' DE ' + maxSetor
-                                    //     alertDash(msg);
-                                    // }
-
-
+                                    dashRedAlerts(msgRed)
                                 }
 
                             });
@@ -279,7 +251,7 @@
                         if (response.ok) {
                             response.json().then(function (resposta) {
                                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                                
+
                                 cards.innerHTML = ''
                                 for (let i = 0; i < json.length; i++) {
                                     var zoneYellow = false;
@@ -303,7 +275,7 @@
                                         zoneGreen = true;
                                     }
 
-                                    
+
                                     cards.innerHTML += `
                                             <a href="${json[i].nomeSetor}.html">
                                                 <div class="card" id="card${i}">
@@ -367,7 +339,7 @@
                                         cardizin.style = 'background-color: rgba(255, 193, 190, 0.4); border: solid 3px rgb(194, 39, 34); box-shadow: 1px 1px 1px rgb(194, 39, 34);'
                                         cardizin.classList.add('cardRed');
                                     }
-                                    if(zoneGreen == true) {
+                                    if (zoneGreen == true) {
                                         var cardizin = document.getElementById(`card${i}`);
 
                                         cardizin.style = 'background-color: rgba(189, 236, 182, 0.4); border: solid 3px rgb(51, 204, 35); box-shadow: 1px 1px 1px rgb(51, 204, 35);'
@@ -645,4 +617,7 @@
 
     }
 
+</script>
+<script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
 </script>
